@@ -1,0 +1,671 @@
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+ĐỀ SỐ 1:
+PRELIMINARY ROUND / VÒNG LOẠI QUỐC GIA 2020 – 2021
+Logical Thinking / Tư duy lô-gic
+Q1. Given two balances below, find the heaviest type of fruit.
+Cho hai chiếc cân thăng bằng dưới đây, tìm loại quả nặng nhất.
+
+A. Apple (Táo)
+
+B. Orange (Cam)
+
+C. Mango (Xoài)
+
+D. None of them (Không có)
+
+Q2. In the family, Mina has 3 sisters in total. How many children does Mina’s
+mother have?
+Mina có tất cả 3 người chị em gái. Hỏi mẹ của Mina có bao nhiêu người con?
+A. 2
+
+B. 3
+
+C. 4
+
+D. 5
+
+Q3. Mary looks at the calendar. Her birthday is 2 days after today and it is on
+Friday. Which day of the week is today?
+Mary nhìn vào quyển lịch. Còn 2 ngày nữa là đến sinh nhật của cô ấy và nó đúng
+vào ngày thứ Sáu. Hỏi hôm nay là thứ mấy?
+A. Wednesday (Thứ Tư)
+
+B. Thursday (Thứ Năm)
+
+C. Friday (Thứ Sáu)
+
+D. Tuesday (Thứ Ba)
+
+Q4. By observing the pattern, what is the number in the space (“…”) provided?
+Quan sát quy luật, tìm số thích hợp để điền vào dấu “…” phía dưới.
+0, 5, 10, 15, …
+A. 20
+
+B. 16
+
+C. 19
+
+D. 17
+
+Q5. Ken is 15 years old and Ken’s sister is 5 years younger than him. How old is
+Ken’s sister now?
+Ken 15 tuổi và em gái của Ken ít hơn anh ấy 5 tuổi. Hỏi hiện nay em gái của Ken
+mấy tuổi?
+A. 20
+
+B. 10
+
+C. 5
+
+D. 15
+
+Arithmetic / Số học
+Q6. Find the value of 1 + 9 + 6 + 4 + 2.
+Tìm giá trị của 1 + 9 + 6 + 4 + 2.
+A. 12
+
+B. 20
+
+C. 21
+
+D. 22
+
+1
+
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+Q7. Find the value of 16 – 7 – 6.
+Tìm giá trị của 16 – 7 – 6.
+A. 15
+
+B. 3
+
+C. 4
+
+D. 2
+
+Q8. What is the value of A such that the equation below is correct?
+Giá trị của A là bao nhiêu để ta được phép tính dưới đây đúng?
+
+19 – A = 8
+A. 12
+
+B. 9
+
+C. 10
+
+D. 11
+
+C. 23
+
+D. 32
+
+C. 66
+
+D. 77
+
+Q9. Calculate: 5 + 4 + 5 + 4 + 5.
+Tính: 5 + 4 + 5 + 4 + 5.
+A. 22
+
+B. 20
+
+Q10. Find the value of 11 + 22 + 33.
+Tìm giá trị của 11 + 22 + 33.
+A. 44
+
+B. 55
+
+Number Theory / Lý thuyết số
+Q11. According to the pattern below, which number should be filled in the blank?
+Dựa vào quy luật dãy số dưới đây để tìm số thích hợp điền vào chỗ trống.
+
+20, 1, 19, 2, 18, 3, __
+A. 17
+
+B. 4
+
+C. 14
+
+D. 7
+
+Q12. Find the smallest number with two identical digits.
+Tìm số nhỏ nhất có hai chữ số giống nhau.
+A. 10
+
+B. 11
+
+C. 99
+
+D. 98
+
+Q13. Fill the lines with “+” and ‚ “–” to make the equation below correct. (The
+symbols are written in order from left to right).
+Điền dấu “+” và ‚ “–” vào chỗ trống để được phép toán đúng. Các dấu được
+viết theo thứ tự từ trái sang phải).
+
+7__ 4 __ 3 = 6
+A. +, +
+
+B. +, −
+
+C. −, −
+
+D. −, +
+
+Q14. Donald has 15 crayons. Minnie gives Donald 3 crayons. How many
+crayon(s) does Donald have now?
+Donald có 15 cây bút màu. Minnie cho Donald 3 cây bút màu. Hỏi lúc này Donald
+có mấy cây bút màu?
+A. 18
+
+B. 12
+
+C. 19
+
+D. 1315
+
+2
+
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+Q15. What is the value of B such that the following equation is correct?
+Giá trị của B là bao nhiêu để được phép tính đúng dưới đây?
+
+A. 8
+
+B. 4
+
+C. 5
+
+D. 6
+
+Geometry / Hình học
+Q16. How many squares are there in the following figure?
+Hỏi có bao nhiêu hình vuông trong hình dưới đây?
+
+A. 5
+
+B. 6
+
+C. 7
+
+D. 8
+
+Q17. How many cubes are there in the solid below?
+Có bao nhiêu khối lập phương trong hình dưới đây?
+
+A. 4
+
+B. 6
+
+C. 7
+
+D. 8
+
+Q18. Refer to the pattern below. Find the suitable figure to fill in the blank.
+Theo quy luật dưới đây, tìm hình thích hợp để điền vào chỗ trống.
+
+B.
+C.
+A.
+Q19. How many circles are there in the figure below?
+Có bao nhiêu hình tròn trong hình dưới đây?
+
+A. 4
+
+B. 5
+
+C. 6
+
+D.
+
+D. 1216
+
+3
+
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+Q20. How many sides are there in the following figure?
+Hình dưới đây có bao nhiêu cạnh?
+
+A. 5
+
+B. 7
+
+C. 8
+
+D. 9
+
+Combinatorics / Tổ hợp
+Q21. Separate the following stars into 2 equal groups. How many stars are there
+in each group?
+Chia các hình ngôi sao dưới đây thành 2 phần bằng nhau. Hỏi mỗi phần có bao
+nhiêu ngôi sao?
+A. 6
+
+B. 5
+
+C. 4
+
+D. 3
+
+Q22. How many even numbers are there from 13 to 30?
+Hỏi có bao nhiêu số chẵn tính từ số 13 đến số 30?
+A. 9
+
+B. 17
+
+C. 16
+
+D. 8
+
+Q23. Adam has one $1 coin, one $2 coin and one $5 coin. At most how many toy
+car(s) can he buy, given that each toy car costs $2?
+Adam có một đồng xu 1 đô, một đồng xu 2 đô và một đồng xu 5 đô. Hỏi cậu bé có
+thể mua được nhiều nhất bao nhiêu chiếc xe ô tô đồ chơi, biết rằng mỗi chiếc xe
+trị giá 2 đô?
+A. 2
+
+B. 3
+
+C. 4
+
+D. 5
+
+Q24. How many 2-digit numbers can be formed by using digits 0, 1, 4 and 8?
+(Each digit can be repeated).
+Từ các chữ số 0, 1, 4 và 8, hỏi lập được bao nhiêu số có hai chữ số? Các chữ số
+có thể lặp lại).
+A. 9
+
+B. 16
+
+C. 11
+
+D. 12
+
+Q25. From the pattern below, find the most suitable figure for Figure 4.
+Dựa vào quy luật dưới đây, tìm đáp án thích hợp nhất cho hình số 4.
+
+A.
+
+B.
+
+C.
+
+D.
+
+4
+
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+ĐỀ SỐ 2:
+PRELIMINARY ROUND / VÒNG LOẠI QUỐC GIA
+Logical Thinking / Tư duy lô-gic
+Q1. 5 years later, Alice will be 12 years old. Alice’s father is 23 years elder than
+her. How old is Alice’s father now?
+5 năm nữa thì Alice 12 tuổi. Bố của Alice hơn cô bé 23 tuổi. Hỏi bây giờ bố của
+Alice bao nhiêu tuổi?
+A. 40
+
+B. 30
+
+C. 20
+
+D. 35
+
+Q2. By observing the pattern, what is the English letter in the space provided?
+Quan sát quy luật dưới đây để điền chữ cái Tiếng Anh thích hợp vào chỗ trống.
+C, E, G, I, __, M, O
+A. N
+
+B. J
+
+C. L
+
+D. K
+
+Q3. Observe the sequence below to replace the flag with a suitable number.
+Quan sát dãy số dưới đây để thay thế lá cờ bằng số thích hợp.
+3, 4, 6, 9, 13, , …
+A. 18
+
+B. 17
+
+C. 14
+
+D. 15
+
+Q4. Refer to the figure below, how many circles are there in the 5th group?
+Dựa vào dãy hình dưới đây, hỏi có bao nhiêu hình tròn trong nhóm thứ 5?
+
+A. 4
+
+B. 8
+
+C. 12
+
+D. 16
+
+Q5. Students in a class form a line. Kim sees that there are 5 students in front of
+her and 3 students behind her. How many students are there in Kim’s class?
+Học sinh trong một lớp xếp thành một hàng dọc. Kim thấy rằng phía trước mình
+có 5 bạn và phía sau mình có 3 bạn. Hỏi lớp của Kim có bao nhiêu học sinh?
+A. 8
+
+B. 9
+
+C. 10
+
+D. 2
+
+Arithmetic / Số học
+Q6. Find the value of 0 + 2 + 4 + 6 + 8 + 10.
+Tìm giá trị của 0 + 2 + 4 + 6 + 8 + 10.
+A. 30
+
+B. 20
+
+C. 10
+
+D. 40
+
+5
+
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+Q7. By observing the equation, which number is being covered by the book?
+Quan sát phép tính dưới đây, hỏi số nào đang bị che bởi quyển sách?
+
+19 – 🕮 = 6
+A. 13
+B. 16
+C. 3
+D. 14
+Q8. Find the value of 2 + 3 – 4 + 2 + 3 – 4 + 2 + 3 – 4 + 2 + 3 – 4.
+Tính giá trị của 2 + 3 – 4 + 2 + 3 – 4 + 2 + 3 – 4 + 2 + 3 – 4.
+A. 3
+B. 1
+C. 4
+D. 5
+Q9. What is the value of K if the equation below is correct?
+Tìm giá trị của K để được phép tính đúng dưới đây.
+
+6 + K = 8 – 5 + 11
+A. 6
+B. 8
+C. 4
+D. 5
+Q10. If A and B represent different digits, what is the value of A so that the
+equation is correct?
+Biết A và B là các chữ số khác nhau, hỏi giá trị của A là bao nhiêu để ta được
+phép tính đúng dưới đây?
+
+A. 5
+
+B. 2
+C. 3
+D. 4
+Number Theory / Lý thuyết số
+Q11. Observe the following sequence and find the smallest even number.
+Quan sát dãy số dưới đây để tìm ra số chẵn nhỏ nhất.
+38、 20、 18、 15、 49、 26、 7
+A. 7
+B. 15
+C. 18
+D. 20
+Q12. A box has balls with consecutive numbers from 0 to 50 (0, 1, 2, 3, 4, …,
+50). How many balls are there in the box?
+Một hộp chứa các quả bóng được đánh số liên tiếp từ 0 đến 50 ( 0, 1, 2, 3, 4, …,
+50). Hỏi có bao nhiêu quả bóng trong hộp đó?
+A. 40
+B. 51
+C. 25
+D. 50
+Q13. Find the 6th number in the arithmetic sequence below.
+Tìm số thứ 6 trong dãy số cách đều dưới đây.
+31、 29、 27、 25、 …
+A. 24
+B. 23
+C. 19
+D. 21
+
+6
+
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+Q14. Andy had 20 candies. Andy gave Betty 3 candies then Betty gave Cindy 4
+candies so that 3 friends had the same number of candies. How many candies did
+Cindy have originally?
+Andy có 20 cái kẹo. Andy cho Betty 3 cái kẹo rồi Betty lại cho Cindy 4 cái kẹo.
+Khi đó 3 bạn có số kẹo bằng nhau. Hỏi lúc đầu Cindy có bao nhiêu cái kẹo?
+A. 19
+B. 21
+C. 18
+D. 13
+Q15. David has 3 cards. The total number of cards of David and his brother is the
+smallest 2- digit odd number. How many cards does David’s brother have?
+David có 3 lá bài. Tổng số lá bài của David và anh trai là số lẻ nhỏ nhất có 2 chữ
+số. Hỏi anh trai David có bao nhiêu lá bài?
+A. 10
+B. 9
+C. 8
+D. 7
+Geometry / Hình học
+Q16. How many squares are there in the figure below?
+Hỏi có bao nhiêu hình vuông trong hình dưới đây?
+
+A. 19
+B. 14
+C. 15
+Q17.At least how many cubes are there in the figure below?
+Hỏi có ít nhất bao nhiêu hình lập phương trong hình dưới đây?
+
+D. 20
+
+A. 12
+B. 11
+C. 13
+Q18. How many interior angles are there in the polygon below?
+Hỏi hình đa giác dưới đây có bao nhiêu góc trong?
+
+D. 10
+
+A. 13
+
+B. 14
+
+C. 15
+
+D. 16
+
+7
+
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+Q19. How many line segments are there in the figure below?
+Hỏi có bao nhiêu đoạn thẳng trong hình dưới đây?
+
+A. 18
+B. 20
+C. 16
+D. 14
+Q20. Refer to the beads below. How many white beads are there in the first 15
+beads?
+Xét chuỗi hạt dưới đây. Hỏi có bao nhiêu hạt trắng trong 15 hạt đầu tiên?
+
+A. 15
+
+B. 7
+C. 8
+D. 6
+Combinatorics / Tổ hợp
+Q21. Which number below is the greatest number?
+Tìm số lớn nhất trong các số dưới đây?
+2102202 、 20022021 、 20102021 、 20102120
+A. 2102202
+B. 20022021
+C. 20102021
+D. 20102120
+Q22. Among the following numbers, how many odd numbers are there?
+Hỏi có bao nhiêu số lẻ trong các số dưới đây?
+21, 32, 444, 101, 8, 99, 241, 76
+A. 3
+B. 5
+C. 4
+D. 2
+Q23. Choose 2 digits, without repetition, from 0, 2, 4, 6 and 9 to form 2-digit
+even numbers. How many different numbers are there?
+Chọn 2 chữ số không lặp lại từ 0, 2, 4, 6 và 9 để lập thành số chẵn có 2 chữ số.
+Hỏi có thể lập được bao nhiêu số khác nhau như vậy?
+A. 16
+B. 13
+C. 14
+D. 15
+Q24. Amy, Billy, Celine and Dan donated 20 coats to the homeless. Given that
+each person must donate at least 2 coats and their numbers of coats must be
+different, at most how many coats can Dan donate?
+Amy, Billy, Celine và Dan quyên góp 20 chiếc áo ấm cho người vô gia cư. Biết
+rằng mỗi bạn cần quyên góp ít nhất 2 chiếc áo và số áo của mỗi bạn là khác nhau.
+Hỏi Dan có thể quyên góp nhiều nhất bao nhiêu chiếc áo?
+A. 6
+B. 14
+C. 11
+D. 20
+
+8
+
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+Q25. The 3 × 3 square on the right is called a ‚Magic square‛ with 9 consecutive
+numbers from 1 to 9 in each cell. The sum of numbers in each column or row is
+equal. Find the number that should be filled in the cell with question mark.
+Hình vuông 3 x 3 bên phải được gọi là hình vuông ma thuật gồm 9 số liên tiếp từ
+1 đến 9 được điền vào mỗi ô. Tổng các số ở mỗi hàng và mỗi cột là bằng nhau.
+Hãy tìm số thích hợp để điền vào ô có dấu hỏi chấm.
+
+A. 2
+
+B. 4
+
+C. 6
+
+D. 8
+
+9
+
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+ĐỀ SỐ 3:
+HEAT ROUND / VÒNG CHUNG KẾT QUỐC GIA 2020 – 2021
+Logical Thinking / Tư duy lô-gic
+Q1. Edward is 18 years old now and Kenny will be 6 years old 4 years later.
+What is the difference between their ages?
+Edward năm nay 18 tuổi và Kenny 6 tuổi vào 4 năm sau. Tính hiệu số tuổi giữa
+hai người?
+Q2. According to the pattern shown below, what is the English letter in the
+space (“__”) provided?
+Theo quy luật dưới đây, chữ cái tiếng Anh trong khoảng trống (“__”) được cho
+là gì?
+
+Q3. If tomorrow will be Thursday, which day of the week will 11 days later be?
+Nếu ngày mai là thứ Năm, thì 11 ngày sau đó sẽ là thứ mấy?
+Q4. According to the pattern below, what is the number in the space?
+Theo quy luật dưới đây, số trong khoảng trống là bao nhiêu?
+4, 12, 20, 28, 36, __
+Q5. From the pattern below, how many ＃ is / are there in the 5th Group?
+Từ quy luật hình dưới đây, có bao nhiêu ＃trong Nhóm 5?
+
+Arithmetic / Số học
+Q6. If A represents the same 1-digit number, what is the value of A if the
+equation is correct?
+Nếu A biểu diễn cùng một số có 1 chữ số thì giá trị của A là bao nhiêu nếu đẳng
+thức đúng?
+
+10
+
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+Q7. Find the value of 48 + 6 + 11 + 29 + 12 + 14 .
+Tìm giá trị của 48 + 6 + 11 + 29 + 12 + 14.
+Q8. B is a 1-digit number. What is the value of B if the equation below is
+correct?
+B là số có 1 chữ số. Giá trị của B là bao nhiêu nếu đẳng thức dưới đây đúng?
+
+Q9. Find the value of 4 + 4 + 4 + 4 + 4 + 4 – 6 – 6 – 6.
+Tìm giá trị của 4 + 4 + 4 + 4 + 4 + 4 - 6 - 6 - 6
+Q10. Find the value of 14 – 26 + 38.
+Tìm giá trị của 14 - 26 + 38.
+Number Theory / Lý thuyết số
+Q11. A large package contains 8 eggs. A small package contains 3 eggs. Buying
+both large package and small package will attach 1 extra egg every time. If
+Mary buys 3 large and 5 small packages, how many egg(s) does she have?
+Một gói lớn chứa 8 quả trứng. Một gói nhỏ chứa 3 quả trứng. Mua cả gói lớn và
+gói nhỏ mỗi lần sẽ được tặng thêm 1 quả trứng. Nếu Mary mua 3 gói lớn và 5 gói
+nhỏ thì cô ấy có bao nhiêu quả trứng?
+Q12. The numbers below follow the arithmetic sequence, what is the 11 number?
+Các số dưới đây tuân theo quy luật, tìm số thứ 11 trong dãy số?
+118, 113, 108, 103, 98, …
+Q13. It is known that A is an odd number. Determine the result below is an odd
+or even number.
+Biết rằng A là một số lẻ. Kết quả dưới đây là số lẻ hay số chẵn.
+(A – 2) + (A – 1) + A + (A + 1) + (A + 2)
+Q14. Stephen has 24 apples and Charlie has 6 apples. How many apples does
+Stephen have to give Charlie to make them have the same number of apples?
+Stephen có 24 quả táo và Charlie có 6 quả táo. Stephen phải cho Charlie bao
+nhiêu quả táo để họ có số quả táo bằng nhau?
+Q15. By observing the numbers, which even number is the greatest?
+Bằng cách quan sát các số, hãy cho biết số chẵn nào lớn nhất?
+99 – 11, 99 + 2, 99 – 13, 99 + 4, 99 + 15, 99 + 16
+Geometry / Hình học
+Q16. How many cubes are there in figure 2 given that figure 2 is formed by some
+shapes as figure 1?
+th
+
+11
+
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+Có bao nhiêu hình lập phương trong hình 2 cho biết hình 2 được tạo bởi một số
+hình như hình 1?
+
+Q17. How many triangle(s) is / are there in the figure below?
+Có bao nhiêu hình tam giác trong hình dưới đây?
+
+Q18. How many side(s) is / are there in the polygon below?
+Có bao nhiêu cạnh có trong hình đa giác dưới đây?
+
+Q19. According to the pattern below, what is the figure in the space (“___”)?
+Theo quy luật hình bên dưới, hình trong khoảng trống (“___”) là gì?
+
+Q20. How many line segment(s) is / are there in the figure below?
+Có bao nhiêu đoạn thẳng trong hình dưới đây?
+
+12
+
+Tổng hợp đề thi và đáp án, hướng dẫn giải kỳ thi TIMO khối 1 các năm
+
+Combinatorics / Tổ hợp
+Q21. According to the following answers, how many 2-digit numbers are there?
+Theo các câu trả lời sau, có bao nhiêu số có 2 chữ số?
+21 – 6, 6 + 5, 9 – 2, 100 – 5, 11 + 5, 4 + 7
+Q22. Which number below is the smallest?
+Số nào dưới đây nhỏ nhất?
+20111111, 2011211, 2022222, 2033333
+Q23. According to the following answers, how many number(s) is/are between
+10 and 30?
+Theo các câu trả lời sau, có bao nhiêu số nằm trong khoảng từ 10 đến 30?
+11 + 8, 2 + 9, 3 + 4, 50 – 7, 40 – 7, 25 + 4, 30 – 21
+Q24. What is the smallest 3-digit even number by choosing 3 digits from 0, 1, 5,
+7 and 9? (Each digit can only be used once).
+Số chẵn nhỏ nhất có 3 chữ số bằng cách chọn 3 chữ số 0, 1, 5, 7, 9 là số nào?
+(Mỗi chữ số chỉ được sử dụng một lần).
+Q25. Choose 4 digits, without repetition, from 2, 3, 5, 7, 8 and 9 to form two 2digit odd numbers and add them up. What is the maximum value of the sum?
+Chọn 4 chữ số, không lặp lại, từ 2, 3, 5, 7, 8 và 9 để tạo thành hai số lẻ có 2 chữ
+số và cộng chúng lại. Giá trị lớn nhất của tổng là bao nhiêu?
+
+13
+
+
