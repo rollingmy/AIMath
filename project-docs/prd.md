@@ -103,7 +103,7 @@ AITimoMath/
 ```
 
 ### **4.2 Core Components**
-- **`Models/QuestionBank.swift`**: Defines question structure.
+- **`Models/Question.swift`**: Defines question structure.
 - **`Services/AILessonSelector.swift`**: AI-based question selection.
 - **`Services/AdaptiveEngine.swift`**: Adaptive difficulty logic.
 - **`AI/TrainModel.swift`**: AI model training and learning reinforcement.
