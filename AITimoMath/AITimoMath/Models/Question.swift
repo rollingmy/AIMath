@@ -1,5 +1,6 @@
 import Foundation
 import CloudKit
+import SwiftUI
 
 /// Represents a math question in the TIMO curriculum
 public struct Question: Identifiable, Codable, Equatable {
@@ -27,8 +28,16 @@ public struct Question: Identifiable, Codable, Equatable {
     /// Optional hint for students
     public var hint: String?
     
-    /// Optional image URL for visual questions
-    public var imageUrl: URL?
+    /// Optional image data for visual questions (stored locally)
+    public var imageData: Data?
+    
+    /// Computed property to convert imageData to UIImage
+    public var image: UIImage? {
+        if let data = imageData {
+            return UIImage(data: data)
+        }
+        return nil
+    }
 }
 
 // MARK: - Supporting Types
@@ -54,7 +63,7 @@ extension Question {
         self.correctAnswer = correctAnswer
         self.options = type == .multipleChoice ? [] : nil
         self.hint = nil
-        self.imageUrl = nil
+        self.imageData = nil
     }
 }
 
@@ -73,7 +82,21 @@ extension Question {
         record["options"] = options
         record["correctAnswer"] = correctAnswer
         record["hint"] = hint
-        record["imageUrl"] = imageUrl?.absoluteString
+        
+        // Store image data as CKAsset if available
+        if let imageData = imageData {
+            let tempDirectory = FileManager.default.temporaryDirectory
+            let tempFileURL = tempDirectory.appendingPathComponent(UUID().uuidString)
+            
+            do {
+                try imageData.write(to: tempFileURL)
+                let asset = CKAsset(fileURL: tempFileURL)
+                record["imageData"] = asset
+            } catch {
+                print("Error creating CKAsset: \(error)")
+            }
+        }
+        
         return record
     }
     
@@ -101,8 +124,12 @@ extension Question {
         self.correctAnswer = correctAnswer
         self.options = record["options"] as? [String]
         self.hint = record["hint"] as? String
-        if let urlString = record["imageUrl"] as? String {
-            self.imageUrl = URL(string: urlString)
+        
+        // Extract image data from CKAsset
+        if let asset = record["imageData"] as? CKAsset, let fileURL = asset.fileURL {
+            self.imageData = try? Data(contentsOf: fileURL)
+        } else {
+            self.imageData = nil
         }
     }
 }
@@ -136,6 +163,11 @@ extension Question {
                 throw ValidationError.correctAnswerNotInOptions
             }
         }
+        
+        // Image data validation (optional)
+        if let imageData = imageData, imageData.count > 5 * 1024 * 1024 {
+            throw ValidationError.imageTooLarge
+        }
     }
     
     /// Validation error types
@@ -146,6 +178,7 @@ extension Question {
         case missingOptions
         case invalidOptionsCount
         case correctAnswerNotInOptions
+        case imageTooLarge
         
         var errorDescription: String? {
             switch self {
@@ -161,6 +194,8 @@ extension Question {
                 return "Multiple choice questions must have 2-5 options"
             case .correctAnswerNotInOptions:
                 return "Correct answer must be one of the options"
+            case .imageTooLarge:
+                return "Image size cannot exceed 5MB"
             }
         }
     }
@@ -178,5 +213,27 @@ extension Question {
     func calculateSuccessRate(_ attempts: Int, correct: Int) -> Float {
         guard attempts > 0 else { return 0 }
         return Float(correct) / Float(attempts)
+    }
+}
+
+// MARK: - Image Handling
+extension Question {
+    /// Set image from UIImage
+    mutating func setImage(_ image: UIImage, compressionQuality: CGFloat = 0.7) {
+        if let compressedData = image.jpegData(compressionQuality: compressionQuality) {
+            self.imageData = compressedData
+        }
+    }
+    
+    /// Set image from local file URL
+    mutating func setImageFromFile(url: URL) throws {
+        self.imageData = try Data(contentsOf: url)
+    }
+    
+    /// Set image from Base64 string
+    mutating func setImageFromBase64(_ base64String: String) {
+        if let data = Data(base64Encoded: base64String) {
+            self.imageData = data
+        }
     }
 } 

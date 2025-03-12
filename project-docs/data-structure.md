@@ -53,7 +53,7 @@ Stores question data with options, correct answers, and difficulty.
   "options": ["string"],  // MCQ choices
   "correct_answer": "string",
   "hint": "string",  // Optional hint
-  "image_url": "string"  // Optional image
+  "image_url": "imageData"  // Optional image
 }
 ```
 

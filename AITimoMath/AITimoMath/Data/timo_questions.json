@@ -1,625 +1,1826 @@
 {
-  "version": "1.0",
-  "lastUpdated": "2024-03-10",
-  "questions": [
-    {
-      "id": "logical-1",
-      "subject": "Logical Thinking",
-      "type": "multiple-choice",
-      "difficulty": "Easy",
-      "parameters": {
-        "eloRating": 1100,
-        "bkt": {
-          "pLearn": 0.4,
-          "pGuess": 0.25,
-          "pSlip": 0.1,
-          "pKnown": 0.5
+    "version": "1.0",
+    "lastUpdated": "2024-03-12",
+    "questions": [
+      {
+        "id": "logical-1",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.8,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 0.8,
-          "difficulty": -0.8,
-          "guessing": 0.25
+        "content": {
+          "question": "Given two balances below, find the heaviest type of fruit.\n[Image shows balanced scales with different fruits]",
+          "options": [
+            "Apple (Táo)",
+            "Orange (Cam)",
+            "Mango (Xoài)",
+            "None of them (Không có)"
+          ],
+          "correctAnswer": "B",
+          "explanation": "By comparing the balance scales, we can determine which fruit is heaviest.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["comparison", "weight", "logic"],
+          "timeLimit": 60,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "Given two balances below, find the heaviest type of fruit.\n[Image shows balanced scales with different fruits]",
-        "options": [
-          "Apple (Táo)",
-          "Orange (Cam)",
-          "Mango (Xoài)",
-          "None of them (Không có)"
-        ],
-        "correctAnswer": "B",
-        "explanation": "By comparing the balance scales, we can determine which fruit is heaviest."
-      },
-      "metadata": {
-        "tags": ["comparison", "weight", "logic"],
-        "timeLimit": 60,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "logical-2",
-      "subject": "Logical Thinking",
-      "type": "multiple-choice",
-      "difficulty": "Easy",
-      "parameters": {
-        "eloRating": 1050,
-        "bkt": {
-          "pLearn": 0.45,
-          "pGuess": 0.25,
-          "pSlip": 0.1,
-          "pKnown": 0.5
+      {
+        "id": "logical-2",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1050,
+          "bkt": {
+            "pLearn": 0.45,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.7,
+            "difficulty": -1.0,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 0.7,
-          "difficulty": -1.0,
-          "guessing": 0.25
+        "content": {
+          "question": "In the family, Mina has 3 sisters in total. How many children does Mina's mother have?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Mina has 3 sisters, and Mina herself is also a child of her mother. So in total, Mina's mother has 4 children."
+        },
+        "metadata": {
+          "tags": ["family", "relationships", "counting"],
+          "timeLimit": 60,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "In the family, Mina has 3 sisters in total. How many children does Mina's mother have?",
-        "options": [
-          "2",
-          "3",
-          "4",
-          "5"
-        ],
-        "correctAnswer": "C",
-        "explanation": "Mina has 3 sisters, and Mina herself is also a child of her mother. So in total, Mina's mother has 4 children."
-      },
-      "metadata": {
-        "tags": ["family", "relationships", "counting"],
-        "timeLimit": 60,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "logical-3",
-      "subject": "Logical Thinking",
-      "type": "multiple-choice",
-      "difficulty": "Medium",
-      "parameters": {
-        "eloRating": 1200,
-        "bkt": {
-          "pLearn": 0.35,
-          "pGuess": 0.25,
-          "pSlip": 0.15,
-          "pKnown": 0.4
+      {
+        "id": "logical-3",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 1.0,
-          "difficulty": 0.2,
-          "guessing": 0.25
+        "content": {
+          "question": "Mary looks at the calendar. Her birthday is 2 days after today and it is on Friday. Which day of the week is today?",
+          "options": [
+            "Wednesday (Thứ Tư)",
+            "Thursday (Thứ Năm)",
+            "Friday (Thứ Sáu)",
+            "Tuesday (Thứ Ba)"
+          ],
+          "correctAnswer": "A",
+          "explanation": "If Mary's birthday is on Friday and it's 2 days after today, then today must be Wednesday."
+        },
+        "metadata": {
+          "tags": ["calendar", "days", "time"],
+          "timeLimit": 60,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "Mary looks at the calendar. Her birthday is 2 days after today and it is on Friday. Which day of the week is today?",
-        "options": [
-          "Wednesday (Thứ Tư)",
-          "Thursday (Thứ Năm)",
-          "Friday (Thứ Sáu)",
-          "Tuesday (Thứ Ba)"
-        ],
-        "correctAnswer": "A",
-        "explanation": "If Mary's birthday is on Friday and it's 2 days after today, then today must be Wednesday."
-      },
-      "metadata": {
-        "tags": ["calendar", "days", "time"],
-        "timeLimit": 60,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "logical-4",
-      "subject": "Logical Thinking",
-      "type": "multiple-choice",
-      "difficulty": "Easy",
-      "parameters": {
-        "eloRating": 1100,
-        "bkt": {
-          "pLearn": 0.4,
-          "pGuess": 0.25,
-          "pSlip": 0.1,
-          "pKnown": 0.5
+      {
+        "id": "logical-4",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": -0.5,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 0.9,
-          "difficulty": -0.5,
-          "guessing": 0.25
+        "content": {
+          "question": "By observing the pattern, what is the number in the space (\"...\") provided?\n0, 5, 10, 15, ...",
+          "options": [
+            "20",
+            "16",
+            "19",
+            "17"
+          ],
+          "correctAnswer": "A",
+          "explanation": "The pattern shows numbers increasing by 5 each time. After 15, the next number would be 20."
+        },
+        "metadata": {
+          "tags": ["pattern", "sequence", "counting"],
+          "timeLimit": 45,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "By observing the pattern, what is the number in the space (\"...\") provided?\n0, 5, 10, 15, ...",
-        "options": [
-          "20",
-          "16",
-          "19",
-          "17"
-        ],
-        "correctAnswer": "A",
-        "explanation": "The pattern shows numbers increasing by 5 each time. After 15, the next number would be 20."
-      },
-      "metadata": {
-        "tags": ["pattern", "sequence", "counting"],
-        "timeLimit": 45,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "logical-5",
-      "subject": "Logical Thinking",
-      "type": "multiple-choice",
-      "difficulty": "Easy",
-      "parameters": {
-        "eloRating": 1050,
-        "bkt": {
-          "pLearn": 0.45,
-          "pGuess": 0.25,
-          "pSlip": 0.1,
-          "pKnown": 0.6
+      {
+        "id": "logical-5",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1050,
+          "bkt": {
+            "pLearn": 0.45,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.6
+          },
+          "irt": {
+            "discrimination": 0.7,
+            "difficulty": -0.9,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 0.7,
-          "difficulty": -0.9,
-          "guessing": 0.25
+        "content": {
+          "question": "Ken is 15 years old and Ken's sister is 5 years younger than him. How old is Ken's sister now?",
+          "options": [
+            "20",
+            "10",
+            "5",
+            "15"
+          ],
+          "correctAnswer": "B",
+          "explanation": "If Ken is 15 years old and his sister is 5 years younger, then his sister is 15 - 5 = 10 years old."
+        },
+        "metadata": {
+          "tags": ["age", "comparison", "subtraction"],
+          "timeLimit": 45,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "Ken is 15 years old and Ken's sister is 5 years younger than him. How old is Ken's sister now?",
-        "options": [
-          "20",
-          "10",
-          "5",
-          "15"
-        ],
-        "correctAnswer": "B",
-        "explanation": "If Ken is 15 years old and his sister is 5 years younger, then his sister is 15 - 5 = 10 years old."
-      },
-      "metadata": {
-        "tags": ["age", "comparison", "subtraction"],
-        "timeLimit": 45,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "arithmetic-1",
-      "subject": "Arithmetic",
-      "type": "multiple-choice",
-      "difficulty": "Easy",
-      "parameters": {
-        "eloRating": 1000,
-        "bkt": {
-          "pLearn": 0.5,
-          "pGuess": 0.25,
-          "pSlip": 0.1,
-          "pKnown": 0.6
+      {
+        "id": "arithmetic-1",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1000,
+          "bkt": {
+            "pLearn": 0.5,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.6
+          },
+          "irt": {
+            "discrimination": 0.7,
+            "difficulty": -1.2,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 0.7,
-          "difficulty": -1.2,
-          "guessing": 0.25
+        "content": {
+          "question": "Find the value of 1 + 9 + 6 + 4 + 2.",
+          "options": [
+            "12",
+            "20",
+            "21",
+            "22"
+          ],
+          "correctAnswer": "D",
+          "explanation": "Adding the numbers: 1 + 9 + 6 + 4 + 2 = 22"
+        },
+        "metadata": {
+          "tags": ["addition", "basic"],
+          "timeLimit": 45,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "Find the value of 1 + 9 + 6 + 4 + 2.",
-        "options": [
-          "12",
-          "20",
-          "21",
-          "22"
-        ],
-        "correctAnswer": "D",
-        "explanation": "Adding the numbers: 1 + 9 + 6 + 4 + 2 = 22"
-      },
-      "metadata": {
-        "tags": ["addition", "basic"],
-        "timeLimit": 45,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "arithmetic-2",
-      "subject": "Arithmetic",
-      "type": "multiple-choice",
-      "difficulty": "Easy",
-      "parameters": {
-        "eloRating": 1050,
-        "bkt": {
-          "pLearn": 0.45,
-          "pGuess": 0.25,
-          "pSlip": 0.1,
-          "pKnown": 0.6
+      {
+        "id": "arithmetic-2",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1050,
+          "bkt": {
+            "pLearn": 0.45,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.6
+          },
+          "irt": {
+            "discrimination": 0.75,
+            "difficulty": -1.0,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 0.75,
-          "difficulty": -1.0,
-          "guessing": 0.25
+        "content": {
+          "question": "Find the value of 16 – 7 – 6.",
+          "options": [
+            "15",
+            "3",
+            "4",
+            "2"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Subtracting the numbers: 16 - 7 - 6 = 9 - 6 = 3"
+        },
+        "metadata": {
+          "tags": ["subtraction", "basic"],
+          "timeLimit": 45,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "Find the value of 16 – 7 – 6.",
-        "options": [
-          "15",
-          "3",
-          "4",
-          "2"
-        ],
-        "correctAnswer": "B",
-        "explanation": "Subtracting the numbers: 16 - 7 - 6 = 9 - 6 = 3"
-      },
-      "metadata": {
-        "tags": ["subtraction", "basic"],
-        "timeLimit": 45,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "arithmetic-3",
-      "subject": "Arithmetic",
-      "type": "multiple-choice",
-      "difficulty": "Medium",
-      "parameters": {
-        "eloRating": 1150,
-        "bkt": {
-          "pLearn": 0.4,
-          "pGuess": 0.25,
-          "pSlip": 0.15,
-          "pKnown": 0.5
+      {
+        "id": "arithmetic-3",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1150,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.85,
+            "difficulty": -0.2,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 0.85,
-          "difficulty": -0.2,
-          "guessing": 0.25
+        "content": {
+          "question": "What is the value of A such that the equation below is correct?\n19 – A = 8",
+          "options": [
+            "12",
+            "9",
+            "10",
+            "11"
+          ],
+          "correctAnswer": "D",
+          "explanation": "We need to solve the equation 19 - A = 8. So A = 19 - 8 = 11."
+        },
+        "metadata": {
+          "tags": ["equation", "subtraction", "variable"],
+          "timeLimit": 60,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "What is the value of A such that the equation below is correct?\n19 – A = 8",
-        "options": [
-          "12",
-          "9",
-          "10",
-          "11"
-        ],
-        "correctAnswer": "D",
-        "explanation": "We need to solve the equation 19 - A = 8. So A = 19 - 8 = 11."
-      },
-      "metadata": {
-        "tags": ["equation", "subtraction", "variable"],
-        "timeLimit": 60,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "number-theory-1",
-      "subject": "Number Theory",
-      "type": "multiple-choice",
-      "difficulty": "Medium",
-      "parameters": {
-        "eloRating": 1250,
-        "bkt": {
-          "pLearn": 0.35,
-          "pGuess": 0.25,
-          "pSlip": 0.15,
-          "pKnown": 0.45
+      {
+        "id": "number-theory-1",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 0.95,
-          "difficulty": 0.3,
-          "guessing": 0.25
+        "content": {
+          "question": "According to the pattern below, which number should be filled in the blank?\n20, 1, 19, 2, 18, 3, __",
+          "options": [
+            "17",
+            "4",
+            "14",
+            "7"
+          ],
+          "correctAnswer": "A",
+          "explanation": "The pattern is decreasing by 1 for each odd position (20, 19, 18, ...) and increasing by 1 for each even position (1, 2, 3, ...). So after 3, the next number should be 17."
+        },
+        "metadata": {
+          "tags": ["pattern", "sequence", "alternating"],
+          "timeLimit": 60,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "According to the pattern below, which number should be filled in the blank?\n20, 1, 19, 2, 18, 3, __",
-        "options": [
-          "17",
-          "4",
-          "14",
-          "7"
-        ],
-        "correctAnswer": "A",
-        "explanation": "The pattern is decreasing by 1 for each odd position (20, 19, 18, ...) and increasing by 1 for each even position (1, 2, 3, ...). So after 3, the next number should be 17."
-      },
-      "metadata": {
-        "tags": ["pattern", "sequence", "alternating"],
-        "timeLimit": 60,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "number-theory-2",
-      "subject": "Number Theory",
-      "type": "multiple-choice",
-      "difficulty": "Medium",
-      "parameters": {
-        "eloRating": 1200,
-        "bkt": {
-          "pLearn": 0.4,
-          "pGuess": 0.25,
-          "pSlip": 0.15,
-          "pKnown": 0.5
+      {
+        "id": "number-theory-2",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.1,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 0.9,
-          "difficulty": 0.1,
-          "guessing": 0.25
+        "content": {
+          "question": "Find the smallest number with two identical digits.",
+          "options": [
+            "10",
+            "11",
+            "99",
+            "98"
+          ],
+          "correctAnswer": "B",
+          "explanation": "The smallest number with two identical digits is 11, where both digits are 1."
+        },
+        "metadata": {
+          "tags": ["digits", "identical", "smallest"],
+          "timeLimit": 60,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "Find the smallest number with two identical digits.",
-        "options": [
-          "10",
-          "11",
-          "99",
-          "98"
-        ],
-        "correctAnswer": "B",
-        "explanation": "The smallest number with two identical digits is 11, where both digits are 1."
-      },
-      "metadata": {
-        "tags": ["digits", "identical", "smallest"],
-        "timeLimit": 60,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "geometry-1",
-      "subject": "Geometry",
-      "type": "multiple-choice",
-      "difficulty": "Medium",
-      "parameters": {
-        "eloRating": 1300,
-        "bkt": {
-          "pLearn": 0.35,
-          "pGuess": 0.25,
-          "pSlip": 0.2,
-          "pKnown": 0.4
+      {
+        "id": "geometry-1",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 1.1,
-          "difficulty": 0.4,
-          "guessing": 0.25
+        "content": {
+          "question": "How many squares are there in the following figure?\n[Image shows a geometric arrangement of squares]",
+          "options": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Count all possible squares in the figure, including the individual small squares and any larger squares formed by combinations of smaller squares."
+        },
+        "metadata": {
+          "tags": ["squares", "counting", "visualization"],
+          "timeLimit": 90,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "How many squares are there in the following figure?\n[Image shows a geometric arrangement of squares]",
-        "options": [
-          "5",
-          "6",
-          "7",
-          "8"
-        ],
-        "correctAnswer": "B",
-        "explanation": "Count all possible squares in the figure, including the individual small squares and any larger squares formed by combinations of smaller squares."
-      },
-      "metadata": {
-        "tags": ["squares", "counting", "visualization"],
-        "timeLimit": 90,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "geometry-2",
-      "subject": "Geometry",
-      "type": "multiple-choice",
-      "difficulty": "Medium",
-      "parameters": {
-        "eloRating": 1350,
-        "bkt": {
-          "pLearn": 0.3,
-          "pGuess": 0.25,
-          "pSlip": 0.2,
-          "pKnown": 0.4
+      {
+        "id": "geometry-2",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1350,
+          "bkt": {
+            "pLearn": 0.3,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.15,
+            "difficulty": 0.5,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 1.15,
-          "difficulty": 0.5,
-          "guessing": 0.25
+        "content": {
+          "question": "How many cubes are there in the solid below?\n[Image shows a 3D arrangement of cubes]",
+          "options": [
+            "4",
+            "6",
+            "7",
+            "8"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Count all the visible and hidden cubes in the 3D solid structure."
+        },
+        "metadata": {
+          "tags": ["cubes", "3d", "counting", "spatial"],
+          "timeLimit": 90,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "How many cubes are there in the solid below?\n[Image shows a 3D arrangement of cubes]",
-        "options": [
-          "4",
-          "6",
-          "7",
-          "8"
-        ],
-        "correctAnswer": "C",
-        "explanation": "Count all the visible and hidden cubes in the 3D solid structure."
-      },
-      "metadata": {
-        "tags": ["cubes", "3d", "counting", "spatial"],
-        "timeLimit": 90,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "combinatorics-1",
-      "subject": "Combinatorics",
-      "type": "multiple-choice",
-      "difficulty": "Medium",
-      "parameters": {
-        "eloRating": 1400,
-        "bkt": {
-          "pLearn": 0.3,
-          "pGuess": 0.25,
-          "pSlip": 0.2,
-          "pKnown": 0.35
+      {
+        "id": "combinatorics-1",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1400,
+          "bkt": {
+            "pLearn": 0.3,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.35
+          },
+          "irt": {
+            "discrimination": 1.2,
+            "difficulty": 0.6,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 1.2,
-          "difficulty": 0.6,
-          "guessing": 0.25
+        "content": {
+          "question": "Separate the following stars into 2 equal groups. How many stars are there in each group?\n[Image shows several star shapes]",
+          "options": [
+            "6",
+            "5",
+            "4",
+            "3"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Divide the total number of stars by 2 to find how many stars should be in each equal group."
+        },
+        "metadata": {
+          "tags": ["grouping", "division", "equal parts"],
+          "timeLimit": 60,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "Separate the following stars into 2 equal groups. How many stars are there in each group?\n[Image shows several star shapes]",
-        "options": [
-          "6",
-          "5",
-          "4",
-          "3"
-        ],
-        "correctAnswer": "C",
-        "explanation": "Divide the total number of stars by 2 to find how many stars should be in each equal group."
-      },
-      "metadata": {
-        "tags": ["grouping", "division", "equal parts"],
-        "timeLimit": 60,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "combinatorics-2",
-      "subject": "Combinatorics",
-      "type": "multiple-choice",
-      "difficulty": "Medium",
-      "parameters": {
-        "eloRating": 1300,
-        "bkt": {
-          "pLearn": 0.35,
-          "pGuess": 0.25,
-          "pSlip": 0.15,
-          "pKnown": 0.4
+      {
+        "id": "combinatorics-2",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 1.0,
-          "difficulty": 0.3,
-          "guessing": 0.25
+        "content": {
+          "question": "How many even numbers are there from 13 to 30?",
+          "options": [
+            "9",
+            "17",
+            "16",
+            "8"
+          ],
+          "correctAnswer": "A",
+          "explanation": "The even numbers from 13 to 30 are: 14, 16, 18, 20, 22, 24, 26, 28, 30. So there are 9 even numbers."
+        },
+        "metadata": {
+          "tags": ["even numbers", "counting", "range"],
+          "timeLimit": 60,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "How many even numbers are there from 13 to 30?",
-        "options": [
-          "9",
-          "17",
-          "16",
-          "8"
-        ],
-        "correctAnswer": "A",
-        "explanation": "The even numbers from 13 to 30 are: 14, 16, 18, 20, 22, 24, 26, 28, 30. So there are 9 even numbers."
-      },
-      "metadata": {
-        "tags": ["even numbers", "counting", "range"],
-        "timeLimit": 60,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "combinatorics-3",
-      "subject": "Combinatorics",
-      "type": "multiple-choice",
-      "difficulty": "Hard",
-      "parameters": {
-        "eloRating": 1450,
-        "bkt": {
-          "pLearn": 0.25,
-          "pGuess": 0.25,
-          "pSlip": 0.2,
-          "pKnown": 0.3
+      {
+        "id": "combinatorics-3",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Hard",
+        "parameters": {
+          "eloRating": 1450,
+          "bkt": {
+            "pLearn": 0.25,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.3
+          },
+          "irt": {
+            "discrimination": 1.3,
+            "difficulty": 0.8,
+            "guessing": 0.25
+          }
         },
-        "irt": {
-          "discrimination": 1.3,
-          "difficulty": 0.8,
-          "guessing": 0.25
+        "content": {
+          "question": "How many 2-digit numbers can be formed by using digits 0, 1, 4 and 8? (Each digit can be repeated).",
+          "options": [
+            "9",
+            "16",
+            "11",
+            "12"
+          ],
+          "correctAnswer": "D",
+          "explanation": "For 2-digit numbers, the first digit cannot be 0. So first digit can be 1, 4, or 8 (3 choices), and the second digit can be 0, 1, 4, or 8 (4 choices). Total possibilities = 3 × 4 = 12 numbers."
+        },
+        "metadata": {
+          "tags": ["digit formation", "counting", "combinations"],
+          "timeLimit": 90,
+          "pointsValue": 1
         }
       },
-      "content": {
-        "question": "How many 2-digit numbers can be formed by using digits 0, 1, 4 and 8? (Each digit can be repeated).",
-        "options": [
-          "9",
-          "16",
-          "11",
-          "12"
-        ],
-        "correctAnswer": "D",
-        "explanation": "For 2-digit numbers, the first digit cannot be 0. So first digit can be 1, 4, or 8 (3 choices), and the second digit can be 0, 1, 4, or 8 (4 choices). Total possibilities = 3 × 4 = 12 numbers."
-      },
-      "metadata": {
-        "tags": ["digit formation", "counting", "combinations"],
-        "timeLimit": 90,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "arithmetic-4",
-      "subject": "Arithmetic",
-      "type": "open-ended",
-      "difficulty": "Olympiad Level",
-      "parameters": {
-        "eloRating": 1600,
-        "bkt": {
-          "pLearn": 0.2,
-          "pGuess": 0.1,
-          "pSlip": 0.25,
-          "pKnown": 0.25
+      {
+        "id": "arithmetic-4",
+        "subject": "Arithmetic",
+        "type": "open-ended",
+        "difficulty": "Olympiad Level",
+        "parameters": {
+          "eloRating": 1600,
+          "bkt": {
+            "pLearn": 0.2,
+            "pGuess": 0.1,
+            "pSlip": 0.25,
+            "pKnown": 0.25
+          },
+          "irt": {
+            "discrimination": 1.5,
+            "difficulty": 1.2,
+            "guessing": 0.1
+          }
         },
-        "irt": {
-          "discrimination": 1.5,
-          "difficulty": 1.2,
-          "guessing": 0.1
+        "content": {
+          "question": "If A + B = 15 and A × B = 56, find the value of A² + B².",
+          "correctAnswer": "113",
+          "explanation": "Using the formula (A + B)² = A² + B² + 2AB, we get:\nA² + B² = (A + B)² - 2AB = 15² - 2(56) = 225 - 112 = 113"
+        },
+        "metadata": {
+          "tags": ["algebra", "quadratic", "advanced"],
+          "timeLimit": 180,
+          "pointsValue": 2
         }
       },
-      "content": {
-        "question": "If A + B = 15 and A × B = 56, find the value of A² + B².",
-        "correctAnswer": "113",
-        "explanation": "Using the formula (A + B)² = A² + B² + 2AB, we get:\nA² + B² = (A + B)² - 2AB = 15² - 2(56) = 225 - 112 = 113"
-      },
-      "metadata": {
-        "tags": ["algebra", "quadratic", "advanced"],
-        "timeLimit": 180,
-        "pointsValue": 2
-      }
-    },
-    {
-      "id": "number-theory-3",
-      "subject": "Number Theory",
-      "type": "open-ended",
-      "difficulty": "Olympiad Level",
-      "parameters": {
-        "eloRating": 1650,
-        "bkt": {
-          "pLearn": 0.2,
-          "pGuess": 0.05,
-          "pSlip": 0.3,
-          "pKnown": 0.2
+      {
+        "id": "number-theory-3",
+        "subject": "Number Theory",
+        "type": "open-ended",
+        "difficulty": "Olympiad Level",
+        "parameters": {
+          "eloRating": 1650,
+          "bkt": {
+            "pLearn": 0.2,
+            "pGuess": 0.05,
+            "pSlip": 0.3,
+            "pKnown": 0.2
+          },
+          "irt": {
+            "discrimination": 1.6,
+            "difficulty": 1.4,
+            "guessing": 0.05
+          }
         },
-        "irt": {
-          "discrimination": 1.6,
-          "difficulty": 1.4,
-          "guessing": 0.05
+        "content": {
+          "question": "Find the smallest positive number that gives a remainder of 2 when divided by 3, a remainder of 3 when divided by 5, and a remainder of 4 when divided by 7.",
+          "correctAnswer": "53",
+          "explanation": "Using the Chinese remainder theorem or systematic checking, we can find that the number 53 satisfies all conditions: 53 ÷ 3 = 17 remainder 2, 53 ÷ 5 = 10 remainder 3, and 53 ÷ 7 = 7 remainder 4."
+        },
+        "metadata": {
+          "tags": ["remainder", "divisibility", "modular arithmetic"],
+          "timeLimit": 240,
+          "pointsValue": 3
         }
       },
-      "content": {
-        "question": "Find the smallest positive number that gives a remainder of 2 when divided by 3, a remainder of 3 when divided by 5, and a remainder of 4 when divided by 7.",
-        "correctAnswer": "53",
-        "explanation": "Using the Chinese remainder theorem or systematic checking, we can find that the number 53 satisfies all conditions: 53 ÷ 3 = 17 remainder 2, 53 ÷ 5 = 10 remainder 3, and 53 ÷ 7 = 7 remainder 4."
+      {
+        "id": "arithmetic-5",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1050,
+          "bkt": {
+            "pLearn": 0.45,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.6
+          },
+          "irt": {
+            "discrimination": 0.75,
+            "difficulty": -1.0,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Calculate: 5 + 4 + 5 + 4 + 5.",
+          "options": [
+            "22",
+            "20",
+            "23",
+            "32"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Adding the numbers: 5 + 4 + 5 + 4 + 5 = 23"
+        },
+        "metadata": {
+          "tags": ["addition", "basic"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
       },
-      "metadata": {
-        "tags": ["remainder", "divisibility", "modular arithmetic"],
-        "timeLimit": 240,
-        "pointsValue": 3
+      {
+        "id": "arithmetic-6",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1050,
+          "bkt": {
+            "pLearn": 0.45,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.6
+          },
+          "irt": {
+            "discrimination": 0.75,
+            "difficulty": -1.0,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the value of 11 + 22 + 33.",
+          "options": [
+            "44",
+            "55",
+            "66",
+            "77"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Adding the numbers: 11 + 22 + 33 = 66"
+        },
+        "metadata": {
+          "tags": ["addition", "basic"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-4",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.1,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Fill the lines with '+' and '-' to make the equation below correct. (The symbols are written in order from left to right).\n7__ 4 __ 3 = 6",
+          "options": [
+            "+, +",
+            "+, −",
+            "−, −",
+            "−, +"
+          ],
+          "correctAnswer": "D",
+          "explanation": "If we use - and + in that order, we get: 7 - 4 + 3 = 3 + 3 = 6, which is correct."
+        },
+        "metadata": {
+          "tags": ["operations", "equation", "symbols"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-5",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.5,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Donald has 15 crayons. Minnie gives Donald 3 crayons. How many crayon(s) does Donald have now?",
+          "options": [
+            "18",
+            "12",
+            "19",
+            "13"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Donald starts with 15 crayons and receives 3 more, so he now has 15 + 3 = 18 crayons."
+        },
+        "metadata": {
+          "tags": ["addition", "word problem", "counting"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-3",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Refer to the pattern below. Find the suitable figure to fill in the blank.\n[Image shows a pattern of geometric shapes]",
+          "options": [
+            "[Image A]",
+            "[Image B]",
+            "[Image C]",
+            "[Image D]"
+          ],
+          "correctAnswer": "B",
+          "explanation": "By analyzing the pattern of shapes, we can determine which figure comes next in the sequence.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["pattern", "shapes", "sequence"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-4",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many circles are there in the figure below?\n[Image shows an arrangement of circles]",
+          "options": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "correctAnswer": "C",
+          "explanation": "By counting all the circles in the figure, including any that might overlap or be part of larger patterns, we find there are 6 circles total.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["circles", "counting", "visualization"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-5",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many sides are there in the following figure?\n[Image shows a geometric shape]",
+          "options": [
+            "5",
+            "7",
+            "8",
+            "9"
+          ],
+          "correctAnswer": "C",
+          "explanation": "By counting all the sides of the geometric figure, we find there are 8 sides total.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["sides", "polygon", "counting"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-4",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1350,
+          "bkt": {
+            "pLearn": 0.3,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.2,
+            "difficulty": 0.5,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Adam has one $1 coin, one $2 coin and one $5 coin. At most how many toy car(s) can he buy, given that each toy car costs $2?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Adam has $1 + $2 + $5 = $8 total. Each toy car costs $2, so he can buy at most 8 ÷ 2 = 4 toy cars."
+        },
+        "metadata": {
+          "tags": ["money", "division", "maximum"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-5",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1400,
+          "bkt": {
+            "pLearn": 0.3,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.35
+          },
+          "irt": {
+            "discrimination": 1.2,
+            "difficulty": 0.6,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "From the pattern below, find the most suitable figure for Figure 4.\n[Image shows a sequence of patterns]",
+          "options": [
+            "[Image A]",
+            "[Image B]",
+            "[Image C]",
+            "[Image D]"
+          ],
+          "correctAnswer": "B",
+          "explanation": "By analyzing the pattern in the sequence of figures, we can determine that option B is the most suitable for Figure 4.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["pattern", "sequence", "visual logic"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-6",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "5 years later, Alice will be 12 years old. Alice's father is 23 years elder than her. How old is Alice's father now?",
+          "options": [
+            "40",
+            "30",
+            "20",
+            "35"
+          ],
+          "correctAnswer": "B",
+          "explanation": "If Alice will be 12 in 5 years, she is currently 12 - 5 = 7 years old. Her father is 23 years older, so he is 7 + 23 = 30 years old now."
+        },
+        "metadata": {
+          "tags": ["age", "time", "calculation"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-7",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "By observing the pattern, what is the English letter in the space provided?\nC, E, G, I, __, M, O",
+          "options": [
+            "N",
+            "J",
+            "L",
+            "K"
+          ],
+          "correctAnswer": "D",
+          "explanation": "The pattern shows letters increasing by 2 positions in the alphabet: C→E→G→I→K→M→O. So the missing letter is K."
+        },
+        "metadata": {
+          "tags": ["pattern", "alphabet", "sequence"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-8",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Observe the sequence below to replace the flag with a suitable number.\n3, 4, 6, 9, 13, , …",
+          "options": [
+            "18",
+            "17",
+            "14",
+            "15"
+          ],
+          "correctAnswer": "A",
+          "explanation": "The differences between consecutive terms are: 1, 2, 3, 4, ... So after 13, we add 5 to get 13 + 5 = 18."
+        },
+        "metadata": {
+          "tags": ["sequence", "pattern", "arithmetic"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-9",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Refer to the figure below, how many circles are there in the 5th group?\n[Image shows groups of circles with a pattern]",
+          "options": [
+            "4",
+            "8",
+            "12",
+            "16"
+          ],
+          "correctAnswer": "D",
+          "explanation": "The pattern shows that each group has 4 more circles than the previous group. If we follow this pattern to the 5th group, it would have 16 circles.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["pattern", "counting", "sequence"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-10",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1150,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.85,
+            "difficulty": -0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Students in a class form a line. Kim sees that there are 5 students in front of her and 3 students behind her. How many students are there in Kim's class?",
+          "options": [
+            "8",
+            "9",
+            "10",
+            "2"
+          ],
+          "correctAnswer": "B",
+          "explanation": "There are 5 students in front of Kim, Kim herself, and 3 students behind her. So the total number of students is 5 + 1 + 3 = 9."
+        },
+        "metadata": {
+          "tags": ["counting", "position", "logic"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-7",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.5,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the value of 0 + 2 + 4 + 6 + 8 + 10.",
+          "options": [
+            "30",
+            "20",
+            "10",
+            "40"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Adding the numbers: 0 + 2 + 4 + 6 + 8 + 10 = 30"
+        },
+        "metadata": {
+          "tags": ["addition", "even numbers", "sum"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-8",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "By observing the equation, which number is being covered by the book?\n19 – 🕮 = 6",
+          "options": [
+            "13",
+            "16",
+            "15",
+            "14"
+          ],
+          "correctAnswer": "A",
+          "explanation": "We need to solve the equation 19 - x = 6. So x = 19 - 6 = 13."
+        },
+        "metadata": {
+          "tags": ["equation", "subtraction", "variable"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-9",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the value of 2 + 3 – 4 + 2 + 3 – 4 + 2 + 3 – 4 + 2 + 3 – 4.",
+          "options": [
+            "3",
+            "1",
+            "4",
+            "5"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Grouping the terms: (2 + 3 - 4) + (2 + 3 - 4) + (2 + 3 - 4) + (2 + 3 - 4) = 1 + 1 + 1 + 1 = 4 - 1 = 3"
+        },
+        "metadata": {
+          "tags": ["operations", "pattern", "arithmetic"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-10",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "What is the value of K if the equation below is correct?\n6 + K = 8 – 5 + 11",
+          "options": [
+            "6",
+            "8",
+            "4",
+            "5"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Simplifying the right side: 8 - 5 + 11 = 14. So 6 + K = 14, which means K = 14 - 6 = 8."
+        },
+        "metadata": {
+          "tags": ["equation", "variable", "arithmetic"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-6",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Observe the following sequence and find the smallest even number.\n38, 20, 18, 15, 49, 26, 7",
+          "options": [
+            "7",
+            "15",
+            "18",
+            "20"
+          ],
+          "correctAnswer": "C",
+          "explanation": "The even numbers in the sequence are 38, 20, 18, and 26. The smallest of these is 18."
+        },
+        "metadata": {
+          "tags": ["even numbers", "sequence", "minimum"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-7",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.5,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "A box has balls with consecutive numbers from 0 to 50 (0, 1, 2, 3, 4, …, 50). How many balls are there in the box?",
+          "options": [
+            "40",
+            "51",
+            "25",
+            "50"
+          ],
+          "correctAnswer": "B",
+          "explanation": "The box contains balls numbered from 0 to 50 inclusive. So there are 50 - 0 + 1 = 51 balls in total."
+        },
+        "metadata": {
+          "tags": ["counting", "consecutive numbers", "range"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-8",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the 6th number in the arithmetic sequence below.\n31, 29, 27, 25, …",
+          "options": [
+            "24",
+            "23",
+            "19",
+            "21"
+          ],
+          "correctAnswer": "D",
+          "explanation": "The sequence decreases by 2 each time: 31, 29, 27, 25, 23, 21. So the 6th number is 21."
+        },
+        "metadata": {
+          "tags": ["arithmetic sequence", "pattern", "prediction"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-9",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Andy had 20 candies. Andy gave Betty 3 candies then Betty gave Cindy 4 candies so that 3 friends had the same number of candies. How many candies did Cindy have originally?",
+          "options": [
+            "19",
+            "21",
+            "18",
+            "13"
+          ],
+          "correctAnswer": "D",
+          "explanation": "After all exchanges, each person has the same number of candies. Andy now has 20 - 3 = 17 candies. Betty has received 3 from Andy but gave 4 to Cindy, so she has gained 3 - 4 = -1 candies. If Betty now has 17 candies, she must have had 17 + 1 = 18 originally. Cindy received 4 candies from Betty and now has 17 candies, so she must have had 17 - 4 = 13 candies originally."
+        },
+        "metadata": {
+          "tags": ["word problem", "distribution", "equality"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-10",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "David has 3 cards. The total number of cards of David and his brother is the smallest 2-digit odd number. How many cards does David's brother have?",
+          "options": [
+            "10",
+            "9",
+            "8",
+            "7"
+          ],
+          "correctAnswer": "D",
+          "explanation": "The smallest 2-digit odd number is 11. If David has 3 cards and the total is 11, then his brother must have 11 - 3 = 8 cards."
+        },
+        "metadata": {
+          "tags": ["word problem", "odd numbers", "subtraction"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-6",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Hard",
+        "parameters": {
+          "eloRating": 1400,
+          "bkt": {
+            "pLearn": 0.3,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.35
+          },
+          "irt": {
+            "discrimination": 1.2,
+            "difficulty": 0.6,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many squares are there in the figure below?\n[Image shows a complex arrangement of squares]",
+          "options": [
+            "19",
+            "14",
+            "15",
+            "20"
+          ],
+          "correctAnswer": "C",
+          "explanation": "By carefully counting all possible squares in the figure, including individual squares and larger squares formed by combinations of smaller squares, we find there are 15 squares total.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["squares", "counting", "visualization"],
+          "timeLimit": 120,
+          "pointsValue": 2
+        }
+      },
+      {
+        "id": "geometry-7",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Hard",
+        "parameters": {
+          "eloRating": 1450,
+          "bkt": {
+            "pLearn": 0.25,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.3
+          },
+          "irt": {
+            "discrimination": 1.3,
+            "difficulty": 0.8,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "At least how many cubes are there in the figure below?\n[Image shows a 3D arrangement of cubes]",
+          "options": [
+            "12",
+            "11",
+            "13",
+            "10"
+          ],
+          "correctAnswer": "A",
+          "explanation": "By analyzing the 3D structure and counting all visible and potentially hidden cubes, we determine there are at least 12 cubes in the figure.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["cubes", "3d", "counting", "spatial"],
+          "timeLimit": 120,
+          "pointsValue": 2
+        }
+      },
+      {
+        "id": "combinatorics-6",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Hard",
+        "parameters": {
+          "eloRating": 1500,
+          "bkt": {
+            "pLearn": 0.25,
+            "pGuess": 0.25,
+            "pSlip": 0.25,
+            "pKnown": 0.3
+          },
+          "irt": {
+            "discrimination": 1.4,
+            "difficulty": 1.0,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Which number below is the greatest number?\n2102202, 20022021, 20102021, 20102120",
+          "options": [
+            "2102202",
+            "20022021",
+            "20102021",
+            "20102120"
+          ],
+          "correctAnswer": "D",
+          "explanation": "Comparing the numbers digit by digit from left to right: 20102120 is the greatest because it has the same first 5 digits as 20102021 but has a 1 in the 6th position instead of a 0."
+        },
+        "metadata": {
+          "tags": ["comparison", "large numbers", "ordering"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-7",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Among the following numbers, how many odd numbers are there?\n21, 32, 444, 101, 8, 99, 241, 76",
+          "options": [
+            "3",
+            "5",
+            "4",
+            "2"
+          ],
+          "correctAnswer": "B",
+          "explanation": "The odd numbers in the list are: 21, 101, 99, 241, and 7. So there are 5 odd numbers."
+        },
+        "metadata": {
+          "tags": ["odd numbers", "counting", "identification"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-8",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Hard",
+        "parameters": {
+          "eloRating": 1450,
+          "bkt": {
+            "pLearn": 0.25,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.3
+          },
+          "irt": {
+            "discrimination": 1.3,
+            "difficulty": 0.8,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Choose 2 digits, without repetition, from 0, 2, 4, 6 and 9 to form 2-digit even numbers. How many different numbers are there?",
+          "options": [
+            "16",
+            "13",
+            "14",
+            "15"
+          ],
+          "correctAnswer": "C",
+          "explanation": "For a 2-digit even number, the first digit can be 2, 4, 6, or 9 (4 choices), and the last digit must be even: 0, 2, 4, or 6 (4 choices). But we can't repeat digits, so for each first digit, we have one fewer choice for the second digit. Total: 4 first digits × (4-1) second digits = 4 × 3 = 12 numbers. Additionally, if the first digit is 9, we can also use 0 as the second digit (since 90 is even). So we have 12 + 2 = 14 different numbers."
+        },
+        "metadata": {
+          "tags": ["digit formation", "even numbers", "combinations"],
+          "timeLimit": 120,
+          "pointsValue": 2
+        }
+      },
+      {
+        "id": "combinatorics-9",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Hard",
+        "parameters": {
+          "eloRating": 1500,
+          "bkt": {
+            "pLearn": 0.25,
+            "pGuess": 0.25,
+            "pSlip": 0.25,
+            "pKnown": 0.3
+          },
+          "irt": {
+            "discrimination": 1.4,
+            "difficulty": 1.0,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Amy, Billy, Celine and Dan donated 20 coats to the homeless. Given that each person must donate at least 2 coats and their numbers of coats must be different, at most how many coats can Dan donate?",
+          "options": [
+            "6",
+            "14",
+            "11",
+            "20"
+          ],
+          "correctAnswer": "C",
+          "explanation": "To maximize Dan's donation, we need to minimize the others. The minimum distinct values for the other three people would be 2, 3, and 4 coats. So Amy, Billy, and Celine donate a total of 2 + 3 + 4 = 9 coats. This leaves 20 - 9 = 11 coats for Dan at most."
+        },
+        "metadata": {
+          "tags": ["distribution", "maximum", "constraints"],
+          "timeLimit": 120,
+          "pointsValue": 2
+        }
+      },
+      {
+        "id": "combinatorics-10",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Olympiad Level",
+        "parameters": {
+          "eloRating": 1600,
+          "bkt": {
+            "pLearn": 0.2,
+            "pGuess": 0.25,
+            "pSlip": 0.3,
+            "pKnown": 0.25
+          },
+          "irt": {
+            "discrimination": 1.5,
+            "difficulty": 1.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "The 3 × 3 square on the right is called a 'Magic square' with 9 consecutive numbers from 1 to 9 in each cell. The sum of numbers in each column or row is equal. Find the number that should be filled in the cell with question mark.\n[Image shows a 3x3 magic square with one cell marked with a question mark]",
+          "options": [
+            "2",
+            "4",
+            "6",
+            "8"
+          ],
+          "correctAnswer": "D",
+          "explanation": "In a 3×3 magic square with numbers 1-9, the sum of each row, column, and diagonal is 15. By analyzing the partially filled square and ensuring each row, column, and diagonal sums to 15, we determine that the missing number is 8.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["magic square", "pattern", "advanced"],
+          "timeLimit": 180,
+          "pointsValue": 3
+        }
+      },
+      {
+        "id": "geometry-8",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1350,
+          "bkt": {
+            "pLearn": 0.3,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.15,
+            "difficulty": 0.5,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many interior angles are there in the polygon below?\n[Image shows a polygon]",
+          "options": [
+            "13",
+            "14",
+            "15",
+            "16"
+          ],
+          "correctAnswer": "B",
+          "explanation": "The number of interior angles in a polygon equals the number of sides. By counting the sides of the polygon, we find there are 14 sides, so there are 14 interior angles.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["polygon", "angles", "counting"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-9",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many line segments are there in the figure below?\n[Image shows a geometric figure with line segments]",
+          "options": [
+            "18",
+            "20",
+            "16",
+            "14"
+          ],
+          "correctAnswer": "A",
+          "explanation": "By carefully counting all the line segments in the figure, we find there are 18 line segments total.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["line segments", "counting", "visualization"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-10",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Refer to the beads below. How many white beads are there in the first 15 beads?\n[Image shows a pattern of colored beads]",
+          "options": [
+            "5",
+            "7",
+            "8",
+            "6"
+          ],
+          "correctAnswer": "B",
+          "explanation": "By examining the pattern of beads and counting the white beads among the first 15, we find there are 7 white beads.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["pattern", "counting", "sequence"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
       }
+    ],
+    "categories": {
+      "subjects": [
+        "Logical Thinking",
+        "Arithmetic",
+        "Number Theory",
+        "Geometry",
+        "Combinatorics"
+      ],
+      "types": [
+        "multiple-choice",
+        "open-ended"
+      ],
+      "difficulties": [
+        "Easy",
+        "Medium",
+        "Hard",
+        "Olympiad Level"
+      ]
     }
-  ],
-  "categories": {
-    "subjects": [
-      "Logical Thinking",
-      "Arithmetic",
-      "Number Theory",
-      "Geometry",
-      "Combinatorics"
-    ],
-    "types": [
-      "multiple-choice",
-      "open-ended"
-    ],
-    "difficulties": [
-      "Easy",
-      "Medium",
-      "Hard",
-      "Olympiad Level"
-    ]
   }
-} 
+  
