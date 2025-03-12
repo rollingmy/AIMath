@@ -1,0 +1,632 @@
+{
+  "metadata" : {
+    "generatedBy" : "TIMO Question Parser Test",
+    "totalQuestions" : 15,
+    "subjects" : [
+      "Arithmetic",
+      "Combinatorics",
+      "Geometry",
+      "Logical Thinking",
+      "Number Theory"
+    ]
+  },
+  "questions" : [
+    {
+      "difficulty" : "Easy",
+      "metadata" : {
+        "tags" : [
+          "sequences",
+          "logical thinking",
+          "easy"
+        ],
+        "pointsValue" : 1,
+        "timeLimit" : 60
+      },
+      "id" : "logical-1",
+      "subject" : "Logical Thinking",
+      "parameters" : {
+        "eloRating" : 1020,
+        "bkt" : {
+          "pKnown" : 0.66292763215182504,
+          "pLearn" : 0.40959730646654735,
+          "pSlip" : 0.12941054858113524,
+          "pGuess" : 0.23317530208410883
+        },
+        "irt" : {
+          "discrimination" : 0.75280700530105715,
+          "guessing" : 0.28675506141412083,
+          "difficulty" : -0.85004606813546979
+        }
+      },
+      "content" : {
+        "correctAnswer" : "B",
+        "question" : "What comes next in the sequence: 2, 4, 6, 8, ...?",
+        "explanation" : "To solve this logical thinking problem:\n1. Identify the pattern in the given sequence.\n2. Apply the pattern to find the next number.\n3. Verify your answer by checking if it follows the established pattern.",
+        "options" : [
+          "9",
+          "10 *",
+          "12",
+          "16"
+        ],
+        "imageData" : ""
+      },
+      "type" : "multiple-choice"
+    },
+    {
+      "parameters" : {
+        "bkt" : {
+          "pLearn" : 0.47910693869545984,
+          "pKnown" : 0.55839001263494858,
+          "pGuess" : 0.26014184656704836,
+          "pSlip" : 0.099872147612059176
+        },
+        "irt" : {
+          "difficulty" : -0.651471625816891,
+          "guessing" : 0.27567502116088222,
+          "discrimination" : 0.90010569773082771
+        },
+        "eloRating" : 1039
+      },
+      "type" : "multiple-choice",
+      "difficulty" : "Easy",
+      "subject" : "Logical Thinking",
+      "id" : "logical-2",
+      "content" : {
+        "question" : "Compare the patterns and find which shape should replace the question mark.",
+        "options" : [
+          "Circle",
+          "Triangle",
+          "Square *",
+          "Rectangle"
+        ],
+        "explanation" : "To solve this logical thinking problem:\n1. Identify the pattern in the given sequence.\n2. Apply the pattern to find the next number.\n3. Verify your answer by checking if it follows the established pattern.",
+        "correctAnswer" : "C",
+        "imageData" : ""
+      },
+      "metadata" : {
+        "timeLimit" : 60,
+        "tags" : [
+          "easy",
+          "logical thinking",
+          "patterns"
+        ],
+        "pointsValue" : 1
+      }
+    },
+    {
+      "difficulty" : "Medium",
+      "subject" : "Arithmetic",
+      "metadata" : {
+        "tags" : [
+          "medium",
+          "arithmetic",
+          "logic"
+        ],
+        "pointsValue" : 2,
+        "timeLimit" : 90
+      },
+      "type" : "multiple-choice",
+      "id" : "arithmetic-3",
+      "parameters" : {
+        "irt" : {
+          "difficulty" : -0.1237892402943431,
+          "guessing" : 0.17135737850980315,
+          "discrimination" : 0.94382415258000996
+        },
+        "bkt" : {
+          "pLearn" : 0.35130056685057859,
+          "pGuess" : 0.1581951772017908,
+          "pSlip" : 0.14022313504750325,
+          "pKnown" : 0.55167799029787734
+        },
+        "eloRating" : 1205
+      },
+      "content" : {
+        "imageData" : "",
+        "question" : "Analyze the following logical statement: \"If it rains, then the ground is wet. The ground is wet.\" What can we conclude?",
+        "correctAnswer" : "C",
+        "options" : [
+          "It is raining",
+          "It is not raining",
+          "It might be raining *",
+          "None of the above"
+        ],
+        "explanation" : "To solve this arithmetic problem:\n1. Analyze the given logical statements carefully.\n2. Determine the relationship between the premises.\n3. Draw a valid conclusion based on logical rules."
+      }
+    },
+    {
+      "id" : "arithmetic-4",
+      "difficulty" : "Easy",
+      "subject" : "Arithmetic",
+      "type" : "multiple-choice",
+      "parameters" : {
+        "eloRating" : 1076,
+        "bkt" : {
+          "pKnown" : 0.61819935123773295,
+          "pLearn" : 0.45412916043605167,
+          "pSlip" : 0.060826011820258409,
+          "pGuess" : 0.28836839221918042
+        },
+        "irt" : {
+          "guessing" : 0.26030374215699781,
+          "difficulty" : -0.77866332130464411,
+          "discrimination" : 0.84194996184572002
+        }
+      },
+      "metadata" : {
+        "tags" : [
+          "easy",
+          "arithmetic"
+        ],
+        "timeLimit" : 60,
+        "pointsValue" : 1
+      },
+      "content" : {
+        "correctAnswer" : "B",
+        "options" : [
+          "40",
+          "50 *",
+          "60",
+          "100"
+        ],
+        "question" : "Calculate 25 × 4 ÷ 2.",
+        "explanation" : "To solve this arithmetic problem:\n1. Read the problem carefully to understand what is being asked.\n2. Identify the key information and relevant concepts.\n3. Apply the appropriate mathematical techniques.\n4. Verify your answer by checking if it makes sense in the context of the problem.",
+        "imageData" : ""
+      }
+    },
+    {
+      "difficulty" : "Easy",
+      "id" : "arithmetic-5",
+      "subject" : "Arithmetic",
+      "type" : "multiple-choice",
+      "content" : {
+        "question" : "Solve for x in the equation: 3x + 7 = 22",
+        "explanation" : "To solve this arithmetic problem:\n1. Isolate the variable by performing the same operations on both sides.\n2. Simplify the equation step by step.\n3. Verify your solution by substituting it back into the original equation.",
+        "options" : [
+          "5 *",
+          "6",
+          "7",
+          "8"
+        ],
+        "correctAnswer" : "A",
+        "imageData" : ""
+      },
+      "parameters" : {
+        "eloRating" : 1009,
+        "irt" : {
+          "guessing" : 0.21337521213755184,
+          "discrimination" : 0.887043490801393,
+          "difficulty" : -0.67853928435058841
+        },
+        "bkt" : {
+          "pSlip" : 0.12073689603425773,
+          "pKnown" : 0.68361767962705655,
+          "pLearn" : 0.42338199024879414,
+          "pGuess" : 0.25182141407795577
+        }
+      },
+      "metadata" : {
+        "pointsValue" : 1,
+        "timeLimit" : 60,
+        "tags" : [
+          "equations",
+          "arithmetic",
+          "easy"
+        ]
+      }
+    },
+    {
+      "difficulty" : "Easy",
+      "type" : "multiple-choice",
+      "metadata" : {
+        "pointsValue" : 1,
+        "tags" : [
+          "easy",
+          "geometry"
+        ],
+        "timeLimit" : 60
+      },
+      "parameters" : {
+        "eloRating" : 1026,
+        "irt" : {
+          "guessing" : 0.22226218910981244,
+          "difficulty" : -0.72966900240025123,
+          "discrimination" : 0.84256363065862605
+        },
+        "bkt" : {
+          "pGuess" : 0.23266080747633108,
+          "pKnown" : 0.55104016412618528,
+          "pSlip" : 0.099558822716010645,
+          "pLearn" : 0.46460867738666067
+        }
+      },
+      "content" : {
+        "correctAnswer" : "A",
+        "explanation" : "To solve this geometry problem:\n1. Read the problem carefully to understand what is being asked.\n2. Identify the key information and relevant concepts.\n3. Apply the appropriate mathematical techniques.\n4. Verify your answer by checking if it makes sense in the context of the problem.",
+        "imageData" : "",
+        "options" : [
+          "x > 6 *",
+          "x > 5",
+          "x > 4",
+          "x > 3"
+        ],
+        "question" : "Find all possible values of x that satisfy the inequality: 2x - 5 > 7"
+      },
+      "subject" : "Geometry",
+      "id" : "geometry-6"
+    },
+    {
+      "content" : {
+        "explanation" : "To solve this geometry problem:\n1. Identify the shape and its dimensions.\n2. Apply the appropriate formula for the requested measurement.\n3. Calculate the result using the given values.",
+        "question" : "What is the area of a rectangle with length 8 cm and width 5 cm?",
+        "options" : [
+          "13 cm²",
+          "26 cm²",
+          "40 cm² *",
+          "80 cm²"
+        ],
+        "correctAnswer" : "C",
+        "imageData" : ""
+      },
+      "subject" : "Geometry",
+      "metadata" : {
+        "tags" : [
+          "angles",
+          "easy",
+          "area",
+          "geometry",
+          "rectangles"
+        ],
+        "pointsValue" : 1,
+        "timeLimit" : 60
+      },
+      "id" : "geometry-7",
+      "type" : "multiple-choice",
+      "difficulty" : "Easy",
+      "parameters" : {
+        "irt" : {
+          "discrimination" : 0.74730981903020688,
+          "difficulty" : -0.8735623295174042,
+          "guessing" : 0.26902816391940793
+        },
+        "bkt" : {
+          "pGuess" : 0.23403760499542522,
+          "pSlip" : 0.10131985791300441,
+          "pKnown" : 0.60215793951389296,
+          "pLearn" : 0.41558021933239919
+        },
+        "eloRating" : 1024
+      }
+    },
+    {
+      "id" : "geometry-8",
+      "type" : "multiple-choice",
+      "metadata" : {
+        "tags" : [
+          "geometry",
+          "easy",
+          "perimeter"
+        ],
+        "timeLimit" : 60,
+        "pointsValue" : 1
+      },
+      "content" : {
+        "imageData" : "",
+        "question" : "Calculate the perimeter of a regular hexagon with side length 4 cm.",
+        "options" : [
+          "12 cm",
+          "16 cm",
+          "20 cm",
+          "24 cm *"
+        ],
+        "explanation" : "To solve this geometry problem:\n1. Identify the shape and its dimensions.\n2. Apply the appropriate formula for the requested measurement.\n3. Calculate the result using the given values.",
+        "correctAnswer" : "D"
+      },
+      "difficulty" : "Easy",
+      "parameters" : {
+        "bkt" : {
+          "pKnown" : 0.65747348619347268,
+          "pGuess" : 0.2393630441384019,
+          "pSlip" : 0.14175717535503352,
+          "pLearn" : 0.46904800278872499
+        },
+        "eloRating" : 1056,
+        "irt" : {
+          "difficulty" : -0.75415560629680967,
+          "discrimination" : 0.94375905862617882,
+          "guessing" : 0.24796775430934828
+        }
+      },
+      "subject" : "Geometry"
+    },
+    {
+      "type" : "multiple-choice",
+      "difficulty" : "Hard",
+      "subject" : "Number Theory",
+      "content" : {
+        "explanation" : "To solve this number theory problem:\n1. Read the problem carefully to understand what is being asked.\n2. Identify the key information and relevant concepts.\n3. Apply the appropriate mathematical techniques.\n4. Verify your answer by checking if it makes sense in the context of the problem.",
+        "imageData" : "",
+        "question" : "Prove that the sum of angles in a triangle is 180 degrees. Then explain what happens if one angle is 90 degrees.",
+        "options" : [
+          "The other two angles sum to 90 degrees *",
+          "The other two angles sum to 180 degrees",
+          "The other two angles sum to 270 degrees",
+          "The other two angles sum to 360 degrees"
+        ],
+        "correctAnswer" : "A"
+      },
+      "parameters" : {
+        "bkt" : {
+          "pGuess" : 0.19582835293325887,
+          "pKnown" : 0.44874200930109609,
+          "pSlip" : 0.18104315814388583,
+          "pLearn" : 0.39190823700671545
+        },
+        "irt" : {
+          "discrimination" : 1.2717616377015042,
+          "difficulty" : 0.62543685522999937,
+          "guessing" : 0.16189779436888238
+        },
+        "eloRating" : 1356
+      },
+      "id" : "number-theory-9",
+      "metadata" : {
+        "timeLimit" : 120,
+        "tags" : [
+          "number theory",
+          "hard",
+          "triangles",
+          "angles"
+        ],
+        "pointsValue" : 3
+      }
+    },
+    {
+      "metadata" : {
+        "timeLimit" : 60,
+        "tags" : [
+          "greatest common divisor",
+          "easy",
+          "number theory",
+          "divisors"
+        ],
+        "pointsValue" : 1
+      },
+      "parameters" : {
+        "irt" : {
+          "discrimination" : 0.85028609439320713,
+          "guessing" : 0.29838462849777159,
+          "difficulty" : -0.76873422890129894
+        },
+        "eloRating" : 1001,
+        "bkt" : {
+          "pGuess" : 0.22251899568176436,
+          "pSlip" : 0.10271881380496116,
+          "pKnown" : 0.60293356297329048,
+          "pLearn" : 0.47644389504512269
+        }
+      },
+      "subject" : "Number Theory",
+      "type" : "multiple-choice",
+      "difficulty" : "Easy",
+      "content" : {
+        "explanation" : "To solve this number theory problem:\n1. Find all factors of both numbers.\n2. Identify the common factors.\n3. Select the largest common factor as the GCD.",
+        "question" : "Find the greatest common divisor (GCD) of 24 and 36.",
+        "options" : [
+          "6",
+          "8",
+          "12 *",
+          "18"
+        ],
+        "imageData" : "",
+        "correctAnswer" : "C"
+      },
+      "id" : "number-theory-10"
+    },
+    {
+      "subject" : "Number Theory",
+      "content" : {
+        "question" : "Determine if 127 is a prime number.",
+        "explanation" : "To solve this number theory problem:\n1. Check if the number is divisible by any integer from 2 to its square root.\n2. If no divisors are found, the number is prime.",
+        "correctAnswer" : "A",
+        "options" : [
+          "Yes, it is prime *",
+          "No, it is divisible by 3",
+          "No, it is divisible by 7",
+          "No, it is divisible by 11"
+        ],
+        "imageData" : ""
+      },
+      "difficulty" : "Easy",
+      "type" : "multiple-choice",
+      "parameters" : {
+        "bkt" : {
+          "pGuess" : 0.20569871193717859,
+          "pSlip" : 0.13258795632522341,
+          "pLearn" : 0.48305874438747687,
+          "pKnown" : 0.55007277760668294
+        },
+        "eloRating" : 1065,
+        "irt" : {
+          "difficulty" : -0.67800359539900279,
+          "discrimination" : 0.91665506696196519,
+          "guessing" : 0.21439763147827168
+        }
+      },
+      "metadata" : {
+        "timeLimit" : 60,
+        "pointsValue" : 1,
+        "tags" : [
+          "easy",
+          "prime numbers",
+          "number theory"
+        ]
+      },
+      "id" : "number-theory-11"
+    },
+    {
+      "type" : "multiple-choice",
+      "content" : {
+        "imageData" : "",
+        "correctAnswer" : "B",
+        "options" : [
+          "x = 3, y = 1.5",
+          "x = 2, y = 3 *",
+          "x = 4, y = 0",
+          "x = 1, y = 4.5"
+        ],
+        "question" : "Solve the following complex equation system: 3x + 2y = 12 5x - 3y = 7 Show all steps of your solution and explain your reasoning.",
+        "explanation" : "To solve this combinatorics problem:\n1. Isolate the variable by performing the same operations on both sides.\n2. Simplify the equation step by step.\n3. Verify your solution by substituting it back into the original equation."
+      },
+      "difficulty" : "Hard",
+      "parameters" : {
+        "irt" : {
+          "difficulty" : 0.54976692558504769,
+          "guessing" : 0.14255902342149301,
+          "discrimination" : 1.1772148251729544
+        },
+        "eloRating" : 1493,
+        "bkt" : {
+          "pLearn" : 0.35680784382715675,
+          "pSlip" : 0.15537458025436243,
+          "pGuess" : 0.11569364700259009,
+          "pKnown" : 0.36169619014591664
+        }
+      },
+      "id" : "combinatorics-12",
+      "subject" : "Combinatorics",
+      "metadata" : {
+        "timeLimit" : 120,
+        "pointsValue" : 3,
+        "tags" : [
+          "equations",
+          "combinatorics",
+          "hard"
+        ]
+      }
+    },
+    {
+      "type" : "multiple-choice",
+      "metadata" : {
+        "timeLimit" : 60,
+        "tags" : [
+          "combinatorics",
+          "easy",
+          "range"
+        ],
+        "pointsValue" : 1
+      },
+      "parameters" : {
+        "eloRating" : 1005,
+        "bkt" : {
+          "pLearn" : 0.47098937034344807,
+          "pGuess" : 0.27696312678972979,
+          "pKnown" : 0.5705383565965495,
+          "pSlip" : 0.12903855779080198
+        },
+        "irt" : {
+          "discrimination" : 0.81529890517552528,
+          "guessing" : 0.23135432692407495,
+          "difficulty" : -0.88796788825063344
+        }
+      },
+      "difficulty" : "Easy",
+      "subject" : "Combinatorics",
+      "content" : {
+        "question" : "How many different ways can you arrange the letters in the word \"MATH\"?",
+        "options" : [
+          "4",
+          "12",
+          "16",
+          "24 *"
+        ],
+        "imageData" : "",
+        "explanation" : "To solve this combinatorics problem:\n1. Determine whether this is a permutation or combination problem.\n2. Apply the appropriate formula based on the problem type.\n3. Calculate the result carefully, considering all constraints.",
+        "correctAnswer" : "D"
+      },
+      "id" : "combinatorics-13"
+    },
+    {
+      "subject" : "Combinatorics",
+      "type" : "multiple-choice",
+      "content" : {
+        "question" : "In how many ways can you select 3 books from a shelf containing 7 different books?",
+        "options" : [
+          "21",
+          "35 *",
+          "42",
+          "210"
+        ],
+        "explanation" : "To solve this combinatorics problem:\n1. Determine whether this is a permutation or combination problem.\n2. Apply the appropriate formula based on the problem type.\n3. Calculate the result carefully, considering all constraints.",
+        "imageData" : "",
+        "correctAnswer" : "B"
+      },
+      "metadata" : {
+        "timeLimit" : 90,
+        "pointsValue" : 2,
+        "tags" : [
+          "medium",
+          "combinatorics"
+        ]
+      },
+      "parameters" : {
+        "eloRating" : 1294,
+        "irt" : {
+          "difficulty" : 0.20019494252493303,
+          "discrimination" : 1.0939136570007959,
+          "guessing" : 0.2222182072764986
+        },
+        "bkt" : {
+          "pSlip" : 0.18397281546403649,
+          "pLearn" : 0.43062461925613138,
+          "pGuess" : 0.20672205386476733,
+          "pKnown" : 0.47609002000300982
+        }
+      },
+      "id" : "combinatorics-14",
+      "difficulty" : "Medium"
+    },
+    {
+      "id" : "combinatorics-15",
+      "subject" : "Combinatorics",
+      "type" : "multiple-choice",
+      "content" : {
+        "question" : "A complex combinatorial problem: Find the number of ways to distribute 10 identical candies to 4 different children, where each child must receive at least 1 candy.",
+        "imageData" : "",
+        "explanation" : "To solve this combinatorics problem:\n1. Determine whether this is a permutation or combination problem.\n2. Apply the appropriate formula based on the problem type.\n3. Calculate the result carefully, considering all constraints.",
+        "options" : [
+          "24",
+          "56",
+          "84 *",
+          "126"
+        ],
+        "correctAnswer" : "C"
+      },
+      "difficulty" : "Medium",
+      "parameters" : {
+        "bkt" : {
+          "pSlip" : 0.14736762883067617,
+          "pLearn" : 0.42508647220525159,
+          "pGuess" : 0.15181496024190272,
+          "pKnown" : 0.48401948960405883
+        },
+        "irt" : {
+          "difficulty" : 0.21425540134485949,
+          "guessing" : 0.21062365933598104,
+          "discrimination" : 1.0428687203150624
+        },
+        "eloRating" : 1107
+      },
+      "metadata" : {
+        "timeLimit" : 90,
+        "tags" : [
+          "combinatorics",
+          "medium"
+        ],
+        "pointsValue" : 2
+      }
+    }
+  ],
+  "version" : "1.0",
+  "lastUpdated" : "2025-03-12T06:02:25Z"
+}

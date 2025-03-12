@@ -1,0 +1,98 @@
+Logical Thinking:
+1. What comes next in the sequence: 2, 4, 6, 8, ...?
+A) 9
+B) 10 *
+C) 12
+D) 16
+
+2. Compare the patterns and find which shape should replace the question mark.
+A) Circle
+B) Triangle
+C) Square *
+D) Rectangle
+
+3. Analyze the following logical statement: "If it rains, then the ground is wet. The ground is wet." What can we conclude?
+A) It is raining
+B) It is not raining
+C) It might be raining *
+D) None of the above
+
+Arithmetic:
+4. Calculate 25 × 4 ÷ 2.
+A) 40
+B) 50 *
+C) 60
+D) 100
+
+5. Solve for x in the equation: 3x + 7 = 22
+A) 5 *
+B) 6
+C) 7
+D) 8
+
+6. Find all possible values of x that satisfy the inequality: 2x - 5 > 7
+A) x > 6 *
+B) x > 5
+C) x > 4
+D) x > 3
+
+Geometry:
+7. What is the area of a rectangle with length 8 cm and width 5 cm?
+A) 13 cm²
+B) 26 cm²
+C) 40 cm² *
+D) 80 cm²
+
+8. Calculate the perimeter of a regular hexagon with side length 4 cm.
+A) 12 cm
+B) 16 cm
+C) 20 cm
+D) 24 cm *
+
+9. Prove that the sum of angles in a triangle is 180 degrees. Then explain what happens if one angle is 90 degrees.
+A) The other two angles sum to 90 degrees *
+B) The other two angles sum to 180 degrees
+C) The other two angles sum to 270 degrees
+D) The other two angles sum to 360 degrees
+
+Number Theory:
+10. Find the greatest common divisor (GCD) of 24 and 36.
+A) 6
+B) 8
+C) 12 *
+D) 18
+
+11. Determine if 127 is a prime number.
+A) Yes, it is prime *
+B) No, it is divisible by 3
+C) No, it is divisible by 7
+D) No, it is divisible by 11
+
+12. Solve the following complex equation system:
+3x + 2y = 12
+5x - 3y = 7
+Show all steps of your solution and explain your reasoning.
+A) x = 3, y = 1.5
+B) x = 2, y = 3 *
+C) x = 4, y = 0
+D) x = 1, y = 4.5
+
+Combinatorics:
+13. How many different ways can you arrange the letters in the word "MATH"?
+A) 4
+B) 12
+C) 16
+D) 24 *
+
+14. In how many ways can you select 3 books from a shelf containing 7 different books?
+A) 21
+B) 35 *
+C) 42
+D) 210
+
+15. A complex combinatorial problem: 
+Find the number of ways to distribute 10 identical candies to 4 different children, where each child must receive at least 1 candy.
+A) 24
+B) 56
+C) 84 *
+D) 126 

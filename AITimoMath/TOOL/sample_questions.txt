@@ -1,0 +1,29 @@
+### Logical Thinking
+#Q1
+Given two balances below, find the heaviest type of fruit.
+A. Apple (Táo)
+B. Orange (Cam)
+C. Mango (Xoài)
+D. None of them (Không có)
+
+#Q2
+In the family, Mina has 3 sisters in total. How many children does Mina's mother have?
+A. 2
+B. 3
+C. 4
+D. 5
+
+### Arithmetic
+#Q3
+What is the value of 15 + 7 - 9?
+A. 11
+B. 13
+C. 15
+D. 17
+
+#Q4
+If you have 24 candies and you want to share them equally among 6 friends, how many candies will each friend get?
+A. 3
+B. 4
+C. 5
+D. 6 
