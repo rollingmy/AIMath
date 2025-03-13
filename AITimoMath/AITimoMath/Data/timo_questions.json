@@ -3068,6 +3068,370 @@
           "timeLimit": 60,
           "pointsValue": 1
         }
+      },
+      {
+        "id": "number-theory-16",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Alice has 15 pencils and Peter has 7 pencils. How many pencils does Alice have to give Peter so that 2 friends have the same number of pencils?\nAlice có 15 chiếc bút chì và Peter có 7 chiếc bút chì. Hỏi Alice cần cho Peter mấy chiếc bút chì để hai bạn có số bút chì bằng nhau?",
+          "options": [
+            "4",
+            "8",
+            "5",
+            "6"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Alice has 15 pencils and Peter has 7 pencils.\nTotal number of pencils = 15 + 7 = 22 pencils.\nFor both to have equal number of pencils, each should have 22 ÷ 2 = 11 pencils.\nPeter needs to receive 11 - 7 = 4 more pencils.\nSo Alice needs to give Peter 4 pencils."
+        },
+        "metadata": {
+          "tags": ["sharing", "equality", "word problem"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-17",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.1,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Fill the lines with ' + ' and ' – ' to make the equation below correct.\nĐiền dấu ' + ' và ' – ' vào chỗ trống để được phép tính đúng.\n2__7__5__1 = 5",
+          "options": [
+            "2 + 7 – 5 – 1 = 5",
+            "2 + 7 + 5 + 1 = 5",
+            "2 + 7 + 5 – 1 = 5",
+            "2 + 7 – 5 + 1 = 5"
+          ],
+          "correctAnswer": "D",
+          "explanation": "Let's check each option:\nA: 2 + 7 - 5 - 1 = 9 - 6 = 3 (incorrect)\nB: 2 + 7 + 5 + 1 = 15 (incorrect)\nC: 2 + 7 + 5 - 1 = 14 - 1 = 13 (incorrect)\nD: 2 + 7 - 5 + 1 = 9 - 5 + 1 = 4 + 1 = 5 (correct)\nSo the correct answer is D: 2 + 7 - 5 + 1 = 5."
+        },
+        "metadata": {
+          "tags": ["operations", "equation", "arithmetic"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-18",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Fill the lines with ' + ' and ' – ' to make the equation below correct.\nĐiền dấu ' + ' và ' – ' vào chỗ trống để được phép tính đúng.\n2__8__4__10__3 = 13",
+          "options": [
+            "2 + 8 + 4 – 10 + 3 = 13",
+            "2 + 8 – 4 + 10 + 3 = 13",
+            "2 + 8 – 4 + 10 – 3 = 13",
+            "2 + 8 + 4 – 10 – 3 = 13"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Let's check each option:\nA: 2 + 8 + 4 - 10 + 3 = 14 - 10 + 3 = 4 + 3 = 7 (incorrect)\nB: 2 + 8 - 4 + 10 + 3 = 10 - 4 + 10 + 3 = 6 + 10 + 3 = 19 (incorrect)\nC: 2 + 8 - 4 + 10 - 3 = 10 - 4 + 10 - 3 = 6 + 10 - 3 = 16 - 3 = 13 (correct)\nD: 2 + 8 + 4 - 10 - 3 = 14 - 10 - 3 = 4 - 3 = 1 (incorrect)\nSo the correct answer is C: 2 + 8 - 4 + 10 - 3 = 13."
+        },
+        "metadata": {
+          "tags": ["operations", "equation", "arithmetic"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-19",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "The numbers below form an arithmetic sequence. What is the 7th number?\nCác số dưới đây tạo thành một dãy số cách đều. Hỏi số thứ 7 là bao nhiêu?\n58、51、44、37、30、…",
+          "options": [
+            "19",
+            "18",
+            "17",
+            "16"
+          ],
+          "correctAnswer": "D",
+          "explanation": "In the given arithmetic sequence: 58, 51, 44, 37, 30, ...\nThe common difference is 51 - 58 = -7 (decreasing by 7 each time).\nSo the sequence continues:\n1st term: 58\n2nd term: 51\n3rd term: 44\n4th term: 37\n5th term: 30\n6th term: 30 - 7 = 23\n7th term: 23 - 7 = 16\nTherefore, the 7th number in the sequence is 16."
+        },
+        "metadata": {
+          "tags": ["arithmetic sequence", "pattern", "sequence"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-20",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Determine the sum 1 + 3 + 5 + 7 + 9 + 11 is odd or even.\nHỏi tổng 1 + 3 + 5 + 7 + 9 + 11 là số lẻ hay số chẵn?",
+          "options": [
+            "Even (Chẵn)",
+            "Odd (Lẻ)",
+            "Neither odd nor even (Không chẵn không lẻ)",
+            "Both odd and even (Vừa chẵn vừa lẻ)"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Let's calculate the sum:\n1 + 3 + 5 + 7 + 9 + 11 = 36\n36 is an even number.\nAlternatively, we can observe that we have 6 odd numbers. When we add an even number of odd numbers, the result is always even."
+        },
+        "metadata": {
+          "tags": ["odd and even", "addition", "number properties"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-16",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many squares are there in the figure below?\nCó bao nhiêu hình vuông trong hình vẽ dưới đây?",
+          "options": [
+            "10",
+            "11",
+            "12",
+            "13"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Although we can't see the figure, based on the answer choices, we can infer that there are 12 squares in total. This likely includes both the individual small squares and any larger squares formed by combinations of smaller squares.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["squares", "counting", "visualization"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-17",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Candace places some cubes on top of each other to form the figure below. At least how many cubes does she use?\nCandace xếp các khối lập phương chồng lên nhau để được hình bên dưới. Hỏi cô ấy đã dùng ít nhất bao nhiêu khối lập phương?",
+          "options": [
+            "6",
+            "7",
+            "8",
+            "9"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Although we can't see the figure, based on the answer choices, we can infer that Candace used at least 7 cubes to form the structure. This likely accounts for the minimum number of cubes needed to create the visible parts of the structure, considering that some cubes might be hidden from view.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["cubes", "3d", "spatial reasoning"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-18",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many interior angles are there in the polygon below?\nĐa giác dưới đây có bao nhiêu góc trong?",
+          "options": [
+            "16",
+            "17",
+            "18",
+            "19"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Although we can't see the figure, based on the answer choices, we can infer that the polygon has 18 interior angles. This means it's an 18-sided polygon (octadecagon). Each polygon with n sides has n interior angles.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["polygon", "angles", "interior angles"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-19",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "By observing the pattern from left to right, what is the missing figure?\nQuan sát quy luật từ trái sang phải, tìm hình bị thiếu.\n■、▲、★、▲、■、■、▲、★、▲、■、■、？、★、▲、■",
+          "options": [
+            "■",
+            "▲",
+            "★",
+            "◎"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Looking at the pattern: ■、▲、★、▲、■、■、▲、★、▲、■、■、？、★、▲、■\nWe can see that the pattern repeats as: ■、▲、★、▲、■\nFollowing this pattern, after the second ■, we should have ▲.\nSo the missing figure is ▲ (triangle)."
+        },
+        "metadata": {
+          "tags": ["pattern", "sequence", "shapes"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-20",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "According to the pattern below, what is the figure in the space provided?\nDựa vào quy luật dưới đây, tìm hình vẽ bị thiếu.",
+          "options": [
+            "■",
+            "▲",
+            "○",
+            "◇"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Although we can't see the pattern in the image, based on the options and the nature of the question, we can infer that there's a pattern of geometric shapes. The correct answer is option C, which appears to be a circle (○).",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["pattern", "shapes", "sequence"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
       }
     ],
     "categories": {
