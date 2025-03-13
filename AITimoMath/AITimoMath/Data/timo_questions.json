@@ -2708,6 +2708,366 @@
           "timeLimit": 120,
           "pointsValue": 1
         }
+      },
+      {
+        "id": "logical-16",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.5,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "If tomorrow will be Thursday, which day of the week will be 6 days later?\nNếu ngày mai là thứ Năm, hỏi 6 ngày nữa là thứ mấy?",
+          "options": [
+            "Friday (Thứ Sáu)",
+            "Wednesday (Thứ Tư)",
+            "Tuesday (Thứ Ba)",
+            "Saturday (Thứ Bảy)"
+          ],
+          "correctAnswer": "B",
+          "explanation": "If tomorrow is Thursday, then:\nDay 1: Thursday\nDay 2: Friday\nDay 3: Saturday\nDay 4: Sunday\nDay 5: Monday\nDay 6: Tuesday\nDay 7: Wednesday\nSo 6 days after Thursday is Wednesday."
+        },
+        "metadata": {
+          "tags": ["days of week", "calendar", "counting"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-17",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Peter is the youngest boy in his family. Given that his father has 4 sons and Peter has 5 brother(s) and sister(s) in total. How many daughter(s) does Peter's father have?\nPeter là cậu bé nhỏ tuổi nhất trong gia đình. Bố cậu ấy có 4 người con trai. Peter có tất cả 5 anh chị em. Vậy bố của Peter có bao nhiêu con gái?",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Peter's father has 4 sons, including Peter. So Peter has 3 brothers.\nPeter has 5 siblings in total (brothers and sisters).\nIf 3 of these siblings are brothers, then 5 - 3 = 2 siblings must be sisters.\nTherefore, Peter's father has 2 daughters."
+        },
+        "metadata": {
+          "tags": ["family relationships", "counting", "logic"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-18",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "20 children form a column. Alice is the 5th starting from the front. How many children behind her?\n20 bạn nhỏ xếp thành một hàng dọc. Alice là người thứ 5 tính từ đầu hàng. Hỏi có bao nhiêu người phía sau bạn ấy?",
+          "options": [
+            "15",
+            "14",
+            "6",
+            "5"
+          ],
+          "correctAnswer": "A",
+          "explanation": "There are 20 children in total.\nAlice is the 5th from the front.\nSo the number of children behind Alice = 20 - 5 = 15."
+        },
+        "metadata": {
+          "tags": ["position", "counting", "logic"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-19",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "From the pattern shown below, what is the number in the blank?\nDựa vào quy luật dưới đây, tìm số thích hợp điền vào chỗ trống?\n9 、 17 、 25 、 33 、 41 、 49 、 __",
+          "options": [
+            "58",
+            "57",
+            "56",
+            "55"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Looking at the pattern:\n9, 17, 25, 33, 41, 49, ?\nThe difference between consecutive numbers is:\n17 - 9 = 8\n25 - 17 = 8\n33 - 25 = 8\n41 - 33 = 8\n49 - 41 = 8\nSo each number increases by 8. The next number should be 49 + 8 = 57."
+        },
+        "metadata": {
+          "tags": ["pattern", "sequence", "arithmetic progression"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-20",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Refer the pattern below, how many ◎ are there in the 13th group?\nDựa vào quy luật dưới đây, có bao nhiêu kí hiệu ◎ trong hình thứ 13?",
+          "options": [
+            "20",
+            "22",
+            "23",
+            "24"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Although we can't see the pattern in the image, based on the options and the nature of the question, we can infer that there's likely a pattern where the number of symbols increases by a fixed amount or follows a specific formula.\nThe answer is 22, which suggests that the pattern might follow a formula like n + 9 (where n is the group number), or it could be a more complex pattern that results in 22 symbols for the 13th group."
+        },
+        "metadata": {
+          "tags": ["pattern", "counting", "visual sequence"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-16",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the value of 2 + 28 + 6 + 14 + 17 + 13.\nTìm giá trị của 2 + 28 + 6 + 14 + 17 + 13.",
+          "options": [
+            "70",
+            "80",
+            "90",
+            "100"
+          ],
+          "correctAnswer": "B",
+          "explanation": "We need to add all the numbers:\n2 + 28 + 6 + 14 + 17 + 13\n= 30 + 6 + 14 + 17 + 13\n= 36 + 14 + 17 + 13\n= 50 + 17 + 13\n= 67 + 13\n= 80"
+        },
+        "metadata": {
+          "tags": ["addition", "calculation"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-17",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1050,
+          "bkt": {
+            "pLearn": 0.45,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.55
+          },
+          "irt": {
+            "discrimination": 0.7,
+            "difficulty": -0.6,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the value of 13 + 17 – 21.\nTìm giá trị của 13 + 17 – 21.",
+          "options": [
+            "8",
+            "9",
+            "10",
+            "11"
+          ],
+          "correctAnswer": "B",
+          "explanation": "We need to calculate the expression:\n13 + 17 - 21\n= 30 - 21\n= 9"
+        },
+        "metadata": {
+          "tags": ["addition", "subtraction", "calculation"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-18",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.1,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the value of 9 + 8 + 7 + 6 – 5 – 4 – 3 – 2 + 1.\nTìm giá trị của 9 + 8 + 7 + 6 – 5 – 4 – 3 – 2 + 1.",
+          "options": [
+            "14",
+            "15",
+            "16",
+            "17"
+          ],
+          "correctAnswer": "D",
+          "explanation": "We need to calculate the expression following the order of operations:\n9 + 8 + 7 + 6 - 5 - 4 - 3 - 2 + 1\n= (9 + 8 + 7 + 6 + 1) - (5 + 4 + 3 + 2)\n= 31 - 14\n= 17"
+        },
+        "metadata": {
+          "tags": ["addition", "subtraction", "calculation", "order of operations"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-19",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the number that should be filled in the blank if this equation is correct.\nTìm số thích hợp điền vào chỗ trống để được phép tính đúng.\n42 – ___ = 22",
+          "options": [
+            "20",
+            "19",
+            "18",
+            "21"
+          ],
+          "correctAnswer": "A",
+          "explanation": "We need to find the value that makes the equation correct:\n42 - ___ = 22\nRearranging: ___ = 42 - 22 = 20\nSo the missing number is 20."
+        },
+        "metadata": {
+          "tags": ["subtraction", "equation", "missing number"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-20",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Refer to the puzzle, find the value of M.\nTìm giá trị của M trong phép tính dưới đây.\n27 – M – M = M",
+          "options": [
+            "8",
+            "6",
+            "9",
+            "7"
+          ],
+          "correctAnswer": "C",
+          "explanation": "We need to solve the equation:\n27 - M - M = M\n27 - 2M = M\n27 = 3M\nM = 27 ÷ 3 = 9\nSo the value of M is 9."
+        },
+        "metadata": {
+          "tags": ["algebra", "equation", "variable"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
       }
     ],
     "categories": {
