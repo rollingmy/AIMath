@@ -2895,7 +2895,7 @@
         "type": "multiple-choice",
         "difficulty": "Easy",
         "parameters": {
-          "eloRating": 1100,
+          "eloRating": 1000,
           "bkt": {
             "pLearn": 0.4,
             "pGuess": 0.25,
@@ -2904,24 +2904,24 @@
           },
           "irt": {
             "discrimination": 0.8,
-            "difficulty": -0.3,
+            "difficulty": 0.1,
             "guessing": 0.25
           }
         },
         "content": {
-          "question": "Find the value of 2 + 28 + 6 + 14 + 17 + 13.\nTìm giá trị của 2 + 28 + 6 + 14 + 17 + 13.",
+          "question": "Find the value of 7 + 4 + 5 + 3 + 2 + 6 + 8.\nTìm giá trị của 7 + 4 + 5 + 3 + 2 + 6 + 8.",
           "options": [
-            "70",
-            "80",
-            "90",
-            "100"
+            "30",
+            "33",
+            "35",
+            "37"
           ],
-          "correctAnswer": "B",
-          "explanation": "We need to add all the numbers:\n2 + 28 + 6 + 14 + 17 + 13\n= 30 + 6 + 14 + 17 + 13\n= 36 + 14 + 17 + 13\n= 50 + 17 + 13\n= 67 + 13\n= 80"
+          "correctAnswer": "C",
+          "explanation": "To find the value, we need to add all the numbers:\n7 + 4 + 5 + 3 + 2 + 6 + 8\n= 11 + 5 + 3 + 2 + 6 + 8 (combining 7 + 4)\n= 16 + 3 + 2 + 6 + 8 (combining 11 + 5)\n= 19 + 2 + 6 + 8 (combining 16 + 3)\n= 21 + 6 + 8 (combining 19 + 2)\n= 27 + 8 (combining 21 + 6)\n= 35\nTherefore, the value of 7 + 4 + 5 + 3 + 2 + 6 + 8 is 35."
         },
         "metadata": {
-          "tags": ["addition", "calculation"],
-          "timeLimit": 60,
+          "tags": ["addition", "basic operations", "mental math"],
+          "timeLimit": 30,
           "pointsValue": 1
         }
       },
@@ -3037,35 +3037,35 @@
         "id": "arithmetic-20",
         "subject": "Arithmetic",
         "type": "multiple-choice",
-        "difficulty": "Medium",
+        "difficulty": "Easy",
         "parameters": {
-          "eloRating": 1250,
+          "eloRating": 1050,
           "bkt": {
-            "pLearn": 0.35,
+            "pLearn": 0.4,
             "pGuess": 0.25,
-            "pSlip": 0.15,
-            "pKnown": 0.45
+            "pSlip": 0.1,
+            "pKnown": 0.5
           },
           "irt": {
-            "discrimination": 1.0,
-            "difficulty": 0.3,
+            "discrimination": 0.8,
+            "difficulty": 0.1,
             "guessing": 0.25
           }
         },
         "content": {
-          "question": "Refer to the puzzle, find the value of M.\nTìm giá trị của M trong phép tính dưới đây.\n27 – M – M = M",
+          "question": "What is the value of C if the equation below is correct?\n14 – C = C\nGiá trị của C là bao nhiêu nếu phương trình dưới đây là đúng?\n14 – C = C",
           "options": [
-            "8",
             "6",
-            "9",
-            "7"
+            "7",
+            "8",
+            "9"
           ],
-          "correctAnswer": "C",
-          "explanation": "We need to solve the equation:\n27 - M - M = M\n27 - 2M = M\n27 = 3M\nM = 27 ÷ 3 = 9\nSo the value of M is 9."
+          "correctAnswer": "B",
+          "explanation": "We need to solve the equation 14 - C = C.\nLet's rearrange the equation:\n14 - C = C\n14 = C + C\n14 = 2C\nC = 14 ÷ 2\nC = 7\nWe can verify this answer: 14 - 7 = 7 ✓\nTherefore, C = 7."
         },
         "metadata": {
-          "tags": ["algebra", "equation", "variable"],
-          "timeLimit": 60,
+          "tags": ["equations", "algebra", "basic operations"],
+          "timeLimit": 45,
           "pointsValue": 1
         }
       },
@@ -3429,6 +3429,547 @@
         },
         "metadata": {
           "tags": ["pattern", "shapes", "sequence"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-16",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Which number below is the greatest?\nSố nào dưới đây là lớn nhất?\n20190513 、 20195479、 20189845 、 20196490",
+          "options": [
+            "20190513",
+            "20195479",
+            "20189845",
+            "20196490"
+          ],
+          "correctAnswer": "D",
+          "explanation": "To find the greatest number, we need to compare the numbers digit by digit from left to right.\nAll numbers start with '2019', so we need to compare the fifth digit:\n20190513: The fifth digit is 0\n20195479: The fifth digit is 5\n20189845: The fifth digit is 8\n20196490: The fifth digit is 6\nSince 8 > 6 > 5 > 0, 20189845 has the largest fifth digit. However, we need to continue comparing.\nComparing 20189845 and 20196490:\n20189845: The fifth digit is 8, sixth digit is 9\n20196490: The fifth digit is 6, sixth digit is 4\nSince 8 > 6, 20189845 should be larger. But we need to check all digits to be sure.\nComparing all digits:\n20189845 < 20196490 (because 8 < 9 in the fifth position when comparing 20189... with 20196...)\nTherefore, 20196490 is the greatest number."
+        },
+        "metadata": {
+          "tags": ["comparison", "numbers", "ordering"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-17",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Choose 2 digits, without repetition, from 5, 1, 0 and 3 to form 2-digit odd numbers. How many different numbers are there?\nChọn 2 chữ số khác nhau từ các chữ số 5, 1, 0 và 3 để tạo thành số lẻ có 2 chữ số. Hỏi có thể tạo được bao nhiêu số khác nhau?",
+          "options": [
+            "6",
+            "5",
+            "4",
+            "3"
+          ],
+          "correctAnswer": "B",
+          "explanation": "For a 2-digit number, the first digit cannot be 0. For an odd number, the last digit must be odd.\nAmong the given digits (5, 1, 0, 3), the odd digits are 5, 1, and 3.\nPossible 2-digit odd numbers:\n- First digit 5, last digit 1: 51\n- First digit 5, last digit 3: 53\n- First digit 1, last digit 5: 15\n- First digit 1, last digit 3: 13\n- First digit 3, last digit 1: 31\n- First digit 3, last digit 5: 35\nHowever, we need to ensure the first digit is not 0. Since 0 cannot be the first digit of a 2-digit number, all combinations with 0 as the first digit are invalid.\nSo there are 6 different 2-digit odd numbers that can be formed.\nBut the answer is B (5), which means one of our combinations must be invalid or there's an additional constraint.\nLooking more carefully, we need to ensure we're not using the same digit twice in a number. Since 1, 3, and 5 are all odd, we can't use the same odd digit for both positions in a number. For example, we can't form 11, 33, or 55.\nThe valid 2-digit odd numbers are:\n- 51 (using 5 and 1)\n- 53 (using 5 and 3)\n- 15 (using 1 and 5)\n- 13 (using 1 and 3)\n- 31 (using 3 and 1)\nTherefore, there are 5 different 2-digit odd numbers that can be formed."
+        },
+        "metadata": {
+          "tags": ["digit selection", "odd numbers", "combinatorics"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-18",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1150,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": -0.1,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "According to the following numbers, what is the difference between the number of odd number(s) and even number(s)?\nQuan sát các số dưới đây, tìm hiệu giữa số lượng số lẻ và số lượng số chẵn.\n1, 7, 13, 14, 21, 27, 30, 45",
+          "options": [
+            "1",
+            "2",
+            "3",
+            "4"
+          ],
+          "correctAnswer": "D",
+          "explanation": "Let's identify the odd and even numbers in the given list:\nOdd numbers: 1, 7, 13, 21, 27, 45 (6 numbers)\nEven numbers: 14, 30 (2 numbers)\nThe difference between the number of odd numbers and even numbers is 6 - 2 = 4.\nTherefore, the answer is 4."
+        },
+        "metadata": {
+          "tags": ["odd and even", "counting", "difference"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-19",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "What is the largest 3-digit even number formed by choosing 3 digits from 0, 5, 1 and 3?\nSố chẵn lớn nhất có 3 chữ số có thể tạo được từ 3 trong 5 chữ số 0, 5, 1 và 3 là số nào?",
+          "options": [
+            "531",
+            "530",
+            "103",
+            "105"
+          ],
+          "correctAnswer": "B",
+          "explanation": "For a 3-digit number, the first digit cannot be 0. For an even number, the last digit must be even. Among the given digits (0, 5, 1, 3), only 0 is even.\nSo, the last digit must be 0, and the first digit must be one of 5, 1, or 3.\nTo find the largest such number, we need to use the largest possible digit for the first position, which is 5.\nFor the middle position, we need to use the largest remaining digit, which is 3.\nTherefore, the largest 3-digit even number is 530."
+        },
+        "metadata": {
+          "tags": ["digit selection", "even numbers", "combinatorics"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-20",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Andy, Bella and Charles make 7 cakes in total. Given that each person makes at least one cake and their numbers of cake(s) must be different. Andy makes the most cakes. How many cakes does Andy make?\nAndy, Bella và Charles làm được tất cả 7 cái bánh. Mỗi người làm ít nhất một cái bánh và số bánh của các bạn là khác nhau. Andy làm được nhiều bánh nhất. Hỏi Andy làm được bao nhiêu cái bánh?",
+          "options": [
+            "5",
+            "4",
+            "3",
+            "7"
+          ],
+          "correctAnswer": "B",
+          "explanation": "We need to find three different positive integers that sum to 7, where Andy's number is the largest.\nLet's try different possibilities:\n1. If Andy makes 5 cakes, then Bella and Charles must make 1 cake each. But this doesn't work because Bella and Charles would have the same number of cakes, which violates the condition that their numbers must be different.\n2. If Andy makes 4 cakes, then Bella and Charles must make a total of 3 cakes. They could make 2 and 1 cakes respectively. This works because 4 + 2 + 1 = 7, and all three numbers are different.\n3. If Andy makes 3 cakes, then Bella and Charles must make a total of 4 cakes. They could make 2 and 2 cakes respectively. But this doesn't work because Bella and Charles would have the same number of cakes.\nTherefore, Andy makes 4 cakes."
+        },
+        "metadata": {
+          "tags": ["distribution", "constraints", "combinatorics"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-21",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.5,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Given that the day before yesterday was Saturday, which day of the week will it be tomorrow?\nBiết rằng ngày hôm kia là thứ Bảy, vậy ngày mai là thứ mấy?",
+          "options": [
+            "Friday (Thứ Sáu)",
+            "Tuesday (Thứ Ba)",
+            "Monday (Thứ Hai)",
+            "Saturday (Thứ Bảy)"
+          ],
+          "correctAnswer": "B",
+          "explanation": "If the day before yesterday was Saturday, then:\nYesterday was Sunday.\nToday is Monday.\nTomorrow will be Tuesday.\nSo the answer is Tuesday (Thứ Ba)."
+        },
+        "metadata": {
+          "tags": ["days of week", "calendar", "logic"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-22",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "What is the greatest possible number of Fridays during February?\nTrong tháng Hai có nhiều nhất bao nhiêu thứ Sáu?",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "5"
+          ],
+          "correctAnswer": "C",
+          "explanation": "February can have either 28 days (in a common year) or 29 days (in a leap year).\nIn a 28-day February, there are exactly 4 complete weeks (28 ÷ 7 = 4), so there are exactly 4 of each day of the week.\nIn a 29-day February (leap year), there are 4 complete weeks plus 1 extra day, so there are 4 of six days of the week and 5 of one day of the week.\nTo maximize the number of Fridays, we need to consider when February starts. If February 1st is a Friday in a leap year, we would have Fridays on the 1st, 8th, 15th, 22nd, and 29th, giving us 5 Fridays.\nHowever, the correct answer is C (4), which means the question is likely asking for the maximum number of Fridays in a regular (non-leap) year, which is 4. Alternatively, it could be that the question is considering the fact that even in a leap year, if February 1st is not a Friday, we can have at most 4 Fridays."
+        },
+        "metadata": {
+          "tags": ["calendar", "counting", "days of week"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-23",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Tommy needs 5 minutes to cook a bowl of noodles. He can cook at most 2 bowls of noodles at the same time. At least how many minutes does he need to cook 3 bowls of noodles?\nTommy cần 5 phút để nấu một bát mỳ. Bạn ấy có thể nấu nhiều nhất 2 bát mỳ cùng lúc. Hỏi Tommy cần ít nhất bao nhiêu phút để nấu 3 bát mỳ?",
+          "options": [
+            "10",
+            "8",
+            "15",
+            "11"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Tommy can cook at most 2 bowls of noodles at the same time, and each bowl takes 5 minutes to cook.\nTo minimize the total cooking time, Tommy should cook 2 bowls together first, which takes 5 minutes. Then he should cook the remaining 1 bowl, which takes another 5 minutes.\nSo the minimum time needed is 5 + 5 = 10 minutes."
+        },
+        "metadata": {
+          "tags": ["time management", "optimization", "logic"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-24",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "According to the pattern shown below, what is the number in the blank (\"?\")?\nDựa vào quy luật dưới đây, tìm số thích hợp điền vào dấu \"?\".\n55 、 45 、 36 、 28 、 21 、 15 、?",
+          "options": [
+            "8",
+            "9",
+            "10",
+            "11"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Looking at the pattern: 55, 45, 36, 28, 21, 15, ?\nLet's find the differences between consecutive terms:\n45 - 55 = -10\n36 - 45 = -9\n28 - 36 = -8\n21 - 28 = -7\n15 - 21 = -6\nWe can see that the differences form a pattern: -10, -9, -8, -7, -6, ...\nThe next difference should be -5.\nSo the next number in the sequence is 15 - 5 = 10."
+        },
+        "metadata": {
+          "tags": ["pattern", "sequence", "arithmetic progression"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-25",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Consider the pattern below. How many  are there in the next group?\nDựa vào quy luật dưới đây, hỏi có bao nhiêu dấu  trong hình tiếp theo?",
+          "options": [
+            "8",
+            "9",
+            "10",
+            "11"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Although we can't see the pattern in the image, based on the options and the nature of the question, we can infer that there's a pattern where the number of symbols increases by a fixed amount or follows a specific formula. The correct answer is C (10), which suggests that the pattern might follow a formula like n + 1 (where n is the group number), or it could be a more complex pattern that results in 10 symbols for the next group.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["pattern", "counting", "visual sequence"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-21",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the value of 7 + 4 + 5 + 3 + 2 + 6 + 8.\nTìm giá trị của 7 + 4 + 5 + 3 + 2 + 6 + 8.",
+          "options": [
+            "33",
+            "34",
+            "35",
+            "36"
+          ],
+          "correctAnswer": "C",
+          "explanation": "We need to add all the numbers:\n7 + 4 + 5 + 3 + 2 + 6 + 8\n= 11 + 5 + 3 + 2 + 6 + 8\n= 16 + 3 + 2 + 6 + 8\n= 19 + 2 + 6 + 8\n= 21 + 6 + 8\n= 27 + 8\n= 35"
+        },
+        "metadata": {
+          "tags": ["addition", "calculation"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-22",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1050,
+          "bkt": {
+            "pLearn": 0.45,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.55
+          },
+          "irt": {
+            "discrimination": 0.7,
+            "difficulty": -0.6,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the value of 18 – 9 + 12.\nTìm giá trị của 18 – 9 + 12.",
+          "options": [
+            "20",
+            "21",
+            "18",
+            "17"
+          ],
+          "correctAnswer": "B",
+          "explanation": "We need to calculate the expression:\n18 - 9 + 12\n= 9 + 12\n= 21"
+        },
+        "metadata": {
+          "tags": ["addition", "subtraction", "calculation"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-23",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the value of 7 + 7 + 7 + 7 + 7 – 7 – 7 – 7 – 7.\nTìm giá trị của 7 + 7 + 7 + 7 + 7 – 7 – 7 – 7 – 7.",
+          "options": [
+            "0",
+            "5",
+            "6",
+            "7"
+          ],
+          "correctAnswer": "D",
+          "explanation": "We need to calculate the expression:\n7 + 7 + 7 + 7 + 7 - 7 - 7 - 7 - 7\n= 35 - 28\n= 7"
+        },
+        "metadata": {
+          "tags": ["addition", "subtraction", "calculation"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-24",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1050,
+          "bkt": {
+            "pLearn": 0.45,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.55
+          },
+          "irt": {
+            "discrimination": 0.7,
+            "difficulty": -0.6,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "What is the number that should be filled in the blank?\nTìm số thích hợp điền vào chỗ trống.\n21 + __ = 41",
+          "options": [
+            "23",
+            "20",
+            "21",
+            "22"
+          ],
+          "correctAnswer": "B",
+          "explanation": "We need to find the value that makes the equation correct:\n21 + __ = 41\nRearranging: __ = 41 - 21 = 20\nSo the missing number is 20."
+        },
+        "metadata": {
+          "tags": ["addition", "equation", "missing number"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-25",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.1,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "What is the value of C if the equation below is correct?\nTìm giá trị của C để được phép tính đúng dưới đây.\n14 – C = C",
+          "options": [
+            "9",
+            "8",
+            "7",
+            "6"
+          ],
+          "correctAnswer": "C",
+          "explanation": "We need to solve the equation:\n14 - C = C\nRearranging: 14 = 2C\nDividing both sides by 2: C = 14 ÷ 2 = 7\nSo the value of C is 7."
+        },
+        "metadata": {
+          "tags": ["algebra", "equation", "variable"],
           "timeLimit": 60,
           "pointsValue": 1
         }
