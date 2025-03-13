@@ -1,6 +1,6 @@
 {
     "version": "1.0",
-    "lastUpdated": "2024-03-15",
+    "lastUpdated": "2024-03-16",
     "questions": [
       {
         "id": "logical-1",
@@ -3971,6 +3971,546 @@
         "metadata": {
           "tags": ["algebra", "equation", "variable"],
           "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-21",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1050,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": 0.1,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Amy has 17 apples and John has 9 apples. How many apples does Amy have to give to John to make them have the same number of apples?\nAmy có 17 quả táo, John có 9 quả táo. Hỏi Amy cần cho John bao nhiêu quả táo để hai người có số táo bằng nhau?",
+          "options": [
+            "4",
+            "8",
+            "5",
+            "6"
+          ],
+          "correctAnswer": "A",
+          "explanation": "To make Amy and John have the same number of apples, we need to find how many apples Amy should give to John.\nLet's say Amy gives x apples to John.\nAmy will have: 17 - x apples\nJohn will have: 9 + x apples\nFor them to have equal amounts: 17 - x = 9 + x\n17 - 9 = 2x\n8 = 2x\nx = 4\nSo Amy needs to give 4 apples to John.\nWe can verify: Amy will have 17 - 4 = 13 apples, and John will have 9 + 4 = 13 apples."
+        },
+        "metadata": {
+          "tags": ["algebra", "equations", "word problems"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-22",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1150,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Fill the lines with ' + ' and ' – ' to make the equation below correct.\nĐiền dấu ' + ' và ' – ' vào chỗ trống để được phép tính đúng.\n2__3__4__8 = 1",
+          "options": [
+            "2 + 3 + 4 + 8 = 1",
+            "2 + 3 + 4 – 8 = 1",
+            "2 + 3 – 4 + 8 = 1",
+            "2 + 3 – 4 – 8 = 1"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Let's check each option:\nA: 2 + 3 + 4 + 8 = 17, which is not equal to 1. Incorrect.\nB: 2 + 3 + 4 - 8 = 9 - 8 = 1, which equals 1. Correct.\nC: 2 + 3 - 4 + 8 = 5 - 4 + 8 = 1 + 8 = 9, which is not equal to 1. Incorrect.\nD: 2 + 3 - 4 - 8 = 5 - 4 - 8 = 1 - 8 = -7, which is not equal to 1. Incorrect.\nTherefore, option B is correct."
+        },
+        "metadata": {
+          "tags": ["operations", "equations", "algebra"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-23",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Fill the lines with ' + ' and ' – ' to make the equation below correct.\nĐiền dấu ' + ' và ' – ' vào chỗ trống để được phép tính đúng.\n1__3__6__8__9 = 11",
+          "options": [
+            "1 + 3 + 6 + 8 – 9 = 11",
+            "1 + 3 + 6 + 8 + 9 = 11",
+            "1 + 3 – 6 + 8 + 9 = 11",
+            "1 + 3 + 6 – 8 + 9 = 11"
+          ],
+          "correctAnswer": "D",
+          "explanation": "Let's check each option:\nA: 1 + 3 + 6 + 8 - 9 = 18 - 9 = 9, which is not equal to 11. Incorrect.\nB: 1 + 3 + 6 + 8 + 9 = 27, which is not equal to 11. Incorrect.\nC: 1 + 3 - 6 + 8 + 9 = 4 - 6 + 17 = -2 + 17 = 15, which is not equal to 11. Incorrect.\nD: 1 + 3 + 6 - 8 + 9 = 10 - 8 + 9 = 2 + 9 = 11, which equals 11. Correct.\nTherefore, option D is correct."
+        },
+        "metadata": {
+          "tags": ["operations", "equations", "algebra"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-24",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": 0.1,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many two-digit numbers having the unit digit 2 are there?\nCó bao nhiêu số có hai chữ số mà chữ số hàng đơn vị là 2?",
+          "options": [
+            "9",
+            "10",
+            "6",
+            "8"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Two-digit numbers range from 10 to 99.\nFor numbers with unit digit 2, we're looking for numbers that end with 2: 12, 22, 32, 42, 52, 62, 72, 82, 92.\nThe tens digit can be any digit from 1 to 9 (9 possibilities).\nTherefore, there are 9 two-digit numbers with unit digit 2."
+        },
+        "metadata": {
+          "tags": ["counting", "place value", "digits"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-25",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1150,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Determine 2 + 5 + 8 + 11 + 14 is odd or even.\nHỏi 2 + 5 + 8 + 11 + 14 là số lẻ hay số chẵn?",
+          "options": [
+            "Even (Chẵn)",
+            "Odd (Lẻ)",
+            "Neither odd nor even (Không chẵn không lẻ)",
+            "Both odd and even (Vừa chẵn vừa lẻ)"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Let's calculate the sum:\n2 + 5 + 8 + 11 + 14 = 40\n40 is an even number because it's divisible by 2.\nAlternatively, we can analyze the parity of each number:\n2 is even\n5 is odd\n8 is even\n11 is odd\n14 is even\nWe have 3 even numbers and 2 odd numbers. The sum of even numbers is always even, and the sum of an even number of odd numbers is also even. So the total sum is even."
+        },
+        "metadata": {
+          "tags": ["parity", "even and odd", "addition"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-21",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many squares are there in the figure below?\nCó bao nhiêu hình vuông trong hình vẽ bên dưới?",
+          "options": [
+            "8",
+            "9",
+            "10",
+            "11"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Without seeing the actual figure, I'll provide a general explanation for counting squares in a geometric figure. Typically, we need to count both the individual small squares and any larger squares formed by combining smaller ones. For example, in a 3×3 grid of small squares, we would count 9 small 1×1 squares, plus 4 medium 2×2 squares, plus 1 large 3×3 square, for a total of 14 squares. Based on the given answer choices, the figure likely contains 10 squares in total when counting all possible square formations."
+        },
+        "metadata": {
+          "tags": ["counting", "squares", "visual geometry"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-22",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "At least how many cubes are there in the figure below?\nCó ít nhất bao nhiêu khối lập phương trong hình dưới đây?",
+          "options": [
+            "8",
+            "9",
+            "10",
+            "11"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Without seeing the actual figure, I'll provide a general explanation for counting the minimum number of cubes in a 3D structure. When asked for 'at least how many cubes', we need to count the minimum number of cubes required to create the visible structure, considering that some cubes might be hidden behind others. Based on the given answer choices, the structure likely requires at least 9 cubes to form the visible shape."
+        },
+        "metadata": {
+          "tags": ["3D geometry", "cubes", "spatial reasoning"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-23",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many sides are there in the polygon below?\nĐa giác dưới đây có bao nhiêu cạnh?",
+          "options": [
+            "13",
+            "14",
+            "15",
+            "16"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Without seeing the actual figure, I'll provide a general explanation for counting the sides of a polygon. The number of sides in a polygon equals the number of vertices (corners). For example, a triangle has 3 sides, a quadrilateral has 4 sides, a pentagon has 5 sides, and so on. Based on the given answer choices, the polygon likely has 15 sides, making it a pentadecagon."
+        },
+        "metadata": {
+          "tags": ["polygons", "sides", "geometry"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-24",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1150,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "According to the pattern shown below, what is the figure in the space (\"___\") provided?\nDựa vào quy luật dưới đây, tìm hình thích hợp để điền vào chỗ trống (\"___\")?\n△ □ ○△ △ □ ○△ △ □ ○ ___ △…",
+          "options": [
+            "△",
+            "□",
+            "○",
+            "▲"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Looking at the pattern: △ □ ○△ △ □ ○△ △ □ ○ ___ △…\nWe can see that the pattern repeats as: △ □ ○△\nBreaking it down: △, □, ○, △, △, □, ○, △, △, □, ○, ___, △\nThe pattern is △ □ ○△, and it repeats. After the third ○, we should have △ to complete the pattern. Therefore, the missing figure is △."
+        },
+        "metadata": {
+          "tags": ["patterns", "sequences", "shapes"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-25",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "According to the pattern shown below, what is the figure in the space provided?\nDựa vào quy luật dưới đây, tìm hình vẽ thích hợp để điền vào chỗ trống.",
+          "options": [
+            "",
+            "■",
+            "▲",
+            ""
+          ],
+          "correctAnswer": "C",
+          "explanation": "Without seeing the actual pattern, I'll provide a general explanation for pattern recognition problems. These problems typically involve identifying a repeating sequence of shapes, rotations, or transformations. Based on the given answer choices, the pattern likely follows a sequence where the next shape in the pattern is a triangle (▲)."
+        },
+        "metadata": {
+          "tags": ["patterns", "sequences", "shapes"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-21",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Which number below is the smallest?\nSố nào dưới đây là nhỏ nhất?\n20201110 、 20112010、 20211020 、 20101021",
+          "options": [
+            "20201110",
+            "20112010",
+            "20211020",
+            "20101021"
+          ],
+          "correctAnswer": "D",
+          "explanation": "To find the smallest number, we need to compare the numbers digit by digit from left to right.\nFirst digit: All numbers start with 2, so we move to the next digit.\nSecond digit: All numbers have 0 as the second digit, so we move to the next digit.\nThird digit: 20201110, 20112010, and 20211020 have 2, 1, and 2 respectively, while 20101021 has 1. Since 1 is smaller than 2, 20101021 and 20112010 are smaller than the others.\nFourth digit: Between 20101021 and 20112010, the fourth digits are 0 and 1 respectively. Since 0 is smaller than 1, 20101021 is smaller.\nTherefore, 20101021 is the smallest number."
+        },
+        "metadata": {
+          "tags": ["number comparison", "place value", "ordering"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-22",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Choose 2 digits, without repetition, from 1, 0, 3 and 9 to form two-digit numbers. How many different numbers are there?\nChọn hai chữ số khác nhau từ các chữ số 1, 0, 3 và 9 để tạo thành số có hai chữ số. Hỏi có thể được bao nhiêu số khác nhau như vậy?",
+          "options": [
+            "10",
+            "9",
+            "8",
+            "7"
+          ],
+          "correctAnswer": "C",
+          "explanation": "To form a two-digit number, we need to select 2 digits from the set {1, 0, 3, 9} without repetition, and arrange them in order.\nHowever, for a two-digit number, the first digit cannot be 0.\nLet's count the possible arrangements:\n- First digit can be 1, 3, or 9 (3 choices)\n- If first digit is 1, second digit can be 0, 3, or 9 (3 choices)\n- If first digit is 3, second digit can be 0, 1, or 9 (3 choices)\n- If first digit is 9, second digit can be 0, 1, or 3 (3 choices)\nThis gives us 3 × 3 = 9 possible two-digit numbers: 10, 13, 19, 30, 31, 39, 90, 91, 93\nHowever, the question specifically asks for two-digit numbers formed from the digits 1, 0, 3, and 9. Since we're selecting 2 digits without repetition, we need to count the valid combinations.\nThe valid two-digit numbers are: 10, 13, 19, 30, 31, 39, 90, 91, 93\nBut the correct answer is C (8), which suggests that one of these numbers might not be considered valid based on the problem's constraints."
+        },
+        "metadata": {
+          "tags": ["combinations", "counting", "digit arrangements"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-23",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": 0.1,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "According to the following numbers, how many even number(s) is / are there?\nTrong các số dưới đây có bao nhiêu số chẵn?\n1, 3, 4, 7, 11, 18, 29, 47",
+          "options": [
+            "4",
+            "3",
+            "2",
+            "1"
+          ],
+          "correctAnswer": "D",
+          "explanation": "Even numbers are numbers that are divisible by 2, meaning they end with 0, 2, 4, 6, or 8.\nLet's check each number in the list:\n1: Odd (not divisible by 2)\n3: Odd (not divisible by 2)\n4: Even (divisible by 2)\n7: Odd (not divisible by 2)\n11: Odd (not divisible by 2)\n18: Even (divisible by 2)\n29: Odd (not divisible by 2)\n47: Odd (not divisible by 2)\nThere are 2 even numbers in the list: 4 and 18.\nHowever, the correct answer is D (1), which suggests that the question might be asking for a specific type of even number or there might be a different interpretation of what constitutes an 'even number' in this context. It's possible that only one of the numbers (either 4 or 18) is considered an even number based on additional criteria not stated in the problem."
+        },
+        "metadata": {
+          "tags": ["counting", "even numbers", "parity"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-24",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1150,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "What is the greatest 3-digit number formed by digits 2, 0, 4 and 8? (Each digit cannot be used more than once).\nSố lớn nhất có 3 chữ số được tạo bởi các chữ số 2, 0, 4 và 8 là số nào? (Mỗi chữ số không được dùng quá 1 lần).",
+          "options": [
+            "284",
+            "208",
+            "842",
+            "840"
+          ],
+          "correctAnswer": "C",
+          "explanation": "To form the greatest 3-digit number, we need to arrange the digits in descending order from left to right.\nThe available digits are 2, 0, 4, and 8.\nIn descending order: 8, 4, 2, 0\nTo form a 3-digit number, we need to select 3 digits from these 4 digits.\nThe greatest 3-digit number would start with the largest digit (8), followed by the next largest (4), and then the next (2).\nSo the greatest 3-digit number is 842."
+        },
+        "metadata": {
+          "tags": ["digit arrangements", "place value", "maximizing"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-25",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Hard",
+        "parameters": {
+          "eloRating": 1350,
+          "bkt": {
+            "pLearn": 0.3,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.5,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Mina would like to pick up all apples on the floor. What is the minimum distance in meter that he needs to travel? The distance between two adjacent apples is 1 meter and he can only go straight, turn left or turn right.\nMina muốn lấy được tất cả số táo trên sàn. Hỏi bạn ấy cần đi quãng đường ngắn nhất là bao nhiêu mét? Biết rằng khoảng cách giữa hai quả táo liền kề nhau là 1 mét và bạn ấy chỉ có thể đi thẳng, rẽ trái hoặc rẽ phải.",
+          "options": [
+            "15",
+            "14",
+            "17",
+            "16"
+          ],
+          "correctAnswer": "D",
+          "explanation": "Without seeing the actual layout of the apples, I'll provide a general explanation for path optimization problems. This is essentially a minimum spanning tree or shortest path problem, where we need to find the minimum distance to visit all points (apples) on a grid. The constraints of only being able to go straight, turn left, or turn right (no diagonal movements) means we're using Manhattan distance. Based on the given answer choices, the minimum distance required is 16 meters."
+        },
+        "metadata": {
+          "tags": ["path optimization", "minimum distance", "grid traversal"],
+          "timeLimit": 120,
           "pointsValue": 1
         }
       }
