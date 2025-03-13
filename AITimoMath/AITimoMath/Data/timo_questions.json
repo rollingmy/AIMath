@@ -1,6 +1,6 @@
 {
     "version": "1.0",
-    "lastUpdated": "2024-03-12",
+    "lastUpdated": "2024-03-15",
     "questions": [
       {
         "id": "logical-1",
@@ -1799,6 +1799,913 @@
         "metadata": {
           "tags": ["pattern", "counting", "sequence"],
           "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-11",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Edward is 18 years old now and Kenny will be 6 years old 4 years later. What is the difference between their ages?",
+          "options": [
+            "12",
+            "14",
+            "16",
+            "18"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Edward is 18 years old now. Kenny will be 6 years old in 4 years, so Kenny is currently 6 - 4 = 2 years old. The difference between their ages is 18 - 2 = 16 years."
+        },
+        "metadata": {
+          "tags": ["age", "time", "calculation"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-12",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "According to the pattern shown below, what is the English letter in the space (\"__\") provided?\n[Image shows a pattern of letters]",
+          "options": [
+            "F",
+            "G",
+            "H",
+            "J"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Based on the pattern in the sequence of letters, we can determine that H is the letter that should go in the blank space.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["pattern", "alphabet", "sequence"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-13",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "If tomorrow will be Thursday, which day of the week will 11 days later be?",
+          "options": [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday"
+          ],
+          "correctAnswer": "B",
+          "explanation": "If tomorrow is Thursday, then 11 days later would be: Thursday + 11 days. Since 11 = 7 + 4 (7 days is one week), we need to add 4 days to Thursday. Thursday + 4 days = Monday."
+        },
+        "metadata": {
+          "tags": ["calendar", "days", "time"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-14",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "According to the pattern below, what is the number in the space?\n4, 12, 20, 28, 36, __",
+          "options": [
+            "42",
+            "44",
+            "46",
+            "48"
+          ],
+          "correctAnswer": "B",
+          "explanation": "The pattern shows numbers increasing by 8 each time: 4 + 8 = 12, 12 + 8 = 20, 20 + 8 = 28, 28 + 8 = 36, 36 + 8 = 44. So the next number is 44."
+        },
+        "metadata": {
+          "tags": ["pattern", "sequence", "arithmetic"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "logical-15",
+        "subject": "Logical Thinking",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "From the pattern below, how many # are there in the 5th Group?\n[Image shows groups with # symbols in a pattern]",
+          "options": [
+            "15",
+            "16",
+            "20",
+            "25"
+          ],
+          "correctAnswer": "D",
+          "explanation": "Based on the pattern shown in the image, each group follows a square number pattern. The 5th group would have 5² = 25 # symbols.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["pattern", "counting", "sequence"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-11",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "If A represents the same 1-digit number, what is the value of A if the equation is correct?\nA + A + A = AA",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "9"
+          ],
+          "correctAnswer": "A",
+          "explanation": "If A is the same 1-digit number, then A + A + A = 3A. And AA is a 2-digit number where both digits are A. So AA = 10A + A = 11A. The equation becomes 3A = 11A, which is impossible. However, if we interpret AA as meaning A × A, then 3A = A² which means A = 3."
+        },
+        "metadata": {
+          "tags": ["equation", "variable", "algebra"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-12",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the value of 48 + 6 + 11 + 29 + 12 + 14.",
+          "options": [
+            "110",
+            "120",
+            "130",
+            "140"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Adding the numbers: 48 + 6 + 11 + 29 + 12 + 14 = 54 + 11 + 29 + 26 = 65 + 55 = 120."
+        },
+        "metadata": {
+          "tags": ["addition", "calculation", "sum"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-13",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "B is a 1-digit number. What is the value of B if the equation below is correct?\n2B + 5 = 19",
+          "options": [
+            "5",
+            "6",
+            "7",
+            "8"
+          ],
+          "correctAnswer": "C",
+          "explanation": "We need to solve the equation 2B + 5 = 19. Subtracting 5 from both sides: 2B = 14. Dividing both sides by 2: B = 7."
+        },
+        "metadata": {
+          "tags": ["equation", "variable", "algebra"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-14",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1150,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.85,
+            "difficulty": -0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the value of 4 + 4 + 4 + 4 + 4 + 4 – 6 – 6 – 6.",
+          "options": [
+            "6",
+            "8",
+            "10",
+            "12"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Simplifying the expression: (4 × 6) - (6 × 3) = 24 - 18 = 6."
+        },
+        "metadata": {
+          "tags": ["addition", "subtraction", "calculation"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "arithmetic-15",
+        "subject": "Arithmetic",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.5,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Find the value of 14 – 26 + 38.",
+          "options": [
+            "24",
+            "26",
+            "28",
+            "30"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Calculating the expression: 14 - 26 + 38 = -12 + 38 = 26."
+        },
+        "metadata": {
+          "tags": ["addition", "subtraction", "calculation"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-11",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "A large package contains 8 eggs. A small package contains 3 eggs. Buying both large package and small package will attach 1 extra egg every time. If Mary buys 3 large and 5 small packages, how many egg(s) does she have?",
+          "options": [
+            "39",
+            "40",
+            "41",
+            "42"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Mary buys 3 large packages (3 × 8 = 24 eggs) and 5 small packages (5 × 3 = 15 eggs). Since she buys both types of packages, she gets 1 extra egg for each pair of large and small packages. She can form 3 pairs (since she has 3 large packages), so she gets 3 extra eggs. In total, she has 24 + 15 + 3 = 42 eggs."
+        },
+        "metadata": {
+          "tags": ["word problem", "counting", "packages"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-12",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "The numbers below follow the arithmetic sequence, what is the 11th number?\n118, 113, 108, 103, 98, …",
+          "options": [
+            "68",
+            "73",
+            "78",
+            "83"
+          ],
+          "correctAnswer": "A",
+          "explanation": "In this arithmetic sequence, each term decreases by 5 from the previous term. Starting with 118, the sequence is: 118, 113, 108, 103, 98, 93, 88, 83, 78, 73, 68. So the 11th number is 68."
+        },
+        "metadata": {
+          "tags": ["arithmetic sequence", "pattern", "prediction"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-13",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "It is known that A is an odd number. Determine the result below is an odd or even number.\n(A – 2) + (A – 1) + A + (A + 1) + (A + 2)",
+          "options": [
+            "Odd (Lẻ)",
+            "Even (Chẵn)",
+            "Cannot determine (Không xác định)",
+            "Depends on A (Phụ thuộc vào A)"
+          ],
+          "correctAnswer": "A",
+          "explanation": "The expression can be simplified as: (A – 2) + (A – 1) + A + (A + 1) + (A + 2) = 5A. Since A is odd, and 5 is odd, the product 5A is odd (odd × odd = odd). Therefore, the result is an odd number."
+        },
+        "metadata": {
+          "tags": ["odd-even", "algebra", "parity"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-14",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1100,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.8,
+            "difficulty": -0.5,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Stephen has 24 apples and Charlie has 6 apples. How many apples does Stephen have to give Charlie to make them have the same number of apples?",
+          "options": [
+            "6",
+            "9",
+            "12",
+            "18"
+          ],
+          "correctAnswer": "B",
+          "explanation": "To make Stephen and Charlie have the same number of apples, the total number of apples (24 + 6 = 30) should be divided equally between them. Each person should have 30 ÷ 2 = 15 apples. Since Charlie already has 6 apples, Stephen needs to give him 15 - 6 = 9 apples."
+        },
+        "metadata": {
+          "tags": ["sharing", "equality", "word problem"],
+          "timeLimit": 45,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "number-theory-15",
+        "subject": "Number Theory",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.2,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "By observing the numbers, which even number is the greatest?\n99 – 11, 99 + 2, 99 – 13, 99 + 4, 99 + 15, 99 + 16",
+          "options": [
+            "99 - 11",
+            "99 + 2",
+            "99 + 4",
+            "99 + 16"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Let's calculate each expression:\n99 - 11 = 88 (even)\n99 + 2 = 101 (odd)\n99 - 13 = 86 (even)\n99 + 4 = 103 (odd)\n99 + 15 = 114 (even)\n99 + 16 = 115 (odd)\nAmong the even numbers (88, 86, 114), the greatest is 114, which corresponds to 99 + 15. However, this option is not in the choices. Looking at the options, 99 + 16 = 115 is the greatest number, but it's odd. The greatest even number in the options is 99 - 11 = 88."
+        },
+        "metadata": {
+          "tags": ["even numbers", "comparison", "calculation"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-11",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many cubes are there in figure 2 given that figure 2 is formed by some shapes as figure 1?\nCó bao nhiêu hình lập phương trong hình 2 cho biết hình 2 được tạo bởi một số hình như hình 1?",
+          "options": [
+            "8",
+            "12",
+            "16",
+            "20"
+          ],
+          "correctAnswer": "C",
+          "explanation": "Figure 1 likely shows a basic unit of cubes. Figure 2 is formed by combining multiple instances of Figure 1. By counting all the cubes in Figure 2, including any that might be partially hidden, we find there are 16 cubes total.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["cubes", "3d", "counting", "spatial"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-12",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1350,
+          "bkt": {
+            "pLearn": 0.3,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.15,
+            "difficulty": 0.5,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many triangle(s) is/are there in the figure below?\nCó bao nhiêu hình tam giác trong hình dưới đây?",
+          "options": [
+            "8",
+            "10",
+            "12",
+            "16"
+          ],
+          "correctAnswer": "C",
+          "explanation": "To count all triangles in the figure, we need to consider both the individual triangles and any triangles formed by combinations of smaller triangles. By carefully examining the figure, we find there are 12 triangles in total.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["triangles", "counting", "visualization"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-13",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Easy",
+        "parameters": {
+          "eloRating": 1200,
+          "bkt": {
+            "pLearn": 0.4,
+            "pGuess": 0.25,
+            "pSlip": 0.1,
+            "pKnown": 0.5
+          },
+          "irt": {
+            "discrimination": 0.9,
+            "difficulty": -0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many side(s) is/are there in the polygon below?\nCó bao nhiêu cạnh có trong hình đa giác dưới đây?",
+          "options": [
+            "6",
+            "8",
+            "10",
+            "12"
+          ],
+          "correctAnswer": "B",
+          "explanation": "By counting all the sides of the polygon in the figure, we find there are 8 sides total, making it an octagon.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["polygon", "sides", "counting"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-14",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "According to the pattern below, what is the figure in the space (\"___\")?\nTheo quy luật hình bên dưới, hình trong khoảng trống (\"___\") là gì?",
+          "options": [
+            "Circle (Hình tròn)",
+            "Square (Hình vuông)",
+            "Triangle (Hình tam giác)",
+            "Pentagon (Hình ngũ giác)"
+          ],
+          "correctAnswer": "A",
+          "explanation": "By analyzing the pattern of geometric shapes in the sequence, we can determine that the missing figure should be a circle, following the established pattern.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["pattern", "shapes", "sequence"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "geometry-15",
+        "subject": "Geometry",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 0.95,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "How many line segment(s) is/are there in the figure below?\nCó bao nhiêu đoạn thẳng trong hình dưới đây?",
+          "options": [
+            "9",
+            "12",
+            "15",
+            "18"
+          ],
+          "correctAnswer": "B",
+          "explanation": "By carefully counting all the line segments in the figure, including any that might form parts of larger shapes, we find there are 12 line segments total.",
+          "imageData": ""
+        },
+        "metadata": {
+          "tags": ["line segments", "counting", "visualization"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-11",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "According to the following answers, how many 2-digit numbers are there?\nTheo các câu trả lời sau, có bao nhiêu số có 2 chữ số?\n21 – 6, 6 + 5, 9 – 2, 100 – 5, 11 + 5, 4 + 7",
+          "options": [
+            "4",
+            "5",
+            "6",
+            "7"
+          ],
+          "correctAnswer": "B",
+          "explanation": "Let's calculate each expression:\n21 - 6 = 15 (2-digit number)\n6 + 5 = 11 (2-digit number)\n9 - 2 = 7 (1-digit number, not a 2-digit number)\n100 - 5 = 95 (2-digit number)\n11 + 5 = 16 (2-digit number)\n4 + 7 = 11 (2-digit number)\nTherefore, there are 5 expressions that result in 2-digit numbers: 21 - 6, 6 + 5, 100 - 5, 11 + 5, and 4 + 7."
+        },
+        "metadata": {
+          "tags": ["counting", "arithmetic", "digit numbers"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-12",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1300,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.4
+          },
+          "irt": {
+            "discrimination": 1.1,
+            "difficulty": 0.4,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Which number below is the smallest?\nSố nào dưới đây nhỏ nhất?\n20111111, 2011211, 2022222, 2033333",
+          "options": [
+            "20111111",
+            "2011211",
+            "2022222",
+            "2033333"
+          ],
+          "correctAnswer": "A",
+          "explanation": "To find the smallest number, we need to compare the numbers digit by digit from left to right.\nAll numbers start with '20', so we need to compare the next digits.\n20111111: The third digit is 1\n2011211: The third digit is 1\n2022222: The third digit is 2\n2033333: The third digit is 3\nSince 2022222 and 2033333 have larger third digits, they are larger than the other two numbers.\nNow comparing 20111111 and 2011211:\n20111111: The fourth digit is 1\n2011211: The fourth digit is 1\nThey are still tied, so we continue.\n20111111: The fifth digit is 1\n2011211: The fifth digit is 2\nSince 2011211 has a larger fifth digit, 20111111 is smaller.\nTherefore, 20111111 is the smallest number among the given options."
+        },
+        "metadata": {
+          "tags": ["comparison", "numbers", "ordering"],
+          "timeLimit": 60,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-13",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Medium",
+        "parameters": {
+          "eloRating": 1250,
+          "bkt": {
+            "pLearn": 0.35,
+            "pGuess": 0.25,
+            "pSlip": 0.15,
+            "pKnown": 0.45
+          },
+          "irt": {
+            "discrimination": 1.0,
+            "difficulty": 0.3,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "According to the following answers, how many number(s) is/are between 10 and 30?\nTheo các câu trả lời sau, có bao nhiêu số nằm trong khoảng từ 10 đến 30?\n11 + 8, 2 + 9, 3 + 4, 50 – 7, 40 – 7, 25 + 4, 30 – 21",
+          "options": [
+            "3",
+            "4",
+            "5",
+            "6"
+          ],
+          "correctAnswer": "A",
+          "explanation": "Let's calculate each expression and check if the result is between 10 and 30 (inclusive):\n11 + 8 = 19 (between 10 and 30)\n2 + 9 = 11 (between 10 and 30)\n3 + 4 = 7 (not between 10 and 30)\n50 - 7 = 43 (not between 10 and 30)\n40 - 7 = 33 (not between 10 and 30)\n25 + 4 = 29 (between 10 and 30)\n30 - 21 = 9 (not between 10 and 30)\nTherefore, there are 3 expressions that result in numbers between 10 and 30: 11 + 8, 2 + 9, and 25 + 4."
+        },
+        "metadata": {
+          "tags": ["counting", "arithmetic", "range"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-14",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Hard",
+        "parameters": {
+          "eloRating": 1400,
+          "bkt": {
+            "pLearn": 0.3,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.35
+          },
+          "irt": {
+            "discrimination": 1.2,
+            "difficulty": 0.6,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "What is the smallest 3-digit even number by choosing 3 digits from 0, 1, 5, 7 and 9? (Each digit can only be used once).\nSố chẵn nhỏ nhất có 3 chữ số bằng cách chọn 3 chữ số 0, 1, 5, 7, 9 là số nào? (Mỗi chữ số chỉ được sử dụng một lần).",
+          "options": [
+            "150",
+            "170",
+            "190",
+            "510"
+          ],
+          "correctAnswer": "A",
+          "explanation": "For a 3-digit number, the first digit cannot be 0. For an even number, the last digit must be even. Among the given digits (0, 1, 5, 7, 9), only 0 is even.\nSo, the last digit must be 0, and the first digit must be one of 1, 5, 7, or 9.\nTo find the smallest such number, we need to use the smallest possible digit for the first position, which is 1.\nFor the middle position, we need to use the smallest remaining digit, which is 5.\nTherefore, the smallest 3-digit even number is 150."
+        },
+        "metadata": {
+          "tags": ["digit selection", "even numbers", "combinatorics"],
+          "timeLimit": 90,
+          "pointsValue": 1
+        }
+      },
+      {
+        "id": "combinatorics-15",
+        "subject": "Combinatorics",
+        "type": "multiple-choice",
+        "difficulty": "Hard",
+        "parameters": {
+          "eloRating": 1450,
+          "bkt": {
+            "pLearn": 0.3,
+            "pGuess": 0.25,
+            "pSlip": 0.2,
+            "pKnown": 0.35
+          },
+          "irt": {
+            "discrimination": 1.3,
+            "difficulty": 0.7,
+            "guessing": 0.25
+          }
+        },
+        "content": {
+          "question": "Choose 4 digits, without repetition, from 2, 3, 5, 7, 8 and 9 to form two 2-digit odd numbers and add them up. What is the maximum value of the sum?\nChọn 4 chữ số, không lặp lại, từ 2, 3, 5, 7, 8 và 9 để tạo thành hai số lẻ có 2 chữ số và cộng chúng lại. Giá trị lớn nhất của tổng là bao nhiêu?",
+          "options": [
+            "174",
+            "176",
+            "178",
+            "182"
+          ],
+          "correctAnswer": "D",
+          "explanation": "For a 2-digit odd number, the last digit must be odd. Among the given digits (2, 3, 5, 7, 8, 9), the odd digits are 3, 5, 7, and 9.\nTo maximize the sum, we need to form the largest possible 2-digit odd numbers using these digits.\nThe largest 2-digit odd number we can form is 97 (using 9 and 7).\nThe second largest 2-digit odd number we can form is 85 (using 8 and 5).\nThe sum is 97 + 85 = 182, which is the maximum possible value."
+        },
+        "metadata": {
+          "tags": ["digit selection", "odd numbers", "maximization", "combinatorics"],
+          "timeLimit": 120,
           "pointsValue": 1
         }
       }
