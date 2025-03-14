@@ -14,8 +14,16 @@ struct AITimoMathApp: App {
     
     var body: some Scene {
         WindowGroup {
-            //ContentView()
-             //   .environment(\.managedObjectContext, persistenceController.viewContext)
+            ContentView()
+        }
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        NavigationView {
+            QuestionExampleView()
+                .navigationTitle("TIMO Math")
         }
     }
 }

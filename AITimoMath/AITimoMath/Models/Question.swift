@@ -20,7 +20,7 @@ public struct Question: Identifiable, Codable, Equatable {
     public let questionText: String
     
     /// Multiple choice options (if applicable)
-    public var options: [String]?
+    public var options: [QuestionOption]?
     
     /// Correct answer
     public let correctAnswer: String
@@ -47,6 +47,75 @@ extension Question {
         case openEnded = "open_ended"
     }
     
+    /// Represents an option that can be either text or image
+    public enum QuestionOption: Codable, Equatable {
+        case text(String)
+        case image(Data)
+        
+        // Custom coding keys for encoding/decoding
+        private enum CodingKeys: String, CodingKey {
+            case type, value
+        }
+        
+        // Custom type identifiers
+        private enum OptionType: String, Codable {
+            case text, image
+        }
+        
+        // Custom encoding
+        public func encode(to encoder: Encoder) throws {
+            var container = encoder.container(keyedBy: CodingKeys.self)
+            
+            switch self {
+            case .text(let string):
+                try container.encode(OptionType.text, forKey: .type)
+                try container.encode(string, forKey: .value)
+            case .image(let data):
+                try container.encode(OptionType.image, forKey: .type)
+                try container.encode(data, forKey: .value)
+            }
+        }
+        
+        // Custom decoding
+        public init(from decoder: Decoder) throws {
+            let container = try decoder.container(keyedBy: CodingKeys.self)
+            let type = try container.decode(OptionType.self, forKey: .type)
+            
+            switch type {
+            case .text:
+                let value = try container.decode(String.self, forKey: .value)
+                self = .text(value)
+            case .image:
+                let value = try container.decode(Data.self, forKey: .value)
+                self = .image(value)
+            }
+        }
+        
+        // Helper to get text value if available
+        public var textValue: String? {
+            if case .text(let value) = self {
+                return value
+            }
+            return nil
+        }
+        
+        // Helper to get image data if available
+        public var imageData: Data? {
+            if case .image(let data) = self {
+                return data
+            }
+            return nil
+        }
+        
+        // Helper to get UIImage if available
+        public var image: UIImage? {
+            if let data = imageData {
+                return UIImage(data: data)
+            }
+            return nil
+        }
+    }
+    
     /// Convenience initialization
     public init(
         subject: Lesson.Subject,
@@ -61,7 +130,27 @@ extension Question {
         self.type = type
         self.questionText = questionText
         self.correctAnswer = correctAnswer
-        self.options = type == .multipleChoice ? [] : nil
+        self.options = nil
+        self.hint = nil
+        self.imageData = nil
+    }
+    
+    /// Initialization with custom ID
+    public init(
+        id: UUID,
+        subject: Lesson.Subject,
+        difficulty: Int,
+        type: QuestionType,
+        questionText: String,
+        correctAnswer: String
+    ) {
+        self.id = id
+        self.subject = subject
+        self.difficulty = difficulty
+        self.type = type
+        self.questionText = questionText
+        self.correctAnswer = correctAnswer
+        self.options = nil
         self.hint = nil
         self.imageData = nil
     }
@@ -79,9 +168,18 @@ extension Question {
         record["difficulty"] = difficulty
         record["type"] = type.rawValue
         record["questionText"] = questionText
-        record["options"] = options
         record["correctAnswer"] = correctAnswer
         record["hint"] = hint
+        
+        // Store options as encoded data
+        if let options = options {
+            do {
+                let optionsData = try JSONEncoder().encode(options)
+                record["optionsData"] = optionsData
+            } catch {
+                print("Error encoding options: \(error)")
+            }
+        }
         
         // Store image data as CKAsset if available
         if let imageData = imageData {
@@ -122,8 +220,17 @@ extension Question {
         self.type = type
         self.questionText = questionText
         self.correctAnswer = correctAnswer
-        self.options = record["options"] as? [String]
         self.hint = record["hint"] as? String
+        
+        // Extract options data
+        if let optionsData = record["optionsData"] as? Data {
+            self.options = try? JSONDecoder().decode([QuestionOption].self, from: optionsData)
+        } else if let legacyOptions = record["options"] as? [String] {
+            // Handle legacy string options
+            self.options = legacyOptions.map { .text($0) }
+        } else {
+            self.options = nil
+        }
         
         // Extract image data from CKAsset
         if let asset = record["imageData"] as? CKAsset, let fileURL = asset.fileURL {
@@ -159,7 +266,16 @@ extension Question {
             guard options.count >= 2 && options.count <= 5 else {
                 throw ValidationError.invalidOptionsCount
             }
-            guard options.contains(correctAnswer) else {
+            
+            // Check if correct answer is in options
+            let textOptions = options.compactMap { option -> String? in
+                if case .text(let text) = option {
+                    return text
+                }
+                return nil
+            }
+            
+            if !textOptions.isEmpty && !textOptions.contains(correctAnswer) {
                 throw ValidationError.correctAnswerNotInOptions
             }
         }
@@ -167,6 +283,15 @@ extension Question {
         // Image data validation (optional)
         if let imageData = imageData, imageData.count > 5 * 1024 * 1024 {
             throw ValidationError.imageTooLarge
+        }
+        
+        // Option image validation
+        if let options = options {
+            for option in options {
+                if case .image(let data) = option, data.count > 5 * 1024 * 1024 {
+                    throw ValidationError.optionImageTooLarge
+                }
+            }
         }
     }
     
@@ -179,6 +304,7 @@ extension Question {
         case invalidOptionsCount
         case correctAnswerNotInOptions
         case imageTooLarge
+        case optionImageTooLarge
         
         var errorDescription: String? {
             switch self {
@@ -196,6 +322,8 @@ extension Question {
                 return "Correct answer must be one of the options"
             case .imageTooLarge:
                 return "Image size cannot exceed 5MB"
+            case .optionImageTooLarge:
+                return "Option image size cannot exceed 5MB"
             }
         }
     }
@@ -235,5 +363,36 @@ extension Question {
         if let data = Data(base64Encoded: base64String) {
             self.imageData = data
         }
+    }
+    
+    /// Add a text option
+    mutating func addTextOption(_ text: String) {
+        if options == nil {
+            options = []
+        }
+        options?.append(.text(text))
+    }
+    
+    /// Add an image option
+    mutating func addImageOption(_ image: UIImage, compressionQuality: CGFloat = 0.7) {
+        if options == nil {
+            options = []
+        }
+        if let compressedData = image.jpegData(compressionQuality: compressionQuality) {
+            options?.append(.image(compressedData))
+        }
+    }
+    
+    /// Add an image option from data
+    mutating func addImageOption(data: Data) {
+        if options == nil {
+            options = []
+        }
+        options?.append(.image(data))
+    }
+    
+    /// Convert legacy string options to new format
+    mutating func convertLegacyOptions(_ stringOptions: [String]) {
+        self.options = stringOptions.map { .text($0) }
     }
 } 
