@@ -21,9 +21,6 @@ struct AITimoMathApp: App {
 
 struct ContentView: View {
     var body: some View {
-        NavigationView {
-            QuestionExampleView()
-                .navigationTitle("TIMO Math")
-        }
+        QuestionExampleView()
     }
 }

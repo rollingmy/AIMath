@@ -112,9 +112,22 @@ class QuestionService {
         if let jsonOptions = jsonQuestion.content.options {
             // Process each option
             for option in jsonOptions {
-                if let imageDataString = option.imageData, !imageDataString.isEmpty {
-                    // If we have image data in the option, convert it
-                    if let imageData = Data(base64Encoded: imageDataString) {
+                // Check if the option is an object with type and value fields
+                if let optionType = option.type, let optionValue = option.value {
+                    if optionType == "image" {
+                        // Handle image option
+                        if let imageData = loadImageData(from: optionValue) {
+                            question.addImageOption(data: imageData)
+                        } else {
+                            print("Failed to load image data for option: \(optionValue)")
+                        }
+                    } else if optionType == "text" {
+                        // Handle text option
+                        question.addTextOption(optionValue)
+                    }
+                } else if let imageDataString = option.imageData, !imageDataString.isEmpty {
+                    // Check if it's a base64 string or an image reference
+                    if let imageData = loadImageData(from: imageDataString) {
                         question.addImageOption(data: imageData)
                     }
                 } else if let text = option.text {
@@ -122,16 +135,61 @@ class QuestionService {
                     question.addTextOption(text)
                 }
             }
+        } else if let stringOptions = jsonQuestion.content.stringOptions {
+            // Handle string array options (backward compatibility)
+            for optionText in stringOptions {
+                question.addTextOption(optionText)
+            }
         }
         
         // Set question image data if available
         if let imageDataString = jsonQuestion.content.imageData, !imageDataString.isEmpty {
-            if let imageData = Data(base64Encoded: imageDataString) {
-                question.imageData = imageData
-            }
+            question.imageData = loadImageData(from: imageDataString)
         }
         
         return question
+    }
+    
+    /// Load image data from either a base64 string or an image name reference
+    /// - Parameter source: Either a base64 encoded string or an image name
+    /// - Returns: The image data if available
+    private func loadImageData(from source: String) -> Data? {
+        // First try to decode as base64
+        if let data = Data(base64Encoded: source) {
+            print("Successfully loaded base64 image data for: \(source)")
+            return data
+        }
+        
+        // If not base64, try to load from assets
+        if let image = UIImage(named: source) {
+            print("Successfully loaded image from assets: \(source)")
+            return image.pngData()
+        }
+        
+        // Try to load from Images directory
+        let imagePath = "Images/\(source)"
+        if let image = UIImage(named: imagePath) {
+            print("Successfully loaded image from Images directory: \(imagePath)")
+            return image.pngData()
+        }
+        
+        // Try to load from bundle with .png extension
+        if let url = Bundle.main.url(forResource: source, withExtension: "png", subdirectory: "Images"),
+           let data = try? Data(contentsOf: url) {
+            print("Successfully loaded image from bundle: \(source).png")
+            return data
+        }
+        
+        // Try to load from bundle without extension
+        if let url = Bundle.main.url(forResource: source, withExtension: nil, subdirectory: "Images"),
+           let data = try? Data(contentsOf: url) {
+            print("Successfully loaded image from bundle: \(source)")
+            return data
+        }
+        
+        // If all attempts fail, return nil
+        print("Failed to load image data for: \(source). Tried base64, assets, Images directory, and bundle.")
+        return nil
     }
     
     /// Convert a Question model to JSON format
@@ -373,6 +431,7 @@ extension QuestionService {
             struct Content: Codable {
                 let question: String
                 let options: [OptionContent]?
+                let stringOptions: [String]?
                 let correctAnswer: String
                 let explanation: String
                 let imageData: String?
@@ -389,11 +448,14 @@ extension QuestionService {
                     // Try to decode options as an array of OptionContent first
                     if let optionObjects = try? container.decodeIfPresent([OptionContent].self, forKey: .options) {
                         options = optionObjects
-                    } else if let stringOptions = try? container.decodeIfPresent([String].self, forKey: .options) {
-                        // If that fails, try to decode as string array and convert
-                        options = stringOptions.map { OptionContent(text: $0) }
+                        stringOptions = nil
+                    } else if let stringArray = try? container.decodeIfPresent([String].self, forKey: .options) {
+                        // If that fails, try to decode as string array
+                        options = nil
+                        stringOptions = stringArray
                     } else {
                         options = nil
+                        stringOptions = nil
                     }
                 }
                 
@@ -405,10 +467,14 @@ extension QuestionService {
             struct OptionContent: Codable {
                 let text: String?
                 let imageData: String?
+                let type: String?
+                let value: String?
                 
-                init(text: String? = nil, imageData: String? = nil) {
+                init(text: String? = nil, imageData: String? = nil, type: String? = nil, value: String? = nil) {
                     self.text = text
                     self.imageData = imageData
+                    self.type = type
+                    self.value = value
                 }
             }
             

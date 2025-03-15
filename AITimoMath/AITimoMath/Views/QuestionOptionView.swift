@@ -68,7 +68,7 @@ struct QuestionOptionView: View {
                 Image(uiImage: uiImage)
                     .resizable()
                     .scaledToFit()
-                    .frame(maxHeight: 120)
+                    .frame(maxWidth: 200, maxHeight: 60)
                     .cornerRadius(8)
             } else {
                 Text("Image could not be loaded")
