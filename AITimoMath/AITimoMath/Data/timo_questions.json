@@ -1627,7 +1627,7 @@
         }
       },
       "content": {
-        "question": "How many squares are there in the figure below?\n[Image shows a complex arrangement of squares]",
+        "question": "How many squares are there in the figure below?",
         "options": [
           "19",
           "14",
@@ -1668,7 +1668,7 @@
         }
       },
       "content": {
-        "question": "At least how many cubes are there in the figure below?\n[Image shows a 3D arrangement of cubes]",
+        "question": "At least how many cubes are there in the figure below?",
         "options": [
           "12",
           "11",
@@ -1879,7 +1879,7 @@
         ],
         "correctAnswer": "D",
         "explanation": "In a 3\u00d73 magic square with numbers 1-9, the sum of each row, column, and diagonal is 15. By analyzing the partially filled square and ensuring each row, column, and diagonal sums to 15, we determine that the missing number is 8.",
-        "imageData": "geometry-8"
+        "imageData": "combinatorics-10"
       },
       "metadata": {
         "tags": [
@@ -1911,7 +1911,7 @@
         }
       },
       "content": {
-        "question": "How many interior angles are there in the polygon below?\n[Image shows a polygon]",
+        "question": "How many interior angles are there in the polygon below?",
         "options": [
           "13",
           "14",
@@ -1952,7 +1952,7 @@
         }
       },
       "content": {
-        "question": "How many line segments are there in the figure below?\n[Image shows a geometric figure with line segments]",
+        "question": "How many line segments are there in the figure below?",
         "options": [
           "18",
           "20",
@@ -1993,7 +1993,7 @@
         }
       },
       "content": {
-        "question": "Refer to the beads below. How many white beads are there in the first 15 beads?\n[Image shows a pattern of colored beads]",
+        "question": "Refer to the beads below. How many white beads are there in the first 15 beads?",
         "options": [
           "5",
           "7",
@@ -2074,7 +2074,7 @@
         }
       },
       "content": {
-        "question": "According to the pattern shown below, what is the English letter in the space (\"__\") provided?\n[Image shows a pattern of letters]",
+        "question": "According to the pattern shown below, what is the English letter in the space (\"__\") provided?\nA, D, G, J, M, __, ...",
         "options": [
           "F",
           "G",
@@ -2083,7 +2083,6 @@
         ],
         "correctAnswer": "C",
         "explanation": "Based on the pattern in the sequence of letters, we can determine that H is the letter that should go in the blank space.",
-        "imageData": "geometry-9"
       },
       "metadata": {
         "tags": [
@@ -2195,7 +2194,7 @@
         }
       },
       "content": {
-        "question": "From the pattern below, how many # are there in the 5th Group?\n[Image shows groups with # symbols in a pattern]",
+        "question": "From the pattern below, how many # are there in the 5th Group?\n",
         "options": [
           "15",
           "16",
@@ -2204,7 +2203,7 @@
         ],
         "correctAnswer": "D",
         "explanation": "Based on the pattern shown in the image, each group follows a square number pattern. The 5th group would have 5\u00b2 = 25 # symbols.",
-        "imageData": "geometry-11"
+        "imageData": "geometry-100"
       },
       "metadata": {
         "tags": [
@@ -3211,7 +3210,8 @@
           "24"
         ],
         "correctAnswer": "B",
-        "explanation": "Although we can't see the pattern in the image, based on the options and the nature of the question, we can infer that there's likely a pattern where the number of symbols increases by a fixed amount or follows a specific formula.\nThe answer is 22, which suggests that the pattern might follow a formula like n + 9 (where n is the group number), or it could be a more complex pattern that results in 22 symbols for the 13th group."
+        "explanation": "Although we can't see the pattern in the image, based on the options and the nature of the question, we can infer that there's likely a pattern where the number of symbols increases by a fixed amount or follows a specific formula.\nThe answer is 22, which suggests that the pattern might follow a formula like n + 9 (where n is the group number), or it could be a more complex pattern that results in 22 symbols for the 13th group.",
+        "imageData": "logical-20"
       },
       "metadata": {
         "tags": [
@@ -3775,8 +3775,7 @@
           "\u25ce"
         ],
         "correctAnswer": "B",
-        "explanation": "Looking at the pattern: \u25a0\u3001\u25b2\u3001\u2605\u3001\u25b2\u3001\u25a0\u3001\u25a0\u3001\u25b2\u3001\u2605\u3001\u25b2\u3001\u25a0\u3001\u25a0\u3001\uff1f\u3001\u2605\u3001\u25b2\u3001\u25a0\nWe can see that the pattern repeats as: \u25a0\u3001\u25b2\u3001\u2605\u3001\u25b2\u3001\u25a0\nFollowing this pattern, after the second \u25a0, we should have \u25b2.\nSo the missing figure is \u25b2 (triangle).",
-        "imageData": "geometry-19"
+        "explanation": "Looking at the pattern: \u25a0\u3001\u25b2\u3001\u2605\u3001\u25b2\u3001\u25a0\u3001\u25a0\u3001\u25b2\u3001\u2605\u3001\u25b2\u3001\u25a0\u3001\u25a0\u3001\uff1f\u3001\u2605\u3001\u25b2\u3001\u25a0\nWe can see that the pattern repeats as: \u25a0\u3001\u25b2\u3001\u2605\u3001\u25b2\u3001\u25a0\nFollowing this pattern, after the second \u25a0, we should have \u25b2.\nSo the missing figure is \u25b2 (triangle)."
       },
       "metadata": {
         "tags": [
@@ -4218,7 +4217,7 @@
         ],
         "correctAnswer": "C",
         "explanation": "Although we can't see the pattern in the image, based on the options and the nature of the question, we can infer that there's a pattern where the number of symbols increases by a fixed amount or follows a specific formula. The correct answer is C (10), which suggests that the pattern might follow a formula like n + 1 (where n is the group number), or it could be a more complex pattern that results in 10 symbols for the next group.",
-        "imageData": "geometry-21"
+        "imageData": "logical-25"
       },
       "metadata": {
         "tags": [
@@ -4501,8 +4500,7 @@
           "\u25b2"
         ],
         "correctAnswer": "A",
-        "explanation": "Looking at the pattern: \u25b3 \u25a1 \u25cb\u25b3 \u25b3 \u25a1 \u25cb\u25b3 \u25b3 \u25a1 \u25cb ___ \u25b3\u2026\nWe can see that the pattern repeats as: \u25b3 \u25a1 \u25cb\u25b3\nBreaking it down: \u25b3, \u25a1, \u25cb, \u25b3, \u25b3, \u25a1, \u25cb, \u25b3, \u25b3, \u25a1, \u25cb, ___, \u25b3\nThe pattern is \u25b3 \u25a1 \u25cb\u25b3, and it repeats. After the third \u25cb, we should have \u25b3 to complete the pattern. Therefore, the missing figure is \u25b3.",
-        "imageData": "geometry-24"
+        "explanation": "Looking at the pattern: \u25b3 \u25a1 \u25cb\u25b3 \u25b3 \u25a1 \u25cb\u25b3 \u25b3 \u25a1 \u25cb ___ \u25b3\u2026\nWe can see that the pattern repeats as: \u25b3 \u25a1 \u25cb\u25b3\nBreaking it down: \u25b3, \u25a1, \u25cb, \u25b3, \u25b3, \u25a1, \u25cb, \u25b3, \u25b3, \u25a1, \u25cb, ___, \u25b3\nThe pattern is \u25b3 \u25a1 \u25cb\u25b3, and it repeats. After the third \u25cb, we should have \u25b3 to complete the pattern. Therefore, the missing figure is \u25b3."
       },
       "metadata": {
         "tags": [
@@ -4536,10 +4534,10 @@
       "content": {
         "question": "According to the pattern shown below, what is the figure in the space provided?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, t\u00ecm h\u00ecnh v\u1ebd th\u00edch h\u1ee3p \u0111\u1ec3 \u0111i\u1ec1n v\u00e0o ch\u1ed7 tr\u1ed1ng.",
         "options": [
-          "",
-          "\u25a0",
-          "\u25b2",
-          ""
+          {"type": "image", "value": "geometry-25-a"},
+          {"type": "image", "value": "geometry-25-b"},
+          {"type": "image", "value": "geometry-25-c"},
+          {"type": "image", "value": "geometry-25-d"}
         ],
         "correctAnswer": "C",
         "explanation": "Without seeing the actual pattern, I'll provide a general explanation for pattern recognition problems. These problems typically involve identifying a repeating sequence of shapes, rotations, or transformations. Based on the given answer choices, the pattern likely follows a sequence where the next shape in the pattern is a triangle (\u25b2).",
@@ -4743,7 +4741,8 @@
           "16"
         ],
         "correctAnswer": "D",
-        "explanation": "Without seeing the actual layout of the apples, I'll provide a general explanation for path optimization problems. This is essentially a minimum spanning tree or shortest path problem, where we need to find the minimum distance to visit all points (apples) on a grid. The constraints of only being able to go straight, turn left, or turn right (no diagonal movements) means we're using Manhattan distance. Based on the given answer choices, the minimum distance required is 16 meters."
+        "explanation": "Without seeing the actual layout of the apples, I'll provide a general explanation for path optimization problems. This is essentially a minimum spanning tree or shortest path problem, where we need to find the minimum distance to visit all points (apples) on a grid. The constraints of only being able to go straight, turn left, or turn right (no diagonal movements) means we're using Manhattan distance. Based on the given answer choices, the minimum distance required is 16 meters.",
+        "imageData": "combinatorics-25"
       },
       "metadata": {
         "tags": [
@@ -4775,7 +4774,7 @@
         }
       },
       "content": {
-        "question": "What is the value of A + B if the equation below is correct?\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a A + B bi\u1ebft r\u1eb1ng ph\u00e9p t\u00ednh d\u01b0\u1edbi \u0111\u00e2y l\u00e0 \u0111\u00fang.\n  A\n+ A\n  A\n____\nB A",
+        "question": "What is the value of A + B if the equation below is correct?\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a A + B bi\u1ebft r\u1eb1ng ph\u00e9p t\u00ednh d\u01b0\u1edbi \u0111\u00e2y l\u00e0 \u0111\u00fang.\n    A\n+ A\n    A\n____\nB A",
         "options": [
           "1",
           "4",
@@ -4857,13 +4856,22 @@
       "content": {
         "question": "From the pattern shown below, what is the animal figure in the blank?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, t\u00ecm h\u00ecnh con v\u1eadt th\u00edch h\u1ee3p \u0111\u1ec3 \u0111i\u1ec1n v\u00e0o ch\u1ed7 tr\u1ed1ng.",
         "options": [
-          "",
-          "",
-          "",
-          ""
+          {
+            "imageData": "logical-27-a"
+          },
+          {
+            "imageData": "logical-27-b"
+          },
+          {
+            "imageData": "logical-27-c"
+          },
+          {
+            "imageData": "logical-27-d"
+          }
         ],
         "correctAnswer": "B",
-        "explanation": "Without seeing the actual pattern of animal figures, I'll provide a general explanation for pattern recognition problems. These problems typically involve identifying a repeating sequence of animals or a logical progression based on characteristics like size, color, or type. Based on the given answer choices, the pattern likely follows a sequence where the next animal in the pattern is represented by option B."
+        "explanation": "Without seeing the actual pattern of animal figures, I'll provide a general explanation for pattern recognition problems. These problems typically involve identifying a repeating sequence of animals or a logical progression based on characteristics like size, color, or type. Based on the given answer choices, the pattern likely follows a sequence where the next animal in the pattern is represented by option B.",
+        "imageData": "logical-27"
       },
       "metadata": {
         "tags": [
@@ -5175,7 +5183,7 @@
         }
       },
       "content": {
-        "question": "What is the value of A + B if the equation below is correct?\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a A + B bi\u1ebft r\u1eb1ng ph\u00e9p t\u00ednh d\u01b0\u1edbi \u0111\u00e2y l\u00e0 \u0111\u00fang.\n  A\n+ A\n  A\n____\nB A",
+        "question": "What is the value of A + B if the equation below is correct?\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a A + B bi\u1ebft r\u1eb1ng ph\u00e9p t\u00ednh d\u01b0\u1edbi \u0111\u00e2y l\u00e0 \u0111\u00fang.\n    A\n+ A\n    A\n____\nB A",
         "options": [
           "1",
           "4",
@@ -5540,10 +5548,10 @@
       "content": {
         "question": "According to the pattern shown below, what is the figure in the space?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, t\u00ecm h\u00ecnh v\u1ebd th\u00edch h\u1ee3p \u0111i\u1ec1n v\u00e0o ch\u1ed7 tr\u1ed1ng.",
         "options": [
-          "",
-          "",
-          "",
-          ""
+          {"type": "image", "value": "geometry-29-a"},
+          {"type": "image", "value": "geometry-29-b"},
+          {"type": "image", "value": "geometry-29-c"},
+          {"type": "image", "value": "geometry-29-d"}
         ],
         "correctAnswer": "B",
         "explanation": "Without seeing the actual pattern, I'll provide a general explanation for pattern recognition problems. These problems typically involve identifying a repeating sequence of shapes, rotations, or transformations. Based on the given answer choices, the pattern likely follows a sequence where the next shape in the pattern is represented by option B.",
