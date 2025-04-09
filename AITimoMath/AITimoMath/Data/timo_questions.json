@@ -4377,7 +4377,7 @@
           "11"
         ],
         "correctAnswer": "C",
-        "explanation": "Without seeing the actual figure, I'll provide a general explanation for counting squares in a geometric figure. Typically, we need to count both the individual small squares and any larger squares formed by combining smaller ones. For example, in a 3\u00d73 grid of small squares, we would count 9 small 1\u00d71 squares, plus 4 medium 2\u00d72 squares, plus 1 large 3\u00d73 square, for a total of 14 squares. Based on the given answer choices, the figure likely contains 10 squares in total when counting all possible square formations.",
+        "explanation": "8 small squares + 2 medium squares  = 10 squares",
         "imageData": "geometry-21"
       },
       "metadata": {
@@ -4418,7 +4418,7 @@
           "11"
         ],
         "correctAnswer": "B",
-        "explanation": "Without seeing the actual figure, I'll provide a general explanation for counting the minimum number of cubes in a 3D structure. When asked for 'at least how many cubes', we need to count the minimum number of cubes required to create the visible structure, considering that some cubes might be hidden behind others. Based on the given answer choices, the structure likely requires at least 9 cubes to form the visible shape.",
+        "explanation": "7 cubes in front + 3 cubes in back = 10 cubes",
         "imageData": "geometry-22"
       },
       "metadata": {
@@ -4459,7 +4459,7 @@
           "16"
         ],
         "correctAnswer": "C",
-        "explanation": "Without seeing the actual figure, I'll provide a general explanation for counting the sides of a polygon. The number of sides in a polygon equals the number of vertices (corners). For example, a triangle has 3 sides, a quadrilateral has 4 sides, a pentagon has 5 sides, and so on. Based on the given answer choices, the polygon likely has 15 sides, making it a pentadecagon.",
+        "explanation": "count the number of sides of the polygon one by one get 14 sides",
         "imageData": "geometry-23"
       },
       "metadata": {
@@ -4540,7 +4540,7 @@
           {"type": "image", "value": "geometry-25-d"}
         ],
         "correctAnswer": "C",
-        "explanation": "Without seeing the actual pattern, I'll provide a general explanation for pattern recognition problems. These problems typically involve identifying a repeating sequence of shapes, rotations, or transformations. Based on the given answer choices, the pattern likely follows a sequence where the next shape in the pattern is a triangle (\u25b2).",
+        "explanation": "We can see that the pattern has multiple circles with same color, so the blank should be a white circle. Correct answer is C",
         "imageData": "geometry-25"
       },
       "metadata": {
@@ -4740,8 +4740,8 @@
           "17",
           "16"
         ],
-        "correctAnswer": "D",
-        "explanation": "Without seeing the actual layout of the apples, I'll provide a general explanation for path optimization problems. This is essentially a minimum spanning tree or shortest path problem, where we need to find the minimum distance to visit all points (apples) on a grid. The constraints of only being able to go straight, turn left, or turn right (no diagonal movements) means we're using Manhattan distance. Based on the given answer choices, the minimum distance required is 16 meters.",
+        "correctAnswer": "C",
+        "explanation": "Start point is the center of left side then move entire the upper square then move entire the bottom square. Total distance is 17m. Correct answer is C",
         "imageData": "combinatorics-25"
       },
       "metadata": {
@@ -4870,7 +4870,7 @@
           }
         ],
         "correctAnswer": "B",
-        "explanation": "Without seeing the actual pattern of animal figures, I'll provide a general explanation for pattern recognition problems. These problems typically involve identifying a repeating sequence of animals or a logical progression based on characteristics like size, color, or type. Based on the given answer choices, the pattern likely follows a sequence where the next animal in the pattern is represented by option B.",
+        "explanation": "The pattern shows a sequence of farm animals: pig, cow, dog, pig, cow, dog, pig, dog, pig. Looking carefully at this sequence, we can observe that it follows a repeating pattern of pig, cow, dog, pig, cow, dog, etc. The next animal in this sequence should be a cow, which corresponds to option B.",
         "imageData": "logical-27"
       },
       "metadata": {
@@ -4958,46 +4958,6 @@
           "number patterns",
           "sequences",
           "arithmetic progression"
-        ],
-        "timeLimit": 60,
-        "pointsValue": 1
-      }
-    },
-    {
-      "id": "logical-30",
-      "subject": "Logical Thinking",
-      "type": "multiple-choice",
-      "difficulty": "Medium",
-      "parameters": {
-        "eloRating": 1200,
-        "bkt": {
-          "pLearn": 0.35,
-          "pGuess": 0.25,
-          "pSlip": 0.15,
-          "pKnown": 0.45
-        },
-        "irt": {
-          "discrimination": 0.9,
-          "difficulty": 0.3,
-          "guessing": 0.25
-        }
-      },
-      "content": {
-        "question": "From the pattern below, how many symbols  are there in the 5th group?\nD\u1ef1a theo quy lu\u1eadt, h\u1ecfi c\u00f3 bao nhi\u00eau k\u00ed hi\u1ec7u  trong nh\u00f3m th\u1ee9 5?",
-        "options": [
-          "2",
-          "3",
-          "4",
-          "5"
-        ],
-        "correctAnswer": "D",
-        "explanation": "Without seeing the actual pattern of symbols, I'll provide a general explanation for counting patterns. In these problems, we typically need to identify how the number of symbols changes from one group to the next. Common patterns include arithmetic sequences (adding a constant number each time), geometric sequences (multiplying by a constant factor), or patterns based on position (e.g., the number of symbols equals the group number). Based on the given answer choices, the pattern likely follows a sequence where the 5th group contains 5 symbols (option D), suggesting that the number of symbols equals the group number."
-      },
-      "metadata": {
-        "tags": [
-          "patterns",
-          "counting",
-          "sequences"
         ],
         "timeLimit": 60,
         "pointsValue": 1
@@ -5230,8 +5190,9 @@
           "3",
           "4"
         ],
-        "correctAnswer": "C",
-        "explanation": "Without seeing the actual image, I'll provide a general explanation for this type of problem. To solve this, we need to find how many rabbits to move from left to right so that both gardens have equal numbers.\n\nLet's say there are L rabbits on the left and R rabbits on the right initially.\nIf we move x rabbits from left to right, then:\n- Left garden will have: L - x rabbits\n- Right garden will have: R + x rabbits\n\nFor them to be equal: L - x = R + x\nSolving for x: L - R = 2x\nx = (L - R) / 2\n\nBased on the correct answer being C (3), we can infer that initially there were 6 more rabbits on the left than on the right, so moving 3 rabbits would equalize the gardens."
+        "correctAnswer": "B",
+        "explanation": "Look at the two gardens with rabbits. The left garden has 16 rabbits. The right garden has 12 rabbits. We need to move some rabbits from left to right so both gardens have the same number. If we move 2 rabbits from left to right, the left garden will have 14 rabbits (16 - 2 = 14) and the right garden will also have 14 rabbits (12 + 2 = 14). So we need to move 2 rabbits.",
+        "imageData": "number-theory-26"
       },
       "metadata": {
         "tags": [
@@ -5351,7 +5312,8 @@
           "9"
         ],
         "correctAnswer": "A",
-        "explanation": "Without seeing the actual boxes and calculation, I'll provide a general explanation based on the answer choices. The problem involves placing four of the five numbers (2, 4, 5, 6, 9) into boxes to make a calculation correct. Based on the correct answer being A (4), we can infer that the numbers 2, 5, 6, and 9 can be arranged to form a valid calculation, while including 4 would make the calculation incorrect."
+        "explanation": "We need to put four numbers in the boxes to make the equation true. The numbers we can use are 2, 4, 5, 6, and 9. For the equation to be correct, the sum on the left side must equal the sum on the right side. Let's try different combinations. If we put 2 and 9 on the left side, that's 2 + 9 = 11. To get 11 on the right side, we can use 5 and 6, since 5 + 6 = 11. So we've used 2, 9, 5, and 6. The number 4 is not used. We can check: 2 + 9 = 11 and 5 + 6 = 11, which is correct.",
+        "imageData": "number-theory-29"
       },
       "metadata": {
         "tags": [
@@ -5431,7 +5393,7 @@
           "18"
         ],
         "correctAnswer": "C",
-        "explanation": "Without seeing the actual figure, I'll provide a general explanation for counting squares in a geometric figure. Typically, we need to count both the individual small squares and any larger squares formed by combining smaller ones. For example, in a 4\u00d74 grid of small squares, we would count 16 small 1\u00d71 squares, plus 9 medium 2\u00d72 squares, plus 4 large 3\u00d73 squares, plus 1 extra-large 4\u00d74 square, for a total of 30 squares. Based on the given answer choices, the figure likely contains 17 squares in total when counting all possible square formations.",
+        "explanation": "To count the squares in this figure, we need to look for squares of all sizes. First, let's count the small squares - there are 12 of them. But we can also find bigger squares made up of smaller squares! There's 1 big square in the middle (made of 4 small squares). And there are 4 squares of medium size (each made of 4 small squares arranged in a 2×2 grid). So in total, we have 12 + 1 + 4 = 17 squares. Correct answer is C",
         "imageData": "geometry-26"
       },
       "metadata": {
@@ -5472,7 +5434,7 @@
           "14"
         ],
         "correctAnswer": "B",
-        "explanation": "Without seeing the actual figure, I'll provide a general explanation for counting the minimum number of cubes in a 3D structure. When asked for 'at least how many cubes', we need to count the minimum number of cubes required to create the visible structure, considering that some cubes might be hidden behind others. Based on the given answer choices, the structure likely requires at least 12 cubes to form the visible shape.",
+        "explanation": "To count the cubes in this figure, look at each level. There are 9 cubes at the bottom level. There are 4 cubes at the top level. Adding these together: 9 + 4 = 13 cubes in total.",
         "imageData": "geometry-27"
       },
       "metadata": {
@@ -5554,7 +5516,7 @@
           {"type": "image", "value": "geometry-29-d"}
         ],
         "correctAnswer": "B",
-        "explanation": "Without seeing the actual pattern, I'll provide a general explanation for pattern recognition problems. These problems typically involve identifying a repeating sequence of shapes, rotations, or transformations. Based on the given answer choices, the pattern likely follows a sequence where the next shape in the pattern is represented by option B.",
+        "explanation": "Look at the pattern: In figure 1, the green square is at the top. In figure 2, it moves to the bottom. In figure 2, the blue triangle is at the top. In figure 3, it moves to the bottom. Following this pattern, the black circle at the top of figure 3 will move to the bottom in figure 4. Correct answer is C",
         "imageData": "geometry-29"
       },
       "metadata": {
