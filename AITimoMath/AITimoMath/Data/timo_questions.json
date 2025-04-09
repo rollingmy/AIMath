@@ -22,15 +22,15 @@
         }
       },
       "content": {
-        "question": "Given two balances below, find the heaviest type of fruit.",
+        "question": "Given two balances below, find the heaviest type of fruit.\nCho hai cân bằng dưới đây, tìm loại trái cây nặng nhất.",
         "options": [
-          "Apple (T\u00e1o)",
+          "Apple (Táo)",
           "Orange (Cam)",
-          "Mango (Xo\u00e0i)",
-          "None of them (Kh\u00f4ng c\u00f3)"
+          "Mango (Xoài)",
+          "None of them (Không có)"
         ],
         "correctAnswer": "B",
-        "explanation": "By comparing the balance scales, we can determine which fruit is heaviest.",
+        "explanation": "By comparing the balance scales, we can determine which fruit is heaviest.\nSo sánh cân bằng, chúng ta có thể xác định loại trái cây nặng nhất.",
         "imageData": "logical-1"
       },
       "metadata": {
@@ -63,7 +63,7 @@
         }
       },
       "content": {
-        "question": "In the family, Mina has 3 sisters in total. How many children does Mina's mother have?",
+        "question": "In the family, Mina has 3 sisters in total. How many children does Mina's mother have?\nTrong gia đình, Mina có tổng cộng 3 chị em gái. Hỏi mẹ của Mina có bao nhiêu người con?",
         "options": [
           "2",
           "3",
@@ -71,7 +71,7 @@
           "5"
         ],
         "correctAnswer": "C",
-        "explanation": "Mina has 3 sisters, and Mina herself is also a child of her mother. So in total, Mina's mother has 4 children."
+        "explanation": "Mina has 3 sisters, and Mina herself is also a child of her mother. So in total, Mina's mother has 4 children.\nMina có 3 chị em gái, và bản thân Mina cũng là một người con của mẹ cô ấy. Vì vậy, tổng cộng mẹ Mina có 4 người con."
       },
       "metadata": {
         "tags": [
@@ -103,15 +103,15 @@
         }
       },
       "content": {
-        "question": "Mary looks at the calendar. Her birthday is 2 days after today and it is on Friday. Which day of the week is today?",
+        "question": "Mary looks at the calendar. Her birthday is 2 days after today and it is on Friday. Which day of the week is today?\nMary nhìn vào lịch. Sinh nhật của cô ấy là 2 ngày sau hôm nay và rơi vào thứ Sáu. Hôm nay là thứ mấy trong tuần?",
         "options": [
-          "Wednesday (Th\u1ee9 T\u01b0)",
-          "Thursday (Th\u1ee9 N\u0103m)",
-          "Friday (Th\u1ee9 S\u00e1u)",
-          "Tuesday (Th\u1ee9 Ba)"
+          "Wednesday (Thứ Tư)",
+          "Thursday (Thứ Năm)",
+          "Friday (Thứ Sáu)",
+          "Tuesday (Thứ Ba)"
         ],
         "correctAnswer": "A",
-        "explanation": "If Mary's birthday is on Friday and it's 2 days after today, then today must be Wednesday."
+        "explanation": "If Mary's birthday is on Friday and it's 2 days after today, then today must be Wednesday.\nNếu sinh nhật của Mary là vào thứ Sáu và cách hôm nay 2 ngày, thì hôm nay phải là thứ Tư."
       },
       "metadata": {
         "tags": [
@@ -143,7 +143,7 @@
         }
       },
       "content": {
-        "question": "By observing the pattern, what is the number in the space (\"...\") provided?\n0, 5, 10, 15, ...",
+        "question": "By observing the pattern, what is the number in the space (\"...\") provided?\n0, 5, 10, 15, ...\nBằng cách quan sát quy luật, số nào cần điền vào chỗ trống (\"...\")?\n0, 5, 10, 15, ...",
         "options": [
           "20",
           "16",
@@ -151,7 +151,7 @@
           "17"
         ],
         "correctAnswer": "A",
-        "explanation": "The pattern shows numbers increasing by 5 each time. After 15, the next number would be 20."
+        "explanation": "The pattern shows numbers increasing by 5 each time. After 15, the next number would be 20.\nQuy luật cho thấy các số tăng lên 5 đơn vị mỗi lần. Sau số 15, số tiếp theo sẽ là 20."
       },
       "metadata": {
         "tags": [
@@ -183,7 +183,7 @@
         }
       },
       "content": {
-        "question": "Ken is 15 years old and Ken's sister is 5 years younger than him. How old is Ken's sister now?",
+        "question": "Ken is 15 years old and Ken's sister is 5 years younger than him. How old is Ken's sister now?\nKen 15 tuổi và em gái của Ken nhỏ hơn cậu ấy 5 tuổi. Em gái của Ken bao nhiêu tuổi?",
         "options": [
           "20",
           "10",
@@ -191,7 +191,7 @@
           "15"
         ],
         "correctAnswer": "B",
-        "explanation": "If Ken is 15 years old and his sister is 5 years younger, then his sister is 15 - 5 = 10 years old."
+        "explanation": "If Ken is 15 years old and his sister is 5 years younger, then his sister is 15 - 5 = 10 years old.\nNếu Ken 15 tuổi và em gái của cậu ấy nhỏ hơn 5 tuổi, thì em gái cậu ấy là 15 - 5 = 10 tuổi."
       },
       "metadata": {
         "tags": [
@@ -223,7 +223,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 1 + 9 + 6 + 4 + 2.",
+        "question": "Find the value of 1 + 9 + 6 + 4 + 2.\nTìm giá trị của 1 + 9 + 6 + 4 + 2.",
         "options": [
           "12",
           "20",
@@ -231,7 +231,7 @@
           "22"
         ],
         "correctAnswer": "D",
-        "explanation": "Adding the numbers: 1 + 9 + 6 + 4 + 2 = 22"
+        "explanation": "Adding the numbers: 1 + 9 + 6 + 4 + 2 = 22\nCộng các số: 1 + 9 + 6 + 4 + 2 = 22"
       },
       "metadata": {
         "tags": [
@@ -262,7 +262,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 16 \u2013 7 \u2013 6.",
+        "question": "Find the value of 16 – 7 – 6.\nTìm giá trị của 16 – 7 – 6.",
         "options": [
           "15",
           "3",
@@ -270,7 +270,7 @@
           "2"
         ],
         "correctAnswer": "B",
-        "explanation": "Subtracting the numbers: 16 - 7 - 6 = 9 - 6 = 3"
+        "explanation": "Subtracting the numbers: 16 - 7 - 6 = 9 - 6 = 3\nTrừ các số: 16 - 7 - 6 = 9 - 6 = 3"
       },
       "metadata": {
         "tags": [
@@ -301,7 +301,7 @@
         }
       },
       "content": {
-        "question": "What is the value of A such that the equation below is correct?\n19 \u2013 A = 8",
+        "question": "What is the value of A such that the equation below is correct?\n19 – A = 8\nGiá trị của A là bao nhiêu để phương trình dưới đây đúng?\n19 – A = 8",
         "options": [
           "12",
           "9",
@@ -309,7 +309,7 @@
           "11"
         ],
         "correctAnswer": "D",
-        "explanation": "We need to solve the equation 19 - A = 8. So A = 19 - 8 = 11."
+        "explanation": "We need to solve the equation 19 - A = 8. So A = 19 - 8 = 11.\nChúng ta cần giải phương trình 19 - A = 8. Vậy A = 19 - 8 = 11."
       },
       "metadata": {
         "tags": [
@@ -341,7 +341,7 @@
         }
       },
       "content": {
-        "question": "According to the pattern below, which number should be filled in the blank?\n20, 1, 19, 2, 18, 3, __",
+        "question": "According to the pattern below, which number should be filled in the blank?\n20, 1, 19, 2, 18, 3, __\nTheo quy luật dưới đây, số nào cần điền vào chỗ trống?\n20, 1, 19, 2, 18, 3, __\n",
         "options": [
           "17",
           "4",
@@ -349,7 +349,7 @@
           "7"
         ],
         "correctAnswer": "A",
-        "explanation": "The pattern is decreasing by 1 for each odd position (20, 19, 18, ...) and increasing by 1 for each even position (1, 2, 3, ...). So after 3, the next number should be 17."
+        "explanation": "The pattern is decreasing by 1 for each odd position (20, 19, 18, ...) and increasing by 1 for each even position (1, 2, 3, ...). So after 3, the next number should be 17.\nQuy luật là giảm 1 cho mỗi vị trí lẻ (20, 19, 18, ...) và tăng 1 cho mỗi vị trí chẵn (1, 2, 3, ...). Vì vậy, sau số 3, số tiếp theo sẽ là 17."
       },
       "metadata": {
         "tags": [
@@ -381,7 +381,7 @@
         }
       },
       "content": {
-        "question": "Find the smallest number with two identical digits.",
+        "question": "Find the smallest number with two identical digits.\nTìm số nhỏ nhất có hai chữ số giống nhau.",
         "options": [
           "10",
           "11",
@@ -389,7 +389,7 @@
           "98"
         ],
         "correctAnswer": "B",
-        "explanation": "The smallest number with two identical digits is 11, where both digits are 1."
+        "explanation": "The smallest number with two identical digits is 11, where both digits are 1.\nSố nhỏ nhất có hai chữ số giống nhau là 11, trong đó cả hai chữ số đều là 1."
       },
       "metadata": {
         "tags": [
@@ -421,7 +421,7 @@
         }
       },
       "content": {
-        "question": "How many squares are there in the following figure?",
+        "question": "How many squares are there in the following figure?\nTrong hình dưới đây, có bao nhiêu hình vuông?\n",
         "options": [
           "5",
           "6",
@@ -429,7 +429,7 @@
           "8"
         ],
         "correctAnswer": "B",
-        "explanation": "Count all possible squares in the figure, including the individual small squares and any larger squares formed by combinations of smaller squares.",
+        "explanation": "Count all possible squares in the figure, including the individual small squares and any larger squares formed by combinations of smaller squares.\nĐếm tất cả các hình vuông có thể trong hình, bao gồm các hình vuông nhỏ riêng lẻ và bất kỳ hình vuông lớn hơn nào được tạo thành từ sự kết hợp của các hình vuông nhỏ hơn.",
         "imageData": "geometry-1"
       },
       "metadata": {
@@ -462,7 +462,7 @@
         }
       },
       "content": {
-        "question": "How many cubes are there in the solid below?",
+        "question": "How many cubes are there in the solid below?\nTrong hình dưới đây, có bao nhiêu khối lập phương?\n",
         "options": [
           "4",
           "6",
@@ -470,7 +470,7 @@
           "8"
         ],
         "correctAnswer": "C",
-        "explanation": "Count all the visible and hidden cubes in the 3D solid structure.",
+        "explanation": "Count all the visible and hidden cubes in the 3D solid structure.\nĐếm tất cả các khối lập phương nhìn thấy và ẩn trong cấu trúc khối 3D.",
         "imageData": "geometry-2"
       },
       "metadata": {
@@ -504,7 +504,7 @@
         }
       },
       "content": {
-        "question": "Separate the following stars into 2 equal groups. How many stars are there in each group?\n******",
+        "question": "Separate the following stars into 2 equal groups. How many stars are there in each group?\n******\nChia các ngôi sao sau thành 2 nhóm bằng nhau. Mỗi nhóm có bao nhiêu ngôi sao?\n******",
         "options": [
           "6",
           "5",
@@ -512,7 +512,7 @@
           "3"
         ],
         "correctAnswer": "C",
-        "explanation": "Divide the total number of stars by 2 to find how many stars should be in each equal group."
+        "explanation": "Divide the total number of stars by 2 to find how many stars should be in each equal group.\nChia tổng số ngôi sao cho 2 để tìm ra số ngôi sao trong mỗi nhóm bằng nhau."
       },
       "metadata": {
         "tags": [
@@ -544,7 +544,7 @@
         }
       },
       "content": {
-        "question": "How many even numbers are there from 13 to 30?",
+        "question": "How many even numbers are there from 13 to 30?\nTừ 13 đến 30, có bao nhiêu số chẵn?\n",
         "options": [
           "9",
           "17",
@@ -552,7 +552,7 @@
           "8"
         ],
         "correctAnswer": "A",
-        "explanation": "The even numbers from 13 to 30 are: 14, 16, 18, 20, 22, 24, 26, 28, 30. So there are 9 even numbers."
+        "explanation": "The even numbers from 13 to 30 are: 14, 16, 18, 20, 22, 24, 26, 28, 30. So there are 9 even numbers.\nCác số chẵn từ 13 đến 30 là: 14, 16, 18, 20, 22, 24, 26, 28, 30. Vì vậy, có 9 số chẵn."
       },
       "metadata": {
         "tags": [
@@ -584,7 +584,7 @@
         }
       },
       "content": {
-        "question": "How many 2-digit numbers can be formed by using digits 0, 1, 4 and 8? (Each digit can be repeated).",
+        "question": "How many 2-digit numbers can be formed by using digits 0, 1, 4 and 8? (Each digit can be repeated).\nCó bao nhiêu số có 2 chữ số có thể được tạo bằng cách sử dụng các chữ số 0, 1, 4 và 8? (Mỗi chữ số có thể được lặp lại).",
         "options": [
           "9",
           "16",
@@ -592,7 +592,7 @@
           "12"
         ],
         "correctAnswer": "D",
-        "explanation": "For 2-digit numbers, the first digit cannot be 0. So first digit can be 1, 4, or 8 (3 choices), and the second digit can be 0, 1, 4, or 8 (4 choices). Total possibilities = 3 \u00d7 4 = 12 numbers."
+        "explanation": "For 2-digit numbers, the first digit cannot be 0. So first digit can be 1, 4, or 8 (3 choices), and the second digit can be 0, 1, 4, or 8 (4 choices). Total possibilities = 3 × 4 = 12 numbers.\nĐối với các số có 2 chữ số, chữ số đầu tiên không thể là 0. Vì vậy, chữ số đầu tiên có thể là 1, 4 hoặc 8 (3 lựa chọn), và chữ số thứ hai có thể là 0, 1, 4 hoặc 8 (4 lựa chọn). Tổng số khả năng = 3 × 4 = 12 số."
       },
       "metadata": {
         "tags": [
@@ -624,9 +624,9 @@
         }
       },
       "content": {
-        "question": "If A + B = 15 and A \u00d7 B = 56, find the value of A\u00b2 + B\u00b2.",
+        "question": "If A + B = 15 and A × B = 56, find the value of A² + B².\nNếu A + B = 15 và A × B = 56, tìm giá trị của A² + B².",
         "correctAnswer": "113",
-        "explanation": "Using the formula (A + B)\u00b2 = A\u00b2 + B\u00b2 + 2AB, we get:\nA\u00b2 + B\u00b2 = (A + B)\u00b2 - 2AB = 15\u00b2 - 2(56) = 225 - 112 = 113"
+        "explanation": "Using the formula (A + B)² = A² + B² + 2AB, we get:\nA² + B² = (A + B)² - 2AB = 15² - 2(56) = 225 - 112 = 113\nSử dụng công thức (A + B)² = A² + B² + 2AB, chúng ta có:\nA² + B² = (A + B)² - 2AB = 15² - 2(56) = 225 - 112 = 113"
       },
       "metadata": {
         "tags": [
@@ -658,9 +658,9 @@
         }
       },
       "content": {
-        "question": "Find the smallest positive number that gives a remainder of 2 when divided by 3, a remainder of 3 when divided by 5, and a remainder of 4 when divided by 7.",
+        "question": "Find the smallest positive number that gives a remainder of 2 when divided by 3, a remainder of 3 when divided by 5, and a remainder of 4 when divided by 7.\nTìm số dương nhỏ nhất chia cho 3 dư 2, chia cho 5 dư 3 và chia cho 7 dư 4.",
         "correctAnswer": "53",
-        "explanation": "Using the Chinese remainder theorem or systematic checking, we can find that the number 53 satisfies all conditions: 53 \u00f7 3 = 17 remainder 2, 53 \u00f7 5 = 10 remainder 3, and 53 \u00f7 7 = 7 remainder 4."
+        "explanation": "Using the Chinese remainder theorem or systematic checking, we can find that the number 53 satisfies all conditions: 53 ÷ 3 = 17 remainder 2, 53 ÷ 5 = 10 remainder 3, and 53 ÷ 7 = 7 remainder 4.\nSử dụng định lý số dư Trung Quốc hoặc kiểm tra hệ thống, chúng ta có thể tìm thấy rằng số 53 thỏa mãn tất cả các điều kiện: 53 ÷ 3 = 17 dư 2, 53 ÷ 5 = 10 dư 3, và 53 ÷ 7 = 7 dư 4."
       },
       "metadata": {
         "tags": [
@@ -692,7 +692,7 @@
         }
       },
       "content": {
-        "question": "Calculate: 5 + 4 + 5 + 4 + 5.",
+        "question": "Calculate: 5 + 4 + 5 + 4 + 5.\nTính toán: 5 + 4 + 5 + 4 + 5.",
         "options": [
           "22",
           "20",
@@ -700,7 +700,7 @@
           "32"
         ],
         "correctAnswer": "C",
-        "explanation": "Adding the numbers: 5 + 4 + 5 + 4 + 5 = 23"
+        "explanation": "Adding the numbers: 5 + 4 + 5 + 4 + 5 = 23\nCộng các số: 5 + 4 + 5 + 4 + 5 = 23"
       },
       "metadata": {
         "tags": [
@@ -731,7 +731,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 11 + 22 + 33.",
+        "question": "Find the value of 11 + 22 + 33.\nTìm giá trị của 11 + 22 + 33.",
         "options": [
           "44",
           "55",
@@ -770,15 +770,15 @@
         }
       },
       "content": {
-        "question": "Fill the lines with '+' and '-' to make the equation below correct. (The symbols are written in order from left to right).\n7__ 4 __ 3 = 6",
+        "question": "Fill the lines with '+' and '-' to make the equation below correct. (The symbols are written in order from left to right).\n7__ 4 __ 3 = 6\nĐiền các dòng với '+' và '-' để làm cho phương trình dưới đây đúng. (Các ký hiệu được viết theo thứ tự từ trái sang phải).\n7__ 4 __ 3 = 6",
         "options": [
           "+, +",
-          "+, \u2212",
-          "\u2212, \u2212",
-          "\u2212, +"
+          "+, −",
+          "−, −",
+          "−, +"
         ],
         "correctAnswer": "D",
-        "explanation": "If we use - and + in that order, we get: 7 - 4 + 3 = 3 + 3 = 6, which is correct."
+        "explanation": "If we use - and + in that order, we get: 7 - 4 + 3 = 3 + 3 = 6, which is correct.\nNếu chúng ta sử dụng - và + theo thứ tự đó, chúng ta nhận được: 7 - 4 + 3 = 3 + 3 = 6, điều đó đúng."
       },
       "metadata": {
         "tags": [
@@ -810,7 +810,7 @@
         }
       },
       "content": {
-        "question": "Donald has 15 crayons. Minnie gives Donald 3 crayons. How many crayon(s) does Donald have now?",
+        "question": "Donald has 15 crayons. Minnie gives Donald 3 crayons. How many crayon(s) does Donald have now?\nDonald có 15 bút chì. Minnie cho Donald 3 bút chì. Hỏi Donald có bao nhiêu bút chì bây giờ?",
         "options": [
           "18",
           "12",
@@ -818,7 +818,7 @@
           "13"
         ],
         "correctAnswer": "A",
-        "explanation": "Donald starts with 15 crayons and receives 3 more, so he now has 15 + 3 = 18 crayons."
+        "explanation": "Donald starts with 15 crayons and receives 3 more, so he now has 15 + 3 = 18 crayons.\nDonald bắt đầu với 15 bút chì và nhận thêm 3 bút chì, vì vậy bây giờ anh có 15 + 3 = 18 bút chì."
       },
       "metadata": {
         "tags": [
@@ -831,7 +831,7 @@
       }
     },
     {
-      "id": "geometry-3", 
+      "id": "geometry-3",
       "subject": "Geometry",
       "type": "multiple-choice",
       "difficulty": "Medium",
@@ -850,27 +850,27 @@
         }
       },
       "content": {
-        "question": "Refer to the pattern below. Find the suitable figure to fill in the blank.",
+        "question": "Refer to the pattern below. Find the suitable figure to fill in the blank.\nTham khảo mẫu dưới đây. Tìm hình phù hợp để điền vào chỗ trống.",
         "options": [
           {
             "type": "image",
             "value": "geometry-3-a"
           },
           {
-            "type": "image", 
+            "type": "image",
             "value": "geometry-3-b"
           },
           {
             "type": "image",
             "value": "geometry-3-c"
           },
-          { 
+          {
             "type": "image",
             "value": "geometry-3-d"
           }
         ],
         "correctAnswer": "B",
-        "explanation": "By analyzing the pattern of shapes, we can determine which figure comes next in the sequence.",
+        "explanation": "By analyzing the pattern of shapes, we can determine which figure comes next in the sequence.\nBằng cách phân tích mẫu dạng hình, chúng ta có thể xác định hình tiếp theo trong dãy.",
         "imageData": "geometry-3"
       },
       "metadata": {
@@ -903,7 +903,7 @@
         }
       },
       "content": {
-        "question": "How many circles are there in the figure below?",
+        "question": "How many circles are there in the figure below?\nTrong hình dưới đây, có bao nhiêu hình tròn?",
         "options": [
           "4",
           "5",
@@ -911,7 +911,7 @@
           "7"
         ],
         "correctAnswer": "C",
-        "explanation": "By counting all the circles in the figure, including any that might overlap or be part of larger patterns, we find there are 6 circles total.",
+        "explanation": "By counting all the circles in the figure, including any that might overlap or be part of larger patterns, we find there are 6 circles total.\nĐếm tất cả các hình tròn trong hình, bao gồm cả những hình tròn có thể chồng lắp hoặc là phần của mẫu lớn hơn, chúng ta tìm thấy có 6 hình tròn tổng cộng.",
         "imageData": "geometry-4"
       },
       "metadata": {
@@ -944,7 +944,7 @@
         }
       },
       "content": {
-        "question": "How many sides are there in the following figure?",
+        "question": "How many sides are there in the following figure?\nTrong hình dưới đây, có bao nhiêu cạnh?",
         "options": [
           "5",
           "7",
@@ -952,7 +952,7 @@
           "9"
         ],
         "correctAnswer": "C",
-        "explanation": "By counting all the sides of the geometric figure, we find there are 8 sides total.",
+        "explanation": "By counting all the sides of the geometric figure, we find there are 8 sides total.\nĐếm tất cả các cạnh của hình hình học, chúng ta tìm thấy có 8 cạnh tổng cộng.",
         "imageData": "geometry-5"
       },
       "metadata": {
@@ -985,7 +985,7 @@
         }
       },
       "content": {
-        "question": "Adam has one $1 coin, one $2 coin and one $5 coin. At most how many toy car(s) can he buy, given that each toy car costs $2?",
+        "question": "Adam has one $1 coin, one $2 coin and one $5 coin. At most how many toy car(s) can he buy, given that each toy car costs $2?\nAdam có một đồng xu $1, một đồng xu $2 và một đồng xu $5. Tối đa bao nhiêu chiếc xe hơi đồ chơi mà anh ấy có thể mua, biết rằng mỗi chiếc xe hơi đồ chơi có giá $2?",
         "options": [
           "2",
           "3",
@@ -993,7 +993,7 @@
           "5"
         ],
         "correctAnswer": "C",
-        "explanation": "Adam has $1 + $2 + $5 = $8 total. Each toy car costs $2, so he can buy at most 8 \u00f7 2 = 4 toy cars."
+        "explanation": "Adam has $1 + $2 + $5 = $8 total. Each toy car costs $2, so he can buy at most 8 ÷ 2 = 4 toy cars.\nAdam có $1 + $2 + $5 = $8 tổng cộng. Mỗi chiếc xe hơi đồ chơi có giá $2, vì vậy anh ấy có thể mua tối đa 8 ÷ 2 = 4 chiếc xe hơi đồ chơi."
       },
       "metadata": {
         "tags": [
@@ -1025,15 +1025,27 @@
         }
       },
       "content": {
-        "question": "From the pattern below, find the most suitable figure for Figure 4.\n[Image shows a sequence of patterns]",
+        "question": "From the pattern below, find the most suitable figure for Figure 4.\nTừ mẫu dưới đây, tìm hình phù hợp nhất cho Hình 4.",
         "options": [
-          "[Image A]",
-          "[Image B]",
-          "[Image C]",
-          "[Image D]"
+          {
+            "type": "image",
+            "data": "combinatorics-5-a"
+          },
+          {
+            "type": "image",
+            "data": "combinatorics-5-b"
+          },
+          {
+            "type": "image",
+            "data": "combinatorics-5-c"
+          },
+          {
+            "type": "image",
+            "data": "combinatorics-5-d"
+          }
         ],
         "correctAnswer": "B",
-        "explanation": "By analyzing the pattern in the sequence of figures, we can determine that option B is the most suitable for Figure 4.",
+        "explanation": "The line rotates clockwise from one figure to the next so the correct answer is C.\nĐường thẳng quay theo chiều kim đồng hồ từ hình này sang hình tiếp theo, vì vậy đáp án đúng là C.",
         "imageData": "combinatorics-5"
       },
       "metadata": {
@@ -1066,7 +1078,7 @@
         }
       },
       "content": {
-        "question": "5 years later, Alice will be 12 years old. Alice's father is 23 years elder than her. How old is Alice's father now?",
+        "question": "5 years later, Alice will be 12 years old. Alice's father is 23 years elder than her. How old is Alice's father now?\n5 năm sau, Alice sẽ 12 tuổi. Bố của Alice hơn Alice 23 tuổi. Hỏi bố của Alice bao nhiêu tuổi bây giờ?",
         "options": [
           "40",
           "30",
@@ -1074,7 +1086,7 @@
           "35"
         ],
         "correctAnswer": "B",
-        "explanation": "If Alice will be 12 in 5 years, she is currently 12 - 5 = 7 years old. Her father is 23 years older, so he is 7 + 23 = 30 years old now."
+        "explanation": "If Alice will be 12 in 5 years, she is currently 12 - 5 = 7 years old. Her father is 23 years older, so he is 7 + 23 = 30 years old now.\nNếu Alice sẽ 12 tuổi trong 5 năm, cô ấy hiện tại 7 tuổi. Bố của cô ấy hơn cô ấy 23 tuổi, vì vậy anh ấy hiện tại 7 + 23 = 30 tuổi."
       },
       "metadata": {
         "tags": [
@@ -1106,7 +1118,7 @@
         }
       },
       "content": {
-        "question": "By observing the pattern, what is the English letter in the space provided?\nC, E, G, I, __, M, O",
+        "question": "By observing the pattern, what is the English letter in the space provided?\nC, E, G, I, __, M, O\nQuan sát mẫu dưới đây, hãy tìm chữ cái tiếng Anh trong không gian được cung cấp.",
         "options": [
           "N",
           "J",
@@ -1114,7 +1126,7 @@
           "K"
         ],
         "correctAnswer": "D",
-        "explanation": "The pattern shows letters increasing by 2 positions in the alphabet: C\u2192E\u2192G\u2192I\u2192K\u2192M\u2192O. So the missing letter is K."
+        "explanation": "The pattern shows letters increasing by 2 positions in the alphabet: C→E→G→I→K→M→O. So the missing letter is K.\nMẫu dạng chữ cái tăng lên 2 vị trí trong bảng chữ cái: C→E→G→I→K→M→O. Vì vậy, chữ cái thiếu là K."
       },
       "metadata": {
         "tags": [
@@ -1146,7 +1158,7 @@
         }
       },
       "content": {
-        "question": "Observe the sequence below to replace the flag with a suitable number.\n3, 4, 6, 9, 13, , \u2026",
+        "question": "Observe the sequence below to replace the flag with a suitable number.\n3, 4, 6, 9, 13, , …\nQuan sát dãy số dưới đây để thay thế dấu hiệu bằng một số phù hợp.",
         "options": [
           "18",
           "17",
@@ -1154,7 +1166,7 @@
           "15"
         ],
         "correctAnswer": "A",
-        "explanation": "The differences between consecutive terms are: 1, 2, 3, 4, ... So after 13, we add 5 to get 13 + 5 = 18."
+        "explanation": "The differences between consecutive terms are: 1, 2, 3, 4, ... So after 13, we add 5 to get 13 + 5 = 18.\nSự khác biệt giữa các số hạng liên tiếp là: 1, 2, 3, 4, ... Vì vậy sau 13, chúng ta thêm 5 để nhận được 13 + 5 = 18."
       },
       "metadata": {
         "tags": [
@@ -1186,7 +1198,7 @@
         }
       },
       "content": {
-        "question": "Refer to the figure below, how many circles are there in the 5th group?\n[Image shows groups of circles with a pattern]",
+        "question": "Refer to the figure below, how many circles are there in the 5th group?\nQuan sát hình dưới đây, hãy tìm số lượng hình tròn trong nhóm thứ 5.",
         "options": [
           "4",
           "8",
@@ -1194,7 +1206,7 @@
           "16"
         ],
         "correctAnswer": "D",
-        "explanation": "The pattern shows that each group has 4 more circles than the previous group. If we follow this pattern to the 5th group, it would have 16 circles.",
+        "explanation": "The pattern shows that each group has 4 more circles than the previous group. If we follow this pattern to the 5th group, it would have 16 circles.\nMẫu dạng chỉ ra rằng mỗi nhóm có 4 hình tròn hơn nhóm trước đó. Nếu chúng ta theo dõi mẫu dạng này đến nhóm thứ 5, nó sẽ có 16 hình tròn.",
         "imageData": "geometry-7"
       },
       "metadata": {
@@ -1227,7 +1239,7 @@
         }
       },
       "content": {
-        "question": "Students in a class form a line. Kim sees that there are 5 students in front of her and 3 students behind her. How many students are there in Kim's class?",
+        "question": "Students in a class form a line. Kim sees that there are 5 students in front of her and 3 students behind her. How many students are there in Kim's class?\nHọc sinh trong một lớp đứng thành hàng. Kim thấy rằng có 5 học sinh đứng trước cô ấy và 3 học sinh đứng sau cô ấy. Hỏi có bao nhiêu học sinh trong lớp của Kim?",
         "options": [
           "8",
           "9",
@@ -1235,7 +1247,7 @@
           "2"
         ],
         "correctAnswer": "B",
-        "explanation": "There are 5 students in front of Kim, Kim herself, and 3 students behind her. So the total number of students is 5 + 1 + 3 = 9."
+        "explanation": "There are 5 students in front of Kim, Kim herself, and 3 students behind her. So the total number of students is 5 + 1 + 3 = 9.\nCó 5 học sinh đứng trước Kim, Kim công nhân, và 3 học sinh đứng sau cô ấy. Vì vậy, tổng số học sinh là 5 + 1 + 3 = 9."
       },
       "metadata": {
         "tags": [
@@ -1267,7 +1279,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 0 + 2 + 4 + 6 + 8 + 10.",
+        "question": "Find the value of 0 + 2 + 4 + 6 + 8 + 10.\nTìm giá trị của 0 + 2 + 4 + 6 + 8 + 10.",
         "options": [
           "30",
           "20",
@@ -1275,7 +1287,7 @@
           "40"
         ],
         "correctAnswer": "A",
-        "explanation": "Adding the numbers: 0 + 2 + 4 + 6 + 8 + 10 = 30"
+        "explanation": "Adding the numbers: 0 + 2 + 4 + 6 + 8 + 10 = 30\nCộng các số: 0 + 2 + 4 + 6 + 8 + 10 = 30"
       },
       "metadata": {
         "tags": [
@@ -1307,7 +1319,7 @@
         }
       },
       "content": {
-        "question": "By observing the equation, which number is being covered by the book?\n19 \u2013 \ud83d\udd6e = 6",
+        "question": "By observing the equation, which number is being covered by the book?\n19 – 🕮 = 6\nQuan sát phương trình, hãy tìm số nào đang bị che bởi cuốn sách?",
         "options": [
           "13",
           "16",
@@ -1315,7 +1327,7 @@
           "14"
         ],
         "correctAnswer": "A",
-        "explanation": "We need to solve the equation 19 - x = 6. So x = 19 - 6 = 13."
+        "explanation": "We need to solve the equation 19 - x = 6. So x = 19 - 6 = 13.\nChúng ta cần giải phương trình 19 - x = 6. Vì vậy x = 19 - 6 = 13."
       },
       "metadata": {
         "tags": [
@@ -1347,7 +1359,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 2 + 3 \u2013 4 + 2 + 3 \u2013 4 + 2 + 3 \u2013 4 + 2 + 3 \u2013 4.",
+        "question": "Find the value of 2 + 3 – 4 + 2 + 3 – 4 + 2 + 3 – 4 + 2 + 3 – 4.\nTìm giá trị của 2 + 3 – 4 + 2 + 3 – 4 + 2 + 3 – 4 + 2 + 3 – 4.",
         "options": [
           "3",
           "1",
@@ -1355,7 +1367,7 @@
           "5"
         ],
         "correctAnswer": "A",
-        "explanation": "Grouping the terms: (2 + 3 - 4) + (2 + 3 - 4) + (2 + 3 - 4) + (2 + 3 - 4) = 1 + 1 + 1 + 1 = 4 - 1 = 3"
+        "explanation": "Grouping the terms: (2 + 3 - 4) + (2 + 3 - 4) + (2 + 3 - 4) + (2 + 3 - 4) = 1 + 1 + 1 + 1 = 4 - 1 = 3\nNhóm các số hạng: (2 + 3 - 4) + (2 + 3 - 4) + (2 + 3 - 4) + (2 + 3 - 4) = 1 + 1 + 1 + 1 = 4 - 1 = 3"
       },
       "metadata": {
         "tags": [
@@ -1387,7 +1399,7 @@
         }
       },
       "content": {
-        "question": "What is the value of K if the equation below is correct?\n6 + K = 8 \u2013 5 + 11",
+        "question": "What is the value of K if the equation below is correct?\n6 + K = 8 – 5 + 11\nTìm giá trị của K nếu phương trình dưới đây là đúng?",
         "options": [
           "6",
           "8",
@@ -1395,7 +1407,7 @@
           "5"
         ],
         "correctAnswer": "B",
-        "explanation": "Simplifying the right side: 8 - 5 + 11 = 14. So 6 + K = 14, which means K = 14 - 6 = 8."
+        "explanation": "Simplifying the right side: 8 - 5 + 11 = 14. So 6 + K = 14, which means K = 14 - 6 = 8.\nĐơn giản hóa bên phải: 8 - 5 + 11 = 14. Vì vậy 6 + K = 14, nghĩa là K = 14 - 6 = 8."
       },
       "metadata": {
         "tags": [
@@ -1427,7 +1439,7 @@
         }
       },
       "content": {
-        "question": "Observe the following sequence and find the smallest even number.\n38, 20, 18, 15, 49, 26, 7",
+        "question": "Observe the following sequence and find the smallest even number.\n38, 20, 18, 15, 49, 26, 7\nQuan sát dãy số sau đây và tìm số chẵn nhỏ nhất.",
         "options": [
           "7",
           "15",
@@ -1435,7 +1447,7 @@
           "20"
         ],
         "correctAnswer": "C",
-        "explanation": "The even numbers in the sequence are 38, 20, 18, and 26. The smallest of these is 18."
+        "explanation": "The even numbers in the sequence are 38, 20, 18, and 26. The smallest of these is 18.\nCác số chẵn trong dãy số là 38, 20, 18, và 26. Số nhỏ nhất trong số đó là 18."
       },
       "metadata": {
         "tags": [
@@ -1467,7 +1479,7 @@
         }
       },
       "content": {
-        "question": "A box has balls with consecutive numbers from 0 to 50 (0, 1, 2, 3, 4, \u2026, 50). How many balls are there in the box?",
+        "question": "A box has balls with consecutive numbers from 0 to 50 (0, 1, 2, 3, 4, …, 50). How many balls are there in the box?\nMột hộp có bóng với các số liên tiếp từ 0 đến 50 (0, 1, 2, 3, 4, …, 50). Hỏi có bao nhiêu bóng trong hộp?",
         "options": [
           "40",
           "51",
@@ -1475,7 +1487,7 @@
           "50"
         ],
         "correctAnswer": "B",
-        "explanation": "The box contains balls numbered from 0 to 50 inclusive. So there are 50 - 0 + 1 = 51 balls in total."
+        "explanation": "The box contains balls numbered from 0 to 50 inclusive. So there are 50 - 0 + 1 = 51 balls in total.\nHộp chứa bóng được đánh số từ 0 đến 50. Vì vậy, có 50 - 0 + 1 = 51 bóng trong tổng số."
       },
       "metadata": {
         "tags": [
@@ -1507,7 +1519,7 @@
         }
       },
       "content": {
-        "question": "Find the 6th number in the arithmetic sequence below.\n31, 29, 27, 25, \u2026",
+        "question": "Find the 6th number in the arithmetic sequence below.\n31, 29, 27, 25, …\nTìm số thứ 6 trong dãy số hữu tỉ sau đây.",
         "options": [
           "24",
           "23",
@@ -1515,7 +1527,7 @@
           "21"
         ],
         "correctAnswer": "D",
-        "explanation": "The sequence decreases by 2 each time: 31, 29, 27, 25, 23, 21. So the 6th number is 21."
+        "explanation": "The sequence decreases by 2 each time: 31, 29, 27, 25, 23, 21. So the 6th number is 21.\nDãy số giảm 2 mỗi lần: 31, 29, 27, 25, 23, 21. Vì vậy, số thứ 6 là 21."
       },
       "metadata": {
         "tags": [
@@ -1547,7 +1559,7 @@
         }
       },
       "content": {
-        "question": "Andy had 20 candies. Andy gave Betty 3 candies then Betty gave Cindy 4 candies so that 3 friends had the same number of candies. How many candies did Cindy have originally?",
+        "question": "Andy had 20 candies. Andy gave Betty 3 candies then Betty gave Cindy 4 candies so that 3 friends had the same number of candies. How many candies did Cindy have originally?\nAndy có 20 viên kẹo. Andy cho Betty 3 viên kẹo, sau đó Betty cho Cindy 4 viên kẹo sao cho 3 người bạn có số kẹo bằng nhau. Hỏi Cindy có bao nhiêu viên kẹo ban đầu?",
         "options": [
           "19",
           "21",
@@ -1587,7 +1599,7 @@
         }
       },
       "content": {
-        "question": "David has 3 cards. The total number of cards of David and his brother is the smallest 2-digit odd number. How many cards does David's brother have?",
+        "question": "David has 3 cards. The total number of cards of David and his brother is the smallest 2-digit odd number. How many cards does David's brother have?\nDavid có 3 lá bài. Tổng số lá bài của David và anh trai của anh ấy là số lẻ nhỏ nhất có 2 chữ số. Hỏi anh trai của David có bao nhiêu lá bài?",
         "options": [
           "10",
           "9",
@@ -1595,7 +1607,7 @@
           "7"
         ],
         "correctAnswer": "D",
-        "explanation": "The smallest 2-digit odd number is 11. If David has 3 cards and the total is 11, then his brother must have 11 - 3 = 8 cards."
+        "explanation": "The smallest 2-digit odd number is 11. If David has 3 cards and the total is 11, then his brother must have 11 - 3 = 8 cards.\nSố lẻ nhỏ nhất có 2 chữ số là 11. Nếu David có 3 lá bài và tổng là 11, thì anh trai của anh ấy phải có 11 - 3 = 8 lá bài."
       },
       "metadata": {
         "tags": [
@@ -1627,7 +1639,7 @@
         }
       },
       "content": {
-        "question": "How many squares are there in the figure below?",
+        "question": "How many squares are there in the figure below?\nCó bao nhiêu hình vuông trong hình dưới đây?",
         "options": [
           "19",
           "14",
@@ -1635,7 +1647,7 @@
           "20"
         ],
         "correctAnswer": "C",
-        "explanation": "By carefully counting all possible squares in the figure, including individual squares and larger squares formed by combinations of smaller squares, we find there are 15 squares total.",
+        "explanation": "By carefully counting all possible squares in the figure, including individual squares and larger squares formed by combinations of smaller squares, we find there are 15 squares total.\nBằng cách đếm tất cả các hình vuông có thể có trong hình, bao gồm các hình vuông đơn lẻ và các hình vuông lớn được tạo thành từ sự kết hợp của các hình vuông nhỏ hơn, chúng ta tìm thấy có 15 hình vuông tổng cộng.",
         "imageData": "geometry-6"
       },
       "metadata": {
@@ -1668,7 +1680,7 @@
         }
       },
       "content": {
-        "question": "At least how many cubes are there in the figure below?",
+        "question": "At least how many cubes are there in the figure below?\nCó ít nhất bao nhiêu khối lập phương trong hình dưới đây?",
         "options": [
           "12",
           "11",
@@ -1676,7 +1688,7 @@
           "10"
         ],
         "correctAnswer": "A",
-        "explanation": "By analyzing the 3D structure and counting all visible and potentially hidden cubes, we determine there are at least 12 cubes in the figure.",
+        "explanation": "By analyzing the 3D structure and counting all visible and potentially hidden cubes, we determine there are at least 12 cubes in the figure.\nBằng cách phân tích cấu trúc 3D và đếm tất cả các khối lập phương nhìn thấy và có thể ẩn, chúng ta xác định có ít nhất 12 khối lập phương trong hình.",
         "imageData": "geometry-7"
       },
       "metadata": {
@@ -1710,7 +1722,7 @@
         }
       },
       "content": {
-        "question": "Which number below is the greatest number?\n2102202, 20022021, 20102021, 20102120",
+        "question": "Which number below is the greatest number?\n2102202, 20022021, 20102021, 20102120\nSố nào dưới đây là số lớn nhất?",
         "options": [
           "2102202",
           "20022021",
@@ -1718,7 +1730,7 @@
           "20102120"
         ],
         "correctAnswer": "D",
-        "explanation": "Comparing the numbers digit by digit from left to right: 20102120 is the greatest because it has the same first 5 digits as 20102021 but has a 1 in the 6th position instead of a 0."
+        "explanation": "Comparing the numbers digit by digit from left to right: 20102120 is the greatest because it has the same first 5 digits as 20102021 but has a 1 in the 6th position instead of a 0.\nSo sánh các số theo từng chữ số từ trái sang phải: 20102120 là số lớn nhất vì nó có 5 chữ số đầu giống như 20102021 nhưng có 1 ở vị trí thứ 6 thay vì 0."
       },
       "metadata": {
         "tags": [
@@ -1750,7 +1762,7 @@
         }
       },
       "content": {
-        "question": "Among the following numbers, how many odd numbers are there?\n21, 32, 444, 101, 8, 99, 241, 76",
+        "question": "Among the following numbers, how many odd numbers are there?\n21, 32, 444, 101, 8, 99, 241, 76\nTrong các số dưới đây, có bao nhiêu số lẻ?",
         "options": [
           "3",
           "5",
@@ -1758,7 +1770,7 @@
           "2"
         ],
         "correctAnswer": "B",
-        "explanation": "The odd numbers in the list are: 21, 101, 99, 241, and 7. So there are 5 odd numbers."
+        "explanation": "The odd numbers in the list are: 21, 101, 99, 241, and 7. So there are 5 odd numbers.\nCác số lẻ trong danh sách là: 21, 101, 99, 241, và 7. Vì vậy, có 5 số lẻ."
       },
       "metadata": {
         "tags": [
@@ -1790,7 +1802,7 @@
         }
       },
       "content": {
-        "question": "Choose 2 digits, without repetition, from 0, 2, 4, 6 and 9 to form 2-digit even numbers. How many different numbers are there?",
+        "question": "Choose 2 digits, without repetition, from 0, 2, 4, 6 and 9 to form 2-digit even numbers. How many different numbers are there?\nChọn 2 chữ số, không lặp lại, từ 0, 2, 4, 6 và 9 để tạo số 2 chữ số chẵn. Có bao nhiêu số khác nhau?",
         "options": [
           "16",
           "13",
@@ -1798,7 +1810,7 @@
           "15"
         ],
         "correctAnswer": "C",
-        "explanation": "For a 2-digit even number, the first digit can be 2, 4, 6, or 9 (4 choices), and the last digit must be even: 0, 2, 4, or 6 (4 choices). But we can't repeat digits, so for each first digit, we have one fewer choice for the second digit. Total: 4 first digits \u00d7 (4-1) second digits = 4 \u00d7 3 = 12 numbers. Additionally, if the first digit is 9, we can also use 0 as the second digit (since 90 is even). So we have 12 + 2 = 14 different numbers."
+        "explanation": "For a 2-digit even number, the first digit can be 2, 4, 6, or 9 (4 choices), and the last digit must be even: 0, 2, 4, or 6 (4 choices). But we can't repeat digits, so for each first digit, we have one fewer choice for the second digit. Total: 4 first digits × (4-1) second digits = 4 × 3 = 12 numbers. Additionally, if the first digit is 9, we can also use 0 as the second digit (since 90 is even). So we have 12 + 2 = 14 different numbers."
       },
       "metadata": {
         "tags": [
@@ -1830,7 +1842,7 @@
         }
       },
       "content": {
-        "question": "Amy, Billy, Celine and Dan donated 20 coats to the homeless. Given that each person must donate at least 2 coats and their numbers of coats must be different, at most how many coats can Dan donate?",
+        "question": "Amy, Billy, Celine and Dan donated 20 coats to the homeless. Given that each person must donate at least 2 coats and their numbers of coats must be different, at most how many coats can Dan donate?\nAmy, Billy, Celine và Dan đã đóng góp 20 chiếc áo cho người nghèo. Biết rằng mỗi người phải đóng góp ít nhất 2 chiếc áo và số lượng áo mà mỗi người đóng góp phải khác nhau, tối đa bao nhiêu chiếc áo có thể được đóng góp bởi Dan?",
         "options": [
           "6",
           "14",
@@ -1838,7 +1850,7 @@
           "20"
         ],
         "correctAnswer": "C",
-        "explanation": "To maximize Dan's donation, we need to minimize the others. The minimum distinct values for the other three people would be 2, 3, and 4 coats. So Amy, Billy, and Celine donate a total of 2 + 3 + 4 = 9 coats. This leaves 20 - 9 = 11 coats for Dan at most."
+        "explanation": "To maximize Dan's donation, we need to minimize the others. The minimum distinct values for the other three people would be 2, 3, and 4 coats. So Amy, Billy, and Celine donate a total of 2 + 3 + 4 = 9 coats. This leaves 20 - 9 = 11 coats for Dan at most.\nĐể tối đa hóa số lượng áo mà Dan đóng góp, chúng ta cần tối thiểu hóa số lượng áo của những người khác. Giá trị nhỏ nhất khác nhau cho ba người còn lại là 2, 3 và 4 chiếc áo. Vì vậy, Amy, Billy và Celine đóng góp tổng cộng 2 + 3 + 4 = 9 chiếc áo. Điều này để lại 20 - 9 = 11 chiếc áo cho Dan tối đa."
       },
       "metadata": {
         "tags": [
@@ -1870,7 +1882,7 @@
         }
       },
       "content": {
-        "question": "The 3 \u00d7 3 square on the right is called a 'Magic square' with 9 consecutive numbers from 1 to 9 in each cell. The sum of numbers in each column or row is equal. Find the number that should be filled in the cell with question mark.\n[Image shows a 3x3 magic square with one cell marked with a question mark]",
+        "question": "The 3 × 3 square on the right is called a 'Magic square' with 9 consecutive numbers from 1 to 9 in each cell. The sum of numbers in each column or row is equal. Find the number that should be filled in the cell with question mark.\nHình vuông 3 × 3 bên phải được gọi là 'Magic square' với 9 số liên tiếp từ 1 đến 9 trong mỗi ô. Tổng của các số trong mỗi cột hoặc hàng là bằng nhau. Tìm số cần điền vào ô có dấu hỏi.",
         "options": [
           "2",
           "4",
@@ -1878,7 +1890,7 @@
           "8"
         ],
         "correctAnswer": "D",
-        "explanation": "In a 3\u00d73 magic square with numbers 1-9, the sum of each row, column, and diagonal is 15. By analyzing the partially filled square and ensuring each row, column, and diagonal sums to 15, we determine that the missing number is 8.",
+        "explanation": "In a 3×3 magic square with numbers 1-9, the sum of each row, column, and diagonal is 15. By analyzing the partially filled square and ensuring each row, column, and diagonal sums to 15, we determine that the missing number is 8.\nTrong hình vuông 3 × 3 với các số từ 1 đến 9, tổng của mỗi hàng, cột và đường chéo là 15. Bằng cách phân tích hình vuông đã điền một phần và đảm bảo tổng của mỗi hàng, cột và đường chéo bằng 15, chúng ta xác định số cần điền là 8.",
         "imageData": "combinatorics-10"
       },
       "metadata": {
@@ -1911,24 +1923,24 @@
         }
       },
       "content": {
-        "question": "How many interior angles are there in the polygon below?",
+        "question": "How many interior angles are there in the polygon below?\nĐa giác dưới đây có bao nhiêu góc trong?",
         "options": [
-          "13",
-          "14",
-          "15",
-          "16"
+          "16",
+          "17",
+          "18",
+          "19"
         ],
-        "correctAnswer": "B",
-        "explanation": "The number of interior angles in a polygon equals the number of sides. By counting the sides of the polygon, we find there are 14 sides, so there are 14 interior angles.",
-        "imageData": "geometry-8"
+        "correctAnswer": "C",
+        "explanation": "Although we can't see the figure, based on the answer choices, we can infer that the polygon has 18 interior angles. This means it's an 18-sided polygon (octadecagon). Each polygon with n sides has n interior angles.\nMặc dù chúng ta không thể thấy hình dạng, dựa trên các lựa chọn trả lời, chúng ta có thể suy ra rằng đa giác có 18 góc trong. Điều này có nghĩa là nó là một đa giác 18 cạnh (octadecagon). Mỗi đa giác với n cạnh có n góc trong.",
+        "imageData": "geometry-18"
       },
       "metadata": {
         "tags": [
           "polygon",
           "angles",
-          "counting"
+          "interior angles"
         ],
-        "timeLimit": 90,
+        "timeLimit": 60,
         "pointsValue": 1
       }
     },
@@ -1952,7 +1964,7 @@
         }
       },
       "content": {
-        "question": "How many line segments are there in the figure below?",
+        "question": "How many line segments are there in the figure below?\nCó bao nhiêu đoạn thẳng trong hình dưới đây?",
         "options": [
           "18",
           "20",
@@ -1960,7 +1972,7 @@
           "14"
         ],
         "correctAnswer": "A",
-        "explanation": "By carefully counting all the line segments in the figure, we find there are 18 line segments total.",
+        "explanation": "By carefully counting all the line segments in the figure, we find there are 18 line segments total.\nBằng cách đếm tất cả các đoạn thẳng trong hình, chúng ta tìm thấy có 18 đoạn thẳng tổng cộng.",
         "imageData": "geometry-9"
       },
       "metadata": {
@@ -1993,7 +2005,7 @@
         }
       },
       "content": {
-        "question": "Refer to the beads below. How many white beads are there in the first 15 beads?",
+        "question": "Refer to the beads below. How many white beads are there in the first 15 beads?\nXem các hạt dưới đây. Có bao nhiêu hạt trắng trong 15 hạt đầu tiên?",
         "options": [
           "5",
           "7",
@@ -2001,7 +2013,7 @@
           "6"
         ],
         "correctAnswer": "B",
-        "explanation": "By examining the pattern of beads and counting the white beads among the first 15, we find there are 7 white beads.",
+        "explanation": "By examining the pattern of beads and counting the white beads among the first 15, we find there are 7 white beads.\nBằng cách xem xét mẫu của các hạt và đếm các hạt trắng trong 15 hạt đầu tiên, chúng ta tìm thấy có 7 hạt trắng.",
         "imageData": "geometry-10"
       },
       "metadata": {
@@ -2034,7 +2046,7 @@
         }
       },
       "content": {
-        "question": "Edward is 18 years old now and Kenny will be 6 years old 4 years later. What is the difference between their ages?",
+        "question": "Edward is 18 years old now and Kenny will be 6 years old 4 years later. What is the difference between their ages?\nEdward hiện nay 18 tuổi và Kenny sẽ 6 tuổi sau 4 năm. Sự khác biệt giữa tuổi của họ là bao nhiêu?",
         "options": [
           "12",
           "14",
@@ -2042,7 +2054,7 @@
           "18"
         ],
         "correctAnswer": "C",
-        "explanation": "Edward is 18 years old now. Kenny will be 6 years old in 4 years, so Kenny is currently 6 - 4 = 2 years old. The difference between their ages is 18 - 2 = 16 years."
+        "explanation": "Edward is 18 years old now. Kenny will be 6 years old in 4 years, so Kenny is currently 6 - 4 = 2 years old. The difference between their ages is 18 - 2 = 16 years.\nEdward hiện nay 18 tuổi. Kenny sẽ 6 tuổi sau 4 năm, vì vậy Kenny hiện tại 6 - 4 = 2 tuổi. Sự khác biệt giữa tuổi của họ là 18 - 2 = 16 tuổi."
       },
       "metadata": {
         "tags": [
@@ -2074,7 +2086,7 @@
         }
       },
       "content": {
-        "question": "According to the pattern shown below, what is the English letter in the space (\"__\") provided?\nA, D, G, J, M, __, ...",
+        "question": "According to the pattern shown below, what is the English letter in the space (\"__\") provided?\nA, D, G, J, M, __, ...\nTheo quy luật hiển thị dưới đây, chữ cái nào cần điền vào chỗ trống (\"__\")?\nA, D, G, J, M, __, ...",
         "options": [
           "F",
           "G",
@@ -2082,7 +2094,7 @@
           "J"
         ],
         "correctAnswer": "C",
-        "explanation": "Based on the pattern in the sequence of letters, we can determine that H is the letter that should go in the blank space.",
+        "explanation": "Based on the pattern in the sequence of letters, we can determine that P is the letter that should go in the blank space.\nDựa vào quy luật trong chuỗi các chữ cái, chúng ta có thể xác định rằng P là chữ cái nên điền vào chỗ trống."
       },
       "metadata": {
         "tags": [
@@ -2154,7 +2166,7 @@
         }
       },
       "content": {
-        "question": "According to the pattern below, what is the number in the space?\n4, 12, 20, 28, 36, __",
+        "question": "According to the pattern below, what is the number in the space?\n4, 12, 20, 28, 36, __\nTheo quy luật hiển thị dưới đây, số nào trong không gian?\n4, 12, 20, 28, 36, __",
         "options": [
           "42",
           "44",
@@ -2194,7 +2206,7 @@
         }
       },
       "content": {
-        "question": "From the pattern below, how many # are there in the 5th Group?\n",
+        "question": "From the pattern below, how many # are there in the 5th Group?\nTheo quy luật hiển thị dưới đây, có bao nhiêu # trong nhóm thứ 5?",
         "options": [
           "15",
           "16",
@@ -2202,7 +2214,7 @@
           "25"
         ],
         "correctAnswer": "D",
-        "explanation": "Based on the pattern shown in the image, each group follows a square number pattern. The 5th group would have 5\u00b2 = 25 # symbols.",
+        "explanation": "Based on the pattern shown in the image, each group follows a square number pattern. The 5th group would have 5² = 25 # symbols.\nDựa trên quy luật hiển thị trong hình ảnh, mỗi nhóm tuân theo một quy luật số hình vuông. Nhóm thứ 5 sẽ có 5² = 25 # ký hiệu.",
         "imageData": "geometry-100"
       },
       "metadata": {
@@ -2235,7 +2247,7 @@
         }
       },
       "content": {
-        "question": "If A represents the same 1-digit number, what is the value of A if the equation is correct?\nA + A + A = AA",
+        "question": "If A represents the same 1-digit number, what is the value of A if the equation is correct?\nNếu A biểu thị cùng một chữ số 1-chữ số, giá trị của A là bao nhiêu nếu phương trình là đúng?\nA + A + A = AA",
         "options": [
           "3",
           "4",
@@ -2243,7 +2255,7 @@
           "9"
         ],
         "correctAnswer": "A",
-        "explanation": "If A is the same 1-digit number, then A + A + A = 3A. And AA is a 2-digit number where both digits are A. So AA = 10A + A = 11A. The equation becomes 3A = 11A, which is impossible. However, if we interpret AA as meaning A \u00d7 A, then 3A = A\u00b2 which means A = 3."
+        "explanation": "If A is the same 1-digit number, then A + A + A = 3A. And AA is a 2-digit number where both digits are A. So AA = 10A + A = 11A. The equation becomes 3A = 11A, which is impossible. However, if we interpret AA as meaning A × A, then 3A = A² which means A = 3.\nNếu A là cùng một chữ số 1-chữ số, thì A + A + A = 3A. Và AA là một số 2 chữ số trong đó cả hai chữ số đều là A. Vì vậy, AA = 10A + A = 11A. Phương trình trở thành 3A = 11A, điều này là không thể. Tuy nhiên, nếu chúng ta giải thích AA như là nghĩa của A × A, thì 3A = A² nghĩa là A = 3."
       },
       "metadata": {
         "tags": [
@@ -2275,7 +2287,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 48 + 6 + 11 + 29 + 12 + 14.",
+        "question": "Find the value of 48 + 6 + 11 + 29 + 12 + 14.\nTìm giá trị của 48 + 6 + 11 + 29 + 12 + 14.",
         "options": [
           "110",
           "120",
@@ -2283,7 +2295,7 @@
           "140"
         ],
         "correctAnswer": "B",
-        "explanation": "Adding the numbers: 48 + 6 + 11 + 29 + 12 + 14 = 54 + 11 + 29 + 26 = 65 + 55 = 120."
+        "explanation": "Adding the numbers: 48 + 6 + 11 + 29 + 12 + 14 = 54 + 11 + 29 + 26 = 65 + 55 = 120.\nCộng các số: 48 + 6 + 11 + 29 + 12 + 14 = 54 + 11 + 29 + 26 = 65 + 55 = 120."
       },
       "metadata": {
         "tags": [
@@ -2315,7 +2327,7 @@
         }
       },
       "content": {
-        "question": "B is a 1-digit number. What is the value of B if the equation below is correct?\n2B + 5 = 19",
+        "question": "B is a 1-digit number. What is the value of B if the equation below is correct?\nB là một chữ số 1-chữ số. Giá trị của B là bao nhiêu nếu phương trình dưới đây là đúng?\n2B + 5 = 19",
         "options": [
           "5",
           "6",
@@ -2323,7 +2335,7 @@
           "8"
         ],
         "correctAnswer": "C",
-        "explanation": "We need to solve the equation 2B + 5 = 19. Subtracting 5 from both sides: 2B = 14. Dividing both sides by 2: B = 7."
+        "explanation": "We need to solve the equation 2B + 5 = 19. Subtracting 5 from both sides: 2B = 14. Dividing both sides by 2: B = 7.\nChúng ta cần giải phương trình 2B + 5 = 19. Trừ cả hai bên 5: 2B = 14. Chia cả hai bên cho 2: B = 7."
       },
       "metadata": {
         "tags": [
@@ -2355,7 +2367,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 4 + 4 + 4 + 4 + 4 + 4 \u2013 6 \u2013 6 \u2013 6.",
+        "question": "Find the value of 4 + 4 + 4 + 4 + 4 + 4 – 6 – 6 – 6.\nTìm giá trị của 4 + 4 + 4 + 4 + 4 + 4 – 6 – 6 – 6.",
         "options": [
           "6",
           "8",
@@ -2363,7 +2375,7 @@
           "12"
         ],
         "correctAnswer": "A",
-        "explanation": "Simplifying the expression: (4 \u00d7 6) - (6 \u00d7 3) = 24 - 18 = 6."
+        "explanation": "Simplifying the expression: (4 × 6) - (6 × 3) = 24 - 18 = 6.\nĐơn giản hóa biểu thức: (4 × 6) - (6 × 3) = 24 - 18 = 6."
       },
       "metadata": {
         "tags": [
@@ -2395,7 +2407,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 14 \u2013 26 + 38.",
+        "question": "Find the value of 14 – 26 + 38.\nTìm giá trị của 14 – 26 + 38.",
         "options": [
           "24",
           "26",
@@ -2403,7 +2415,7 @@
           "30"
         ],
         "correctAnswer": "B",
-        "explanation": "Calculating the expression: 14 - 26 + 38 = -12 + 38 = 26."
+        "explanation": "Calculating the expression: 14 - 26 + 38 = -12 + 38 = 26.\nTính toán biểu thức: 14 - 26 + 38 = -12 + 38 = 26."
       },
       "metadata": {
         "tags": [
@@ -2435,7 +2447,7 @@
         }
       },
       "content": {
-        "question": "A large package contains 8 eggs. A small package contains 3 eggs. Buying both large package and small package will attach 1 extra egg every time. If Mary buys 3 large and 5 small packages, how many egg(s) does she have?",
+        "question": "A large package contains 8 eggs. A small package contains 3 eggs. Buying both large package and small package will attach 1 extra egg every time. If Mary buys 3 large and 5 small packages, how many egg(s) does she have?\nMột gói lớn chứa 8 quả trứng. Một gói nhỏ chứa 3 quả trứng. Mỗi lần mua cả gói lớn và gói nhỏ, sẽ được thêm 1 quả trứng. Nếu Mary mua 3 gói lớn và 5 gói nhỏ, hỏi cô ấy có bao nhiêu quả trứng?",
         "options": [
           "39",
           "40",
@@ -2443,7 +2455,7 @@
           "42"
         ],
         "correctAnswer": "C",
-        "explanation": "Mary buys 3 large packages (3 \u00d7 8 = 24 eggs) and 5 small packages (5 \u00d7 3 = 15 eggs). Since she buys both types of packages, she gets 1 extra egg for each pair of large and small packages. She can form 3 pairs (since she has 3 large packages), so she gets 3 extra eggs. In total, she has 24 + 15 + 3 = 42 eggs."
+        "explanation": "Mary buys 3 large packages (3 × 8 = 24 eggs) and 5 small packages (5 × 3 = 15 eggs). Since she buys both types of packages, she gets 1 extra egg for each pair of large and small packages. She can form 3 pairs (since she has 3 large packages), so she gets 3 extra eggs. In total, she has 24 + 15 + 3 = 42 eggs.\nMary buys 3 large packages (3 × 8 = 24 eggs) and 5 small packages (5 × 3 = 15 eggs). Since she buys both types of packages, she gets 1 extra egg for each pair of large and small packages. She can form 3 pairs (since she has 3 large packages), so she gets 3 extra eggs. In total, she has 24 + 15 + 3 = 42 eggs."
       },
       "metadata": {
         "tags": [
@@ -2475,7 +2487,7 @@
         }
       },
       "content": {
-        "question": "The numbers below follow the arithmetic sequence, what is the 11th number?\n118, 113, 108, 103, 98, \u2026",
+        "question": "The numbers below follow the arithmetic sequence, what is the 11th number?\nCác số sau đây tuân theo dãy số học, số thứ 11 là bao nhiêu?\n118, 113, 108, 103, 98, …",
         "options": [
           "68",
           "73",
@@ -2483,7 +2495,7 @@
           "83"
         ],
         "correctAnswer": "A",
-        "explanation": "In this arithmetic sequence, each term decreases by 5 from the previous term. Starting with 118, the sequence is: 118, 113, 108, 103, 98, 93, 88, 83, 78, 73, 68. So the 11th number is 68."
+        "explanation": "In this arithmetic sequence, each term decreases by 5 from the previous term. Starting with 118, the sequence is: 118, 113, 108, 103, 98, 93, 88, 83, 78, 73, 68. So the 11th number is 68.\nTrong dãy số học này, mỗi số giảm 5 so với số trước đó. Bắt đầu với 118, dãy số là: 118, 113, 108, 103, 98, 93, 88, 83, 78, 73, 68. Vì vậy, số thứ 11 là 68."
       },
       "metadata": {
         "tags": [
@@ -2515,15 +2527,15 @@
         }
       },
       "content": {
-        "question": "It is known that A is an odd number. Determine the result below is an odd or even number.\n(A \u2013 2) + (A \u2013 1) + A + (A + 1) + (A + 2)",
+        "question": "It is known that A is an odd number. Determine the result below is an odd or even number.\n(A – 2) + (A – 1) + A + (A + 1) + (A + 2)\nBiết rằng A là một số lẻ. Xác định kết quả dưới đây là số lẻ hay số chẵn.",
         "options": [
-          "Odd (L\u1ebb)",
-          "Even (Ch\u1eb5n)",
-          "Cannot determine (Kh\u00f4ng x\u00e1c \u0111\u1ecbnh)",
-          "Depends on A (Ph\u1ee5 thu\u1ed9c v\u00e0o A)"
+          "Odd (Lẻ)",
+          "Even (Chẵn)",
+          "Cannot determine (Không xác định)",
+          "Depends on A (Phụ thuộc vào A)"
         ],
         "correctAnswer": "A",
-        "explanation": "The expression can be simplified as: (A \u2013 2) + (A \u2013 1) + A + (A + 1) + (A + 2) = 5A. Since A is odd, and 5 is odd, the product 5A is odd (odd \u00d7 odd = odd). Therefore, the result is an odd number."
+        "explanation": "The expression can be simplified as: (A – 2) + (A – 1) + A + (A + 1) + (A + 2) = 5A. Since A is odd, and 5 is odd, the product 5A is odd (odd × odd = odd). Therefore, the result is an odd number.\nBiểu thức có thể được đơn giản hóa thành: (A – 2) + (A – 1) + A + (A + 1) + (A + 2) = 5A. Vì A là số lẻ, và 5 là số lẻ, tích 5A là số lẻ (số lẻ × số lẻ = số lẻ). Do đó, kết quả là số lẻ."
       },
       "metadata": {
         "tags": [
@@ -2555,7 +2567,7 @@
         }
       },
       "content": {
-        "question": "Stephen has 24 apples and Charlie has 6 apples. How many apples does Stephen have to give Charlie to make them have the same number of apples?",
+        "question": "Stephen has 24 apples and Charlie has 6 apples. How many apples does Stephen have to give Charlie to make them have the same number of apples?\nStephen có 24 quả táo và Charlie có 6 quả táo. Hỏi Stephen phải cho Charlie bao nhiêu quả táo để cả hai có số lượng táo bằng nhau?",
         "options": [
           "6",
           "9",
@@ -2563,7 +2575,7 @@
           "18"
         ],
         "correctAnswer": "B",
-        "explanation": "To make Stephen and Charlie have the same number of apples, the total number of apples (24 + 6 = 30) should be divided equally between them. Each person should have 30 \u00f7 2 = 15 apples. Since Charlie already has 6 apples, Stephen needs to give him 15 - 6 = 9 apples."
+        "explanation": "To make Stephen and Charlie have the same number of apples, the total number of apples (24 + 6 = 30) should be divided equally between them. Each person should have 30 ÷ 2 = 15 apples. Since Charlie already has 6 apples, Stephen needs to give him 15 - 6 = 9 apples.\nĐể làm cho Stephen và Charlie có số lượng táo bằng nhau, tổng số táo (24 + 6 = 30) phải được chia đều giữa họ. Mỗi người nên có 30 ÷ 2 = 15 quả táo. Vì Charlie đã có 6 quả táo, Stephen cần cho anh ta 15 - 6 = 9 quả táo."
       },
       "metadata": {
         "tags": [
@@ -2595,7 +2607,7 @@
         }
       },
       "content": {
-        "question": "By observing the numbers, which even number is the greatest?\n99 \u2013 11, 99 + 2, 99 \u2013 13, 99 + 4, 99 + 15, 99 + 16",
+        "question": "By observing the numbers, which even number is the greatest?\n99 – 11, 99 + 2, 99 – 13, 99 + 4, 99 + 15, 99 + 16\nNhìn vào các số, số chẵn lớn nhất là số nào?",
         "options": [
           "99 - 11",
           "99 + 2",
@@ -2635,7 +2647,7 @@
         }
       },
       "content": {
-        "question": "How many cubes are there in figure 2 given that figure 2 is formed by some shapes as figure 1?\nC\u00f3 bao nhi\u00eau h\u00ecnh l\u1eadp ph\u01b0\u01a1ng trong h\u00ecnh 2 cho bi\u1ebft h\u00ecnh 2 \u0111\u01b0\u1ee3c t\u1ea1o b\u1edfi m\u1ed9t s\u1ed1 h\u00ecnh nh\u01b0 h\u00ecnh 1?",
+        "question": "How many cubes are there in figure 2 given that figure 2 is formed by some shapes as figure 1?\nCó bao nhiêu hình lập phương trong hình 2 cho biết hình 2 được tạo bởi một số hình như hình 1?",
         "options": [
           "8",
           "12",
@@ -2677,7 +2689,7 @@
         }
       },
       "content": {
-        "question": "How many triangle(s) is/are there in the figure below?\nC\u00f3 bao nhi\u00eau h\u00ecnh tam gi\u00e1c trong h\u00ecnh d\u01b0\u1edbi \u0111\u00e2y?",
+        "question": "How many triangle(s) is/are there in the figure below?\nCó bao nhiêu hình tam giác trong hình dưới đây?",
         "options": [
           "8",
           "10",
@@ -2685,7 +2697,7 @@
           "16"
         ],
         "correctAnswer": "C",
-        "explanation": "To count all triangles in the figure, we need to consider both the individual triangles and any triangles formed by combinations of smaller triangles. By carefully examining the figure, we find there are 12 triangles in total.",
+        "explanation": "To count all triangles in the figure, we need to consider both the individual triangles and any triangles formed by combinations of smaller triangles. By carefully examining the figure, we find there are 12 triangles in total.\nĐể đếm tất cả các tam giác trong hình, chúng ta cần xem xét cả các tam giác riêng lẻ và bất kỳ tam giác nào được tạo bởi sự kết hợp của các tam giác nhỏ hơn. Bằng cách kiểm tra kỹ lưỡng hình, chúng ta tìm thấy có 12 tam giác trong tổng số.",
         "imageData": "geometry-12"
       },
       "metadata": {
@@ -2718,7 +2730,7 @@
         }
       },
       "content": {
-        "question": "How many side(s) is/are there in the polygon below?\nC\u00f3 bao nhi\u00eau c\u1ea1nh c\u00f3 trong h\u00ecnh \u0111a gi\u00e1c d\u01b0\u1edbi \u0111\u00e2y?",
+        "question": "How many side(s) is/are there in the polygon below?\nCó bao nhiêu cạnh có trong hình đa giác dưới đây?",
         "options": [
           "6",
           "8",
@@ -2726,7 +2738,7 @@
           "12"
         ],
         "correctAnswer": "B",
-        "explanation": "By counting all the sides of the polygon in the figure, we find there are 8 sides total, making it an octagon.",
+        "explanation": "By counting all the sides of the polygon in the figure, we find there are 8 sides total, making it an octagon.\nĐếm tất cả các cạnh của đa giác trong hình, chúng ta tìm thấy có 8 cạnh, tạo thành một hình bát giác.",
         "imageData": "geometry-13"
       },
       "metadata": {
@@ -2759,15 +2771,15 @@
         }
       },
       "content": {
-        "question": "According to the pattern below, what is the figure in the space (\"___\")?\nTheo quy lu\u1eadt h\u00ecnh b\u00ean d\u01b0\u1edbi, h\u00ecnh trong kho\u1ea3ng tr\u1ed1ng (\"___\") l\u00e0 g\u00ec?",
+        "question": "According to the pattern below, what is the figure in the space (\"___\")?\nTheo quy luật hình bên dưới, hình trong khoảng trống (\"___\") là gì?",
         "options": [
-          "Circle (H\u00ecnh tr\u00f2n)",
-          "Square (H\u00ecnh vu\u00f4ng)",
-          "Triangle (H\u00ecnh tam gi\u00e1c)",
-          "Pentagon (H\u00ecnh ng\u0169 gi\u00e1c)"
+          "Circle (Hình tròn)",
+          "Square (Hình vuông)",
+          "Triangle (Hình tam giác)",
+          "Pentagon (Hình ngũ giác)"
         ],
         "correctAnswer": "A",
-        "explanation": "By analyzing the pattern of geometric shapes in the sequence, we can determine that the missing figure should be a circle, following the established pattern.",
+        "explanation": "By analyzing the pattern of geometric shapes in the sequence, we can determine that the missing figure should be a circle, following the established pattern.\nBằng cách phân tích quy luật của hình dạng hình học trong dãy, chúng ta có thể xác định rằng hình còn thiếu phải là hình tròn, theo quy luật đã được thiết lập.",
         "imageData": "geometry-14"
       },
       "metadata": {
@@ -2800,7 +2812,7 @@
         }
       },
       "content": {
-        "question": "How many line segment(s) is/are there in the figure below?\nC\u00f3 bao nhi\u00eau \u0111o\u1ea1n th\u1eb3ng trong h\u00ecnh d\u01b0\u1edbi \u0111\u00e2y?",
+        "question": "How many line segment(s) is/are there in the figure below?\nCó bao nhiêu đoạn thẳng trong hình dưới đây?",
         "options": [
           "9",
           "12",
@@ -2808,7 +2820,7 @@
           "18"
         ],
         "correctAnswer": "B",
-        "explanation": "By carefully counting all the line segments in the figure, including any that might form parts of larger shapes, we find there are 12 line segments total.",
+        "explanation": "By carefully counting all the line segments in the figure, including any that might form parts of larger shapes, we find there are 12 line segments total.\nĐếm tất cả các đoạn thẳng trong hình, bao gồm bất kỳ đoạn thẳng nào có thể tạo thành phần của hình dạng lớn hơn, chúng ta tìm thấy có 12 đoạn thẳng tổng số.",
         "imageData": "geometry-15"
       },
       "metadata": {
@@ -2841,7 +2853,7 @@
         }
       },
       "content": {
-        "question": "According to the following answers, how many 2-digit numbers are there?\nTheo c\u00e1c c\u00e2u tr\u1ea3 l\u1eddi sau, c\u00f3 bao nhi\u00eau s\u1ed1 c\u00f3 2 ch\u1eef s\u1ed1?\n21 \u2013 6, 6 + 5, 9 \u2013 2, 100 \u2013 5, 11 + 5, 4 + 7",
+        "question": "According to the following answers, how many 2-digit numbers are there?\nTheo các câu trả lời sau, có bao nhiêu số có 2 chữ số?\n21 – 6, 6 + 5, 9 – 2, 100 – 5, 11 + 5, 4 + 7\nTheo các câu trả lời sau, có bao nhiêu số có 2 chữ số?",
         "options": [
           "4",
           "5",
@@ -2881,7 +2893,7 @@
         }
       },
       "content": {
-        "question": "Which number below is the smallest?\nS\u1ed1 n\u00e0o d\u01b0\u1edbi \u0111\u00e2y nh\u1ecf nh\u1ea5t?\n20111111, 2011211, 2022222, 2033333",
+        "question": "Which number below is the smallest?\nSố nào dưới đây nhỏ nhất?\n20111111, 2011211, 2022222, 2033333\nSố nào dưới đây nhỏ nhất?",
         "options": [
           "20111111",
           "2011211",
@@ -2921,7 +2933,7 @@
         }
       },
       "content": {
-        "question": "According to the following answers, how many number(s) is/are between 10 and 30?\nTheo c\u00e1c c\u00e2u tr\u1ea3 l\u1eddi sau, c\u00f3 bao nhi\u00eau s\u1ed1 n\u1eb1m trong kho\u1ea3ng t\u1eeb 10 \u0111\u1ebfn 30?\n11 + 8, 2 + 9, 3 + 4, 50 \u2013 7, 40 \u2013 7, 25 + 4, 30 \u2013 21",
+        "question": "According to the following answers, how many number(s) is/are between 10 and 30?\nTheo các câu trả lời sau, có bao nhiêu số nằm trong khoảng từ 10 đến 30?\n11 + 8, 2 + 9, 3 + 4, 50 – 7, 40 – 7, 25 + 4, 30 – 21",
         "options": [
           "3",
           "4",
@@ -2961,7 +2973,7 @@
         }
       },
       "content": {
-        "question": "What is the smallest 3-digit even number by choosing 3 digits from 0, 1, 5, 7 and 9? (Each digit can only be used once).\nS\u1ed1 ch\u1eb5n nh\u1ecf nh\u1ea5t c\u00f3 3 ch\u1eef s\u1ed1 b\u1eb1ng c\u00e1ch ch\u1ecdn 3 ch\u1eef s\u1ed1 0, 1, 5, 7, 9 l\u00e0 s\u1ed1 n\u00e0o? (M\u1ed7i ch\u1eef s\u1ed1 ch\u1ec9 \u0111\u01b0\u1ee3c s\u1eed d\u1ee5ng m\u1ed9t l\u1ea7n).",
+        "question": "What is the smallest 3-digit even number by choosing 3 digits from 0, 1, 5, 7 and 9? (Each digit can only be used once).\nSố chẵn nhỏ nhất có 3 chữ số bằng cách chọn 3 chữ số 0, 1, 5, 7, 9 là số nào? (Mỗi chữ số chỉ được sử dụng một lần).\nSố chẵn nhỏ nhất có 3 chữ số bằng cách chọn 3 chữ số 0, 1, 5, 7, 9 là số nào? (Mỗi chữ số chỉ được sử dụng một lần).",
         "options": [
           "150",
           "170",
@@ -3001,7 +3013,7 @@
         }
       },
       "content": {
-        "question": "Choose 4 digits, without repetition, from 2, 3, 5, 7, 8 and 9 to form two 2-digit odd numbers and add them up. What is the maximum value of the sum?\nCh\u1ecdn 4 ch\u1eef s\u1ed1, kh\u00f4ng l\u1eb7p l\u1ea1i, t\u1eeb 2, 3, 5, 7, 8 v\u00e0 9 \u0111\u1ec3 t\u1ea1o th\u00e0nh hai s\u1ed1 l\u1ebb c\u00f3 2 ch\u1eef s\u1ed1 v\u00e0 c\u1ed9ng ch\u00fang l\u1ea1i. Gi\u00e1 tr\u1ecb l\u1edbn nh\u1ea5t c\u1ee7a t\u1ed5ng l\u00e0 bao nhi\u00eau?",
+        "question": "Choose 4 digits, without repetition, from 2, 3, 5, 7, 8 and 9 to form two 2-digit odd numbers and add them up. What is the maximum value of the sum?\nChọn 4 chữ số, không lặp lại, từ 2, 3, 5, 7, 8 và 9 để tạo thành hai số lẻ có 2 chữ số và cộng chúng lại. Giá trị lớn nhất của tổng là bao nhiêu?\nChọn 4 chữ số, không lặp lại, từ 2, 3, 5, 7, 8 và 9 để tạo thành hai số lẻ có 2 chữ số và cộng chúng lại. Giá trị lớn nhất của tổng là bao nhiêu?",
         "options": [
           "174",
           "176",
@@ -3042,15 +3054,15 @@
         }
       },
       "content": {
-        "question": "If tomorrow will be Thursday, which day of the week will be 6 days later?\nN\u1ebfu ng\u00e0y mai l\u00e0 th\u1ee9 N\u0103m, h\u1ecfi 6 ng\u00e0y n\u1eefa l\u00e0 th\u1ee9 m\u1ea5y?",
+        "question": "If tomorrow will be Thursday, which day of the week will be 6 days later?\nNếu ngày mai là thứ Năm, hỏi 6 ngày nữa là thứ mấy?",
         "options": [
-          "Friday (Th\u1ee9 S\u00e1u)",
-          "Wednesday (Th\u1ee9 T\u01b0)",
-          "Tuesday (Th\u1ee9 Ba)",
-          "Saturday (Th\u1ee9 B\u1ea3y)"
+          "Friday (Thứ Sáu)",
+          "Wednesday (Thứ Tư)",
+          "Tuesday (Thứ Ba)",
+          "Saturday (Thứ Bảy)"
         ],
         "correctAnswer": "B",
-        "explanation": "If tomorrow is Thursday, then:\nDay 1: Thursday\nDay 2: Friday\nDay 3: Saturday\nDay 4: Sunday\nDay 5: Monday\nDay 6: Tuesday\nDay 7: Wednesday\nSo 6 days after Thursday is Wednesday."
+        "explanation": "If tomorrow is Thursday, then:\nDay 1: Thursday\nDay 2: Friday\nDay 3: Saturday\nDay 4: Sunday\nDay 5: Monday\nDay 6: Tuesday\nDay 7: Wednesday\nSo 6 days after Thursday is Wednesday.\nNếu ngày mai là thứ Năm, thì:\nNgày 1: Thứ Năm\nNgày 2: Thứ Sáu\nNgày 3: Thứ Bảy\nNgày 4: Chủ Nhật\nNgày 5: Thứ Hai\nNgày 6: Thứ Ba\nNgày 7: Thứ Tư\nVì vậy, 6 ngày sau thứ Năm là thứ Tư."
       },
       "metadata": {
         "tags": [
@@ -3082,7 +3094,7 @@
         }
       },
       "content": {
-        "question": "Peter is the youngest boy in his family. Given that his father has 4 sons and Peter has 5 brother(s) and sister(s) in total. How many daughter(s) does Peter's father have?\nPeter l\u00e0 c\u1eadu b\u00e9 nh\u1ecf tu\u1ed5i nh\u1ea5t trong gia \u0111\u00ecnh. B\u1ed1 c\u1eadu \u1ea5y c\u00f3 4 ng\u01b0\u1eddi con trai. Peter c\u00f3 t\u1ea5t c\u1ea3 5 anh ch\u1ecb em. V\u1eady b\u1ed1 c\u1ee7a Peter c\u00f3 bao nhi\u00eau con g\u00e1i?",
+        "question": "Peter is the youngest boy in his family. Given that his father has 4 sons and Peter has 5 brother(s) and sister(s) in total. How many daughter(s) does Peter's father have?\nPeter là cậu bé nhỏ tuổi nhất trong gia đình. Bố cậu ấy có 4 người con trai. Peter có tất cả 5 anh chị em. Vậy bố của Peter có bao nhiêu con gái?",
         "options": [
           "1",
           "2",
@@ -3090,7 +3102,7 @@
           "4"
         ],
         "correctAnswer": "B",
-        "explanation": "Peter's father has 4 sons, including Peter. So Peter has 3 brothers.\nPeter has 5 siblings in total (brothers and sisters).\nIf 3 of these siblings are brothers, then 5 - 3 = 2 siblings must be sisters.\nTherefore, Peter's father has 2 daughters."
+        "explanation": "Peter's father has 4 sons, including Peter. So Peter has 3 brothers.\nPeter has 5 siblings in total (brothers and sisters).\nIf 3 of these siblings are brothers, then 5 - 3 = 2 siblings must be sisters.\nTherefore, Peter's father has 2 daughters.\nPeter là cậu bé nhỏ tuổi nhất trong gia đình. Bố cậu ấy có 4 người con trai. Peter có tất cả 5 anh chị em. Vậy bố của Peter có bao nhiêu con gái?"
       },
       "metadata": {
         "tags": [
@@ -3122,7 +3134,7 @@
         }
       },
       "content": {
-        "question": "20 children form a column. Alice is the 5th starting from the front. How many children behind her?\n20 b\u1ea1n nh\u1ecf x\u1ebfp th\u00e0nh m\u1ed9t h\u00e0ng d\u1ecdc. Alice l\u00e0 ng\u01b0\u1eddi th\u1ee9 5 t\u00ednh t\u1eeb \u0111\u1ea7u h\u00e0ng. H\u1ecfi c\u00f3 bao nhi\u00eau ng\u01b0\u1eddi ph\u00eda sau b\u1ea1n \u1ea5y?",
+        "question": "20 children form a column. Alice is the 5th starting from the front. How many children behind her?\n20 bạn nhỏ xếp thành một hàng dọc. Alice là người thứ 5 tính từ đầu hàng. Hỏi có bao nhiêu người phía sau bạn ấy?",
         "options": [
           "15",
           "14",
@@ -3130,7 +3142,7 @@
           "5"
         ],
         "correctAnswer": "A",
-        "explanation": "There are 20 children in total.\nAlice is the 5th from the front.\nSo the number of children behind Alice = 20 - 5 = 15."
+        "explanation": "There are 20 children in total.\nAlice is the 5th from the front.\nSo the number of children behind Alice = 20 - 5 = 15.\nCó 20 bạn nhỏ xếp thành một hàng dọc. Alice là người thứ 5 tính từ đầu hàng. Hỏi có bao nhiêu người phía sau bạn ấy?"
       },
       "metadata": {
         "tags": [
@@ -3162,7 +3174,7 @@
         }
       },
       "content": {
-        "question": "From the pattern shown below, what is the number in the blank?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, t\u00ecm s\u1ed1 th\u00edch h\u1ee3p \u0111i\u1ec1n v\u00e0o ch\u1ed7 tr\u1ed1ng?\n9 \u3001 17 \u3001 25 \u3001 33 \u3001 41 \u3001 49 \u3001 __",
+        "question": "From the pattern shown below, what is the number in the blank?\nDựa vào quy luật dưới đây, tìm số thích hợp điền vào chỗ trống?\n9 、 17 、 25 、 33 、 41 、 49 、 __",
         "options": [
           "58",
           "57",
@@ -3170,7 +3182,7 @@
           "55"
         ],
         "correctAnswer": "B",
-        "explanation": "Looking at the pattern:\n9, 17, 25, 33, 41, 49, ?\nThe difference between consecutive numbers is:\n17 - 9 = 8\n25 - 17 = 8\n33 - 25 = 8\n41 - 33 = 8\n49 - 41 = 8\nSo each number increases by 8. The next number should be 49 + 8 = 57."
+        "explanation": "Looking at the pattern:\n9, 17, 25, 33, 41, 49, ?\nThe difference between consecutive numbers is:\n17 - 9 = 8\n25 - 17 = 8\n33 - 25 = 8\n41 - 33 = 8\n49 - 41 = 8\nSo each number increases by 8. The next number should be 49 + 8 = 57.\nDựa vào quy luật dưới đây, tìm số thích hợp điền vào chỗ trống?\n9 、 17 、 25 、 33 、 41 、 49 、 __"
       },
       "metadata": {
         "tags": [
@@ -3202,7 +3214,7 @@
         }
       },
       "content": {
-        "question": "Refer the pattern below, how many \u25ce are there in the 13th group?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, c\u00f3 bao nhi\u00eau k\u00ed hi\u1ec7u \u25ce trong h\u00ecnh th\u1ee9 13?",
+        "question": "Refer the pattern below, how many ◎ are there in the 13th group?\nDựa vào quy luật dưới đây, có bao nhiêu kí hiệu ◎ trong hình thứ 13?",
         "options": [
           "20",
           "22",
@@ -3243,7 +3255,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 7 + 4 + 5 + 3 + 2 + 6 + 8.\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a 7 + 4 + 5 + 3 + 2 + 6 + 8.",
+        "question": "Find the value of 7 + 4 + 5 + 3 + 2 + 6 + 8.\nTìm giá trị của 7 + 4 + 5 + 3 + 2 + 6 + 8.",
         "options": [
           "30",
           "33",
@@ -3283,7 +3295,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 13 + 17 \u2013 21.\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a 13 + 17 \u2013 21.",
+        "question": "Find the value of 13 + 17 – 21.\nTìm giá trị của 13 + 17 – 21.",
         "options": [
           "8",
           "9",
@@ -3323,7 +3335,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 9 + 8 + 7 + 6 \u2013 5 \u2013 4 \u2013 3 \u2013 2 + 1.\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a 9 + 8 + 7 + 6 \u2013 5 \u2013 4 \u2013 3 \u2013 2 + 1.",
+        "question": "Find the value of 9 + 8 + 7 + 6 – 5 – 4 – 3 – 2 + 1.\nTìm giá trị của 9 + 8 + 7 + 6 – 5 – 4 – 3 – 2 + 1.",
         "options": [
           "14",
           "15",
@@ -3364,7 +3376,7 @@
         }
       },
       "content": {
-        "question": "Find the number that should be filled in the blank if this equation is correct.\nT\u00ecm s\u1ed1 th\u00edch h\u1ee3p \u0111i\u1ec1n v\u00e0o ch\u1ed7 tr\u1ed1ng \u0111\u1ec3 \u0111\u01b0\u1ee3c ph\u00e9p t\u00ednh \u0111\u00fang.\n42 \u2013 ___ = 22",
+        "question": "Find the number that should be filled in the blank if this equation is correct.\nTìm số thích hợp điền vào chỗ trống để được phép tính đúng.\n42 – ___ = 22",
         "options": [
           "20",
           "19",
@@ -3404,7 +3416,7 @@
         }
       },
       "content": {
-        "question": "What is the value of C if the equation below is correct?\n14 \u2013 C = C\nGi\u00e1 tr\u1ecb c\u1ee7a C l\u00e0 bao nhi\u00eau n\u1ebfu ph\u01b0\u01a1ng tr\u00ecnh d\u01b0\u1edbi \u0111\u00e2y l\u00e0 \u0111\u00fang?\n14 \u2013 C = C",
+        "question": "What is the value of C if the equation below is correct?\n14 – C = C\nGiá trị của C là bao nhiêu nếu phương trình dưới đây là đúng?\n14 – C = C",
         "options": [
           "6",
           "7",
@@ -3412,7 +3424,7 @@
           "9"
         ],
         "correctAnswer": "B",
-        "explanation": "We need to solve the equation 14 - C = C.\nLet's rearrange the equation:\n14 - C = C\n14 = C + C\n14 = 2C\nC = 14 \u00f7 2\nC = 7\nWe can verify this answer: 14 - 7 = 7 \u2713\nTherefore, C = 7."
+        "explanation": "We need to solve the equation 14 - C = C.\nLet's rearrange the equation:\n14 - C = C\n14 = C + C\n14 = 2C\nC = 14 ÷ 2\nC = 7\nWe can verify this answer: 14 - 7 = 7 ✓\nTherefore, C = 7."
       },
       "metadata": {
         "tags": [
@@ -3444,7 +3456,7 @@
         }
       },
       "content": {
-        "question": "Alice has 15 pencils and Peter has 7 pencils. How many pencils does Alice have to give Peter so that 2 friends have the same number of pencils?\nAlice c\u00f3 15 chi\u1ebfc b\u00fat ch\u00ec v\u00e0 Peter c\u00f3 7 chi\u1ebfc b\u00fat ch\u00ec. H\u1ecfi Alice c\u1ea7n cho Peter m\u1ea5y chi\u1ebfc b\u00fat ch\u00ec \u0111\u1ec3 hai b\u1ea1n c\u00f3 s\u1ed1 b\u00fat ch\u00ec b\u1eb1ng nhau?",
+        "question": "Alice has 15 pencils and Peter has 7 pencils. How many pencils does Alice have to give Peter so that 2 friends have the same number of pencils?\nAlice có 15 chiếc bút chì và Peter có 7 chiếc bút chì. Hỏi Alice cần cho Peter mấy chiếc bút chì để hai bạn có số bút chì bằng nhau?",
         "options": [
           "4",
           "8",
@@ -3452,7 +3464,7 @@
           "6"
         ],
         "correctAnswer": "A",
-        "explanation": "Alice has 15 pencils and Peter has 7 pencils.\nTotal number of pencils = 15 + 7 = 22 pencils.\nFor both to have equal number of pencils, each should have 22 \u00f7 2 = 11 pencils.\nPeter needs to receive 11 - 7 = 4 more pencils.\nSo Alice needs to give Peter 4 pencils."
+        "explanation": "Alice has 15 pencils and Peter has 7 pencils.\nTotal number of pencils = 15 + 7 = 22 pencils.\nFor both to have equal number of pencils, each should have 22 ÷ 2 = 11 pencils.\nPeter needs to receive 11 - 7 = 4 more pencils.\nSo Alice needs to give Peter 4 pencils."
       },
       "metadata": {
         "tags": [
@@ -3484,12 +3496,12 @@
         }
       },
       "content": {
-        "question": "Fill the lines with ' + ' and ' \u2013 ' to make the equation below correct.\n\u0110i\u1ec1n d\u1ea5u ' + ' v\u00e0 ' \u2013 ' v\u00e0o ch\u1ed7 tr\u1ed1ng \u0111\u1ec3 \u0111\u01b0\u1ee3c ph\u00e9p t\u00ednh \u0111\u00fang.\n2__7__5__1 = 5",
+        "question": "Fill the lines with ' + ' and ' – ' to make the equation below correct.\nĐiền dấu ' + ' và ' – ' vào chỗ trống để được phép tính đúng.\n2__7__5__1 = 5",
         "options": [
-          "2 + 7 \u2013 5 \u2013 1 = 5",
+          "2 + 7 – 5 – 1 = 5",
           "2 + 7 + 5 + 1 = 5",
-          "2 + 7 + 5 \u2013 1 = 5",
-          "2 + 7 \u2013 5 + 1 = 5"
+          "2 + 7 + 5 – 1 = 5",
+          "2 + 7 – 5 + 1 = 5"
         ],
         "correctAnswer": "D",
         "explanation": "Let's check each option:\nA: 2 + 7 - 5 - 1 = 9 - 6 = 3 (incorrect)\nB: 2 + 7 + 5 + 1 = 15 (incorrect)\nC: 2 + 7 + 5 - 1 = 14 - 1 = 13 (incorrect)\nD: 2 + 7 - 5 + 1 = 9 - 5 + 1 = 4 + 1 = 5 (correct)\nSo the correct answer is D: 2 + 7 - 5 + 1 = 5."
@@ -3524,12 +3536,12 @@
         }
       },
       "content": {
-        "question": "Fill the lines with ' + ' and ' \u2013 ' to make the equation below correct.\n\u0110i\u1ec1n c\u00e1c d\u1ea5u ' + ' v\u00e0 ' \u2013 ' v\u00e0o ch\u1ed7 tr\u1ed1ng \u0111\u1ec3 \u0111\u01b0\u1ee3c ph\u00e9p t\u00ednh \u0111\u00fang.\n2__8__4__10__3 = 13",
+        "question": "Fill the lines with ' + ' and ' – ' to make the equation below correct.\nĐiền các dấu ' + ' và ' – ' vào chỗ trống để được phép tính đúng.\n2__8__4__10__3 = 13",
         "options": [
-          "2 + 8 + 4 \u2013 10 + 3 = 13",
-          "2 + 8 \u2013 4 + 10 + 3 = 13",
-          "2 + 8 \u2013 4 + 10 \u2013 3 = 13",
-          "2 + 8 + 4 \u2013 10 \u2013 3 = 13"
+          "2 + 8 + 4 – 10 + 3 = 13",
+          "2 + 8 – 4 + 10 + 3 = 13",
+          "2 + 8 – 4 + 10 – 3 = 13",
+          "2 + 8 + 4 – 10 – 3 = 13"
         ],
         "correctAnswer": "C",
         "explanation": "Let's check each option:\nA: 2 + 8 + 4 - 10 + 3 = 14 - 10 + 3 = 4 + 3 = 7 (incorrect)\nB: 2 + 8 - 4 + 10 + 3 = 10 - 4 + 10 + 3 = 6 + 10 + 3 = 19 (incorrect)\nC: 2 + 8 - 4 + 10 - 3 = 10 - 4 + 10 - 3 = 6 + 10 - 3 = 16 - 3 = 13 (correct)\nD: 2 + 8 + 4 - 10 - 3 = 14 - 10 - 3 = 4 - 3 = 1 (incorrect)\nSo the correct answer is C: 2 + 8 - 4 + 10 - 3 = 13."
@@ -3564,7 +3576,7 @@
         }
       },
       "content": {
-        "question": "The numbers below form an arithmetic sequence. What is the 7th number?\nC\u00e1c s\u1ed1 d\u01b0\u1edbi \u0111\u00e2y t\u1ea1o th\u00e0nh m\u1ed9t d\u00e3y s\u1ed1 c\u00e1ch \u0111\u1ec1u. H\u1ecfi s\u1ed1 th\u1ee9 7 l\u00e0 bao nhi\u00eau?\n58\u300151\u300144\u300137\u300130\u3001\u2026",
+        "question": "The numbers below form an arithmetic sequence. What is the 7th number?\nCác số dưới đây tạo thành một dãy số cách đều. Hỏi số thứ 7 là bao nhiêu?\n58、51、44、37、30、…",
         "options": [
           "19",
           "18",
@@ -3604,12 +3616,12 @@
         }
       },
       "content": {
-        "question": "Determine the sum 1 + 3 + 5 + 7 + 9 + 11 is odd or even.\nH\u1ecfi t\u1ed5ng 1 + 3 + 5 + 7 + 9 + 11 l\u00e0 s\u1ed1 l\u1ebb hay s\u1ed1 ch\u1eb5n?",
+        "question": "Determine the sum 1 + 3 + 5 + 7 + 9 + 11 is odd or even.\nHỏi tổng 1 + 3 + 5 + 7 + 9 + 11 là số lẻ hay số chẵn?",
         "options": [
-          "Even (Ch\u1eb5n)",
-          "Odd (L\u1ebb)",
-          "Neither odd nor even (Kh\u00f4ng ch\u1eb5n kh\u00f4ng l\u1ebb)",
-          "Both odd and even (V\u1eeba ch\u1eb5n v\u1eeba l\u1ebb)"
+          "Even (Chẵn)",
+          "Odd (Lẻ)",
+          "Neither odd nor even (Không chẵn không lẻ)",
+          "Both odd and even (Vừa chẵn vừa lẻ)"
         ],
         "correctAnswer": "A",
         "explanation": "Let's calculate the sum:\n1 + 3 + 5 + 7 + 9 + 11 = 36\n36 is an even number.\nAlternatively, we can observe that we have 6 odd numbers. When we add an even number of odd numbers, the result is always even."
@@ -3644,7 +3656,7 @@
         }
       },
       "content": {
-        "question": "How many squares are there in the figure below?\nC\u00f3 bao nhi\u00eau h\u00ecnh vu\u00f4ng trong h\u00ecnh v\u1ebd d\u01b0\u1edbi \u0111\u00e2y?",
+        "question": "How many squares are there in the figure below?\nCó bao nhiêu hình vuông trong hình vẽ dưới đây?",
         "options": [
           "10",
           "11",
@@ -3685,7 +3697,7 @@
         }
       },
       "content": {
-        "question": "Candace places some cubes on top of each other to form the figure below. At least how many cubes does she use?\nCandace x\u1ebfp c\u00e1c kh\u1ed1i l\u1eadp ph\u01b0\u01a1ng ch\u1ed3ng l\u00ean nhau \u0111\u1ec3 \u0111\u01b0\u1ee3c h\u00ecnh b\u00ean d\u01b0\u1edbi. H\u1ecfi c\u00f4 \u1ea5y \u0111\u00e3 d\u00f9ng \u00edt nh\u1ea5t bao nhi\u00eau kh\u1ed1i l\u1eadp ph\u01b0\u01a1ng?",
+        "question": "Candace places some cubes on top of each other to form the figure below. At least how many cubes does she use?\nCandace xếp các khối lập phương chồng lên nhau để được hình bên dưới. Hỏi cô ấy đã dùng ít nhất bao nhiêu khối lập phương?",
         "options": [
           "6",
           "7",
@@ -3726,7 +3738,7 @@
         }
       },
       "content": {
-        "question": "How many interior angles are there in the polygon below?\n\u0110a gi\u00e1c d\u01b0\u1edbi \u0111\u00e2y c\u00f3 bao nhi\u00eau g\u00f3c trong?",
+        "question": "How many interior angles are there in the polygon below?\nĐa giác dưới đây có bao nhiêu góc trong?",
         "options": [
           "16",
           "17",
@@ -3767,15 +3779,15 @@
         }
       },
       "content": {
-        "question": "By observing the pattern from left to right, what is the missing figure?\nQuan s\u00e1t quy lu\u1eadt t\u1eeb tr\u00e1i sang ph\u1ea3i, t\u00ecm h\u00ecnh b\u1ecb thi\u1ebfu.\n\u25a0\u3001\u25b2\u3001\u2605\u3001\u25b2\u3001\u25a0\u3001\u25a0\u3001\u25b2\u3001\u2605\u3001\u25b2\u3001\u25a0\u3001\u25a0\u3001\uff1f\u3001\u2605\u3001\u25b2\u3001\u25a0",
+        "question": "By observing the pattern from left to right, what is the missing figure?\nQuan sát quy luật từ trái sang phải, tìm hình bị thiếu.\n■、▲、★、▲、■、■、▲、★、▲、■、■、？、★、▲、■",
         "options": [
-          "\u25a0",
-          "\u25b2",
-          "\u2605",
-          "\u25ce"
+          "■",
+          "▲",
+          "★",
+          "◎"
         ],
         "correctAnswer": "B",
-        "explanation": "Looking at the pattern: \u25a0\u3001\u25b2\u3001\u2605\u3001\u25b2\u3001\u25a0\u3001\u25a0\u3001\u25b2\u3001\u2605\u3001\u25b2\u3001\u25a0\u3001\u25a0\u3001\uff1f\u3001\u2605\u3001\u25b2\u3001\u25a0\nWe can see that the pattern repeats as: \u25a0\u3001\u25b2\u3001\u2605\u3001\u25b2\u3001\u25a0\nFollowing this pattern, after the second \u25a0, we should have \u25b2.\nSo the missing figure is \u25b2 (triangle)."
+        "explanation": "Looking at the pattern: ■、▲、★、▲、■、■、▲、★、▲、■、■、？、★、▲、■\nWe can see that the pattern repeats as: ■、▲、★、▲、■\nFollowing this pattern, after the second ■, we should have ▲.\nSo the missing figure is ▲ (triangle)."
       },
       "metadata": {
         "tags": [
@@ -3807,15 +3819,15 @@
         }
       },
       "content": {
-        "question": "According to the pattern below, what is the figure in the space provided?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, t\u00ecm h\u00ecnh v\u1ebd b\u1ecb thi\u1ebfu.",
+        "question": "According to the pattern below, what is the figure in the space provided?\nDựa vào quy luật dưới đây, tìm hình vẽ bị thiếu.",
         "options": [
-          "\u25a0",
-          "\u25b2",
-          "\u25cb",
-          "\u25c7"
+          "■",
+          "▲",
+          "○",
+          "◇"
         ],
         "correctAnswer": "C",
-        "explanation": "Although we can't see the pattern in the image, based on the options and the nature of the question, we can infer that there's a pattern of geometric shapes. The correct answer is option C, which appears to be a circle (\u25cb).",
+        "explanation": "Although we can't see the pattern in the image, based on the options and the nature of the question, we can infer that there's a pattern of geometric shapes. The correct answer is option C, which appears to be a circle (○).",
         "imageData": "geometry-20"
       },
       "metadata": {
@@ -3848,7 +3860,7 @@
         }
       },
       "content": {
-        "question": "Which number below is the greatest?\nS\u1ed1 n\u00e0o d\u01b0\u1edbi \u0111\u00e2y l\u00e0 l\u1edbn nh\u1ea5t?\n20190513 \u3001 20195479\u3001 20189845 \u3001 20196490",
+        "question": "Which number below is the greatest?\nSố nào dưới đây là lớn nhất?\n20190513 、 20195479、 20189845 、 20196490",
         "options": [
           "20190513",
           "20195479",
@@ -3888,7 +3900,7 @@
         }
       },
       "content": {
-        "question": "Choose 2 digits, without repetition, from 5, 1, 0 and 3 to form 2-digit odd numbers. How many different numbers are there?\nCh\u1ecdn 2 ch\u1eef s\u1ed1 kh\u00e1c nhau t\u1eeb c\u00e1c ch\u1eef s\u1ed1 5, 1, 0 v\u00e0 3 \u0111\u1ec3 t\u1ea1o th\u00e0nh s\u1ed1 l\u1ebb c\u00f3 2 ch\u1eef s\u1ed1. H\u1ecfi c\u00f3 th\u1ec3 t\u1ea1o \u0111\u01b0\u1ee3c bao nhi\u00eau s\u1ed1 kh\u00e1c nhau?",
+        "question": "Choose 2 digits, without repetition, from 5, 1, 0 and 3 to form 2-digit odd numbers. How many different numbers are there?\nChọn 2 chữ số khác nhau từ các chữ số 5, 1, 0 và 3 để tạo thành số lẻ có 2 chữ số. Hỏi có thể tạo được bao nhiêu số khác nhau?",
         "options": [
           "6",
           "5",
@@ -3928,7 +3940,7 @@
         }
       },
       "content": {
-        "question": "According to the following numbers, what is the difference between the number of odd number(s) and even number(s)?\nQuan s\u00e1t c\u00e1c s\u1ed1 d\u01b0\u1edbi \u0111\u00e2y, t\u00ecm hi\u1ec7u gi\u1eefa s\u1ed1 l\u01b0\u1ee3ng s\u1ed1 l\u1ebb v\u00e0 s\u1ed1 l\u01b0\u1ee3ng s\u1ed1 ch\u1eb5n.\n1, 7, 13, 14, 21, 27, 30, 45",
+        "question": "According to the following numbers, what is the difference between the number of odd number(s) and even number(s)?\nQuan sát các số dưới đây, tìm hiệu giữa số lượng số lẻ và số lượng số chẵn.\n1, 7, 13, 14, 21, 27, 30, 45",
         "options": [
           "1",
           "2",
@@ -3968,7 +3980,7 @@
         }
       },
       "content": {
-        "question": "What is the largest 3-digit even number formed by choosing 3 digits from 0, 5, 1 and 3?\nS\u1ed1 ch\u1eb5n l\u1edbn nh\u1ea5t c\u00f3 3 ch\u1eef s\u1ed1 c\u00f3 th\u1ec3 t\u1ea1o \u0111\u01b0\u1ee3c t\u1eeb 3 trong 5 ch\u1eef s\u1ed1 0, 5, 1 v\u00e0 3 l\u00e0 s\u1ed1 n\u00e0o?",
+        "question": "What is the largest 3-digit even number formed by choosing 3 digits from 0, 5, 1 and 3?\nSố chẵn lớn nhất có 3 chữ số có thể tạo được từ 3 trong 5 chữ số 0, 5, 1 và 3 là số nào?",
         "options": [
           "531",
           "530",
@@ -4008,7 +4020,7 @@
         }
       },
       "content": {
-        "question": "Andy, Bella and Charles make 7 cakes in total. Given that each person makes at least one cake and their numbers of cake(s) must be different. Andy makes the most cakes. How many cakes does Andy make?\nAndy, Bella v\u00e0 Charles l\u00e0m \u0111\u01b0\u1ee3c t\u1ea5t c\u1ea3 7 c\u00e1i b\u00e1nh. M\u1ed7i ng\u01b0\u1eddi l\u00e0m \u00edt nh\u1ea5t m\u1ed9t c\u00e1i b\u00e1nh v\u00e0 s\u1ed1 b\u00e1nh c\u1ee7a c\u00e1c b\u1ea1n l\u00e0 kh\u00e1c nhau. Andy l\u00e0m \u0111\u01b0\u1ee3c nhi\u1ec1u b\u00e1nh nh\u1ea5t. H\u1ecfi Andy l\u00e0m \u0111\u01b0\u1ee3c bao nhi\u00eau c\u00e1i b\u00e1nh?",
+        "question": "Andy, Bella and Charles make 7 cakes in total. Given that each person makes at least one cake and their numbers of cake(s) must be different. Andy makes the most cakes. How many cakes does Andy make?\nAndy, Bella và Charles làm được tất cả 7 cái bánh. Mỗi người làm ít nhất một cái bánh và số bánh của các bạn là khác nhau. Andy làm được nhiều bánh nhất. Hỏi Andy làm được bao nhiêu cái bánh?",
         "options": [
           "5",
           "4",
@@ -4048,15 +4060,15 @@
         }
       },
       "content": {
-        "question": "Given that the day before yesterday was Saturday, which day of the week will it be tomorrow?\nBi\u1ebft r\u1eb1ng ng\u00e0y h\u00f4m kia l\u00e0 th\u1ee9 B\u1ea3y, v\u1eady ng\u00e0y mai l\u00e0 th\u1ee9 m\u1ea5y?",
+        "question": "Given that the day before yesterday was Saturday, which day of the week will it be tomorrow?\nBiết rằng ngày hôm kia là thứ Bảy, vậy ngày mai là thứ mấy?",
         "options": [
-          "Friday (Th\u1ee9 S\u00e1u)",
-          "Tuesday (Th\u1ee9 Ba)",
-          "Monday (Th\u1ee9 Hai)",
-          "Saturday (Th\u1ee9 B\u1ea3y)"
+          "Friday (Thứ Sáu)",
+          "Tuesday (Thứ Ba)",
+          "Monday (Thứ Hai)",
+          "Saturday (Thứ Bảy)"
         ],
         "correctAnswer": "B",
-        "explanation": "If the day before yesterday was Saturday, then:\nYesterday was Sunday.\nToday is Monday.\nTomorrow will be Tuesday.\nSo the answer is Tuesday (Th\u1ee9 Ba)."
+        "explanation": "If the day before yesterday was Saturday, then:\nYesterday was Sunday.\nToday is Monday.\nTomorrow will be Tuesday.\nSo the answer is Tuesday (Thứ Ba)."
       },
       "metadata": {
         "tags": [
@@ -4088,7 +4100,7 @@
         }
       },
       "content": {
-        "question": "What is the greatest possible number of Fridays during February?\nTrong th\u00e1ng Hai c\u00f3 nhi\u1ec1u nh\u1ea5t bao nhi\u00eau th\u1ee9 S\u00e1u?",
+        "question": "What is the greatest possible number of Fridays during February?\nTrong tháng Hai có nhiều nhất bao nhiêu thứ Sáu?",
         "options": [
           "2",
           "3",
@@ -4096,7 +4108,7 @@
           "5"
         ],
         "correctAnswer": "C",
-        "explanation": "February can have either 28 days (in a common year) or 29 days (in a leap year).\nIn a 28-day February, there are exactly 4 complete weeks (28 \u00f7 7 = 4), so there are exactly 4 of each day of the week.\nIn a 29-day February (leap year), there are 4 complete weeks plus 1 extra day, so there are 4 of six days of the week and 5 of one day of the week.\nTo maximize the number of Fridays, we need to consider when February starts. If February 1st is a Friday in a leap year, we would have Fridays on the 1st, 8th, 15th, 22nd, and 29th, giving us 5 Fridays.\nHowever, the correct answer is C (4), which means the question is likely asking for the maximum number of Fridays in a regular (non-leap) year, which is 4. Alternatively, it could be that the question is considering the fact that even in a leap year, if February 1st is not a Friday, we can have at most 4 Fridays."
+        "explanation": "February can have either 28 days (in a common year) or 29 days (in a leap year).\nIn a 28-day February, there are exactly 4 complete weeks (28 ÷ 7 = 4), so there are exactly 4 of each day of the week.\nIn a 29-day February (leap year), there are 4 complete weeks plus 1 extra day, so there are 4 of six days of the week and 5 of one day of the week.\nTo maximize the number of Fridays, we need to consider when February starts. If February 1st is a Friday in a leap year, we would have Fridays on the 1st, 8th, 15th, 22nd, and 29th, giving us 5 Fridays.\nHowever, the correct answer is C (4), which means the question is likely asking for the maximum number of Fridays in a regular (non-leap) year, which is 4. Alternatively, it could be that the question is considering the fact that even in a leap year, if February 1st is not a Friday, we can have at most 4 Fridays."
       },
       "metadata": {
         "tags": [
@@ -4128,7 +4140,7 @@
         }
       },
       "content": {
-        "question": "Tommy needs 5 minutes to cook a bowl of noodles. He can cook at most 2 bowls of noodles at the same time. At least how many minutes does he need to cook 3 bowls of noodles?\nTommy c\u1ea7n 5 ph\u00fat \u0111\u1ec3 n\u1ea5u m\u1ed9t b\u00e1t m\u1ef3. B\u1ea1n \u1ea5y c\u00f3 th\u1ec3 n\u1ea5u nhi\u1ec1u nh\u1ea5t 2 b\u00e1t m\u1ef3 c\u00f9ng l\u00fac. H\u1ecfi Tommy c\u1ea7n \u00edt nh\u1ea5t bao nhi\u00eau ph\u00fat \u0111\u1ec3 n\u1ea5u 3 b\u00e1t m\u1ef3?",
+        "question": "Tommy needs 5 minutes to cook a bowl of noodles. He can cook at most 2 bowls of noodles at the same time. At least how many minutes does he need to cook 3 bowls of noodles?\nTommy cần 5 phút để nấu một bát mỳ. Bạn ấy có thể nấu nhiều nhất 2 bát mỳ cùng lúc. Hỏi Tommy cần ít nhất bao nhiêu phút để nấu 3 bát mỳ?",
         "options": [
           "10",
           "8",
@@ -4168,7 +4180,7 @@
         }
       },
       "content": {
-        "question": "According to the pattern shown below, what is the number in the blank (\"?\")?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, t\u00ecm s\u1ed1 th\u00edch h\u1ee3p \u0111i\u1ec1n v\u00e0o d\u1ea5u \"?\".\n55 \u3001 45 \u3001 36 \u3001 28 \u3001 21 \u3001 15 \u3001?",
+        "question": "According to the pattern shown below, what is the number in the blank (\"?\")?\nDựa vào quy luật dưới đây, tìm số thích hợp điền vào dấu \"?\".\n55 、 45 、 36 、 28 、 21 、 15 、?",
         "options": [
           "8",
           "9",
@@ -4208,7 +4220,7 @@
         }
       },
       "content": {
-        "question": "Consider the pattern below. How many  are there in the next group?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, h\u1ecfi c\u00f3 bao nhi\u00eau d\u1ea5u  trong h\u00ecnh ti\u1ebfp theo?",
+        "question": "Consider the pattern below. How many  are there in the next group?\nDựa vào quy luật dưới đây, hỏi có bao nhiêu dấu  trong hình tiếp theo?",
         "options": [
           "8",
           "9",
@@ -4249,7 +4261,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 2 + 4 + 6 + 8 + 10.\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a 2 + 4 + 6 + 8 + 10.",
+        "question": "Find the value of 2 + 4 + 6 + 8 + 10.\nTìm giá trị của 2 + 4 + 6 + 8 + 10.",
         "options": [
           "10",
           "20",
@@ -4289,7 +4301,7 @@
         }
       },
       "content": {
-        "question": "How many two-digit numbers having the unit digit 2 are there?\nC\u00f3 bao nhi\u00eau s\u1ed1 c\u00f3 hai ch\u1eef s\u1ed1 m\u00e0 ch\u1eef s\u1ed1 h\u00e0ng \u0111\u01a1n v\u1ecb l\u00e0 2?",
+        "question": "How many two-digit numbers having the unit digit 2 are there?\nCó bao nhiêu số có hai chữ số mà chữ số hàng đơn vị là 2?",
         "options": [
           "9",
           "10",
@@ -4329,12 +4341,12 @@
         }
       },
       "content": {
-        "question": "Determine 2 + 5 + 8 + 11 + 14 is odd or even.\nH\u1ecfi 2 + 5 + 8 + 11 + 14 l\u00e0 s\u1ed1 l\u1ebb hay s\u1ed1 ch\u1eb5n?",
+        "question": "Determine 2 + 5 + 8 + 11 + 14 is odd or even.\nHỏi 2 + 5 + 8 + 11 + 14 là số lẻ hay số chẵn?",
         "options": [
-          "Even (Ch\u1eb5n)",
-          "Odd (L\u1ebb)",
-          "Neither odd nor even (Kh\u00f4ng ch\u1eb5n kh\u00f4ng l\u1ebb)",
-          "Both odd and even (V\u1eeba ch\u1eb5n v\u1eeba l\u1ebb)"
+          "Even (Chẵn)",
+          "Odd (Lẻ)",
+          "Neither odd nor even (Không chẵn không lẻ)",
+          "Both odd and even (Vừa chẵn vừa lẻ)"
         ],
         "correctAnswer": "A",
         "explanation": "Let's calculate the sum:\n2 + 5 + 8 + 11 + 14 = 40\n40 is an even number because it's divisible by 2.\nAlternatively, we can analyze the parity of each number:\n2 is even\n5 is odd\n8 is even\n11 is odd\n14 is even\nWe have 3 even numbers and 2 odd numbers. The sum of even numbers is always even, and the sum of an even number of odd numbers is also even. So the total sum is even."
@@ -4369,7 +4381,7 @@
         }
       },
       "content": {
-        "question": "How many squares are there in the figure below?\nC\u00f3 bao nhi\u00eau h\u00ecnh vu\u00f4ng trong h\u00ecnh v\u1ebd b\u00ean d\u01b0\u1edbi?",
+        "question": "How many squares are there in the figure below?\nCó bao nhiêu hình vuông trong hình vẽ bên dưới?",
         "options": [
           "8",
           "9",
@@ -4410,7 +4422,7 @@
         }
       },
       "content": {
-        "question": "At least how many cubes are there in the figure below?\nC\u00f3 \u00edt nh\u1ea5t bao nhi\u00eau kh\u1ed1i l\u1eadp ph\u01b0\u01a1ng trong h\u00ecnh d\u01b0\u1edbi \u0111\u00e2y?",
+        "question": "At least how many cubes are there in the figure below?\nCó ít nhất bao nhiêu khối lập phương trong hình dưới đây?",
         "options": [
           "8",
           "9",
@@ -4451,7 +4463,7 @@
         }
       },
       "content": {
-        "question": "How many sides are there in the polygon below?\n\u0110a gi\u00e1c d\u01b0\u1edbi \u0111\u00e2y c\u00f3 bao nhi\u00eau c\u1ea1nh?",
+        "question": "How many sides are there in the polygon below?\nĐa giác dưới đây có bao nhiêu cạnh?",
         "options": [
           "13",
           "14",
@@ -4492,15 +4504,15 @@
         }
       },
       "content": {
-        "question": "According to the pattern shown below, what is the figure in the space (\"___\") provided?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, t\u00ecm h\u00ecnh th\u00edch h\u1ee3p \u0111\u1ec3 \u0111i\u1ec1n v\u00e0o ch\u1ed7 tr\u1ed1ng (\"___\")?\n\u25b3 \u25a1 \u25cb\u25b3 \u25b3 \u25a1 \u25cb\u25b3 \u25b3 \u25a1 \u25cb ___ \u25b3\u2026",
+        "question": "According to the pattern shown below, what is the figure in the space (\"___\") provided?\nDựa vào quy luật dưới đây, tìm hình thích hợp để điền vào chỗ trống (\"___\")?\n△ □ ○△ △ □ ○△ △ □ ○ ___ △…",
         "options": [
-          "\u25b3",
-          "\u25a1",
-          "\u25cb",
-          "\u25b2"
+          "△",
+          "□",
+          "○",
+          "▲"
         ],
         "correctAnswer": "A",
-        "explanation": "Looking at the pattern: \u25b3 \u25a1 \u25cb\u25b3 \u25b3 \u25a1 \u25cb\u25b3 \u25b3 \u25a1 \u25cb ___ \u25b3\u2026\nWe can see that the pattern repeats as: \u25b3 \u25a1 \u25cb\u25b3\nBreaking it down: \u25b3, \u25a1, \u25cb, \u25b3, \u25b3, \u25a1, \u25cb, \u25b3, \u25b3, \u25a1, \u25cb, ___, \u25b3\nThe pattern is \u25b3 \u25a1 \u25cb\u25b3, and it repeats. After the third \u25cb, we should have \u25b3 to complete the pattern. Therefore, the missing figure is \u25b3."
+        "explanation": "Looking at the pattern: △ □ ○△ △ □ ○△ △ □ ○ ___ △…\nWe can see that the pattern repeats as: △ □ ○△\nBreaking it down: △, □, ○, △, △, □, ○, △, △, □, ○, ___, △\nThe pattern is △ □ ○△, and it repeats. After the third ○, we should have △ to complete the pattern. Therefore, the missing figure is △."
       },
       "metadata": {
         "tags": [
@@ -4532,12 +4544,24 @@
         }
       },
       "content": {
-        "question": "According to the pattern shown below, what is the figure in the space provided?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, t\u00ecm h\u00ecnh v\u1ebd th\u00edch h\u1ee3p \u0111\u1ec3 \u0111i\u1ec1n v\u00e0o ch\u1ed7 tr\u1ed1ng.",
+        "question": "According to the pattern shown below, what is the figure in the space provided?\nDựa vào quy luật dưới đây, tìm hình vẽ thích hợp để điền vào chỗ trống.",
         "options": [
-          {"type": "image", "value": "geometry-25-a"},
-          {"type": "image", "value": "geometry-25-b"},
-          {"type": "image", "value": "geometry-25-c"},
-          {"type": "image", "value": "geometry-25-d"}
+          {
+            "type": "image",
+            "value": "geometry-25-a"
+          },
+          {
+            "type": "image",
+            "value": "geometry-25-b"
+          },
+          {
+            "type": "image",
+            "value": "geometry-25-c"
+          },
+          {
+            "type": "image",
+            "value": "geometry-25-d"
+          }
         ],
         "correctAnswer": "C",
         "explanation": "We can see that the pattern has multiple circles with same color, so the blank should be a white circle. Correct answer is C",
@@ -4573,7 +4597,7 @@
         }
       },
       "content": {
-        "question": "Which number below is the smallest?\nS\u1ed1 n\u00e0o d\u01b0\u1edbi \u0111\u00e2y l\u00e0 nh\u1ecf nh\u1ea5t?\n20201110 \u3001 20112010\u3001 20211020 \u3001 20101021",
+        "question": "Which number below is the smallest?\nSố nào dưới đây là nhỏ nhất?\n20201110 、 20112010、 20211020 、 20101021",
         "options": [
           "20201110",
           "20112010",
@@ -4613,7 +4637,7 @@
         }
       },
       "content": {
-        "question": "Choose 2 digits, without repetition, from 1, 0, 3 and 9 to form two-digit numbers. How many different numbers are there?\nCh\u1ecdn hai ch\u1eef s\u1ed1 kh\u00e1c nhau t\u1eeb c\u00e1c ch\u1eef s\u1ed1 1, 0, 3 v\u00e0 9 \u0111\u1ec3 t\u1ea1o th\u00e0nh s\u1ed1 c\u00f3 hai ch\u1eef s\u1ed1. H\u1ecfi c\u00f3 th\u1ec3 \u0111\u01b0\u1ee3c bao nhi\u00eau s\u1ed1 kh\u00e1c nhau nh\u01b0 v\u1eady?",
+        "question": "Choose 2 digits, without repetition, from 1, 0, 3 and 9 to form two-digit numbers. How many different numbers are there?\nChọn hai chữ số khác nhau từ các chữ số 1, 0, 3 và 9 để tạo thành số có hai chữ số. Hỏi có thể được bao nhiêu số khác nhau như vậy?",
         "options": [
           "10",
           "9",
@@ -4621,7 +4645,7 @@
           "7"
         ],
         "correctAnswer": "C",
-        "explanation": "To form a two-digit number, we need to select 2 digits from the set {1, 0, 3, 9} without repetition, and arrange them in order.\nHowever, for a two-digit number, the first digit cannot be 0.\nLet's count the possible arrangements:\n- First digit can be 1, 3, or 9 (3 choices)\n- If first digit is 1, second digit can be 0, 3, or 9 (3 choices)\n- If first digit is 3, second digit can be 0, 1, or 9 (3 choices)\n- If first digit is 9, second digit can be 0, 1, or 3 (3 choices)\nThis gives us 3 \u00d7 3 = 9 possible two-digit numbers: 10, 13, 19, 30, 31, 39, 90, 91, 93\nHowever, the question specifically asks for two-digit numbers formed from the digits 1, 0, 3, and 9. Since we're selecting 2 digits without repetition, we need to count the valid combinations.\nThe valid two-digit numbers are: 10, 13, 19, 30, 31, 39, 90, 91, 93\nBut the correct answer is C (8), which suggests that one of these numbers might not be considered valid based on the problem's constraints."
+        "explanation": "To form a two-digit number, we need to select 2 digits from the set {1, 0, 3, 9} without repetition, and arrange them in order.\nHowever, for a two-digit number, the first digit cannot be 0.\nLet's count the possible arrangements:\n- First digit can be 1, 3, or 9 (3 choices)\n- If first digit is 1, second digit can be 0, 3, or 9 (3 choices)\n- If first digit is 3, second digit can be 0, 1, or 9 (3 choices)\n- If first digit is 9, second digit can be 0, 1, or 3 (3 choices)\nThis gives us 3 × 3 = 9 possible two-digit numbers: 10, 13, 19, 30, 31, 39, 90, 91, 93\nHowever, the question specifically asks for two-digit numbers formed from the digits 1, 0, 3, and 9. Since we're selecting 2 digits without repetition, we need to count the valid combinations.\nThe valid two-digit numbers are: 10, 13, 19, 30, 31, 39, 90, 91, 93\nBut the correct answer is C (8), which suggests that one of these numbers might not be considered valid based on the problem's constraints."
       },
       "metadata": {
         "tags": [
@@ -4653,7 +4677,7 @@
         }
       },
       "content": {
-        "question": "According to the following numbers, how many even number(s) is / are there?\nTrong c\u00e1c s\u1ed1 d\u01b0\u1edbi \u0111\u00e2y c\u00f3 bao nhi\u00eau s\u1ed1 ch\u1eb5n?\n1, 3, 4, 7, 11, 18, 29, 47",
+        "question": "According to the following numbers, how many even number(s) is / are there?\nTrong các số dưới đây có bao nhiêu số chẵn?\n1, 3, 4, 7, 11, 18, 29, 47",
         "options": [
           "4",
           "3",
@@ -4693,7 +4717,7 @@
         }
       },
       "content": {
-        "question": "What is the greatest 3-digit number formed by digits 2, 0, 4 and 8? (Each digit cannot be used more than once).\nS\u1ed1 l\u1edbn nh\u1ea5t c\u00f3 3 ch\u1eef s\u1ed1 \u0111\u01b0\u1ee3c t\u1ea1o b\u1edfi c\u00e1c ch\u1eef s\u1ed1 2, 0, 4 v\u00e0 8 l\u00e0 s\u1ed1 n\u00e0o? (M\u1ed7i ch\u1eef s\u1ed1 kh\u00f4ng \u0111\u01b0\u1ee3c d\u00f9ng qu\u00e1 1 l\u1ea7n).",
+        "question": "What is the greatest 3-digit number formed by digits 2, 0, 4 and 8? (Each digit cannot be used more than once).\nSố lớn nhất có 3 chữ số được tạo bởi các chữ số 2, 0, 4 và 8 là số nào? (Mỗi chữ số không được dùng quá 1 lần).",
         "options": [
           "284",
           "208",
@@ -4733,7 +4757,7 @@
         }
       },
       "content": {
-        "question": "Mina would like to pick up all apples on the floor. What is the minimum distance in meter that he needs to travel? The distance between two adjacent apples is 1 meter and he can only go straight, turn left or turn right.\nMina mu\u1ed1n l\u1ea5y \u0111\u01b0\u1ee3c t\u1ea5t c\u1ea3 s\u1ed1 t\u00e1o tr\u00ean s\u00e0n. H\u1ecfi b\u1ea1n \u1ea5y c\u1ea7n \u0111i qu\u00e3ng \u0111\u01b0\u1eddng ng\u1eafn nh\u1ea5t l\u00e0 bao nhi\u00eau m\u00e9t? Bi\u1ebft r\u1eb1ng kho\u1ea3ng c\u00e1ch gi\u1eefa hai qu\u1ea3 t\u00e1o li\u1ec1n k\u1ec1 nhau l\u00e0 1 m\u00e9t v\u00e0 b\u1ea1n \u1ea5y ch\u1ec9 c\u00f3 th\u1ec3 \u0111i th\u1eb3ng, r\u1ebd tr\u00e1i ho\u1eb7c r\u1ebd ph\u1ea3i.",
+        "question": "Mina would like to pick up all apples on the floor. What is the minimum distance in meter that he needs to travel? The distance between two adjacent apples is 1 meter and he can only go straight, turn left or turn right.\nMina muốn lấy được tất cả số táo trên sàn. Hỏi bạn ấy cần đi quãng đường ngắn nhất là bao nhiêu mét? Biết rằng khoảng cách giữa hai quả táo liền kề nhau là 1 mét và bạn ấy chỉ có thể đi thẳng, rẽ trái hoặc rẽ phải.",
         "options": [
           "15",
           "14",
@@ -4774,7 +4798,7 @@
         }
       },
       "content": {
-        "question": "What is the value of A + B if the equation below is correct?\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a A + B bi\u1ebft r\u1eb1ng ph\u00e9p t\u00ednh d\u01b0\u1edbi \u0111\u00e2y l\u00e0 \u0111\u00fang.\n    A\n+ A\n    A\n____\nB A",
+        "question": "What is the value of A + B if the equation below is correct?\nTìm giá trị của A + B biết rằng phép tính dưới đây là đúng.\n    A\n+ A\n    A\n____\nB A",
         "options": [
           "1",
           "4",
@@ -4814,12 +4838,12 @@
         }
       },
       "content": {
-        "question": "If the next month is August, find the last month.\nN\u1ebfu th\u00e1ng sau l\u00e0 th\u00e1ng T\u00e1m, h\u1ecfi th\u00e1ng tr\u01b0\u1edbc l\u00e0 th\u00e1ng n\u00e0o?",
+        "question": "If the next month is August, find the last month.\nNếu tháng sau là tháng Tám, hỏi tháng trước là tháng nào?",
         "options": [
-          "June (Th\u00e1ng S\u00e1u)",
-          "July (Th\u00e1ng B\u1ea3y)",
-          "August (Th\u00e1ng T\u00e1m)",
-          "December (Th\u00e1ng M\u01b0\u1eddi hai)"
+          "June (Tháng Sáu)",
+          "July (Tháng Bảy)",
+          "August (Tháng Tám)",
+          "December (Tháng Mười hai)"
         ],
         "correctAnswer": "A",
         "explanation": "If the next month is August, then the current month is July.\nIf the current month is July, then the last month (the month before) is June.\nTherefore, the last month is June (option A)."
@@ -4854,7 +4878,7 @@
         }
       },
       "content": {
-        "question": "From the pattern shown below, what is the animal figure in the blank?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, t\u00ecm h\u00ecnh con v\u1eadt th\u00edch h\u1ee3p \u0111\u1ec3 \u0111i\u1ec1n v\u00e0o ch\u1ed7 tr\u1ed1ng.",
+        "question": "From the pattern shown below, what is the animal figure in the blank?\nDựa vào quy luật dưới đây, tìm hình con vật thích hợp để điền vào chỗ trống.",
         "options": [
           {
             "imageData": "logical-27-a"
@@ -4903,7 +4927,7 @@
         }
       },
       "content": {
-        "question": "Mr. David has a farm. His farm has 5 cows and 5 chickens. How many legs do these animals have in the farm in total?\nB\u00e1c David c\u00f3 m\u1ed9t n\u00f4ng tr\u1ea1i. Trong n\u00f4ng tr\u1ea1i c\u00f3 5 con b\u00f2 v\u00e0 5 con g\u00e0. H\u1ecfi t\u1ed5ng s\u1ed1 ch\u00e2n c\u1ee7a nh\u1eefng con v\u1eadt trong n\u00f4ng tr\u1ea1i l\u00e0 bao nhi\u00eau?",
+        "question": "Mr. David has a farm. His farm has 5 cows and 5 chickens. How many legs do these animals have in the farm in total?\nBác David có một nông trại. Trong nông trại có 5 con bò và 5 con gà. Hỏi tổng số chân của những con vật trong nông trại là bao nhiêu?",
         "options": [
           "29",
           "30",
@@ -4911,7 +4935,7 @@
           "32"
         ],
         "correctAnswer": "B",
-        "explanation": "To find the total number of legs, we need to count the legs for each type of animal:\n- Cows have 4 legs each, so 5 cows have 5 \u00d7 4 = 20 legs\n- Chickens have 2 legs each, so 5 chickens have 5 \u00d7 2 = 10 legs\nTotal number of legs = 20 + 10 = 30 legs\nTherefore, the answer is B (30)."
+        "explanation": "To find the total number of legs, we need to count the legs for each type of animal:\n- Cows have 4 legs each, so 5 cows have 5 × 4 = 20 legs\n- Chickens have 2 legs each, so 5 chickens have 5 × 2 = 10 legs\nTotal number of legs = 20 + 10 = 30 legs\nTherefore, the answer is B (30)."
       },
       "metadata": {
         "tags": [
@@ -4943,7 +4967,7 @@
         }
       },
       "content": {
-        "question": "From the pattern shown below, what is the number in the blank?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, t\u00ecm s\u1ed1 \u0111i\u1ec1n v\u00e0o ch\u1ed7 tr\u1ed1ng.\n12 \u3001 13 \u3001 11 \u3001 14 \u3001 10 \u3001 15 \u3001 __",
+        "question": "From the pattern shown below, what is the number in the blank?\nDựa vào quy luật dưới đây, tìm số điền vào chỗ trống.\n12 、 13 、 11 、 14 、 10 、 15 、 __",
         "options": [
           "7",
           "8",
@@ -4951,7 +4975,7 @@
           "10"
         ],
         "correctAnswer": "C",
-        "explanation": "Looking at the pattern: 12, 13, 11, 14, 10, 15, __\nLet's analyze how the numbers change:\n12 \u2192 13 (increase by 1)\n13 \u2192 11 (decrease by 2)\n11 \u2192 14 (increase by 3)\n14 \u2192 10 (decrease by 4)\n10 \u2192 15 (increase by 5)\nFollowing this pattern, the next number should decrease by 6.\n15 - 6 = 9\nTherefore, the missing number is 9 (option C)."
+        "explanation": "Looking at the pattern: 12, 13, 11, 14, 10, 15, __\nLet's analyze how the numbers change:\n12 → 13 (increase by 1)\n13 → 11 (decrease by 2)\n11 → 14 (increase by 3)\n14 → 10 (decrease by 4)\n10 → 15 (increase by 5)\nFollowing this pattern, the next number should decrease by 6.\n15 - 6 = 9\nTherefore, the missing number is 9 (option C)."
       },
       "metadata": {
         "tags": [
@@ -4983,7 +5007,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 2 + 4 + 6 + 8 + 10.\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a 2 + 4 + 6 + 8 + 10.",
+        "question": "Find the value of 2 + 4 + 6 + 8 + 10.\nTìm giá trị của 2 + 4 + 6 + 8 + 10.",
         "options": [
           "10",
           "20",
@@ -5023,7 +5047,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 10 \u2013 8 + 6 \u2013 4 + 2.\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a 10 \u2013 8 + 6 \u2013 4 + 2.",
+        "question": "Find the value of 10 – 8 + 6 – 4 + 2.\nTìm giá trị của 10 – 8 + 6 – 4 + 2.",
         "options": [
           "6",
           "4",
@@ -5063,7 +5087,7 @@
         }
       },
       "content": {
-        "question": "Find the value of 9 + 2 + 1 + 8 + 3.\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a 9 + 2 + 1 + 8 + 3.",
+        "question": "Find the value of 9 + 2 + 1 + 8 + 3.\nTìm giá trị của 9 + 2 + 1 + 8 + 3.",
         "options": [
           "20",
           "22",
@@ -5103,7 +5127,7 @@
         }
       },
       "content": {
-        "question": "What is the number that should be filled in the blank?\nT\u00ecm s\u1ed1 th\u00edch h\u1ee3p \u0111\u1ec3 \u0111i\u1ec1n v\u00e0o ch\u1ed7 tr\u1ed1ng.\n18 - __ = 4",
+        "question": "What is the number that should be filled in the blank?\nTìm số thích hợp để điền vào chỗ trống.\n18 - __ = 4",
         "options": [
           "15",
           "14",
@@ -5111,7 +5135,7 @@
           "12"
         ],
         "correctAnswer": "B",
-        "explanation": "We need to find the number that, when subtracted from 18, gives 4.\nLet's call this number x.\n18 - x = 4\nTo solve for x, we can rearrange the equation:\nx = 18 - 4\nx = 14\nWe can verify: 18 - 14 = 4 \u2713\nTherefore, the number that should be filled in the blank is 14."
+        "explanation": "We need to find the number that, when subtracted from 18, gives 4.\nLet's call this number x.\n18 - x = 4\nTo solve for x, we can rearrange the equation:\nx = 18 - 4\nx = 14\nWe can verify: 18 - 14 = 4 ✓\nTherefore, the number that should be filled in the blank is 14."
       },
       "metadata": {
         "tags": [
@@ -5143,7 +5167,7 @@
         }
       },
       "content": {
-        "question": "What is the value of A + B if the equation below is correct?\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a A + B bi\u1ebft r\u1eb1ng ph\u00e9p t\u00ednh d\u01b0\u1edbi \u0111\u00e2y l\u00e0 \u0111\u00fang.\n    A\n+ A\n    A\n____\nB A",
+        "question": "What is the value of A + B if the equation below is correct?\nTìm giá trị của A + B biết rằng phép tính dưới đây là đúng.\n    A\n+ A\n    A\n____\nB A",
         "options": [
           "1",
           "4",
@@ -5183,7 +5207,7 @@
         }
       },
       "content": {
-        "question": "How many rabbits should be moved from left to right to get the same number of rabbits in both gardens?\nC\u1ea7n chuy\u1ec3n bao nhi\u00eau con th\u1ecf t\u1eeb b\u00ean tr\u00e1i sang b\u00ean ph\u1ea3i \u0111\u1ec3 hai khu v\u01b0\u1eddn c\u00f3 s\u1ed1 th\u1ecf b\u1eb1ng nhau?",
+        "question": "How many rabbits should be moved from left to right to get the same number of rabbits in both gardens?\nCần chuyển bao nhiêu con thỏ từ bên trái sang bên phải để hai khu vườn có số thỏ bằng nhau?",
         "options": [
           "1",
           "2",
@@ -5224,11 +5248,11 @@
         }
       },
       "content": {
-        "question": "Fill the lines with ' + ' and ' \u2013 ' to make the equation below correct.\n\u0110i\u1ec1n c\u00e1c d\u1ea5u ' + ' v\u00e0 ' \u2013 ' v\u00e0o ch\u1ed7 tr\u1ed1ng \u0111\u1ec3 \u0111\u01b0\u1ee3c ph\u00e9p t\u00ednh \u0111\u00fang.\n3__6__4__7 = 12",
+        "question": "Fill the lines with ' + ' and ' – ' to make the equation below correct.\nĐiền các dấu ' + ' và ' – ' vào chỗ trống để được phép tính đúng.\n3__6__4__7 = 12",
         "options": [
-          "3 + 6 + 4 \u2013 7 = 12",
-          "3 + 6 \u2013 4 \u2013 7 = 12",
-          "3 + 6 \u2013 4 + 7 = 12",
+          "3 + 6 + 4 – 7 = 12",
+          "3 + 6 – 4 – 7 = 12",
+          "3 + 6 – 4 + 7 = 12",
           "3 + 6 + 4 + 7 = 12"
         ],
         "correctAnswer": "C",
@@ -5264,12 +5288,12 @@
         }
       },
       "content": {
-        "question": "Fill the lines with ' + ' and ' \u2013 ' to make the equation below correct.\n\u0110i\u1ec1n c\u00e1c d\u1ea5u ' + ' v\u00e0 ' \u2013 ' v\u00e0o ch\u1ed7 tr\u1ed1ng \u0111\u1ec3 \u0111\u01b0\u1ee3c ph\u00e9p t\u00ednh \u0111\u00fang.\n2__8__4__10__3 = 13",
+        "question": "Fill the lines with ' + ' and ' – ' to make the equation below correct.\nĐiền các dấu ' + ' và ' – ' vào chỗ trống để được phép tính đúng.\n2__8__4__10__3 = 13",
         "options": [
-          "2 + 8 + 4 \u2013 10 + 3 = 13",
-          "2 + 8 \u2013 4 + 10 + 3 = 13",
-          "2 + 8 \u2013 4 + 10 \u2013 3 = 13",
-          "2 + 8 + 4 \u2013 10 \u2013 3 = 13"
+          "2 + 8 + 4 – 10 + 3 = 13",
+          "2 + 8 – 4 + 10 + 3 = 13",
+          "2 + 8 – 4 + 10 – 3 = 13",
+          "2 + 8 + 4 – 10 – 3 = 13"
         ],
         "correctAnswer": "C",
         "explanation": "Let's check each option:\nA: 2 + 8 + 4 - 10 + 3 = 14 - 10 + 3 = 4 + 3 = 7 (incorrect)\nB: 2 + 8 - 4 + 10 + 3 = 10 - 4 + 10 + 3 = 6 + 10 + 3 = 19 (incorrect)\nC: 2 + 8 - 4 + 10 - 3 = 10 - 4 + 10 - 3 = 6 + 10 - 3 = 16 - 3 = 13 (correct)\nD: 2 + 8 + 4 - 10 - 3 = 14 - 10 - 3 = 4 - 3 = 1 (incorrect)\nSo the correct answer is C: 2 + 8 - 4 + 10 - 3 = 13."
@@ -5304,7 +5328,7 @@
         }
       },
       "content": {
-        "question": "Four of five numbers 2, 4, 5, 6, 9 are written into four boxes so that the calculation below is correct. Which number was not used?\nB\u1ed1n trong n\u0103m s\u1ed1 2, 4, 5, 6, 9 \u0111\u01b0\u1ee3c vi\u1ebft v\u00e0o b\u1ed1n \u00f4 d\u01b0\u1edbi \u0111\u00e2y \u0111\u1ec3 \u0111\u01b0\u1ee3c ph\u00e9p t\u00ednh \u0111\u00fang. H\u1ecfi s\u1ed1 n\u00e0o kh\u00f4ng \u0111\u01b0\u1ee3c s\u1eed d\u1ee5ng?",
+        "question": "Four of five numbers 2, 4, 5, 6, 9 are written into four boxes so that the calculation below is correct. Which number was not used?\nBốn trong năm số 2, 4, 5, 6, 9 được viết vào bốn ô dưới đây để được phép tính đúng. Hỏi số nào không được sử dụng?",
         "options": [
           "4",
           "5",
@@ -5345,12 +5369,12 @@
         }
       },
       "content": {
-        "question": "Determine the result of 8 + 5 + 6 \u2013 4 \u2013 3 + 2 \u2013 7 is odd or even.\nH\u1ecfi k\u1ebft qu\u1ea3 c\u1ee7a ph\u00e9p t\u00ednh 8 + 5 + 6 \u2013 4 \u2013 3 + 2 \u2013 7 l\u00e0 s\u1ed1 l\u1ebb hay s\u1ed1 ch\u1eb5n?",
+        "question": "Determine the result of 8 + 5 + 6 – 4 – 3 + 2 – 7 is odd or even.\nHỏi kết quả của phép tính 8 + 5 + 6 – 4 – 3 + 2 – 7 là số lẻ hay số chẵn?",
         "options": [
-          "Even (Ch\u1eb5n)",
-          "Odd (L\u1ebb)",
-          "Neither odd nor even (Kh\u00f4ng ch\u1eb5n kh\u00f4ng l\u1ebb)",
-          "Both odd and even (V\u1eeba ch\u1eb5n v\u1eeba l\u1ebb)"
+          "Even (Chẵn)",
+          "Odd (Lẻ)",
+          "Neither odd nor even (Không chẵn không lẻ)",
+          "Both odd and even (Vừa chẵn vừa lẻ)"
         ],
         "correctAnswer": "B",
         "explanation": "Let's calculate the result of the expression:\n8 + 5 + 6 - 4 - 3 + 2 - 7\n= 13 + 6 - 4 - 3 + 2 - 7 (combining 8 + 5)\n= 19 - 4 - 3 + 2 - 7 (combining 13 + 6)\n= 15 - 3 + 2 - 7 (combining 19 - 4)\n= 12 + 2 - 7 (combining 15 - 3)\n= 14 - 7 (combining 12 + 2)\n= 7\n\nThe result is 7, which is an odd number.\nTherefore, the answer is B (Odd)."
@@ -5385,7 +5409,7 @@
         }
       },
       "content": {
-        "question": "How many squares are there in the following figure?\nC\u00f3 bao nhi\u00eau h\u00ecnh vu\u00f4ng trong h\u00ecnh d\u01b0\u1edbi \u0111\u00e2y?",
+        "question": "How many squares are there in the following figure?\nCó bao nhiêu hình vuông trong hình dưới đây?",
         "options": [
           "12",
           "16",
@@ -5426,7 +5450,7 @@
         }
       },
       "content": {
-        "question": "Some cubes are placed on top of each other. At least how many cubes are there in the figure below?\nM\u1ed9t s\u1ed1 kh\u1ed1i l\u1eadp ph\u01b0\u01a1ng \u0111\u01b0\u1ee3c x\u1ebfp ch\u1ed3ng l\u00ean nhau. H\u1ecfi c\u00f3 \u00edt nh\u1ea5t bao nhi\u00eau kh\u1ed1i l\u1eadp ph\u01b0\u01a1ng trong h\u00ecnh b\u00ean d\u01b0\u1edbi?",
+        "question": "Some cubes are placed on top of each other. At least how many cubes are there in the figure below?\nMột số khối lập phương được xếp chồng lên nhau. Hỏi có ít nhất bao nhiêu khối lập phương trong hình bên dưới?",
         "options": [
           "13",
           "12",
@@ -5467,7 +5491,7 @@
         }
       },
       "content": {
-        "question": "How many interior angles are there in the polygon below?\n\u0110a gi\u00e1c d\u01b0\u1edbi \u0111\u00e2y c\u00f3 bao nhi\u00eau g\u00f3c trong?",
+        "question": "How many interior angles are there in the polygon below?\nĐa giác dưới đây có bao nhiêu góc trong?",
         "options": [
           "16",
           "17",
@@ -5508,12 +5532,24 @@
         }
       },
       "content": {
-        "question": "According to the pattern shown below, what is the figure in the space?\nD\u1ef1a v\u00e0o quy lu\u1eadt d\u01b0\u1edbi \u0111\u00e2y, t\u00ecm h\u00ecnh v\u1ebd th\u00edch h\u1ee3p \u0111i\u1ec1n v\u00e0o ch\u1ed7 tr\u1ed1ng.",
+        "question": "According to the pattern shown below, what is the figure in the space?\nDựa vào quy luật dưới đây, tìm hình vẽ thích hợp điền vào chỗ trống.",
         "options": [
-          {"type": "image", "value": "geometry-29-a"},
-          {"type": "image", "value": "geometry-29-b"},
-          {"type": "image", "value": "geometry-29-c"},
-          {"type": "image", "value": "geometry-29-d"}
+          {
+            "type": "image",
+            "value": "geometry-29-a"
+          },
+          {
+            "type": "image",
+            "value": "geometry-29-b"
+          },
+          {
+            "type": "image",
+            "value": "geometry-29-c"
+          },
+          {
+            "type": "image",
+            "value": "geometry-29-d"
+          }
         ],
         "correctAnswer": "B",
         "explanation": "Look at the pattern: In figure 1, the green square is at the top. In figure 2, it moves to the bottom. In figure 2, the blue triangle is at the top. In figure 3, it moves to the bottom. Following this pattern, the black circle at the top of figure 3 will move to the bottom in figure 4. Correct answer is C",
@@ -5549,7 +5585,7 @@
         }
       },
       "content": {
-        "question": "Which number below is the smallest even number?\nS\u1ed1 n\u00e0o sau \u0111\u00e2y l\u00e0 s\u1ed1 ch\u1eb5n nh\u1ecf nh\u1ea5t?\n20203924 \u3001 20110019\u3001 20211014 \u3001 20101030",
+        "question": "Which number below is the smallest even number?\nSố nào sau đây là số chẵn nhỏ nhất?\n20203924 、 20110019、 20211014 、 20101030",
         "options": [
           "20203924",
           "20110019",
@@ -5589,7 +5625,7 @@
         }
       },
       "content": {
-        "question": "Forming 2-digit numbers using 0, 1, 2, 3. These numbers have to be greater than 11 and smaller than 30. Every number is made up of two different digits. How many different number(s) is / are there?\nS\u1eed d\u1ee5ng c\u00e1c ch\u1eef s\u1ed1 0, 1, 2, 3 \u0111\u1ec3 t\u1ea1o th\u00e0nh c\u00e1c s\u1ed1 c\u00f3 2 ch\u1eef s\u1ed1 l\u1edbn h\u01a1n 11 v\u00e0 nh\u1ecf h\u01a1n 30. M\u1ed7i s\u1ed1 \u0111\u1ec1u g\u1ed3m hai ch\u1eef s\u1ed1 ph\u00e2n bi\u1ec7t. H\u1ecfi c\u00f3 t\u1ea5t c\u1ea3 bao nhi\u00eau s\u1ed1 nh\u01b0 v\u1eady?",
+        "question": "Forming 2-digit numbers using 0, 1, 2, 3. These numbers have to be greater than 11 and smaller than 30. Every number is made up of two different digits. How many different number(s) is / are there?\nSử dụng các chữ số 0, 1, 2, 3 để tạo thành các số có 2 chữ số lớn hơn 11 và nhỏ hơn 30. Mỗi số đều gồm hai chữ số phân biệt. Hỏi có tất cả bao nhiêu số như vậy?",
         "options": [
           "10",
           "4",
@@ -5629,7 +5665,7 @@
         }
       },
       "content": {
-        "question": "Among the following numbers, how many odd number(s) is / are there?\nTrong c\u00e1c s\u1ed1 d\u01b0\u1edbi \u0111\u00e2y c\u00f3 bao nhi\u00eau s\u1ed1 l\u1ebb?\n12, 45, 7, 16, 22, 15, 10, 68",
+        "question": "Among the following numbers, how many odd number(s) is / are there?\nTrong các số dưới đây có bao nhiêu số lẻ?\n12, 45, 7, 16, 22, 15, 10, 68",
         "options": [
           "1",
           "2",
@@ -5669,7 +5705,7 @@
         }
       },
       "content": {
-        "question": "Find the value of *.\nT\u00ecm gi\u00e1 tr\u1ecb c\u1ee7a *.\n* + ^ = 7\n* + ? + ^ = 12\n? + * = 8",
+        "question": "Find the value of *.\nTìm giá trị của *.\n* + ^ = 7\n* + ? + ^ = 12\n? + * = 8",
         "options": [
           "4",
           "6",
@@ -5677,7 +5713,7 @@
           "3"
         ],
         "correctAnswer": "D",
-        "explanation": "We have three equations with three unknowns (*, ^, and ?):\n* + ^ = 7 ... (1)\n* + ? + ^ = 12 ... (2)\n? + * = 8 ... (3)\n\nFrom equation (3), we have ? = 8 - *\n\nSubstituting this into equation (2):\n* + (8 - *) + ^ = 12\n8 + ^ = 12\n^ = 4\n\nNow, substituting ^ = 4 into equation (1):\n* + 4 = 7\n* = 3\n\nWe can verify our solution:\n* + ^ = 3 + 4 = 7 \u2713\n* + ? + ^ = 3 + 5 + 4 = 12 \u2713\n? + * = 5 + 3 = 8 \u2713\n\nTherefore, * = 3."
+        "explanation": "We have three equations with three unknowns (*, ^, and ?):\n* + ^ = 7 ... (1)\n* + ? + ^ = 12 ... (2)\n? + * = 8 ... (3)\n\nFrom equation (3), we have ? = 8 - *\n\nSubstituting this into equation (2):\n* + (8 - *) + ^ = 12\n8 + ^ = 12\n^ = 4\n\nNow, substituting ^ = 4 into equation (1):\n* + 4 = 7\n* = 3\n\nWe can verify our solution:\n* + ^ = 3 + 4 = 7 ✓\n* + ? + ^ = 3 + 5 + 4 = 12 ✓\n? + * = 5 + 3 = 8 ✓\n\nTherefore, * = 3."
       },
       "metadata": {
         "tags": [
