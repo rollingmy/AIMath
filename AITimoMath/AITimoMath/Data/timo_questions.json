@@ -2095,6 +2095,7 @@
         ],
         "correctAnswer": "D",
         "explanation": "Based on the pattern in the sequence of letters where each letter is 2 steps apart, we can determine that P is the letter that should go in the blank space.\nDựa trên quy luật trong chuỗi các chữ cái, trong đó mỗi chữ cái cách nhau 2 bước, chúng ta có thể xác định rằng P là chữ cái nên điền vào chỗ trống."
+      },
       "metadata": {
         "tags": [
           "pattern",
