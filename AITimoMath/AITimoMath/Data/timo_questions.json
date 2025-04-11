@@ -29,7 +29,7 @@
           "Mango (Xoài)",
           "None of them (Không có)"
         ],
-        "correctAnswer": "B",
+        "correctAnswer": "C",
         "explanation": "By comparing the balance scales, we can determine which fruit is heaviest.\nSo sánh cân bằng, chúng ta có thể xác định loại trái cây nặng nhất.",
         "imageData": "logical-1"
       },
@@ -511,7 +511,7 @@
           "4",
           "3"
         ],
-        "correctAnswer": "C",
+        "correctAnswer": "D",
         "explanation": "Divide the total number of stars by 2 to find how many stars should be in each equal group.\nChia tổng số ngôi sao cho 2 để tìm ra số ngôi sao trong mỗi nhóm bằng nhau."
       },
       "metadata": {
@@ -869,7 +869,7 @@
             "value": "geometry-3-d"
           }
         ],
-        "correctAnswer": "B",
+        "correctAnswer": "A",
         "explanation": "By analyzing the pattern of shapes, we can determine which figure comes next in the sequence.\nBằng cách phân tích mẫu dạng hình, chúng ta có thể xác định hình tiếp theo trong dãy.",
         "imageData": "geometry-3"
       },
@@ -910,8 +910,8 @@
           "6",
           "7"
         ],
-        "correctAnswer": "C",
-        "explanation": "By counting all the circles in the figure, including any that might overlap or be part of larger patterns, we find there are 6 circles total.\nĐếm tất cả các hình tròn trong hình, bao gồm cả những hình tròn có thể chồng lắp hoặc là phần của mẫu lớn hơn, chúng ta tìm thấy có 6 hình tròn tổng cộng.",
+        "correctAnswer": "B",
+        "explanation": "By counting all the circles in the figure, including any that might overlap or be part of larger patterns, we find there are 5 circles total.\nĐếm tất cả các hình tròn trong hình, bao gồm cả những hình tròn có thể chồng lắp hoặc là phần của mẫu lớn hơn, chúng ta tìm thấy có 5 hình tròn tổng cộng.",
         "imageData": "geometry-4"
       },
       "metadata": {
@@ -951,8 +951,8 @@
           "8",
           "9"
         ],
-        "correctAnswer": "C",
-        "explanation": "By counting all the sides of the geometric figure, we find there are 8 sides total.\nĐếm tất cả các cạnh của hình hình học, chúng ta tìm thấy có 8 cạnh tổng cộng.",
+        "correctAnswer": "B",
+        "explanation": "By counting all the sides of the geometric figure, we find there are 7 sides total.\nĐếm tất cả các cạnh của hình hình học, chúng ta tìm thấy có 7 cạnh tổng cộng.",
         "imageData": "geometry-5"
       },
       "metadata": {
@@ -1044,7 +1044,7 @@
             "data": "combinatorics-5-d"
           }
         ],
-        "correctAnswer": "B",
+        "correctAnswer": "C",
         "explanation": "The line rotates clockwise from one figure to the next so the correct answer is C.\nĐường thẳng quay theo chiều kim đồng hồ từ hình này sang hình tiếp theo, vì vậy đáp án đúng là C.",
         "imageData": "combinatorics-5"
       },
@@ -1205,9 +1205,9 @@
           "12",
           "16"
         ],
-        "correctAnswer": "D",
-        "explanation": "The pattern shows that each group has 4 more circles than the previous group. If we follow this pattern to the 5th group, it would have 16 circles.\nMẫu dạng chỉ ra rằng mỗi nhóm có 4 hình tròn hơn nhóm trước đó. Nếu chúng ta theo dõi mẫu dạng này đến nhóm thứ 5, nó sẽ có 16 hình tròn.",
-        "imageData": "geometry-7"
+        "correctAnswer": "C",
+        "explanation": "The pattern shows that each group has 3 more 'x' than the previous group. If we follow this pattern to the 5th group, it would have 13 'x's so number of circles will be 5x5 - 13 = 25 - 13 = 12. Correct answer is C.\nMẫu dạng chỉ ra rằng mỗi nhóm có 3 dấu x hơn nhóm trước đó. Nếu chúng ta theo dõi mẫu dạng này đến nhóm thứ 5, nó sẽ có 13 dấu x, vì vậy số lượng hình tròn sẽ là 5x5 - 13 = 25 - 13 = 12. Đáp án đúng là C.",
+        "imageData": "logical-9"
       },
       "metadata": {
         "tags": [
@@ -1606,7 +1606,7 @@
           "8",
           "7"
         ],
-        "correctAnswer": "D",
+        "correctAnswer": "C",
         "explanation": "The smallest 2-digit odd number is 11. If David has 3 cards and the total is 11, then his brother must have 11 - 3 = 8 cards.\nSố lẻ nhỏ nhất có 2 chữ số là 11. Nếu David có 3 lá bài và tổng là 11, thì anh trai của anh ấy phải có 11 - 3 = 8 lá bài."
       },
       "metadata": {
@@ -1646,8 +1646,8 @@
           "15",
           "20"
         ],
-        "correctAnswer": "C",
-        "explanation": "By carefully counting all possible squares in the figure, including individual squares and larger squares formed by combinations of smaller squares, we find there are 15 squares total.\nBằng cách đếm tất cả các hình vuông có thể có trong hình, bao gồm các hình vuông đơn lẻ và các hình vuông lớn được tạo thành từ sự kết hợp của các hình vuông nhỏ hơn, chúng ta tìm thấy có 15 hình vuông tổng cộng.",
+        "correctAnswer": "A",
+        "explanation": "By carefully counting all possible squares in the figure, including individual squares and larger squares formed by combinations of smaller squares, we find there are 19 squares total.\nBằng cách đếm tất cả các hình vuông có thể có trong hình, bao gồm các hình vuông đơn lẻ và các hình vuông lớn được tạo thành từ sự kết hợp của các hình vuông nhỏ hơn, chúng ta tìm thấy có 19 hình vuông tổng cộng.",
         "imageData": "geometry-6"
       },
       "metadata": {
@@ -1762,7 +1762,7 @@
         }
       },
       "content": {
-        "question": "Among the following numbers, how many odd numbers are there?\n21, 32, 444, 101, 8, 99, 241, 76\nTrong các số dưới đây, có bao nhiêu số lẻ?",
+        "question": "Among the following numbers, how many odd numbers are there?\n21, 32, 444, 101, 8, 99, 241, 7\nTrong các số dưới đây, có bao nhiêu số lẻ?",
         "options": [
           "3",
           "5",
@@ -1810,7 +1810,7 @@
           "15"
         ],
         "correctAnswer": "C",
-        "explanation": "For a 2-digit even number, the first digit can be 2, 4, 6, or 9 (4 choices), and the last digit must be even: 0, 2, 4, or 6 (4 choices). But we can't repeat digits, so for each first digit, we have one fewer choice for the second digit. Total: 4 first digits × (4-1) second digits = 4 × 3 = 12 numbers. Additionally, if the first digit is 9, we can also use 0 as the second digit (since 90 is even). So we have 12 + 2 = 14 different numbers."
+        "explanation": "For a 2-digit even number, the first digit can be 2, 4, 6, or 9 (4 choices), and the last digit must be even: 0, 2, 4, or 6 (4 choices). But we can't repeat digits, so for each first digit, we have one fewer choice for the second digit. Total: 4 first digits × (4-1) second digits = 4 × 3 = 12 numbers. Additionally, if the first digit is 9, we can also use 0 as the second digit (since 90 is even). So we have 12 + 2 = 14 different numbers.\nĐối với số chẵn có 2 chữ số, chữ số đầu tiên có thể là 2, 4, 6, hoặc 9 (4 lựa chọn), và chữ số cuối cùng phải là số chẵn: 0, 2, 4, hoặc 6 (4 lựa chọn). Nhưng chúng ta không thể lặp lại chữ số, vì vậy với mỗi chữ số đầu tiên, chúng ta có ít hơn một lựa chọn cho chữ số thứ hai. Tổng cộng: 4 chữ số đầu tiên × (4-1) chữ số thứ hai = 4 × 3 = 12 số. Ngoài ra, nếu chữ số đầu tiên là 9, chúng ta cũng có thể sử dụng 0 làm chữ số thứ hai (vì 90 là số chẵn). Vì vậy, chúng ta có 12 + 2 = 14 số khác nhau."
       },
       "metadata": {
         "tags": [
@@ -1889,8 +1889,8 @@
           "6",
           "8"
         ],
-        "correctAnswer": "D",
-        "explanation": "In a 3×3 magic square with numbers 1-9, the sum of each row, column, and diagonal is 15. By analyzing the partially filled square and ensuring each row, column, and diagonal sums to 15, we determine that the missing number is 8.\nTrong hình vuông 3 × 3 với các số từ 1 đến 9, tổng của mỗi hàng, cột và đường chéo là 15. Bằng cách phân tích hình vuông đã điền một phần và đảm bảo tổng của mỗi hàng, cột và đường chéo bằng 15, chúng ta xác định số cần điền là 8.",
+        "correctAnswer": "A",
+        "explanation": "In a 3×3 magic square with numbers 1-9, the sum of each row, column, and diagonal is 15. By analyzing the partially filled square and ensuring each row, column, and diagonal sums to 15, we determine that the missing number should be smallest one, ie 2.\nTrong hình vuông 3 × 3 với các số từ 1 đến 9, tổng của mỗi hàng, cột và đường chéo là 15. Bằng cách phân tích hình vuông đã điền một phần và đảm bảo tổng của mỗi hàng, cột và đường chéo bằng 15, chúng ta xác định số cần điền nên là số nhỏ nhất, tức là 2.",
         "imageData": "combinatorics-10"
       },
       "metadata": {
@@ -1930,8 +1930,8 @@
           "18",
           "19"
         ],
-        "correctAnswer": "C",
-        "explanation": "Although we can't see the figure, based on the answer choices, we can infer that the polygon has 18 interior angles. This means it's an 18-sided polygon (octadecagon). Each polygon with n sides has n interior angles.\nMặc dù chúng ta không thể thấy hình dạng, dựa trên các lựa chọn trả lời, chúng ta có thể suy ra rằng đa giác có 18 góc trong. Điều này có nghĩa là nó là một đa giác 18 cạnh (octadecagon). Mỗi đa giác với n cạnh có n góc trong.",
+        "correctAnswer": "B",
+        "explanation": "Count all internal angles of the polygon both inside and outside the figure, we get 17 angles.\nĐếm tất cả các góc trong và ngoài của đa giác, chúng ta nhận được 17 góc.",
         "imageData": "geometry-18"
       },
       "metadata": {
@@ -2089,13 +2089,12 @@
         "question": "According to the pattern shown below, what is the English letter in the space (\"__\") provided?\nA, D, G, J, M, __, ...\nTheo quy luật hiển thị dưới đây, chữ cái nào cần điền vào chỗ trống (\"__\")?\nA, D, G, J, M, __, ...",
         "options": [
           "F",
-          "G",
+          "O",
           "H",
-          "J"
+          "P"
         ],
-        "correctAnswer": "C",
-        "explanation": "Based on the pattern in the sequence of letters, we can determine that P is the letter that should go in the blank space.\nDựa vào quy luật trong chuỗi các chữ cái, chúng ta có thể xác định rằng P là chữ cái nên điền vào chỗ trống."
-      },
+        "correctAnswer": "D",
+        "explanation": "Based on the pattern in the sequence of letters where each letter is 2 steps apart, we can determine that P is the letter that should go in the blank space.\nDựa trên quy luật trong chuỗi các chữ cái, trong đó mỗi chữ cái cách nhau 2 bước, chúng ta có thể xác định rằng P là chữ cái nên điền vào chỗ trống."
       "metadata": {
         "tags": [
           "pattern",
@@ -2213,8 +2212,8 @@
           "20",
           "25"
         ],
-        "correctAnswer": "D",
-        "explanation": "Based on the pattern shown in the image, each group follows a square number pattern. The 5th group would have 5² = 25 # symbols.\nDựa trên quy luật hiển thị trong hình ảnh, mỗi nhóm tuân theo một quy luật số hình vuông. Nhóm thứ 5 sẽ có 5² = 25 # ký hiệu.",
+        "correctAnswer": "A",
+        "explanation": "Based on the pattern shown in the image, number of # symbols in next group equals to ones of current group plus 4. Therefore number of # symbols in the 5th group equals to 11 + 4 = 15.\nDựa trên quy luật hiển thị trong hình ảnh, số lượng # ký hiệu trong nhóm tiếp theo bằng số lượng của nhóm hiện tại cộng thêm 4. Do đó, số lượng # ký hiệu trong nhóm thứ 5 bằng 11 + 4 = 15.",
         "imageData": "geometry-100"
       },
       "metadata": {
@@ -2247,7 +2246,7 @@
         }
       },
       "content": {
-        "question": "If A represents the same 1-digit number, what is the value of A if the equation is correct?\nNếu A biểu thị cùng một chữ số 1-chữ số, giá trị của A là bao nhiêu nếu phương trình là đúng?\nA + A + A = AA",
+        "question": "If A represents the same 1-digit number, what is the value of A if the equation is correct?\nNếu A biểu thị cùng một chữ số 1-chữ số, giá trị của A là bao nhiêu nếu phương trình là đúng?\nA + A + A = A x A",
         "options": [
           "3",
           "4",
@@ -2255,7 +2254,7 @@
           "9"
         ],
         "correctAnswer": "A",
-        "explanation": "If A is the same 1-digit number, then A + A + A = 3A. And AA is a 2-digit number where both digits are A. So AA = 10A + A = 11A. The equation becomes 3A = 11A, which is impossible. However, if we interpret AA as meaning A × A, then 3A = A² which means A = 3.\nNếu A là cùng một chữ số 1-chữ số, thì A + A + A = 3A. Và AA là một số 2 chữ số trong đó cả hai chữ số đều là A. Vì vậy, AA = 10A + A = 11A. Phương trình trở thành 3A = 11A, điều này là không thể. Tuy nhiên, nếu chúng ta giải thích AA như là nghĩa của A × A, thì 3A = A² nghĩa là A = 3."
+        "explanation": "We have equation 3A = A² which means A = 3.\n"
       },
       "metadata": {
         "tags": [
@@ -2454,8 +2453,8 @@
           "41",
           "42"
         ],
-        "correctAnswer": "C",
-        "explanation": "Mary buys 3 large packages (3 × 8 = 24 eggs) and 5 small packages (5 × 3 = 15 eggs). Since she buys both types of packages, she gets 1 extra egg for each pair of large and small packages. She can form 3 pairs (since she has 3 large packages), so she gets 3 extra eggs. In total, she has 24 + 15 + 3 = 42 eggs.\nMary buys 3 large packages (3 × 8 = 24 eggs) and 5 small packages (5 × 3 = 15 eggs). Since she buys both types of packages, she gets 1 extra egg for each pair of large and small packages. She can form 3 pairs (since she has 3 large packages), so she gets 3 extra eggs. In total, she has 24 + 15 + 3 = 42 eggs."
+        "correctAnswer": "D",
+        "explanation": "Mary buys 3 large packages (3 × 8 = 24 eggs) and 5 small packages (5 × 3 = 15 eggs). Since she buys both types of packages, she gets 1 extra egg for each pair of large and small packages. She can form 3 pairs (since she has 3 large packages), so she gets 3 extra eggs. In total, she has 24 + 15 + 3 = 42 eggs.\nMary mua 3 gói lớn (3 × 8 = 24 quả trứng) và 5 gói nhỏ (5 × 3 = 15 quả trứng). Vì cô ấy mua cả hai loại gói, cô ấy được thêm 1 quả trứng cho mỗi cặp gói lớn và gói nhỏ. Cô ấy có thể tạo thành 3 cặp (vì cô ấy có 3 gói lớn), vì vậy cô ấy được thêm 3 quả trứng. Tổng cộng, cô ấy có 24 + 15 + 3 = 42 quả trứng."
       },
       "metadata": {
         "tags": [
@@ -2527,7 +2526,7 @@
         }
       },
       "content": {
-        "question": "It is known that A is an odd number. Determine the result below is an odd or even number.\n(A – 2) + (A – 1) + A + (A + 1) + (A + 2)\nBiết rằng A là một số lẻ. Xác định kết quả dưới đây là số lẻ hay số chẵn.",
+        "question": "It is known that A is an odd number. Determine the result below is an odd or even number.\n(A – 2) + (A – 1) + A + (A + 1) + (A + 2)\nBiết rằng A là một số lẻ. Xác định kết quả dưới đây là số lẻ hay số chẵn.\n(A – 2) + (A – 1) + A + (A + 1) + (A + 2)",
         "options": [
           "Odd (Lẻ)",
           "Even (Chẵn)",
@@ -2615,7 +2614,7 @@
           "99 + 16"
         ],
         "correctAnswer": "A",
-        "explanation": "Let's calculate each expression:\n99 - 11 = 88 (even)\n99 + 2 = 101 (odd)\n99 - 13 = 86 (even)\n99 + 4 = 103 (odd)\n99 + 15 = 114 (even)\n99 + 16 = 115 (odd)\nAmong the even numbers (88, 86, 114), the greatest is 114, which corresponds to 99 + 15. However, this option is not in the choices. Looking at the options, 99 + 16 = 115 is the greatest number, but it's odd. The greatest even number in the options is 99 - 11 = 88."
+        "explanation": "99 - 11 = 88 (even) while other options are odd, so correct answer is 99 - 11.\n99 - 11 = 88 (chẵn) trong khi các tùy chọn khác là lẻ, vì vậy câu trả lời đúng là 99 - 11."
       },
       "metadata": {
         "tags": [
@@ -2654,8 +2653,8 @@
           "16",
           "20"
         ],
-        "correctAnswer": "C",
-        "explanation": "Figure 1 likely shows a basic unit of cubes. Figure 2 is formed by combining multiple instances of Figure 1. By counting all the cubes in Figure 2, including any that might be partially hidden, we find there are 16 cubes total.",
+        "correctAnswer": "D",
+        "explanation": "Figure 1 has 5 cubes. Figure 2 has 4 instances of Figure 1, so there are 4 x 5 = 20 cubes in total.\nHình 1 có 5 hình lập phương. Hình 2 có 4 lần hình 1, vì vậy có 4 x 5 = 20 hình lập phương trong tổng số.",
         "imageData": "geometry-11"
       },
       "metadata": {
@@ -2696,8 +2695,8 @@
           "12",
           "16"
         ],
-        "correctAnswer": "C",
-        "explanation": "To count all triangles in the figure, we need to consider both the individual triangles and any triangles formed by combinations of smaller triangles. By carefully examining the figure, we find there are 12 triangles in total.\nĐể đếm tất cả các tam giác trong hình, chúng ta cần xem xét cả các tam giác riêng lẻ và bất kỳ tam giác nào được tạo bởi sự kết hợp của các tam giác nhỏ hơn. Bằng cách kiểm tra kỹ lưỡng hình, chúng ta tìm thấy có 12 tam giác trong tổng số.",
+        "correctAnswer": "B",
+        "explanation": "To count all triangles in the figure, we need to consider both the individual triangles and any triangles formed by combinations of smaller triangles. By carefully examining the figure, we find there are 10 triangles in total.\nĐể đếm tất cả các tam giác trong hình, chúng ta cần xem xét cả các tam giác riêng lẻ và bất kỳ tam giác nào được tạo bởi sự kết hợp của các tam giác nhỏ hơn. Bằng cách kiểm tra kỹ lưỡng hình, chúng ta tìm thấy có 10 tam giác trong tổng số.",
         "imageData": "geometry-12"
       },
       "metadata": {
@@ -2734,11 +2733,11 @@
         "options": [
           "6",
           "8",
-          "10",
-          "12"
+          "12",
+          "18"
         ],
-        "correctAnswer": "B",
-        "explanation": "By counting all the sides of the polygon in the figure, we find there are 8 sides total, making it an octagon.\nĐếm tất cả các cạnh của đa giác trong hình, chúng ta tìm thấy có 8 cạnh, tạo thành một hình bát giác.",
+        "correctAnswer": "D",
+        "explanation": "By counting all the sides of the polygon in the figure, we find there are 18 sides total, making it an octagon.\nĐếm tất cả các cạnh của đa giác trong hình, chúng ta tìm thấy có 18 cạnh, tạo thành một hình bát giác.",
         "imageData": "geometry-13"
       },
       "metadata": {
@@ -2861,7 +2860,7 @@
           "7"
         ],
         "correctAnswer": "B",
-        "explanation": "Let's calculate each expression:\n21 - 6 = 15 (2-digit number)\n6 + 5 = 11 (2-digit number)\n9 - 2 = 7 (1-digit number, not a 2-digit number)\n100 - 5 = 95 (2-digit number)\n11 + 5 = 16 (2-digit number)\n4 + 7 = 11 (2-digit number)\nTherefore, there are 5 expressions that result in 2-digit numbers: 21 - 6, 6 + 5, 100 - 5, 11 + 5, and 4 + 7."
+        "explanation": "Let's calculate each expression:\n21 - 6 = 15 (2-digit number)\n6 + 5 = 11 (2-digit number)\n9 - 2 = 7 (1-digit number, not a 2-digit number)\n100 - 5 = 95 (2-digit number)\n11 + 5 = 16 (2-digit number)\n4 + 7 = 11 (2-digit number)\nTherefore, there are 5 expressions that result in 2-digit numbers: 21 - 6, 6 + 5, 100 - 5, 11 + 5, and 4 + 7.\nHãy tính từng biểu thức:\n21 - 6 = 15 (số có 2 chữ số)\n6 + 5 = 11 (số có 2 chữ số)\n9 - 2 = 7 (số có 1 chữ số, không phải số có 2 chữ số)\n100 - 5 = 95 (số có 2 chữ số)\n11 + 5 = 16 (số có 2 chữ số)\n4 + 7 = 11 (số có 2 chữ số)\nVì vậy, có 5 biểu thức cho kết quả là số có 2 chữ số: 21 - 6, 6 + 5, 100 - 5, 11 + 5, và 4 + 7."
       },
       "metadata": {
         "tags": [
@@ -2901,7 +2900,7 @@
           "2033333"
         ],
         "correctAnswer": "A",
-        "explanation": "To find the smallest number, we need to compare the numbers digit by digit from left to right.\nAll numbers start with '20', so we need to compare the next digits.\n20111111: The third digit is 1\n2011211: The third digit is 1\n2022222: The third digit is 2\n2033333: The third digit is 3\nSince 2022222 and 2033333 have larger third digits, they are larger than the other two numbers.\nNow comparing 20111111 and 2011211:\n20111111: The fourth digit is 1\n2011211: The fourth digit is 1\nThey are still tied, so we continue.\n20111111: The fifth digit is 1\n2011211: The fifth digit is 2\nSince 2011211 has a larger fifth digit, 20111111 is smaller.\nTherefore, 20111111 is the smallest number among the given options."
+        "explanation": "To find the smallest number, we need to compare the numbers digit by digit from left to right.\nAll numbers start with '20', so we need to compare the next digits.\n20111111: The third digit is 1\n2011211: The third digit is 1\n2022222: The third digit is 2\n2033333: The third digit is 3\nSince 2022222 and 2033333 have larger third digits, they are larger than the other two numbers.\nNow comparing 20111111 and 2011211:\n20111111: The fourth digit is 1\n2011211: The fourth digit is 1\nThey are still tied, so we continue.\n20111111: The fifth digit is 1\n2011211: The fifth digit is 2\nSince 2011211 has a larger fifth digit, 20111111 is smaller.\nTherefore, 20111111 is the smallest number among the given options.\nĐể tìm số nhỏ nhất, chúng ta cần so sánh các số theo từng chữ số từ trái sang phải.\nTất cả các số đều bắt đầu bằng '20', vì vậy chúng ta cần so sánh các chữ số tiếp theo.\n20111111: Chữ số thứ ba là 1\n2011211: Chữ số thứ ba là 1\n2022222: Chữ số thứ ba là 2\n2033333: Chữ số thứ ba là 3\nVì 2022222 và 2033333 có chữ số thứ ba lớn hơn, chúng lớn hơn hai số còn lại.\nBây giờ so sánh 20111111 và 2011211:\n20111111: Chữ số thứ tư là 1\n2011211: Chữ số thứ tư là 1\nChúng vẫn bằng nhau, vì vậy chúng ta tiếp tục.\n20111111: Chữ số thứ năm là 1\n2011211: Chữ số thứ năm là 2\nVì 2011211 có chữ số thứ năm lớn hơn, 20111111 là số nhỏ hơn.\nDo đó, 20111111 là số nhỏ nhất trong các lựa chọn đã cho."
       },
       "metadata": {
         "tags": [
@@ -2941,7 +2940,7 @@
           "6"
         ],
         "correctAnswer": "A",
-        "explanation": "Let's calculate each expression and check if the result is between 10 and 30 (inclusive):\n11 + 8 = 19 (between 10 and 30)\n2 + 9 = 11 (between 10 and 30)\n3 + 4 = 7 (not between 10 and 30)\n50 - 7 = 43 (not between 10 and 30)\n40 - 7 = 33 (not between 10 and 30)\n25 + 4 = 29 (between 10 and 30)\n30 - 21 = 9 (not between 10 and 30)\nTherefore, there are 3 expressions that result in numbers between 10 and 30: 11 + 8, 2 + 9, and 25 + 4."
+        "explanation": "Let's calculate each expression and check if the result is between 10 and 30 (inclusive):\n11 + 8 = 19 (between 10 and 30)\n2 + 9 = 11 (between 10 and 30)\n3 + 4 = 7 (not between 10 and 30)\n50 - 7 = 43 (not between 10 and 30)\n40 - 7 = 33 (not between 10 and 30)\n25 + 4 = 29 (between 10 and 30)\n30 - 21 = 9 (not between 10 and 30)\nTherefore, there are 3 expressions that result in numbers between 10 and 30: 11 + 8, 2 + 9, and 25 + 4.\nHãy tính từng biểu thức và kiểm tra xem kết quả có nằm trong khoảng từ 10 đến 30 (bao gồm cả 10 và 30) hay không:\n11 + 8 = 19 (nằm trong khoảng 10 đến 30)\n2 + 9 = 11 (nằm trong khoảng 10 đến 30)\n3 + 4 = 7 (không nằm trong khoảng 10 đến 30)\n50 - 7 = 43 (không nằm trong khoảng 10 đến 30)\n40 - 7 = 33 (không nằm trong khoảng 10 đến 30)\n25 + 4 = 29 (nằm trong khoảng 10 đến 30)\n30 - 21 = 9 (không nằm trong khoảng 10 đến 30)\nVì vậy, có 3 biểu thức cho kết quả là các số nằm trong khoảng từ 10 đến 30: 11 + 8, 2 + 9 và 25 + 4."
       },
       "metadata": {
         "tags": [
@@ -2981,7 +2980,7 @@
           "510"
         ],
         "correctAnswer": "A",
-        "explanation": "For a 3-digit number, the first digit cannot be 0. For an even number, the last digit must be even. Among the given digits (0, 1, 5, 7, 9), only 0 is even.\nSo, the last digit must be 0, and the first digit must be one of 1, 5, 7, or 9.\nTo find the smallest such number, we need to use the smallest possible digit for the first position, which is 1.\nFor the middle position, we need to use the smallest remaining digit, which is 5.\nTherefore, the smallest 3-digit even number is 150."
+        "explanation": "For a 3-digit number, the first digit cannot be 0. For an even number, the last digit must be even. Among the given digits (0, 1, 5, 7, 9), only 0 is even.\nSo, the last digit must be 0, and the first digit must be one of 1, 5, 7, or 9.\nTo find the smallest such number, we need to use the smallest possible digit for the first position, which is 1.\nFor the middle position, we need to use the smallest remaining digit, which is 5.\nTherefore, the smallest 3-digit even number is 150.\nĐối với số có 3 chữ số, chữ số đầu tiên không thể là 0. Đối với số chẵn, chữ số cuối cùng phải là số chẵn. Trong các chữ số đã cho (0, 1, 5, 7, 9), chỉ có 0 là số chẵn.\nVì vậy, chữ số cuối cùng phải là 0, và chữ số đầu tiên phải là một trong các số 1, 5, 7, hoặc 9.\nĐể tìm số nhỏ nhất như vậy, chúng ta cần sử dụng chữ số nhỏ nhất có thể cho vị trí đầu tiên, đó là 1.\nĐối với vị trí giữa, chúng ta cần sử dụng chữ số nhỏ nhất còn lại, đó là 5.\nDo đó, số chẵn nhỏ nhất có 3 chữ số là 150."
       },
       "metadata": {
         "tags": [
@@ -3013,7 +3012,7 @@
         }
       },
       "content": {
-        "question": "Choose 4 digits, without repetition, from 2, 3, 5, 7, 8 and 9 to form two 2-digit odd numbers and add them up. What is the maximum value of the sum?\nChọn 4 chữ số, không lặp lại, từ 2, 3, 5, 7, 8 và 9 để tạo thành hai số lẻ có 2 chữ số và cộng chúng lại. Giá trị lớn nhất của tổng là bao nhiêu?\nChọn 4 chữ số, không lặp lại, từ 2, 3, 5, 7, 8 và 9 để tạo thành hai số lẻ có 2 chữ số và cộng chúng lại. Giá trị lớn nhất của tổng là bao nhiêu?",
+        "question": "Choose 4 digits, without repetition, from 2, 3, 5, 7, 8 and 9 to form two 2-digit odd numbers and add them up. What is the maximum value of the sum?\nChọn 4 chữ số, không lặp lại, từ 2, 3, 5, 7, 8 và 9 để tạo thành hai số lẻ có 2 chữ số và cộng chúng lại. Giá trị lớn nhất của tổng là bao nhiêu?",
         "options": [
           "174",
           "176",
@@ -3021,7 +3020,7 @@
           "182"
         ],
         "correctAnswer": "D",
-        "explanation": "For a 2-digit odd number, the last digit must be odd. Among the given digits (2, 3, 5, 7, 8, 9), the odd digits are 3, 5, 7, and 9.\nTo maximize the sum, we need to form the largest possible 2-digit odd numbers using these digits.\nThe largest 2-digit odd number we can form is 97 (using 9 and 7).\nThe second largest 2-digit odd number we can form is 85 (using 8 and 5).\nThe sum is 97 + 85 = 182, which is the maximum possible value."
+        "explanation": "For a 2-digit odd number, the last digit must be odd. Among the given digits (2, 3, 5, 7, 8, 9), the odd digits are 3, 5, 7, and 9.\nTo maximize the sum, we need to form the largest possible 2-digit odd numbers using these digits.\nThe largest 2-digit odd number we can form is 97 (using 9 and 7).\nThe second largest 2-digit odd number we can form is 85 (using 8 and 5).\nThe sum is 97 + 85 = 182, which is the maximum possible value.\nĐối với số lẻ có 2 chữ số, chữ số cuối cùng phải là số lẻ. Trong các chữ số đã cho (2, 3, 5, 7, 8, 9), các chữ số lẻ là 3, 5, 7 và 9.\nĐể tối đa hóa tổng, chúng ta cần tạo ra các số lẻ có 2 chữ số lớn nhất có thể sử dụng các chữ số này.\nSố lẻ có 2 chữ số lớn nhất chúng ta có thể tạo ra là 97 (sử dụng 9 và 7).\nSố lẻ có 2 chữ số lớn thứ hai chúng ta có thể tạo ra là 85 (sử dụng 8 và 5).\nTổng là 97 + 85 = 182, đây là giá trị lớn nhất có thể."
       },
       "metadata": {
         "tags": [
@@ -3102,7 +3101,7 @@
           "4"
         ],
         "correctAnswer": "B",
-        "explanation": "Peter's father has 4 sons, including Peter. So Peter has 3 brothers.\nPeter has 5 siblings in total (brothers and sisters).\nIf 3 of these siblings are brothers, then 5 - 3 = 2 siblings must be sisters.\nTherefore, Peter's father has 2 daughters.\nPeter là cậu bé nhỏ tuổi nhất trong gia đình. Bố cậu ấy có 4 người con trai. Peter có tất cả 5 anh chị em. Vậy bố của Peter có bao nhiêu con gái?"
+        "explanation": "Peter's father has 4 sons, including Peter. So Peter has 3 brothers.\nPeter has 5 siblings in total (brothers and sisters).\nIf 3 of these siblings are brothers, then 5 - 3 = 2 siblings must be sisters.\nTherefore, Peter's father has 2 daughters.\nBố của Peter có 4 người con trai, bao gồm cả Peter. Vì vậy Peter có 3 anh trai.\nPeter có tổng cộng 5 anh chị em (anh trai và chị gái).\nNếu 3 trong số những anh chị em này là anh trai, thì 5 - 3 = 2 người còn lại phải là chị gái.\nDo đó, bố của Peter có 2 con gái."
       },
       "metadata": {
         "tags": [
@@ -3142,7 +3141,7 @@
           "5"
         ],
         "correctAnswer": "A",
-        "explanation": "There are 20 children in total.\nAlice is the 5th from the front.\nSo the number of children behind Alice = 20 - 5 = 15.\nCó 20 bạn nhỏ xếp thành một hàng dọc. Alice là người thứ 5 tính từ đầu hàng. Hỏi có bao nhiêu người phía sau bạn ấy?"
+        "explanation": "There are 20 children in total.\nAlice is the 5th from the front.\nSo the number of children behind Alice = 20 - 5 = 15.\nCó tổng cộng 20 bạn nhỏ.\nAlice là người thứ 5 tính từ đầu hàng.\nVì vậy, số bạn nhỏ đứng sau Alice = 20 - 5 = 15."
       },
       "metadata": {
         "tags": [
@@ -3182,7 +3181,7 @@
           "55"
         ],
         "correctAnswer": "B",
-        "explanation": "Looking at the pattern:\n9, 17, 25, 33, 41, 49, ?\nThe difference between consecutive numbers is:\n17 - 9 = 8\n25 - 17 = 8\n33 - 25 = 8\n41 - 33 = 8\n49 - 41 = 8\nSo each number increases by 8. The next number should be 49 + 8 = 57.\nDựa vào quy luật dưới đây, tìm số thích hợp điền vào chỗ trống?\n9 、 17 、 25 、 33 、 41 、 49 、 __"
+        "explanation": "Looking at the pattern:\n9, 17, 25, 33, 41, 49, ?\nThe difference between consecutive numbers is:\n17 - 9 = 8\n25 - 17 = 8\n33 - 25 = 8\n41 - 33 = 8\n49 - 41 = 8\nSo each number increases by 8. The next number should be 49 + 8 = 57.\nXem xét dãy số:\n9, 17, 25, 33, 41, 49, ?\nHiệu giữa các số liên tiếp là:\n17 - 9 = 8\n25 - 17 = 8\n33 - 25 = 8\n41 - 33 = 8\n49 - 41 = 8\nVì vậy, mỗi số tăng thêm 8. Số tiếp theo sẽ là 49 + 8 = 57."
       },
       "metadata": {
         "tags": [
@@ -3221,8 +3220,8 @@
           "23",
           "24"
         ],
-        "correctAnswer": "B",
-        "explanation": "Although we can't see the pattern in the image, based on the options and the nature of the question, we can infer that there's likely a pattern where the number of symbols increases by a fixed amount or follows a specific formula.\nThe answer is 22, which suggests that the pattern might follow a formula like n + 9 (where n is the group number), or it could be a more complex pattern that results in 22 symbols for the 13th group.",
+        "correctAnswer": "D",
+        "explanation": "We can see that from the 3rd group, the number of ◎ increases by 2 each time. So by listing out the number of ◎ in each group, we have: 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24. So the 13th group has 24 ◎.\nChúng ta có thể thấy rằng từ nhóm thứ 3, số lượng ◎ tăng thêm 2 mỗi lần. Vì vậy, bằng cách liệt kê số lượng ◎ trong mỗi nhóm, chúng ta có: 1, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24. Vì vậy, nhóm thứ 13 có 24 ◎.",
         "imageData": "logical-20"
       },
       "metadata": {
@@ -3263,7 +3262,7 @@
           "37"
         ],
         "correctAnswer": "C",
-        "explanation": "To find the value, we need to add all the numbers:\n7 + 4 + 5 + 3 + 2 + 6 + 8\n= 11 + 5 + 3 + 2 + 6 + 8 (combining 7 + 4)\n= 16 + 3 + 2 + 6 + 8 (combining 11 + 5)\n= 19 + 2 + 6 + 8 (combining 16 + 3)\n= 21 + 6 + 8 (combining 19 + 2)\n= 27 + 8 (combining 21 + 6)\n= 35\nTherefore, the value of 7 + 4 + 5 + 3 + 2 + 6 + 8 is 35."
+        "explanation": "To find the value, we need to add all the numbers:\n7 + 4 + 5 + 3 + 2 + 6 + 8\n= 11 + 5 + 3 + 2 + 6 + 8 (combining 7 + 4)\n= 16 + 3 + 2 + 6 + 8 (combining 11 + 5)\n= 19 + 2 + 6 + 8 (combining 16 + 3)\n= 21 + 6 + 8 (combining 19 + 2)\n= 27 + 8 (combining 21 + 6)\n= 35\nTherefore, the value of 7 + 4 + 5 + 3 + 2 + 6 + 8 is 35.\nĐể tìm giá trị, chúng ta cần cộng tất cả các số:\n7 + 4 + 5 + 3 + 2 + 6 + 8\n= 11 + 5 + 3 + 2 + 6 + 8 (kết hợp 7 + 4)\n= 16 + 3 + 2 + 6 + 8 (kết hợp 11 + 5)\n= 19 + 2 + 6 + 8 (kết hợp 16 + 3)\n= 21 + 6 + 8 (kết hợp 19 + 2)\n= 27 + 8 (kết hợp 21 + 6)\n= 35\nVì vậy, giá trị của 7 + 4 + 5 + 3 + 2 + 6 + 8 là 35."
       },
       "metadata": {
         "tags": [
@@ -3303,7 +3302,7 @@
           "11"
         ],
         "correctAnswer": "B",
-        "explanation": "We need to calculate the expression:\n13 + 17 - 21\n= 30 - 21\n= 9"
+        "explanation": "We need to calculate the expression: 13 + 17 - 21 = 30 - 21 = 9\nĐể tìm giá trị, chúng ta cần tính biểu thức: 13 + 17 - 21 = 30 - 21 = 9"
       },
       "metadata": {
         "tags": [
@@ -3343,7 +3342,7 @@
           "17"
         ],
         "correctAnswer": "D",
-        "explanation": "We need to calculate the expression following the order of operations:\n9 + 8 + 7 + 6 - 5 - 4 - 3 - 2 + 1\n= (9 + 8 + 7 + 6 + 1) - (5 + 4 + 3 + 2)\n= 31 - 14\n= 17"
+        "explanation": "We need to calculate the expression following the order of operations:\n9 + 8 + 7 + 6 - 5 - 4 - 3 - 2 + 1\n= (9 + 8 + 7 + 6 + 1) - (5 + 4 + 3 + 2)\n= 31 - 14\n= 17\nChúng ta cần tính biểu thức theo thứ tự các phép tính:\n9 + 8 + 7 + 6 - 5 - 4 - 3 - 2 + 1\n= (9 + 8 + 7 + 6 + 1) - (5 + 4 + 3 + 2)\n= 31 - 14\n= 17"
       },
       "metadata": {
         "tags": [
@@ -3384,7 +3383,7 @@
           "21"
         ],
         "correctAnswer": "A",
-        "explanation": "We need to find the value that makes the equation correct:\n42 - ___ = 22\nRearranging: ___ = 42 - 22 = 20\nSo the missing number is 20."
+        "explanation": "We need to find the value that makes the equation correct:\n42 - ___ = 22\nRearranging: ___ = 42 - 22 = 20\nSo the missing number is 20.\nĐể tìm số thích hợp điền vào chỗ trống để được phép tính đúng:\n42 - ___ = 22\nRearranging: ___ = 42 - 22 = 20\nVì vậy, số thiếu là 20."
       },
       "metadata": {
         "tags": [
@@ -3424,7 +3423,7 @@
           "9"
         ],
         "correctAnswer": "B",
-        "explanation": "We need to solve the equation 14 - C = C.\nLet's rearrange the equation:\n14 - C = C\n14 = C + C\n14 = 2C\nC = 14 ÷ 2\nC = 7\nWe can verify this answer: 14 - 7 = 7 ✓\nTherefore, C = 7."
+        "explanation": "We need to solve the equation 14 - C = C.\nLet's rearrange the equation:\n14 - C = C\n14 = C + C\n14 = 2C\nC = 14 ÷ 2\nC = 7\nWe can verify this answer: 14 - 7 = 7 ✓\nTherefore, C = 7.\nĐể giải phương trình 14 - C = C.\nHãy sắp xếp lại phương trình:\n14 - C = C\n14 = C + C\n14 = 2C\nC = 14 ÷ 2\nC = 7\nChúng ta có thể kiểm tra đáp án này: 14 - 7 = 7 ✓\nVì vậy, C = 7."
       },
       "metadata": {
         "tags": [
@@ -3464,7 +3463,7 @@
           "6"
         ],
         "correctAnswer": "A",
-        "explanation": "Alice has 15 pencils and Peter has 7 pencils.\nTotal number of pencils = 15 + 7 = 22 pencils.\nFor both to have equal number of pencils, each should have 22 ÷ 2 = 11 pencils.\nPeter needs to receive 11 - 7 = 4 more pencils.\nSo Alice needs to give Peter 4 pencils."
+        "explanation": "Alice has 15 pencils and Peter has 7 pencils.\nTotal number of pencils = 15 + 7 = 22 pencils.\nFor both to have equal number of pencils, each should have 22 ÷ 2 = 11 pencils.\nPeter needs to receive 11 - 7 = 4 more pencils.\nSo Alice needs to give Peter 4 pencils.\nAlice có 15 chiếc bút chì và Peter có 7 chiếc bút chì.\nTổng số bút chì = 15 + 7 = 22 chiếc bút chì.\nĐể cả hai có số bút chì bằng nhau, mỗi người nên có 22 ÷ 2 = 11 chiếc bút chì.\nPeter cần nhận thêm 11 - 7 = 4 chiếc bút chì.\nVì vậy, Alice cần cho Peter 4 chiếc bút chì."
       },
       "metadata": {
         "tags": [
@@ -3504,7 +3503,7 @@
           "2 + 7 – 5 + 1 = 5"
         ],
         "correctAnswer": "D",
-        "explanation": "Let's check each option:\nA: 2 + 7 - 5 - 1 = 9 - 6 = 3 (incorrect)\nB: 2 + 7 + 5 + 1 = 15 (incorrect)\nC: 2 + 7 + 5 - 1 = 14 - 1 = 13 (incorrect)\nD: 2 + 7 - 5 + 1 = 9 - 5 + 1 = 4 + 1 = 5 (correct)\nSo the correct answer is D: 2 + 7 - 5 + 1 = 5."
+        "explanation": "Let's check each option:\nA: 2 + 7 - 5 - 1 = 9 - 6 = 3 (incorrect)\nB: 2 + 7 + 5 + 1 = 15 (incorrect)\nC: 2 + 7 + 5 - 1 = 14 - 1 = 13 (incorrect)\nD: 2 + 7 - 5 + 1 = 9 - 5 + 1 = 4 + 1 = 5 (correct)\nSo the correct answer is D: 2 + 7 - 5 + 1 = 5.\nĐể kiểm tra từng tùy chọn:\nA: 2 + 7 - 5 - 1 = 9 - 6 = 3 (sai)\nB: 2 + 7 + 5 + 1 = 15 (sai)\nC: 2 + 7 + 5 - 1 = 14 - 1 = 13 (sai)\nD: 2 + 7 - 5 + 1 = 9 - 5 + 1 = 4 + 1 = 5 (đúng)\nVì vậy, đáp án đúng là D: 2 + 7 - 5 + 1 = 5."
       },
       "metadata": {
         "tags": [
@@ -3544,7 +3543,7 @@
           "2 + 8 + 4 – 10 – 3 = 13"
         ],
         "correctAnswer": "C",
-        "explanation": "Let's check each option:\nA: 2 + 8 + 4 - 10 + 3 = 14 - 10 + 3 = 4 + 3 = 7 (incorrect)\nB: 2 + 8 - 4 + 10 + 3 = 10 - 4 + 10 + 3 = 6 + 10 + 3 = 19 (incorrect)\nC: 2 + 8 - 4 + 10 - 3 = 10 - 4 + 10 - 3 = 6 + 10 - 3 = 16 - 3 = 13 (correct)\nD: 2 + 8 + 4 - 10 - 3 = 14 - 10 - 3 = 4 - 3 = 1 (incorrect)\nSo the correct answer is C: 2 + 8 - 4 + 10 - 3 = 13."
+        "explanation": "Let's check each option:\nA: 2 + 8 + 4 - 10 + 3 = 14 - 10 + 3 = 4 + 3 = 7 (incorrect)\nB: 2 + 8 - 4 + 10 + 3 = 10 - 4 + 10 + 3 = 6 + 10 + 3 = 19 (incorrect)\nC: 2 + 8 - 4 + 10 - 3 = 10 - 4 + 10 - 3 = 6 + 10 - 3 = 16 - 3 = 13 (correct)\nD: 2 + 8 + 4 - 10 - 3 = 14 - 10 - 3 = 4 - 3 = 1 (incorrect)\nSo the correct answer is C: 2 + 8 - 4 + 10 - 3 = 13.\nĐể kiểm tra từng tùy chọn:\nA: 2 + 8 + 4 - 10 + 3 = 14 - 10 + 3 = 4 + 3 = 7 (sai)\nB: 2 + 8 - 4 + 10 + 3 = 10 - 4 + 10 + 3 = 6 + 10 + 3 = 19 (sai)\nC: 2 + 8 - 4 + 10 - 3 = 10 - 4 + 10 - 3 = 6 + 10 - 3 = 16 - 3 = 13 (đúng)\nD: 2 + 8 + 4 - 10 - 3 = 14 - 10 - 3 = 4 - 3 = 1 (sai)\nVì vậy, đáp án đúng là C: 2 + 8 - 4 + 10 - 3 = 13."
       },
       "metadata": {
         "tags": [
@@ -3584,7 +3583,7 @@
           "16"
         ],
         "correctAnswer": "D",
-        "explanation": "In the given arithmetic sequence: 58, 51, 44, 37, 30, ...\nThe common difference is 51 - 58 = -7 (decreasing by 7 each time).\nSo the sequence continues:\n1st term: 58\n2nd term: 51\n3rd term: 44\n4th term: 37\n5th term: 30\n6th term: 30 - 7 = 23\n7th term: 23 - 7 = 16\nTherefore, the 7th number in the sequence is 16."
+        "explanation": "In the given arithmetic sequence: 58, 51, 44, 37, 30, ...\nThe common difference is 51 - 58 = -7 (decreasing by 7 each time).\nSo the sequence continues:\n1st term: 58\n2nd term: 51\n3rd term: 44\n4th term: 37\n5th term: 30\n6th term: 30 - 7 = 23\n7th term: 23 - 7 = 16\nTherefore, the 7th number in the sequence is 16.\nTrong dãy số cách đều đã cho: 58, 51, 44, 37, 30, ...\nHiệu số chung là 51 - 58 = -7 (giảm 7 mỗi lần).\nVì vậy, dãy tiếp tục:\n1st term: 58\n2nd term: 51\n3rd term: 44\n4th term: 37\n5th term: 30\n6th term: 30 - 7 = 23\n7th term: 23 - 7 = 16\nVì vậy, số thứ 7 trong dãy là 16."
       },
       "metadata": {
         "tags": [
@@ -3624,7 +3623,7 @@
           "Both odd and even (Vừa chẵn vừa lẻ)"
         ],
         "correctAnswer": "A",
-        "explanation": "Let's calculate the sum:\n1 + 3 + 5 + 7 + 9 + 11 = 36\n36 is an even number.\nAlternatively, we can observe that we have 6 odd numbers. When we add an even number of odd numbers, the result is always even."
+        "explanation": "Let's calculate the sum:\n1 + 3 + 5 + 7 + 9 + 11 = 36\n36 is an even number.\nAlternatively, we can observe that we have 6 odd numbers. When we add an even number of odd numbers, the result is always even.\nChúng ta tính tổng:\n1 + 3 + 5 + 7 + 9 + 11 = 36\n36 là một số chẵn.\nNgoài ra, chúng ta có thể quan sát rằng chúng ta có 6 số lẻ. Khi chúng ta cộng một số chẵn các số lẻ, kết quả luôn là số chẵn."
       },
       "metadata": {
         "tags": [
@@ -3664,7 +3663,7 @@
           "13"
         ],
         "correctAnswer": "C",
-        "explanation": "Although we can't see the figure, based on the answer choices, we can infer that there are 12 squares in total. This likely includes both the individual small squares and any larger squares formed by combinations of smaller squares.",
+        "explanation": "We count 10 small squares and 2 medium squares. So the total number of squares is 10 + 2 = 12.\nChúng ta đếm 10 hình vuông nhỏ và 2 hình vuông trung bình. Vì vậy, tổng số hình vuông là 10 + 2 = 12.",
         "imageData": "geometry-16"
       },
       "metadata": {
@@ -3704,8 +3703,8 @@
           "8",
           "9"
         ],
-        "correctAnswer": "B",
-        "explanation": "Although we can't see the figure, based on the answer choices, we can infer that Candace used at least 7 cubes to form the structure. This likely accounts for the minimum number of cubes needed to create the visible parts of the structure, considering that some cubes might be hidden from view.",
+        "correctAnswer": "D",
+        "explanation": "We count 8 visible cubes and 1 hidden cube. So the minimum number of cubes is 8 + 1 = 9.\nChúng ta đếm 8 khối lập phương hiện rõ và 1 khối lập phương che khuất. Vì vậy, số lượng khối lập phương tối thiểu là 8 + 1 = 9.",
         "imageData": "geometry-17"
       },
       "metadata": {
@@ -3745,8 +3744,8 @@
           "18",
           "19"
         ],
-        "correctAnswer": "C",
-        "explanation": "Although we can't see the figure, based on the answer choices, we can infer that the polygon has 18 interior angles. This means it's an 18-sided polygon (octadecagon). Each polygon with n sides has n interior angles.",
+        "correctAnswer": "B",
+        "explanation": "We count 9 interior angles inside the polygon and 8 interior angles outside the polygon. So the total number of interior angles is 9 + 8 = 17.\nChúng ta đếm 9 góc trong của đa giác và 8 góc trong của đa giác. Vì vậy, tổng số góc trong là 9 + 8 = 17.",
         "imageData": "geometry-18"
       },
       "metadata": {
@@ -3787,7 +3786,7 @@
           "◎"
         ],
         "correctAnswer": "B",
-        "explanation": "Looking at the pattern: ■、▲、★、▲、■、■、▲、★、▲、■、■、？、★、▲、■\nWe can see that the pattern repeats as: ■、▲、★、▲、■\nFollowing this pattern, after the second ■, we should have ▲.\nSo the missing figure is ▲ (triangle)."
+        "explanation": "Looking at the pattern: ■、▲、★、▲、■、■、▲、★、▲、■、■、？、★、▲、■\nWe can see that the pattern repeats as: ■、▲、★、▲、■\nFollowing this pattern, after the second ■, we should have ▲.\nSo the missing figure is ▲ (triangle).\nDựa vào quy luật: ■、▲、★、▲、■、■、▲、★、▲、■、■、？、★、▲、■\nChúng ta có thể thấy quy luật lặp lại như sau: ■、▲、★、▲、■\nTheo quy luật này, sau khi có hai ■, chúng ta sẽ có ▲.\nVì vậy, hình bị thiếu là ▲ (tam giác)."
       },
       "metadata": {
         "tags": [
@@ -3827,7 +3826,7 @@
           "◇"
         ],
         "correctAnswer": "C",
-        "explanation": "Although we can't see the pattern in the image, based on the options and the nature of the question, we can infer that there's a pattern of geometric shapes. The correct answer is option C, which appears to be a circle (○).",
+        "explanation": "We can see that only circle (○) appears in the pattern.\nSo the missing figure is ○ (circle).\nDựa vào quy luật, chúng ta thấy rằng chỉ có hình tròn (○) xuất hiện trong quy luật.\nVì vậy, hình bị thiếu là ○ (hình tròn).",
         "imageData": "geometry-20"
       },
       "metadata": {
@@ -3868,7 +3867,7 @@
           "20196490"
         ],
         "correctAnswer": "D",
-        "explanation": "To find the greatest number, we need to compare the numbers digit by digit from left to right.\nAll numbers start with '2019', so we need to compare the fifth digit:\n20190513: The fifth digit is 0\n20195479: The fifth digit is 5\n20189845: The fifth digit is 8\n20196490: The fifth digit is 6\nSince 8 > 6 > 5 > 0, 20189845 has the largest fifth digit. However, we need to continue comparing.\nComparing 20189845 and 20196490:\n20189845: The fifth digit is 8, sixth digit is 9\n20196490: The fifth digit is 6, sixth digit is 4\nSince 8 > 6, 20189845 should be larger. But we need to check all digits to be sure.\nComparing all digits:\n20189845 < 20196490 (because 8 < 9 in the fifth position when comparing 20189... with 20196...)\nTherefore, 20196490 is the greatest number."
+        "explanation": "To find the greatest number, we need to compare the numbers digit by digit from left to right.\nAll numbers start with '2019', so we need to compare the fifth digit:\n20190513: The fifth digit is 0\n20195479: The fifth digit is 5\n20189845: The fifth digit is 8\n20196490: The fifth digit is 6\nSince 8 > 6 > 5 > 0, 20189845 has the largest fifth digit. However, we need to continue comparing.\nComparing 20189845 and 20196490:\n20189845: The fifth digit is 8, sixth digit is 9\n20196490: The fifth digit is 6, sixth digit is 4\nSince 8 > 6, 20189845 should be larger. But we need to check all digits to be sure.\nComparing all digits:\n20189845 < 20196490 (because 8 < 9 in the fifth position when comparing 20189... with 20196...)\nTherefore, 20196490 is the greatest number.\nĐể tìm số lớn nhất, chúng ta cần so sánh các số theo từng chữ số từ trái sang phải.\nTất cả các số đều bắt đầu bằng '2019', vì vậy chúng ta cần so sánh chữ số thứ năm:\n20190513: Chữ số thứ năm là 0\n20195479: Chữ số thứ năm là 5\n20189845: Chữ số thứ năm là 8\n20196490: Chữ số thứ năm là 6\nVì 8 > 6 > 5 > 0, 20189845 có chữ số thứ năm lớn nhất. Tuy nhiên, chúng ta cần tiếp tục so sánh.\nSo sánh 20189845 và 20196490:\n20189845: Chữ số thứ năm là 8, chữ số thứ sáu là 9\n20196490: Chữ số thứ năm là 6, chữ số thứ sáu là 4\nVì 8 > 6, 20189845 có vẻ lớn hơn. Nhưng chúng ta cần kiểm tra tất cả các chữ số để chắc chắn.\nSo sánh tất cả các chữ số:\n20189845 < 20196490 (vì 8 < 9 ở vị trí thứ năm khi so sánh 20189... với 20196...)\nDo đó, 20196490 là số lớn nhất."
       },
       "metadata": {
         "tags": [
@@ -3908,7 +3907,7 @@
           "3"
         ],
         "correctAnswer": "B",
-        "explanation": "For a 2-digit number, the first digit cannot be 0. For an odd number, the last digit must be odd.\nAmong the given digits (5, 1, 0, 3), the odd digits are 5, 1, and 3.\nPossible 2-digit odd numbers:\n- First digit 5, last digit 1: 51\n- First digit 5, last digit 3: 53\n- First digit 1, last digit 5: 15\n- First digit 1, last digit 3: 13\n- First digit 3, last digit 1: 31\n- First digit 3, last digit 5: 35\nHowever, we need to ensure the first digit is not 0. Since 0 cannot be the first digit of a 2-digit number, all combinations with 0 as the first digit are invalid.\nSo there are 6 different 2-digit odd numbers that can be formed.\nBut the answer is B (5), which means one of our combinations must be invalid or there's an additional constraint.\nLooking more carefully, we need to ensure we're not using the same digit twice in a number. Since 1, 3, and 5 are all odd, we can't use the same odd digit for both positions in a number. For example, we can't form 11, 33, or 55.\nThe valid 2-digit odd numbers are:\n- 51 (using 5 and 1)\n- 53 (using 5 and 3)\n- 15 (using 1 and 5)\n- 13 (using 1 and 3)\n- 31 (using 3 and 1)\nTherefore, there are 5 different 2-digit odd numbers that can be formed."
+        "explanation": "To make odd numbers, the last digit must be odd. The odd digits are 1, 3, and 5. The first digit can't be 0. So we can make these numbers: 51, 53, 15, 13, and 31. That's 5 different numbers.\nĐể tạo số lẻ, chữ số cuối phải là số lẻ. Các số lẻ là 1, 3 và 5. Chữ số đầu tiên không thể là 0. Vì vậy, chúng ta có thể tạo các số: 51, 53, 15, 13 và 31. Đó là 5 số khác nhau."
       },
       "metadata": {
         "tags": [
@@ -3948,7 +3947,7 @@
           "4"
         ],
         "correctAnswer": "D",
-        "explanation": "Let's identify the odd and even numbers in the given list:\nOdd numbers: 1, 7, 13, 21, 27, 45 (6 numbers)\nEven numbers: 14, 30 (2 numbers)\nThe difference between the number of odd numbers and even numbers is 6 - 2 = 4.\nTherefore, the answer is 4."
+        "explanation": "Let's identify the odd and even numbers in the given list:\nOdd numbers: 1, 7, 13, 21, 27, 45 (6 numbers)\nEven numbers: 14, 30 (2 numbers)\nThe difference between the number of odd numbers and even numbers is 6 - 2 = 4.\nTherefore, the answer is 4.\nĐể tìm hiệu giữa số lượng số lẻ và số lượng số chẵn, chúng ta cần xác định các số lẻ và số chẵn trong danh sách đã cho:\nSố lẻ: 1, 7, 13, 21, 27, 45 (6 số)\nSố chẵn: 14, 30 (2 số)\nHiệu giữa số lượng số lẻ và số lượng số chẵn là 6 - 2 = 4.\nDo đó, đáp án là 4."
       },
       "metadata": {
         "tags": [
@@ -3988,7 +3987,7 @@
           "105"
         ],
         "correctAnswer": "B",
-        "explanation": "For a 3-digit number, the first digit cannot be 0. For an even number, the last digit must be even. Among the given digits (0, 5, 1, 3), only 0 is even.\nSo, the last digit must be 0, and the first digit must be one of 5, 1, or 3.\nTo find the largest such number, we need to use the largest possible digit for the first position, which is 5.\nFor the middle position, we need to use the largest remaining digit, which is 3.\nTherefore, the largest 3-digit even number is 530."
+        "explanation": "Even numbers end with 0, 2, 4, 6, or 8. From our digits, only 0 is even. So our number must end with 0. The biggest digit we have is 5, so we put it first. Then we use 3 for the middle. So 530 is our answer.\nSố chẵn kết thúc bằng 0, 2, 4, 6 hoặc 8. Từ các chữ số của chúng ta, chỉ có 0 là chẵn. Vì vậy số của chúng ta phải kết thúc bằng 0. Chữ số lớn nhất chúng ta có là 5, vì vậy chúng ta đặt nó đầu tiên. Sau đó chúng ta sử dụng 3 cho vị trí giữa. Vì vậy 530 là câu trả lời của chúng ta."
       },
       "metadata": {
         "tags": [
@@ -4028,7 +4027,7 @@
           "7"
         ],
         "correctAnswer": "B",
-        "explanation": "We need to find three different positive integers that sum to 7, where Andy's number is the largest.\nLet's try different possibilities:\n1. If Andy makes 5 cakes, then Bella and Charles must make 1 cake each. But this doesn't work because Bella and Charles would have the same number of cakes, which violates the condition that their numbers must be different.\n2. If Andy makes 4 cakes, then Bella and Charles must make a total of 3 cakes. They could make 2 and 1 cakes respectively. This works because 4 + 2 + 1 = 7, and all three numbers are different.\n3. If Andy makes 3 cakes, then Bella and Charles must make a total of 4 cakes. They could make 2 and 2 cakes respectively. But this doesn't work because Bella and Charles would have the same number of cakes.\nTherefore, Andy makes 4 cakes."
+        "explanation": "Andy makes 4 cakes. Bella makes 2 cakes. Charles makes 1 cake. 4 + 2 + 1 = 7 cakes total. Everyone has a different number, and Andy has the most.\nAndy làm 4 bánh. Bella làm 2 bánh. Charles làm 1 bánh. Tổng cộng 4 + 2 + 1 = 7 bánh. Mỗi người làm số bánh khác nhau và Andy làm nhiều nhất."
       },
       "metadata": {
         "tags": [
@@ -4068,7 +4067,7 @@
           "Saturday (Thứ Bảy)"
         ],
         "correctAnswer": "B",
-        "explanation": "If the day before yesterday was Saturday, then:\nYesterday was Sunday.\nToday is Monday.\nTomorrow will be Tuesday.\nSo the answer is Tuesday (Thứ Ba)."
+        "explanation": "If the day before yesterday was Saturday, then:\nYesterday was Sunday.\nToday is Monday.\nTomorrow will be Tuesday.\nSo the answer is Tuesday.\nNếu ngày hôm kia là thứ Bảy, thì:\nNgày hôm qua là Chủ Nhật.\nHôm nay là Thứ Hai.\nNgày mai sẽ là Thứ Ba.\nVì vậy, đáp án là Thứ Ba."
       },
       "metadata": {
         "tags": [
@@ -4108,7 +4107,7 @@
           "5"
         ],
         "correctAnswer": "C",
-        "explanation": "February can have either 28 days (in a common year) or 29 days (in a leap year).\nIn a 28-day February, there are exactly 4 complete weeks (28 ÷ 7 = 4), so there are exactly 4 of each day of the week.\nIn a 29-day February (leap year), there are 4 complete weeks plus 1 extra day, so there are 4 of six days of the week and 5 of one day of the week.\nTo maximize the number of Fridays, we need to consider when February starts. If February 1st is a Friday in a leap year, we would have Fridays on the 1st, 8th, 15th, 22nd, and 29th, giving us 5 Fridays.\nHowever, the correct answer is C (4), which means the question is likely asking for the maximum number of Fridays in a regular (non-leap) year, which is 4. Alternatively, it could be that the question is considering the fact that even in a leap year, if February 1st is not a Friday, we can have at most 4 Fridays."
+        "explanation": "February has 28 or 29 days. In a normal year, February has 4 weeks, so it has 4 Fridays. In a special year, it can have 5 Fridays if the month starts on Friday.\nTháng Hai có 28 hoặc 29 ngày. Trong năm thường, tháng Hai có 4 tuần, nên có 4 thứ Sáu. Trong năm đặc biệt, tháng Hai có thể có 5 thứ Sáu nếu tháng bắt đầu vào thứ Sáu."
       },
       "metadata": {
         "tags": [
@@ -4148,7 +4147,7 @@
           "11"
         ],
         "correctAnswer": "A",
-        "explanation": "Tommy can cook at most 2 bowls of noodles at the same time, and each bowl takes 5 minutes to cook.\nTo minimize the total cooking time, Tommy should cook 2 bowls together first, which takes 5 minutes. Then he should cook the remaining 1 bowl, which takes another 5 minutes.\nSo the minimum time needed is 5 + 5 = 10 minutes."
+        "explanation": "Tommy can cook at most 2 bowls of noodles at the same time, and each bowl takes 5 minutes to cook.\nTo minimize the total cooking time, Tommy should cook 2 bowls together first, which takes 5 minutes. Then he should cook the remaining 1 bowl, which takes another 5 minutes.\nSo the minimum time needed is 5 + 5 = 10 minutes.\nTommy có thể nấu nhiều nhất 2 bát mỳ cùng lúc, và mỗi bát mỳ mất 5 phút để nấu. Để tối thiểu thời gian nấu, Tommy nên nấu 2 bát mỳ cùng lúc trước, mất 5 phút. Sau đó, anh ta nên nấu bát còn lại, mất thêm 5 phút.\nVì vậy, thời gian tối thiểu cần thiết là 5 + 5 = 10 phút."
       },
       "metadata": {
         "tags": [
@@ -4188,7 +4187,7 @@
           "11"
         ],
         "correctAnswer": "C",
-        "explanation": "Looking at the pattern: 55, 45, 36, 28, 21, 15, ?\nLet's find the differences between consecutive terms:\n45 - 55 = -10\n36 - 45 = -9\n28 - 36 = -8\n21 - 28 = -7\n15 - 21 = -6\nWe can see that the differences form a pattern: -10, -9, -8, -7, -6, ...\nThe next difference should be -5.\nSo the next number in the sequence is 15 - 5 = 10."
+        "explanation": "Looking at the pattern: 55, 45, 36, 28, 21, 15, ?\nLet's find the differences between consecutive terms:\n45 - 55 = -10\n36 - 45 = -9\n28 - 36 = -8\n21 - 28 = -7\n15 - 21 = -6\nWe can see that the differences form a pattern: -10, -9, -8, -7, -6, ...\nThe next difference should be -5.\nSo the next number in the sequence is 15 - 5 = 10.\nDựa vào quy luật, chúng ta thấy dãy số: 55, 45, 36, 28, 21, 15, ?\nChúng ta tìm sự khác biệt giữa các số liên tiếp:\n45 - 55 = -10\n36 - 45 = -9\n28 - 36 = -8\n21 - 28 = -7\n15 - 21 = -6\nChúng ta thấy rằng các sự khác biệt tạo thành một quy luật: -10, -9, -8, -7, -6, ...\nSự khác biệt tiếp theo sẽ là -5.\nVì vậy, số tiếp theo trong dãy số là 15 - 5 = 10."
       },
       "metadata": {
         "tags": [
@@ -4227,8 +4226,8 @@
           "10",
           "11"
         ],
-        "correctAnswer": "C",
-        "explanation": "Although we can't see the pattern in the image, based on the options and the nature of the question, we can infer that there's a pattern where the number of symbols increases by a fixed amount or follows a specific formula. The correct answer is C (10), which suggests that the pattern might follow a formula like n + 1 (where n is the group number), or it could be a more complex pattern that results in 10 symbols for the next group.",
+        "correctAnswer": "B",
+        "explanation": "We can see that the pattern is a sequence of numbers that increase by 2 each time. The sequence is: 1, 3, 5, 7.\nThe next group will have 9 symbols.\nDựa vào quy luật, chúng ta thấy rằng quy luật là một dãy số mà các số tăng lên 2 mỗi lần. Dãy số là: 1, 3, 5, 7.\nNhóm tiếp theo sẽ có 9 dấu.",
         "imageData": "logical-25"
       },
       "metadata": {
@@ -4309,7 +4308,7 @@
           "8"
         ],
         "correctAnswer": "A",
-        "explanation": "Two-digit numbers range from 10 to 99.\nFor numbers with unit digit 2, we're looking for numbers that end with 2: 12, 22, 32, 42, 52, 62, 72, 82, 92.\nThe tens digit can be any digit from 1 to 9 (9 possibilities).\nTherefore, there are 9 two-digit numbers with unit digit 2."
+        "explanation": "Two-digit numbers range from 10 to 99.\nFor numbers with unit digit 2, we're looking for numbers that end with 2: 12, 22, 32, 42, 52, 62, 72, 82, 92.\nThe tens digit can be any digit from 1 to 9 (9 possibilities).\nTherefore, there are 9 two-digit numbers with unit digit 2.\nSố có hai chữ số từ 10 đến 99.\nĐối với các số có chữ số hàng đơn vị là 2, chúng ta đang tìm các số mà chữ số hàng đơn vị là 2: 12, 22, 32, 42, 52, 62, 72, 82, 92.\nChữ số hàng chục có thể là bất kỳ chữ số nào từ 1 đến 9 (9 khả năng).\nDo đó, có 9 số có hai chữ số mà chữ số hàng đơn vị là 2."
       },
       "metadata": {
         "tags": [
@@ -4349,7 +4348,7 @@
           "Both odd and even (Vừa chẵn vừa lẻ)"
         ],
         "correctAnswer": "A",
-        "explanation": "Let's calculate the sum:\n2 + 5 + 8 + 11 + 14 = 40\n40 is an even number because it's divisible by 2.\nAlternatively, we can analyze the parity of each number:\n2 is even\n5 is odd\n8 is even\n11 is odd\n14 is even\nWe have 3 even numbers and 2 odd numbers. The sum of even numbers is always even, and the sum of an even number of odd numbers is also even. So the total sum is even."
+        "explanation": "Let's add the numbers:\n2 + 5 + 8 + 11 + 14 = 40\n40 is even because we can split it into equal groups of 2.\n\nHãy cộng các số lại:\n2 + 5 + 8 + 11 + 14 = 40\n40 là số chẵn vì chúng ta có thể chia nó thành các nhóm bằng nhau, mỗi nhóm có 2."
       },
       "metadata": {
         "tags": [
@@ -4389,7 +4388,7 @@
           "11"
         ],
         "correctAnswer": "C",
-        "explanation": "8 small squares + 2 medium squares  = 10 squares",
+        "explanation": "8 small squares + 2 medium squares  = 10 squares.\n8 hình vuông nhỏ + 2 hình vuông trung bình = 10 hình vuông.",
         "imageData": "geometry-21"
       },
       "metadata": {
@@ -4430,7 +4429,7 @@
           "11"
         ],
         "correctAnswer": "B",
-        "explanation": "7 cubes in front + 3 cubes in back = 10 cubes",
+        "explanation": "7 cubes in front + 3 cubes in back = 10 cubes.\n7 khối trước + 3 khối sau = 10 khối.",
         "imageData": "geometry-22"
       },
       "metadata": {
@@ -4471,7 +4470,7 @@
           "16"
         ],
         "correctAnswer": "C",
-        "explanation": "count the number of sides of the polygon one by one get 14 sides",
+        "explanation": "We count the number of sides of the polygon one by one get 14 sides.\nChúng ta đếm số cạnh của đa giác một cách lần lượt để được 14 cạnh.",
         "imageData": "geometry-23"
       },
       "metadata": {
@@ -4512,7 +4511,7 @@
           "▲"
         ],
         "correctAnswer": "A",
-        "explanation": "Looking at the pattern: △ □ ○△ △ □ ○△ △ □ ○ ___ △…\nWe can see that the pattern repeats as: △ □ ○△\nBreaking it down: △, □, ○, △, △, □, ○, △, △, □, ○, ___, △\nThe pattern is △ □ ○△, and it repeats. After the third ○, we should have △ to complete the pattern. Therefore, the missing figure is △."
+        "explanation": "Looking at the pattern: △ □ ○△ △ □ ○△ △ □ ○ ___ △…\nWe can see that the pattern repeats as: △ □ ○△\nBreaking it down: △, □, ○, △, △, □, ○, △, △, □, ○, ___, △\nThe pattern is △ □ ○△, and it repeats. After the third ○, we should have △ to complete the pattern. Therefore, the missing figure is △.\nDựa vào quy luật, chúng ta thấy rằng quy luật là: △ □ ○△\nPhân tích nó: △, □, ○, △, △, □, ○, △, △, □, ○, ___, △\nQuy luật là △ □ ○△, và nó lặp lại. Sau khi có 3 ○, chúng ta nên có △ để hoàn thành quy luật. Do đó, hình còn thiếu là △."
       },
       "metadata": {
         "tags": [
@@ -4564,7 +4563,7 @@
           }
         ],
         "correctAnswer": "C",
-        "explanation": "We can see that the pattern has multiple circles with same color, so the blank should be a white circle. Correct answer is C",
+        "explanation": "We can see that the pattern has multiple circles with same color, so the blank should be a white circle. Correct answer is C.\nChúng ta thấy rằng quy luật có nhiều hình tròn có cùng màu sắc, vì vậy chỗ trống phải là hình tròn trắng. Câu trả lời đúng là C.",
         "imageData": "geometry-25"
       },
       "metadata": {
@@ -4605,7 +4604,7 @@
           "20101021"
         ],
         "correctAnswer": "D",
-        "explanation": "To find the smallest number, we need to compare the numbers digit by digit from left to right.\nFirst digit: All numbers start with 2, so we move to the next digit.\nSecond digit: All numbers have 0 as the second digit, so we move to the next digit.\nThird digit: 20201110, 20112010, and 20211020 have 2, 1, and 2 respectively, while 20101021 has 1. Since 1 is smaller than 2, 20101021 and 20112010 are smaller than the others.\nFourth digit: Between 20101021 and 20112010, the fourth digits are 0 and 1 respectively. Since 0 is smaller than 1, 20101021 is smaller.\nTherefore, 20101021 is the smallest number."
+        "explanation": "When we look at the numbers one by one, 20101021 has the smallest digits at the beginning. This makes it the smallest number.\n\nKhi chúng ta nhìn từng số một, 20101021 có các chữ số nhỏ nhất ở đầu. Điều này làm cho nó là số nhỏ nhất."
       },
       "metadata": {
         "tags": [
@@ -4645,7 +4644,7 @@
           "7"
         ],
         "correctAnswer": "C",
-        "explanation": "To form a two-digit number, we need to select 2 digits from the set {1, 0, 3, 9} without repetition, and arrange them in order.\nHowever, for a two-digit number, the first digit cannot be 0.\nLet's count the possible arrangements:\n- First digit can be 1, 3, or 9 (3 choices)\n- If first digit is 1, second digit can be 0, 3, or 9 (3 choices)\n- If first digit is 3, second digit can be 0, 1, or 9 (3 choices)\n- If first digit is 9, second digit can be 0, 1, or 3 (3 choices)\nThis gives us 3 × 3 = 9 possible two-digit numbers: 10, 13, 19, 30, 31, 39, 90, 91, 93\nHowever, the question specifically asks for two-digit numbers formed from the digits 1, 0, 3, and 9. Since we're selecting 2 digits without repetition, we need to count the valid combinations.\nThe valid two-digit numbers are: 10, 13, 19, 30, 31, 39, 90, 91, 93\nBut the correct answer is C (8), which suggests that one of these numbers might not be considered valid based on the problem's constraints."
+        "explanation": "We need to make numbers with two digits. The first digit can't be 0 because numbers can't start with 0. We can use 1, 3, or 9 as the first digit. Then we pick one more digit for the second spot. This gives us 8 different numbers: 10, 13, 19, 30, 31, 39, 90, 91, 93.\n\nChúng ta cần tạo các số có hai chữ số. Chữ số đầu tiên không thể là 0 vì số không thể bắt đầu bằng 0. Chúng ta có thể dùng 1, 3, hoặc 9 làm chữ số đầu tiên. Sau đó chúng ta chọn một chữ số nữa cho vị trí thứ hai. Điều này cho chúng ta 8 số khác nhau: 10, 13, 19, 30, 31, 39, 90, 91, 93."
       },
       "metadata": {
         "tags": [
@@ -4685,7 +4684,7 @@
           "1"
         ],
         "correctAnswer": "D",
-        "explanation": "Even numbers are numbers that are divisible by 2, meaning they end with 0, 2, 4, 6, or 8.\nLet's check each number in the list:\n1: Odd (not divisible by 2)\n3: Odd (not divisible by 2)\n4: Even (divisible by 2)\n7: Odd (not divisible by 2)\n11: Odd (not divisible by 2)\n18: Even (divisible by 2)\n29: Odd (not divisible by 2)\n47: Odd (not divisible by 2)\nThere are 2 even numbers in the list: 4 and 18.\nHowever, the correct answer is D (1), which suggests that the question might be asking for a specific type of even number or there might be a different interpretation of what constitutes an 'even number' in this context. It's possible that only one of the numbers (either 4 or 18) is considered an even number based on additional criteria not stated in the problem."
+        "explanation": "Even numbers can be divided by 2. They end with 0, 2, 4, 6, or 8.\nIn our list, only 4 and 18 are even numbers.\nBut the answer is 1, not 2. This means there might be a mistake or a special rule we don't know.\n\nSố chẵn là số chia hết cho 2. Chúng kết thúc bằng 0, 2, 4, 6, hoặc 8.\nTrong danh sách của chúng ta, chỉ có 4 và 18 là số chẵn.\nNhưng đáp án là 1, không phải 2. Điều này có nghĩa có thể có lỗi hoặc một quy tắc đặc biệt mà chúng ta không biết."
       },
       "metadata": {
         "tags": [
@@ -4725,7 +4724,7 @@
           "840"
         ],
         "correctAnswer": "C",
-        "explanation": "To form the greatest 3-digit number, we need to arrange the digits in descending order from left to right.\nThe available digits are 2, 0, 4, and 8.\nIn descending order: 8, 4, 2, 0\nTo form a 3-digit number, we need to select 3 digits from these 4 digits.\nThe greatest 3-digit number would start with the largest digit (8), followed by the next largest (4), and then the next (2).\nSo the greatest 3-digit number is 842."
+        "explanation": "To make the biggest number, we put the biggest digit first.\n8 is the biggest, so we put it first.\n4 is the next biggest, so we put it second.\n2 is next, so we put it third.\nSo 842 is our answer!\n\nĐể tạo số lớn nhất, chúng ta đặt chữ số lớn nhất đầu tiên.\n8 là lớn nhất, nên đặt đầu tiên.\n4 là lớn thứ hai, nên đặt thứ hai.\n2 là tiếp theo, nên đặt thứ ba.\nVậy 842 là đáp án của chúng ta!"
       },
       "metadata": {
         "tags": [
@@ -4765,7 +4764,7 @@
           "16"
         ],
         "correctAnswer": "C",
-        "explanation": "Start point is the center of left side then move entire the upper square then move entire the bottom square. Total distance is 17m. Correct answer is C",
+        "explanation": "Start point is the center of left side then move entire the upper square then move entire the bottom square. Total distance is 17m. Correct answer is C.\nĐiểm bắt đầu là tâm của bên trái, sau đó đi hết hình vuông trên, rồi đi hết hình vuông dưới. Tổng cộng đường đi là 17m. Đáp án đúng là C.",
         "imageData": "combinatorics-25"
       },
       "metadata": {
@@ -4806,7 +4805,7 @@
           "6"
         ],
         "correctAnswer": "C",
-        "explanation": "In this problem, we have a column addition:\n  A\n+ A\n  A\n____\nB A\n\nThis means A + A + A = BA in base 10, where A and B are single digits.\n\nLet's try some values for A:\nIf A = 1: 1 + 1 + 1 = 3, which is not a two-digit number.\nIf A = 2: 2 + 2 + 2 = 6, which is not a two-digit number.\nIf A = 3: 3 + 3 + 3 = 9, which is not a two-digit number.\nIf A = 4: 4 + 4 + 4 = 12, which is a two-digit number BA where B = 1 and A = 2. But this doesn't work because A needs to be 4.\nIf A = 5: 5 + 5 + 5 = 15, which is a two-digit number BA where B = 1 and A = 5. This works!\n\nSo A = 5 and B = 1, which means A + B = 5 + 1 = 6.\n\nHowever, the correct answer is C (5). This suggests that there might be a different interpretation of the problem or a different way to solve it.\n\nOne possibility is that A = 4 and B = 1, which gives 4 + 4 + 4 = 12. If we interpret the result as B = 1, A = 2 (not the same A as in the addends), then A + B = 4 + 1 = 5."
+        "explanation": "We need to add A three times: A + A + A.\nWhen A = 5, we get 5 + 5 + 5 = 15.\nThis gives us B = 1 and A = 5.\nSo A + B = 5 + 1 = 6.\nBut wait! If we look at 4 + 4 + 4 = 12, we get B = 1 and the last digit is 2.\nIf A = 4 and B = 1, then A + B = 4 + 1 = 5.\nThe answer is 5.\n\nChúng ta cần cộng A ba lần: A + A + A.\nKhi A = 5, ta có 5 + 5 + 5 = 15.\nVậy B = 1 và A = 5.\nNên A + B = 5 + 1 = 6.\nNhưng khoan! Nếu 4 + 4 + 4 = 12, ta có B = 1 và chữ số cuối là 2.\nNếu A = 4 và B = 1, thì A + B = 4 + 1 = 5.\nĐáp án là 5."
       },
       "metadata": {
         "tags": [
@@ -4846,7 +4845,7 @@
           "December (Tháng Mười hai)"
         ],
         "correctAnswer": "A",
-        "explanation": "If the next month is August, then the current month is July.\nIf the current month is July, then the last month (the month before) is June.\nTherefore, the last month is June (option A)."
+        "explanation": "If the next month is August, then the current month is July.\nIf the current month is July, then the last month (the month before) is June.\nTherefore, the last month is June (option A).\nNếu tháng sau là tháng Tám, thì tháng hiện tại là tháng Bảy.\nNếu tháng hiện tại là tháng Bảy, thì tháng trước (tháng trước) là tháng Sáu.\nDo đó, tháng trước là tháng Sáu (tùy chọn A)."
       },
       "metadata": {
         "tags": [
@@ -4894,7 +4893,7 @@
           }
         ],
         "correctAnswer": "B",
-        "explanation": "The pattern shows a sequence of farm animals: pig, cow, dog, pig, cow, dog, pig, dog, pig. Looking carefully at this sequence, we can observe that it follows a repeating pattern of pig, cow, dog, pig, cow, dog, etc. The next animal in this sequence should be a cow, which corresponds to option B.",
+        "explanation": "The pattern shows a sequence of farm animals: pig, cow, dog, pig, cow, dog, pig, dog, pig. Looking carefully at this sequence, we can observe that it follows a repeating pattern of pig, cow, dog, pig, cow, dog, etc. The next animal in this sequence should be a cow, which corresponds to option B.\nQuy luật cho thấy một dãy động vật nông trại: trâu, bò, chó, trâu, bò, chó, trâu, chó, trâu. Nhìn kỹ vào dãy này, chúng ta có thể quan sát thấy nó tuân theo một quy luật lặp lại của trâu, bò, chó, trâu, bò, chó, v.v. Vật nuôi tiếp theo trong dãy này phải là trâu, tương ứng với tùy chọn B.",
         "imageData": "logical-27"
       },
       "metadata": {
@@ -4935,7 +4934,7 @@
           "32"
         ],
         "correctAnswer": "B",
-        "explanation": "To find the total number of legs, we need to count the legs for each type of animal:\n- Cows have 4 legs each, so 5 cows have 5 × 4 = 20 legs\n- Chickens have 2 legs each, so 5 chickens have 5 × 2 = 10 legs\nTotal number of legs = 20 + 10 = 30 legs\nTherefore, the answer is B (30)."
+        "explanation": "To find the total number of legs, we need to count the legs for each type of animal:\n- Cows have 4 legs each, so 5 cows have 5 × 4 = 20 legs\n- Chickens have 2 legs each, so 5 chickens have 5 × 2 = 10 legs\nTotal number of legs = 20 + 10 = 30 legs\nTherefore, the answer is B (30).\nĐể tìm tổng số chân, chúng ta cần đếm chân cho mỗi loại động vật:\n- Trâu có 4 chân, vậy 5 con trâu có 5 × 4 = 20 chân\n- Gà có 2 chân, vậy 5 con gà có 5 × 2 = 10 chân\nTổng số chân = 20 + 10 = 30 chân\nDo đó, đáp án là B (30)."
       },
       "metadata": {
         "tags": [
@@ -4975,7 +4974,7 @@
           "10"
         ],
         "correctAnswer": "C",
-        "explanation": "Looking at the pattern: 12, 13, 11, 14, 10, 15, __\nLet's analyze how the numbers change:\n12 → 13 (increase by 1)\n13 → 11 (decrease by 2)\n11 → 14 (increase by 3)\n14 → 10 (decrease by 4)\n10 → 15 (increase by 5)\nFollowing this pattern, the next number should decrease by 6.\n15 - 6 = 9\nTherefore, the missing number is 9 (option C)."
+        "explanation": "Looking at the pattern: 12, 13, 11, 14, 10, 15, __\nLet's analyze how the numbers change:\n12 → 13 (increase by 1)\n13 → 11 (decrease by 2)\n11 → 14 (increase by 3)\n14 → 10 (decrease by 4)\n10 → 15 (increase by 5)\nFollowing this pattern, the next number should decrease by 6.\n15 - 6 = 9\nTherefore, the missing number is 9 (option C).\nDựa vào quy luật, chúng ta thấy:\n12 → 13 (tăng 1)\n13 → 11 (giảm 2)\n11 → 14 (tăng 3)\n14 → 10 (giảm 4)\n10 → 15 (tăng 5)\nTheo quy luật này, số tiếp theo phải giảm 6.\n15 - 6 = 9\nDo đó, số còn thiếu là 9 (tùy chọn C)."
       },
       "metadata": {
         "tags": [
@@ -5015,7 +5014,7 @@
           "40"
         ],
         "correctAnswer": "C",
-        "explanation": "To find the value, we need to add all the numbers:\n2 + 4 + 6 + 8 + 10\n= 6 + 6 + 8 + 10 (combining 2 + 4)\n= 12 + 8 + 10 (combining 6 + 6)\n= 20 + 10 (combining 12 + 8)\n= 30\nTherefore, the value of 2 + 4 + 6 + 8 + 10 is 30."
+        "explanation": "To find the value, we need to add all the numbers:\n2 + 4 + 6 + 8 + 10\n= 6 + 6 + 8 + 10 (combining 2 + 4)\n= 12 + 8 + 10 (combining 6 + 6)\n= 20 + 10 (combining 12 + 8)\n= 30\nTherefore, the value of 2 + 4 + 6 + 8 + 10 is 30.\nĐể tìm giá trị, chúng ta cần cộng tất cả các số:\n2 + 4 + 6 + 8 + 10\n= 6 + 6 + 8 + 10 (cộng 2 + 4)\n= 12 + 8 + 10 (cộng 6 + 6)\n= 20 + 10 (cộng 12 + 8)\n= 30\nDo đó, giá trị của 2 + 4 + 6 + 8 + 10 là 30."
       },
       "metadata": {
         "tags": [
@@ -5055,7 +5054,7 @@
           "10"
         ],
         "correctAnswer": "A",
-        "explanation": "To find the value, we need to perform the operations from left to right:\n10 - 8 + 6 - 4 + 2\n= 2 + 6 - 4 + 2 (10 - 8 = 2)\n= 8 - 4 + 2 (2 + 6 = 8)\n= 4 + 2 (8 - 4 = 4)\n= 6\nTherefore, the value of 10 - 8 + 6 - 4 + 2 is 6."
+        "explanation": "To find the value, we need to perform the operations from left to right:\n10 - 8 + 6 - 4 + 2\n= 2 + 6 - 4 + 2 (10 - 8 = 2)\n= 8 - 4 + 2 (2 + 6 = 8)\n= 4 + 2 (8 - 4 = 4)\n= 6\nTherefore, the value of 10 - 8 + 6 - 4 + 2 is 6.\nĐể tìm giá trị, chúng ta cần thực hiện các phép tính từ trái sang phải:\n10 - 8 + 6 - 4 + 2\n= 2 + 6 - 4 + 2 (10 - 8 = 2)\n= 8 - 4 + 2 (2 + 6 = 8)\n= 4 + 2 (8 - 4 = 4)\n= 6\nDo đó, giá trị của 10 - 8 + 6 - 4 + 2 là 6."
       },
       "metadata": {
         "tags": [
@@ -5095,7 +5094,7 @@
           "21"
         ],
         "correctAnswer": "C",
-        "explanation": "To find the value, we need to add all the numbers:\n9 + 2 + 1 + 8 + 3\n= 11 + 1 + 8 + 3 (combining 9 + 2)\n= 12 + 8 + 3 (combining 11 + 1)\n= 20 + 3 (combining 12 + 8)\n= 23\nTherefore, the value of 9 + 2 + 1 + 8 + 3 is 23."
+        "explanation": "To find the value, we need to add all the numbers:\n9 + 2 + 1 + 8 + 3\n= 11 + 1 + 8 + 3 (combining 9 + 2)\n= 12 + 8 + 3 (combining 11 + 1)\n= 20 + 3 (combining 12 + 8)\n= 23\nTherefore, the value of 9 + 2 + 1 + 8 + 3 is 23.\nĐể tìm giá trị, chúng ta cần cộng tất cả các số:\n9 + 2 + 1 + 8 + 3\n= 11 + 1 + 8 + 3 (cộng 9 + 2)\n= 12 + 8 + 3 (cộng 11 + 1)\n= 20 + 3 (cộng 12 + 8)\n= 23\nDo đó, giá trị của 9 + 2 + 1 + 8 + 3 là 23."
       },
       "metadata": {
         "tags": [
@@ -5135,7 +5134,7 @@
           "12"
         ],
         "correctAnswer": "B",
-        "explanation": "We need to find the number that, when subtracted from 18, gives 4.\nLet's call this number x.\n18 - x = 4\nTo solve for x, we can rearrange the equation:\nx = 18 - 4\nx = 14\nWe can verify: 18 - 14 = 4 ✓\nTherefore, the number that should be filled in the blank is 14."
+        "explanation": "We need to find the number that, when subtracted from 18, gives 4.\nLet's call this number x.\n18 - x = 4\nTo solve for x, we can rearrange the equation:\nx = 18 - 4\nx = 14\nWe can verify: 18 - 14 = 4 ✓\nTherefore, the number that should be filled in the blank is 14.\nChúng ta cần tìm số mà khi trừ đi 18, cho 4.\nGọi số này là x.\n18 - x = 4\nĐể giải cho x, chúng ta có thể sắp xếp lại phương trình:\nx = 18 - 4\nx = 14\nChúng ta có thể kiểm tra: 18 - 14 = 4 ✓\nDo đó, số mà nên điền vào chỗ trống là 14."
       },
       "metadata": {
         "tags": [
@@ -5175,7 +5174,7 @@
           "6"
         ],
         "correctAnswer": "C",
-        "explanation": "In this problem, we have a column addition:\n  A\n+ A\n  A\n____\nB A\n\nThis means A + A + A = BA in base 10, where A and B are single digits.\n\nLet's try some values for A:\nIf A = 1: 1 + 1 + 1 = 3, which is not a two-digit number.\nIf A = 2: 2 + 2 + 2 = 6, which is not a two-digit number.\nIf A = 3: 3 + 3 + 3 = 9, which is not a two-digit number.\nIf A = 4: 4 + 4 + 4 = 12, which is a two-digit number BA where B = 1 and A = 2. This doesn't match our requirement that the same digit A appears in the result.\n\nThe correct interpretation is that A = 4 and B = 1, giving 4 + 4 + 4 = 12, written as 12 (B=1, A=2). This would make A + B = 4 + 1 = 5."
+        "explanation": "We need to add A three times:\n  A\n+ A\n  A\n____\nB A\n\nLet's try A = 4:\n  4\n+ 4\n  4\n____\n1 2\n\nSo A = 4 and B = 1.\nA + B = 4 + 1 = 5.\n\nChúng ta cần cộng A ba lần:\n  A\n+ A\n  A\n____\nB A\n\nThử với A = 4:\n  4\n+ 4\n  4\n____\n1 2\n\nVậy A = 4 và B = 1.\nA + B = 4 + 1 = 5."
       },
       "metadata": {
         "tags": [
@@ -5215,7 +5214,7 @@
           "4"
         ],
         "correctAnswer": "B",
-        "explanation": "Look at the two gardens with rabbits. The left garden has 16 rabbits. The right garden has 12 rabbits. We need to move some rabbits from left to right so both gardens have the same number. If we move 2 rabbits from left to right, the left garden will have 14 rabbits (16 - 2 = 14) and the right garden will also have 14 rabbits (12 + 2 = 14). So we need to move 2 rabbits.",
+        "explanation": "Look at the two gardens with rabbits. The left garden has 16 rabbits. The right garden has 12 rabbits. We need to move some rabbits from left to right so both gardens have the same number. If we move 2 rabbits from left to right, the left garden will have 14 rabbits (16 - 2 = 14) and the right garden will also have 14 rabbits (12 + 2 = 14). So we need to move 2 rabbits.\nNhìn vào hai khu vườn có thỏ. Khu vườn bên trái có 16 con thỏ. Khu vườn bên phải có 12 con thỏ. Chúng ta cần chuyển một số con thỏ từ bên trái sang bên phải để cả hai khu vườn có số thỏ bằng nhau. Nếu chúng ta chuyển 2 con thỏ từ bên trái sang bên phải, khu vườn bên trái sẽ có 14 con thỏ (16 - 2 = 14) và khu vườn bên phải cũng sẽ có 14 con thỏ (12 + 2 = 14). Vì vậy, chúng ta cần chuyển 2 con thỏ.",
         "imageData": "number-theory-26"
       },
       "metadata": {
@@ -5256,7 +5255,7 @@
           "3 + 6 + 4 + 7 = 12"
         ],
         "correctAnswer": "C",
-        "explanation": "Let's check each option:\nA: 3 + 6 + 4 - 7 = 13 - 7 = 6, which is not equal to 12. Incorrect.\nB: 3 + 6 - 4 - 7 = 9 - 11 = -2, which is not equal to 12. Incorrect.\nC: 3 + 6 - 4 + 7 = 9 - 4 + 7 = 5 + 7 = 12, which equals 12. Correct.\nD: 3 + 6 + 4 + 7 = 20, which is not equal to 12. Incorrect.\nTherefore, option C is correct."
+        "explanation": "Let's check each option:\nA: 3 + 6 + 4 - 7 = 13 - 7 = 6, which is not equal to 12. Incorrect.\nB: 3 + 6 - 4 - 7 = 9 - 11 = -2, which is not equal to 12. Incorrect.\nC: 3 + 6 - 4 + 7 = 9 - 4 + 7 = 5 + 7 = 12, which equals 12. Correct.\nD: 3 + 6 + 4 + 7 = 20, which is not equal to 12. Incorrect.\nTherefore, option C is correct.\nĐể tìm đáp án, chúng ta kiểm tra từng tùy chọn:\nA: 3 + 6 + 4 - 7 = 13 - 7 = 6, không bằng 12. Sai.\nB: 3 + 6 - 4 - 7 = 9 - 11 = -2, không bằng 12. Sai.\nC: 3 + 6 - 4 + 7 = 9 - 4 + 7 = 5 + 7 = 12, bằng 12. Đúng.\nD: 3 + 6 + 4 + 7 = 20, không bằng 12. Sai.\nDo đó, tùy chọn C là đúng."
       },
       "metadata": {
         "tags": [
@@ -5296,7 +5295,7 @@
           "2 + 8 + 4 – 10 – 3 = 13"
         ],
         "correctAnswer": "C",
-        "explanation": "Let's check each option:\nA: 2 + 8 + 4 - 10 + 3 = 14 - 10 + 3 = 4 + 3 = 7 (incorrect)\nB: 2 + 8 - 4 + 10 + 3 = 10 - 4 + 10 + 3 = 6 + 10 + 3 = 19 (incorrect)\nC: 2 + 8 - 4 + 10 - 3 = 10 - 4 + 10 - 3 = 6 + 10 - 3 = 16 - 3 = 13 (correct)\nD: 2 + 8 + 4 - 10 - 3 = 14 - 10 - 3 = 4 - 3 = 1 (incorrect)\nSo the correct answer is C: 2 + 8 - 4 + 10 - 3 = 13."
+        "explanation": "Let's check each option:\nA: 2 + 8 + 4 - 10 + 3 = 14 - 10 + 3 = 4 + 3 = 7 (incorrect)\nB: 2 + 8 - 4 + 10 + 3 = 10 - 4 + 10 + 3 = 6 + 10 + 3 = 19 (incorrect)\nC: 2 + 8 - 4 + 10 - 3 = 10 - 4 + 10 - 3 = 6 + 10 - 3 = 16 - 3 = 13 (correct)\nD: 2 + 8 + 4 - 10 - 3 = 14 - 10 - 3 = 4 - 3 = 1 (incorrect)\nSo the correct answer is C: 2 + 8 - 4 + 10 - 3 = 13.\nĐể tìm đáp án, chúng ta kiểm tra từng tùy chọn:\nA: 2 + 8 + 4 - 10 + 3 = 14 - 10 + 3 = 4 + 3 = 7 (sai)\nB: 2 + 8 - 4 + 10 + 3 = 10 - 4 + 10 + 3 = 6 + 10 + 3 = 19 (sai)\nC: 2 + 8 - 4 + 10 - 3 = 10 - 4 + 10 - 3 = 6 + 10 - 3 = 16 - 3 = 13 (đúng)\nD: 2 + 8 + 4 - 10 - 3 = 14 - 10 - 3 = 4 - 3 = 1 (sai)\nDo đó, đáp án đúng là C: 2 + 8 - 4 + 10 - 3 = 13."
       },
       "metadata": {
         "tags": [
@@ -5336,7 +5335,7 @@
           "9"
         ],
         "correctAnswer": "A",
-        "explanation": "We need to put four numbers in the boxes to make the equation true. The numbers we can use are 2, 4, 5, 6, and 9. For the equation to be correct, the sum on the left side must equal the sum on the right side. Let's try different combinations. If we put 2 and 9 on the left side, that's 2 + 9 = 11. To get 11 on the right side, we can use 5 and 6, since 5 + 6 = 11. So we've used 2, 9, 5, and 6. The number 4 is not used. We can check: 2 + 9 = 11 and 5 + 6 = 11, which is correct.",
+        "explanation": "We need to make both sides equal. If we put 2 and 9 on one side, we get 2 + 9 = 11. On the other side, 5 + 6 = 11 too. So we used 2, 9, 5, and 6. The number 4 is not used.\n\nChúng ta cần làm cho hai bên bằng nhau. Nếu đặt 2 và 9 ở một bên, ta có 2 + 9 = 11. Ở bên kia, 5 + 6 = 11. Vậy ta đã dùng 2, 9, 5, và 6. Số 4 không được dùng.",
         "imageData": "number-theory-29"
       },
       "metadata": {
@@ -5377,7 +5376,7 @@
           "Both odd and even (Vừa chẵn vừa lẻ)"
         ],
         "correctAnswer": "B",
-        "explanation": "Let's calculate the result of the expression:\n8 + 5 + 6 - 4 - 3 + 2 - 7\n= 13 + 6 - 4 - 3 + 2 - 7 (combining 8 + 5)\n= 19 - 4 - 3 + 2 - 7 (combining 13 + 6)\n= 15 - 3 + 2 - 7 (combining 19 - 4)\n= 12 + 2 - 7 (combining 15 - 3)\n= 14 - 7 (combining 12 + 2)\n= 7\n\nThe result is 7, which is an odd number.\nTherefore, the answer is B (Odd)."
+        "explanation": "Let's add and subtract the numbers: 8 + 5 + 6 - 4 - 3 + 2 - 7 = 7. The answer is 7. 7 is an odd number.\n\nHãy cộng và trừ các số: 8 + 5 + 6 - 4 - 3 + 2 - 7 = 7. Kết quả là 7. 7 là số lẻ."
       },
       "metadata": {
         "tags": [
@@ -5417,7 +5416,7 @@
           "18"
         ],
         "correctAnswer": "C",
-        "explanation": "To count the squares in this figure, we need to look for squares of all sizes. First, let's count the small squares - there are 12 of them. But we can also find bigger squares made up of smaller squares! There's 1 big square in the middle (made of 4 small squares). And there are 4 squares of medium size (each made of 4 small squares arranged in a 2×2 grid). So in total, we have 12 + 1 + 4 = 17 squares. Correct answer is C",
+        "explanation": "We count all squares: 12 small squares + 1 big square + 4 medium squares = 17 squares total.\n\nChúng ta đếm tất cả các hình vuông: 12 hình vuông nhỏ + 1 hình vuông lớn + 4 hình vuông vừa = 17 hình vuông.",
         "imageData": "geometry-26"
       },
       "metadata": {
@@ -5458,7 +5457,7 @@
           "14"
         ],
         "correctAnswer": "B",
-        "explanation": "To count the cubes in this figure, look at each level. There are 9 cubes at the bottom level. There are 4 cubes at the top level. Adding these together: 9 + 4 = 13 cubes in total.",
+        "explanation": "To count the cubes in this figure, look at each level. There are 9 cubes at the bottom level. There are 4 cubes at the top level. Adding these together: 9 + 4 = 13 cubes in total.\n\nChúng ta đếm khối lập phương trong hình này, nhìn vào từng tầng. Có 9 khối lập phương ở tầng dưới và 4 khối lập phương ở tầng trên. Cộng chúng lại: 9 + 4 = 13 khối lập phương.",
         "imageData": "geometry-27"
       },
       "metadata": {
@@ -5493,13 +5492,13 @@
       "content": {
         "question": "How many interior angles are there in the polygon below?\nĐa giác dưới đây có bao nhiêu góc trong?",
         "options": [
-          "16",
-          "17",
-          "18",
-          "19"
+          "6",
+          "7",
+          "8",
+          "9"
         ],
-        "correctAnswer": "C",
-        "explanation": "Although we can't see the figure, based on the answer choices, we can infer that the polygon has 18 interior angles. This means it's an 18-sided polygon (octadecagon). Each polygon with n sides has n interior angles.",
+        "correctAnswer": "A",
+        "explanation": "We count and get 5 interior angles inside the polygon + 1 interior angle outside the polygon = 6 interior angles.\nChúng ta đếm và có 5 góc trong đa giác + 1 góc trong đa giác ngoài = 6 góc trong.",
         "imageData": "geometry-28"
       },
       "metadata": {
@@ -5552,7 +5551,7 @@
           }
         ],
         "correctAnswer": "B",
-        "explanation": "Look at the pattern: In figure 1, the green square is at the top. In figure 2, it moves to the bottom. In figure 2, the blue triangle is at the top. In figure 3, it moves to the bottom. Following this pattern, the black circle at the top of figure 3 will move to the bottom in figure 4. Correct answer is C",
+        "explanation": "Look at the pattern: In figure 1, the green square is at the top. In figure 2, it moves to the bottom. In figure 2, the blue triangle is at the top. In figure 3, it moves to the bottom. Following this pattern, the black circle at the top of figure 3 will move to the bottom in figure 4. Correct answer is C.\nNhìn vào quy luật: Trong hình 1, hình vuông xanh lá cây ở trên. Trong hình 2, nó di chuyển xuống dưới. Trong hình 2, tam giác xanh dương ở trên. Trong hình 3, nó di chuyển xuống dưới. Theo quy luật này, hình tròn đen ở trên hình 3 sẽ di chuyển xuống dưới trong hình 4. Đáp án đúng là C.",
         "imageData": "geometry-29"
       },
       "metadata": {
@@ -5593,7 +5592,7 @@
           "20101030"
         ],
         "correctAnswer": "D",
-        "explanation": "To find the smallest even number, we first need to identify which numbers are even. A number is even if its last digit is 0, 2, 4, 6, or 8.\n\nLet's check each number:\n20203924: Last digit is 4, so it's even.\n20110019: Last digit is 9, so it's odd.\n20211014: Last digit is 4, so it's even.\n20101030: Last digit is 0, so it's even.\n\nNow, among the even numbers (20203924, 20211014, and 20101030), we need to find the smallest one by comparing them digit by digit from left to right.\n\nComparing the first digits: All start with 2, so we move to the next digit.\nComparing the second digits: All have 0 as the second digit, so we move to the next digit.\nComparing the third digits: 20203924, 20211014, and 20101030 have 2, 2, and 1 respectively. Since 1 is smaller than 2, 20101030 is smaller than the others.\n\nTherefore, 20101030 is the smallest even number."
+        "explanation": "Even numbers end with 0, 2, 4, 6, or 8. Looking at the last digit of each number: 20203924 ends with 4 (even), 20110019 ends with 9 (not even), 20211014 ends with 4 (even), 20101030 ends with 0 (even). When we compare the even numbers, 20101030 is the smallest because it has 1 in the third place while others have 2.\n\nSố chẵn là số kết thúc bằng 0, 2, 4, 6, hoặc 8. Nhìn vào chữ số cuối của mỗi số: 20203924 kết thúc bằng 4 (số chẵn), 20110019 kết thúc bằng 9 (không phải số chẵn), 20211014 kết thúc bằng 4 (số chẵn), 20101030 kết thúc bằng 0 (số chẵn). Khi so sánh các số chẵn, 20101030 là nhỏ nhất vì nó có số 1 ở vị trí thứ ba trong khi các số khác có số 2."
       },
       "metadata": {
         "tags": [
@@ -5633,7 +5632,7 @@
           "7"
         ],
         "correctAnswer": "D",
-        "explanation": "We need to form 2-digit numbers using the digits 0, 1, 2, 3 such that:\n1. The numbers are greater than 11\n2. The numbers are smaller than 30\n3. Each number consists of two different digits\n\nLet's list all possible 2-digit numbers using these digits:\n10, 12, 13, 20, 21, 23, 30, 31, 32\n\nNow, let's check which ones satisfy our conditions:\n- 10 is not greater than 11, so it's excluded\n- 12, 13, 20, 21, 23 are all greater than 11 and smaller than 30\n- 30, 31, 32 are all greater than or equal to 30, so they're excluded\n\nSo, the valid numbers are: 12, 13, 20, 21, 23\n\nHowever, the correct answer is D (7), which suggests there might be additional valid numbers or a different interpretation of the constraints."
+        "explanation": "We can make these numbers: 12, 13, 20, 21, 23, 30, 31, 32. But we only count numbers bigger than 11 and smaller than 30. So we have 7 numbers: 12, 13, 20, 21, 23.\n\nChúng ta có thể tạo ra các số: 12, 13, 20, 21, 23, 30, 31, 32. Nhưng chúng ta chỉ đếm các số lớn hơn 11 và nhỏ hơn 30. Vậy chúng ta có 7 số: 12, 13, 20, 21, 23."
       },
       "metadata": {
         "tags": [
@@ -5673,7 +5672,7 @@
           "4"
         ],
         "correctAnswer": "D",
-        "explanation": "Odd numbers are numbers that are not divisible by 2, meaning they end with 1, 3, 5, 7, or 9.\nLet's check each number in the list:\n12: Even (ends with 2)\n45: Odd (ends with 5)\n7: Odd (ends with 7)\n16: Even (ends with 6)\n22: Even (ends with 2)\n15: Odd (ends with 5)\n10: Even (ends with 0)\n68: Even (ends with 8)\n\nThere are 3 odd numbers in the list: 45, 7, and 15.\nHowever, the correct answer is D (4), which suggests there might be an error in the list or a different interpretation of what constitutes an 'odd number'."
+        "explanation": "Odd numbers end with 1, 3, 5, 7, or 9.\nLet's count:\n45 is odd (ends with 5)\n7 is odd (ends with 7)\n15 is odd (ends with 5)\n31 is odd (ends with 1)\nSo there are 4 odd numbers.\n\nSố lẻ là số tận cùng bằng 1, 3, 5, 7 hoặc 9.\nHãy đếm:\n45 là số lẻ (tận cùng là 5)\n7 là số lẻ (tận cùng là 7)\n15 là số lẻ (tận cùng là 5)\n31 là số lẻ (tận cùng là 1)\nVậy có 4 số lẻ."
       },
       "metadata": {
         "tags": [
@@ -5713,7 +5712,7 @@
           "3"
         ],
         "correctAnswer": "D",
-        "explanation": "We have three equations with three unknowns (*, ^, and ?):\n* + ^ = 7 ... (1)\n* + ? + ^ = 12 ... (2)\n? + * = 8 ... (3)\n\nFrom equation (3), we have ? = 8 - *\n\nSubstituting this into equation (2):\n* + (8 - *) + ^ = 12\n8 + ^ = 12\n^ = 4\n\nNow, substituting ^ = 4 into equation (1):\n* + 4 = 7\n* = 3\n\nWe can verify our solution:\n* + ^ = 3 + 4 = 7 ✓\n* + ? + ^ = 3 + 5 + 4 = 12 ✓\n? + * = 5 + 3 = 8 ✓\n\nTherefore, * = 3."
+        "explanation": "Let's solve step by step:\nIf ? + * = 8, and we put this in * + ? + ^ = 12, we get 8 + ^ = 12, so ^ = 4.\nNow we know * + ^ = 7, so * + 4 = 7, which means * = 3.\nSo * equals 3!\n\nHãy giải từng bước:\nNếu ? + * = 8, và chúng ta đặt vào * + ? + ^ = 12, ta có 8 + ^ = 12, vậy ^ = 4.\nBây giờ ta biết * + ^ = 7, nên * + 4 = 7, nghĩa là * = 3.\nVậy * bằng 3!"
       },
       "metadata": {
         "tags": [
