@@ -324,14 +324,9 @@ def train_question_recommender(question_df, response_df):
         'recommendation_score'
     )
     
-    # Set metadata
-    coreml_model.short_description = "Question Recommender for TIMO Math"
-    coreml_model.input_description = {
-        feature: f"Student feature: {feature}" for feature in feature_names
-    }
-    coreml_model.output_description = {
-        'recommendation_score': 'Predicted recommendation score for the question'
-    }
+    # Set metadata - use properties instead of direct attribute assignment
+    spec = coreml_model.get_spec()
+    spec.description.metadata.shortDescription = "Question Recommender for TIMO Math"
     
     # Create output directory if it doesn't exist
     os.makedirs(OUTPUT_MODEL_DIR, exist_ok=True)
@@ -382,22 +377,9 @@ def train_ability_estimator(response_df):
         'ability'
     )
     
-    # Set metadata
-    coreml_model.short_description = "Student Ability Estimator for TIMO Math"
-    coreml_model.input_description = {
-        'is_correct': 'Whether the student answered correctly (0 or 1)',
-        'response_time': 'Time taken to answer the question in seconds',
-        'difficulty': 'Question difficulty level (1-4)',
-        'subject_idx': 'Subject index (0-4)',
-        'subject_pref_0': 'Student preference for Logical Thinking (0-1)',
-        'subject_pref_1': 'Student preference for Arithmetic (0-1)',
-        'subject_pref_2': 'Student preference for Number Theory (0-1)',
-        'subject_pref_3': 'Student preference for Geometry (0-1)',
-        'subject_pref_4': 'Student preference for Combinatorics (0-1)'
-    }
-    coreml_model.output_description = {
-        'ability': 'Estimated student ability level (-3 to +3)'
-    }
+    # Set metadata - use properties instead of direct attribute assignment
+    spec = coreml_model.get_spec()
+    spec.description.metadata.shortDescription = "Student Ability Estimator for TIMO Math"
     
     # Save CoreML model
     model_path = os.path.join(OUTPUT_MODEL_DIR, 'AbilityEstimator.mlmodel')
@@ -467,21 +449,9 @@ def train_difficulty_predictor(question_df, response_df):
         'difficulty'
     )
     
-    # Set metadata
-    coreml_model.short_description = "Question Difficulty Predictor for TIMO Math"
-    coreml_model.input_description = {
-        'student_ability': 'Student ability level (-3 to +3)',
-        'subject_idx': 'Subject index (0-4)',
-        'subject_pref': 'Student preference for this subject (0-1)',
-        'irt_discrimination': 'IRT discrimination parameter',
-        'irt_difficulty': 'IRT difficulty parameter',
-        'irt_guessing': 'IRT guessing parameter',
-        'is_open_ended': 'Whether the question is open-ended (0 or 1)',
-        'question_length': 'Length of the question text'
-    }
-    coreml_model.output_description = {
-        'difficulty': 'Predicted difficulty (0-1, where 1 is most difficult)'
-    }
+    # Set metadata - use properties instead of direct attribute assignment
+    spec = coreml_model.get_spec()
+    spec.description.metadata.shortDescription = "Question Difficulty Predictor for TIMO Math"
     
     # Save CoreML model
     model_path = os.path.join(OUTPUT_MODEL_DIR, 'DifficultyPredictor.mlmodel')
@@ -495,19 +465,28 @@ def main():
     print("Starting CoreML model training for TIMO Math Adaptive Learning...")
     
     # Load and preprocess question data
+    print("Loading and preprocessing question data...")
     questions = load_question_data(INPUT_DATA_PATH)
     question_df = preprocess_question_data(questions)
+    print(f"Preprocessed {len(question_df)} questions")
     
     # Generate synthetic student data
+    print("Generating synthetic student data...")
     response_df = generate_synthetic_student_data(question_df)
     print(f"Generated synthetic data for {response_df['student_id'].nunique()} students with {len(response_df)} responses")
     
     # Train the models
+    print("\n--- Training Models ---")
     recommender_model = train_question_recommender(question_df, response_df)
-    ability_model = train_ability_estimator(response_df)
-    difficulty_model = train_difficulty_predictor(question_df, response_df)
+    print("Question Recommender model trained successfully!")
     
-    print("Model training complete!")
+    ability_model = train_ability_estimator(response_df)
+    print("Ability Estimator model trained successfully!")
+    
+    difficulty_model = train_difficulty_predictor(question_df, response_df)
+    print("Difficulty Predictor model trained successfully!")
+    
+    print("\nModel training complete! All models saved to MLModels directory.")
 
 if __name__ == "__main__":
-    main() 
+    main()
