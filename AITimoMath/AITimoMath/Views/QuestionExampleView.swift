@@ -2,6 +2,10 @@ import SwiftUI
 
 /// A view that displays all questions from the timo_questions.json file one by one
 struct QuestionExampleView: View {
+    // User state
+    var user: User
+    var onUserUpdate: (User) -> Void
+    
     // State for question navigation and display
     @State private var questions: [Question] = []
     @State private var currentQuestionIndex: Int = 0
@@ -13,6 +17,12 @@ struct QuestionExampleView: View {
     @State private var questionNumberInput: String = ""
     @State private var showQuestionNumberInput: Bool = false
     @FocusState private var isQuestionNumberInputFocused: Bool
+    
+    // Initialize with user and update callback
+    init(user: User, onUserUpdate: @escaping (User) -> Void) {
+        self.user = user
+        self.onUserUpdate = onUserUpdate
+    }
     
     var body: some View {
         NavigationView {
@@ -449,5 +459,8 @@ struct QuestionExampleView: View {
 }
 
 #Preview {
-    QuestionExampleView()
+    QuestionExampleView(
+        user: User(name: "Test Student", avatar: "avatar-1", gradeLevel: 5),
+        onUserUpdate: { _ in }
+    )
 } 

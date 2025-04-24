@@ -782,6 +782,11 @@ public class AILearningService {
             return "Combinatorics and Counting"
         }
     }
+    
+    // Static method to run all ML tests
+    static func runModelTests() {
+        MLTestRunner.runAllTests()
+    }
 }
 
 // MARK: - Supporting Types

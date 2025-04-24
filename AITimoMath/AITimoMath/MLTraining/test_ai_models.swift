@@ -4,144 +4,143 @@ import Foundation
 struct AIModelTester {
     /// Run all tests for AI models
     static func runTests() {
-        print("Testing AI Models for TIMO Math Adaptive Learning...")
-        
-        // Test Elo Rating Model
+        print("\n=== Running AI Model Tests ===\n")
         testEloRatingModel()
-        
-        // Test BKT Model
         testBKTModel()
-        
-        // Test IRT Model
         testIRTModel()
-        
-        // Test Adaptive Difficulty Engine
         testAdaptiveDifficultyEngine()
-        
-        print("All AI Model tests completed!")
+        print("\n=== All AI Model Tests Completed ===\n")
     }
     
     /// Test the Elo Rating Model
     static func testEloRatingModel() {
-        print("\n=== Testing Elo Rating Model ===")
+        print("Testing Elo Rating Model...")
         
-        let eloModel = EloRatingModel()
+        let model = EloRatingModel()
         
-        // Test case 1: Student with average rating answers correctly quickly
-        let newRating1 = eloModel.calculateNewStudentRating(
-            currentRating: 1200,
-            questionDifficulty: 1200,
-            isCorrect: true,
-            responseTime: 15.0
-        )
-        print("Student rating after correct answer: \(newRating1)")
-        
-        // Test case 2: Student with average rating answers incorrectly
-        let newRating2 = eloModel.calculateNewStudentRating(
-            currentRating: 1200,
-            questionDifficulty: 1200,
-            isCorrect: false,
-            responseTime: 30.0
-        )
-        print("Student rating after incorrect answer: \(newRating2)")
-        
-        // Test case 3: High-rated student answers easy question correctly
-        let newRating3 = eloModel.calculateNewStudentRating(
-            currentRating: 1500,
-            questionDifficulty: 1000,
+        // Test calculating new ratings after correct answer
+        let studentRating1 = model.calculateNewStudentRating(
+            currentRating: 1200, 
+            questionDifficulty: 1000, 
             isCorrect: true,
             responseTime: 10.0
         )
-        print("High-rated student after correct answer to easy question: \(newRating3)")
+        print("  Student rating after correct answer (1200 vs 1000): \(studentRating1)")
         
-        // Test difficulty level conversion
-        let easyLevel = eloModel.convertEloToDifficultyLevel(1050)
-        let mediumLevel = eloModel.convertEloToDifficultyLevel(1200)
-        let hardLevel = eloModel.convertEloToDifficultyLevel(1400)
-        let olympiadLevel = eloModel.convertEloToDifficultyLevel(1600)
+        let questionRating1 = model.calculateNewQuestionDifficulty(
+            currentDifficulty: 1000,
+            studentRating: 1200,
+            isCorrect: true,
+            responseTime: 10.0
+        )
+        print("  Question rating after correct answer (1000 vs 1200): \(questionRating1)")
         
-        print("Elo 1050 -> Difficulty \(easyLevel)")
-        print("Elo 1200 -> Difficulty \(mediumLevel)")
-        print("Elo 1400 -> Difficulty \(hardLevel)")
-        print("Elo 1600 -> Difficulty \(olympiadLevel)")
+        // Test calculating new ratings after incorrect answer
+        let studentRating2 = model.calculateNewStudentRating(
+            currentRating: 1200, 
+            questionDifficulty: 1000, 
+            isCorrect: false,
+            responseTime: 20.0
+        )
+        print("  Student rating after incorrect answer (1200 vs 1000): \(studentRating2)")
+        
+        let questionRating2 = model.calculateNewQuestionDifficulty(
+            currentDifficulty: 1000,
+            studentRating: 1200,
+            isCorrect: false,
+            responseTime: 20.0
+        )
+        print("  Question rating after incorrect answer (1000 vs 1200): \(questionRating2)")
+        
+        // Test converting Elo rating to difficulty level
+        let difficultyLevel1 = model.convertEloToDifficultyLevel(1000)
+        let difficultyLevel2 = model.convertEloToDifficultyLevel(1200)
+        let difficultyLevel3 = model.convertEloToDifficultyLevel(1400)
+        
+        print("  Difficulty level (rating 1000): \(difficultyLevel1)")
+        print("  Difficulty level (rating 1200): \(difficultyLevel2)")
+        print("  Difficulty level (rating 1400): \(difficultyLevel3)")
+        
+        print("Elo Rating Model test completed\n")
     }
     
     /// Test the Bayesian Knowledge Tracing Model
     static func testBKTModel() {
-        print("\n=== Testing Bayesian Knowledge Tracing Model ===")
+        print("Testing Bayesian Knowledge Tracing Model...")
         
-        let bktModel = BKTModel()
+        let model = BKTModel()
         
-        // Test case 1: Student with low prior knowledge answers correctly
-        let newKnowledge1 = bktModel.updateKnowledge(priorKnowledge: 0.3, isCorrect: true)
-        print("Knowledge after correct answer (low prior): \(newKnowledge1)")
+        // Test updating knowledge based on responses
+        let knowledgeAfterCorrect = model.updateKnowledge(priorKnowledge: 0.5, isCorrect: true)
+        let knowledgeAfterIncorrect = model.updateKnowledge(priorKnowledge: 0.5, isCorrect: false)
         
-        // Test case 2: Student with medium prior knowledge answers incorrectly
-        let newKnowledge2 = bktModel.updateKnowledge(priorKnowledge: 0.5, isCorrect: false)
-        print("Knowledge after incorrect answer (medium prior): \(newKnowledge2)")
+        print("  Knowledge after correct answer (from 0.5): \(knowledgeAfterCorrect)")
+        print("  Knowledge after incorrect answer (from 0.5): \(knowledgeAfterIncorrect)")
         
-        // Test case 3: Student with high prior knowledge answers correctly
-        let newKnowledge3 = bktModel.updateKnowledge(priorKnowledge: 0.8, isCorrect: true)
-        print("Knowledge after correct answer (high prior): \(newKnowledge3)")
+        // Test knowledge gain for a sequence of responses
+        var knowledge: Float = 0.4 // Initial knowledge
+        print("  Initial knowledge state: \(knowledge)")
+        
+        let responses = [true, true, false, true, true]
+        for (index, isCorrect) in responses.enumerated() {
+            knowledge = model.updateKnowledge(priorKnowledge: knowledge, isCorrect: isCorrect)
+            print("  Knowledge after response \(index+1) (\(isCorrect ? "correct" : "incorrect")): \(knowledge)")
+        }
         
         // Test concept mastery determination
-        let notMastered = bktModel.isConceptMastered(knowledge: 0.7)
-        let mastered = bktModel.isConceptMastered(knowledge: 0.9)
+        let conceptMastered = model.isConceptMastered(knowledge: knowledge)
+        print("  Is concept mastered with knowledge \(knowledge)? \(conceptMastered)")
         
-        print("Knowledge 0.7 mastered? \(notMastered)")
-        print("Knowledge 0.9 mastered? \(mastered)")
+        print("Bayesian Knowledge Tracing Model test completed\n")
     }
     
     /// Test the Item Response Theory Model
     static func testIRTModel() {
-        print("\n=== Testing Item Response Theory Model ===")
+        print("Testing Item Response Theory Model...")
         
-        let irtModel = IRTModel()
+        let model = IRTModel()
         
-        // Create test parameters
-        let easyParams = IRTModel.Parameters(discrimination: 1.0, difficulty: -1.0, guessing: 0.25)
-        let mediumParams = IRTModel.Parameters(discrimination: 1.0, difficulty: 0.0, guessing: 0.25)
-        let hardParams = IRTModel.Parameters(discrimination: 1.0, difficulty: 1.0, guessing: 0.25)
+        // Test calculating probability of correct answer
+        let params1 = IRTModel.Parameters(discrimination: 1.0, difficulty: 0.0, guessing: 0.25)
+        let params2 = IRTModel.Parameters(discrimination: 1.0, difficulty: 1.0, guessing: 0.25)
+        let params3 = IRTModel.Parameters(discrimination: 1.0, difficulty: 0.0, guessing: 0.25)
         
-        // Test probability calculations for different student abilities
-        let lowAbility = -1.0
-        let mediumAbility = 0.0
-        let highAbility = 1.0
+        let probability1 = model.probabilityOfCorrectAnswer(ability: 1.0, parameters: params1)
+        let probability2 = model.probabilityOfCorrectAnswer(ability: 0.0, parameters: params2)
+        let probability3 = model.probabilityOfCorrectAnswer(ability: 0.0, parameters: params3)
         
-        // Low ability student
-        print("Low ability student (-1.0):")
-        print("  Probability on easy question: \(irtModel.probabilityOfCorrectAnswer(ability: Float(lowAbility), parameters: easyParams))")
-        print("  Probability on medium question: \(irtModel.probabilityOfCorrectAnswer(ability: Float(lowAbility), parameters: mediumParams))")
-        print("  Probability on hard question: \(irtModel.probabilityOfCorrectAnswer(ability: Float(lowAbility), parameters: hardParams))")
+        print("  Probability (ability 1.0, difficulty 0.0): \(probability1)")
+        print("  Probability (ability 0.0, difficulty 1.0): \(probability2)")
+        print("  Probability (ability 0.0, difficulty 0.0): \(probability3)")
         
-        // Medium ability student
-        print("Medium ability student (0.0):")
-        print("  Probability on easy question: \(irtModel.probabilityOfCorrectAnswer(ability: Float(mediumAbility), parameters: easyParams))")
-        print("  Probability on medium question: \(irtModel.probabilityOfCorrectAnswer(ability: Float(mediumAbility), parameters: mediumParams))")
-        print("  Probability on hard question: \(irtModel.probabilityOfCorrectAnswer(ability: Float(mediumAbility), parameters: hardParams))")
+        // Test estimating ability after responses
+        var ability: Float = 0.0
+        let questionDifficulties: [Float] = [0.0, 0.5, -0.5, 1.0, -1.0]
+        let responses = [true, true, true, false, true]
         
-        // High ability student
-        print("High ability student (1.0):")
-        print("  Probability on easy question: \(irtModel.probabilityOfCorrectAnswer(ability: Float(highAbility), parameters: easyParams))")
-        print("  Probability on medium question: \(irtModel.probabilityOfCorrectAnswer(ability: Float(highAbility), parameters: mediumParams))")
-        print("  Probability on hard question: \(irtModel.probabilityOfCorrectAnswer(ability: Float(highAbility), parameters: hardParams))")
+        print("  Initial ability: \(ability)")
         
-        // Test ability estimation
-        let updatedAbility = irtModel.estimateAbility(
-            currentAbility: 0.0,
-            questionParameters: mediumParams,
-            isCorrect: true
-        )
-        print("Updated ability after correct answer: \(updatedAbility)")
+        for i in 0..<questionDifficulties.count {
+            let params = IRTModel.Parameters(discrimination: 1.0, difficulty: questionDifficulties[i], guessing: 0.25)
+            ability = model.estimateAbility(
+                currentAbility: ability,
+                questionParameters: params,
+                isCorrect: responses[i]
+            )
+            
+            print("  Ability after \(responses[i] ? "correct" : "incorrect") answer to question with difficulty \(questionDifficulties[i]): \(ability)")
+        }
+        
+        print("Item Response Theory Model test completed\n")
     }
     
     /// Test the Adaptive Difficulty Engine
     static func testAdaptiveDifficultyEngine() {
-        print("\n=== Testing Adaptive Difficulty Engine ===")
+        print("Testing Adaptive Difficulty Engine...")
         
         let engine = AdaptiveDifficultyEngine.shared
         
-        // Create a sample learning progress
+        // Create a test learning progress
         let userId = UUID()
         var learningProgress = AILearningProgress(userId: userId)
         
@@ -166,41 +165,61 @@ struct AIModelTester {
             )
         ]
         
-        // Test difficulty calculation for high accuracy
-        let highAccuracyLesson = createTestLesson(userId: userId, accuracy: 0.95, responseTime: 20.0)
-        let highAccuracyDifficulty = engine.calculateDifficultyAfterLesson(
-            learningProgress: learningProgress,
-            completedLesson: highAccuracyLesson
-        )
-        print("Next difficulty after high accuracy (0.95): \(highAccuracyDifficulty)")
+        // Create a test lesson
+        let lesson = createTestLesson(userId: userId)
         
-        // Test difficulty calculation for low accuracy
-        let lowAccuracyLesson = createTestLesson(userId: userId, accuracy: 0.3, responseTime: 40.0)
-        let lowAccuracyDifficulty = engine.calculateDifficultyAfterLesson(
+        // Test difficulty calculation
+        let nextDifficulty = engine.calculateDifficultyAfterLesson(
             learningProgress: learningProgress,
-            completedLesson: lowAccuracyLesson
+            completedLesson: lesson
         )
-        print("Next difficulty after low accuracy (0.3): \(lowAccuracyDifficulty)")
         
-        // Test difficulty calculation for moderate accuracy
-        let moderateAccuracyLesson = createTestLesson(userId: userId, accuracy: 0.6, responseTime: 30.0)
-        let moderateAccuracyDifficulty = engine.calculateDifficultyAfterLesson(
-            learningProgress: learningProgress,
-            completedLesson: moderateAccuracyLesson
-        )
-        print("Next difficulty after moderate accuracy (0.6): \(moderateAccuracyDifficulty)")
+        print("  Next difficulty after performance: \(nextDifficulty)")
+        
+        print("Adaptive Difficulty Engine test completed\n")
     }
     
-    /// Create a test lesson with specified parameters
-    static func createTestLesson(userId: UUID, accuracy: Float, responseTime: TimeInterval) -> Lesson {
-        var lesson = Lesson(userId: userId, subject: .arithmetic)
-        lesson.accuracy = accuracy
-        lesson.responseTime = responseTime
-        lesson.status = .completed
-        lesson.completedAt = Date()
-        return lesson
+    // Helper function to create a test lesson
+    private static func createTestLesson(userId: UUID) -> Lesson {
+        let questionCount = 10
+        let subject: Lesson.Subject = .arithmetic
+        let accuracy: Float = 0.7
+        
+        // Create question responses
+        var responses = [Lesson.QuestionResponse]()
+        let correctCount = Int(Float(questionCount) * accuracy)
+        
+        for i in 0..<questionCount {
+            let isCorrect = i < correctCount
+            let response = Lesson.QuestionResponse(
+                questionId: UUID(),
+                isCorrect: isCorrect,
+                responseTime: Double.random(in: 15...45),
+                answeredAt: Date()
+            )
+            responses.append(response)
+        }
+        
+        // Create and return a lesson
+        return Lesson(
+            id: UUID(),
+            userId: userId,
+            subject: subject,
+            difficulty: 2,
+            questions: [],
+            responses: responses,
+            accuracy: accuracy,
+            responseTime: 25.0,
+            startedAt: Date().addingTimeInterval(-600),
+            status: .completed
+        )
     }
 }
 
-// Comment out or remove the top-level expression
-// AIModelTester.runTests() 
+/// Test runner for AI models
+public class MLTestRunner {
+    /// Run all AI model tests
+    public static func runAllTests() {
+        AIModelTester.runTests()
+    }
+} 

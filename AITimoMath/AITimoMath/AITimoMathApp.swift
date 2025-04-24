@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import CloudKit
+import CoreData
 
 @main
 struct AITimoMathApp: App {
@@ -15,12 +17,39 @@ struct AITimoMathApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(\.managedObjectContext, persistenceController.viewContext)
         }
     }
 }
 
 struct ContentView: View {
+    // Create a shared user for testing
+    @State private var currentUser = User(
+        name: "Test Student",
+        avatar: "avatar-1",
+        gradeLevel: 5
+    )
+    
     var body: some View {
-        QuestionExampleView()
+        TabView {
+            QuestionExampleView(user: currentUser, onUserUpdate: { updatedUser in
+                self.currentUser = updatedUser
+            })
+                .tabItem {
+                    Label("Questions", systemImage: "questionmark.circle")
+                }
+            
+            AIRecommendationView(userId: currentUser.id)
+                .tabItem {
+                    Label("Recommendations", systemImage: "lightbulb")
+                }
+            
+            #if DEBUG
+            TestMenuView()
+                .tabItem {
+                    Label("Test Tools", systemImage: "hammer")
+                }
+            #endif
+        }
     }
 }
