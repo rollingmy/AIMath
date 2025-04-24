@@ -94,7 +94,7 @@ class PersistenceController {
         do {
             let (results, _) = try await privateDatabase.records(matching: query)
             for result in results {
-                if case .success(let record) = result.1 {
+                if let record = try? result.1.get() {
                     return User(from: record)
                 }
             }
@@ -132,7 +132,7 @@ class PersistenceController {
         do {
             let (results, _) = try await privateDatabase.records(matching: query)
             for result in results {
-                if case .success(let record) = result.1 {
+                if let record = try? result.1.get() {
                     try await privateDatabase.deleteRecord(withID: record.recordID)
                     return
                 }

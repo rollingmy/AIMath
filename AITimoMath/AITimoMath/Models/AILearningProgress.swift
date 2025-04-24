@@ -18,6 +18,12 @@ public struct AILearningProgress: Identifiable, Codable, Equatable {
     /// AI-suggested next lessons
     public var recommendedLessons: [UUID]
     
+    /// Student's ability level (-3 to +3 scale)
+    public var abilityLevel: Float
+    
+    /// Performance statistics for this student
+    public var performanceStats: PerformanceStats
+    
     /// Last time AI updated recommendations
     public var lastUpdated: Date
 }
@@ -28,9 +34,26 @@ extension AILearningProgress {
     public struct LessonProgress: Codable, Equatable {
         public let lessonId: UUID
         public let subject: Lesson.Subject
+        public let completedAt: Date
         public let accuracy: Float
         public let responseTime: TimeInterval
         public var nextDifficulty: Int
+        
+        public init(
+            lessonId: UUID,
+            subject: Lesson.Subject,
+            completedAt: Date,
+            accuracy: Float,
+            responseTime: TimeInterval,
+            nextDifficulty: Int
+        ) {
+            self.lessonId = lessonId
+            self.subject = subject
+            self.completedAt = completedAt
+            self.accuracy = accuracy
+            self.responseTime = responseTime
+            self.nextDifficulty = nextDifficulty
+        }
     }
     
     /// Represents an area needing improvement
@@ -47,6 +70,26 @@ extension AILearningProgress {
         self.lessonHistory = []
         self.weakAreas = []
         self.recommendedLessons = []
+        self.abilityLevel = 0.0
+        self.performanceStats = PerformanceStats()
+        self.lastUpdated = Date()
+    }
+    
+    /// Full initialization with all parameters
+    public init(
+        userId: UUID,
+        abilityLevel: Float = 0.0,
+        lessonHistory: [LessonProgress] = [],
+        weakAreas: [WeakArea] = [],
+        recommendedLessons: [UUID] = []
+    ) {
+        self.id = UUID()
+        self.userId = userId
+        self.lessonHistory = lessonHistory
+        self.weakAreas = weakAreas
+        self.recommendedLessons = recommendedLessons
+        self.abilityLevel = abilityLevel
+        self.performanceStats = PerformanceStats()
         self.lastUpdated = Date()
     }
 }
@@ -57,6 +100,7 @@ extension AILearningProgress {
     
     func toRecord() -> CKRecord {
         let record = CKRecord(recordType: AILearningProgress.recordType)
+        record["id"] = id.uuidString
         record["userId"] = userId.uuidString
         
         // Convert lesson history to dictionary for storage
@@ -67,13 +111,20 @@ extension AILearningProgress {
         let weakAreasData = try? JSONEncoder().encode(weakAreas)
         record["weakAreas"] = weakAreasData
         
+        // Convert performance stats to dictionary for storage
+        let statsData = try? JSONEncoder().encode(performanceStats)
+        record["performanceStats"] = statsData
+        
         record["recommendedLessons"] = recommendedLessons.map { $0.uuidString }
+        record["abilityLevel"] = abilityLevel
         record["lastUpdated"] = lastUpdated
         return record
     }
     
     init?(from record: CKRecord) {
         guard
+            let idString = record["id"] as? String,
+            let id = UUID(uuidString: idString),
             let userIdString = record["userId"] as? String,
             let userId = UUID(uuidString: userIdString),
             let historyData = record["lessonHistory"] as? Data,
@@ -86,11 +137,21 @@ extension AILearningProgress {
             return nil
         }
         
-        self.id = UUID()
+        self.id = id
         self.userId = userId
         self.lessonHistory = lessonHistory
         self.weakAreas = weakAreas
         self.recommendedLessons = recommendedStrings.compactMap { UUID(uuidString: $0) }
+        self.abilityLevel = record["abilityLevel"] as? Float ?? 0.0
+        
+        // Load performance stats if available, otherwise create new
+        if let statsData = record["performanceStats"] as? Data,
+           let stats = try? JSONDecoder().decode(PerformanceStats.self, from: statsData) {
+            self.performanceStats = stats
+        } else {
+            self.performanceStats = PerformanceStats()
+        }
+        
         self.lastUpdated = lastUpdated
     }
 }
@@ -103,31 +164,37 @@ extension AILearningProgress {
         let progress = LessonProgress(
             lessonId: lesson.id,
             subject: lesson.subject,
+            completedAt: lesson.completedAt ?? Date(),
             accuracy: lesson.accuracy,
             responseTime: lesson.responseTime,
             nextDifficulty: calculateNextDifficulty(lesson)
         )
         lessonHistory.append(progress)
         
+        // Update performance stats
+        performanceStats.updateWithLesson(lesson)
+        
         // Update weak areas
         updateWeakAreas(with: lesson)
         
-        // Generate new recommendations
-        updateRecommendations()
+        // Update ability level
+        updateAbilityLevel(with: lesson)
+        
+        // Generate new recommendations synchronously
+        recommendedLessons = generateRecommendations()
         
         lastUpdated = Date()
     }
     
-    /// Calculates next lesson difficulty using Elo Rating & BKT
+    /// Calculates next lesson difficulty using Adaptive Difficulty Engine
     private func calculateNextDifficulty(_ lesson: Lesson) -> Int {
         let currentDifficulty = lessonHistory.last?.nextDifficulty ?? 1
-        let performanceScore = calculatePerformanceScore(lesson)
         
-        // Apply Elo Rating adjustment
-        let adjustment = performanceScore > 0.8 ? 1 : (performanceScore < 0.4 ? -1 : 0)
-        let newDifficulty = max(1, min(4, currentDifficulty + adjustment))
-        
-        return newDifficulty
+        // Delegate to AdaptiveDifficultyEngine for advanced calculation
+        return AdaptiveDifficultyEngine.shared.calculateDifficultyAfterLesson(
+            learningProgress: self,
+            completedLesson: lesson
+        )
     }
     
     /// Updates weak areas based on lesson performance
@@ -138,39 +205,62 @@ extension AILearningProgress {
             return
         }
         
-        if lesson.accuracy < 0.7 {
-            if let index = weakAreas.firstIndex(where: { $0.subject == lesson.subject }) {
-                weakAreas[index].conceptScore = min(weakAreas[index].conceptScore, lesson.accuracy)
-                weakAreas[index].lastPracticed = completedAt
-            } else {
-                weakAreas.append(WeakArea(
-                    subject: lesson.subject,
-                    conceptScore: lesson.accuracy,
-                    lastPracticed: completedAt
-                ))
-            }
+        // Use StudentPerformanceTracker to track lesson completion
+        StudentPerformanceTracker.shared.trackLessonCompletion(
+            learningProgress: &self,
+            lesson: lesson
+        )
+    }
+    
+    /// Updates student ability level based on lesson performance
+    private mutating func updateAbilityLevel(with lesson: Lesson) {
+        // Don't update if not enough data
+        guard lessonHistory.count > 0 else {
+            abilityLevel = 0.0
+            return
         }
+        
+        // Use CoreML for ability estimation, with fallback to Elo-based calculation
+        // Get responses from the lesson
+        let responses = lesson.responses.map { response in
+            return Lesson.QuestionResponse(
+                questionId: response.questionId,
+                isCorrect: response.isCorrect,
+                responseTime: response.responseTime,
+                answeredAt: response.answeredAt
+            )
+        }
+        
+        // Update ability level using CoreML if available
+        let updatedAbility = CoreMLService.shared.estimateStudentAbility(
+            currentAbility: abilityLevel,
+            responseHistory: responses
+        )
+        
+        // Limit ability level to valid range
+        abilityLevel = max(-3.0, min(3.0, updatedAbility))
     }
     
     /// Generates new lesson recommendations
-    private mutating func updateRecommendations() {
-        // Prioritize weak areas that haven't been practiced recently
-        let now = Date()
-        let sortedWeakAreas = weakAreas.sorted { area1, area2 in
-            // First sort by concept score (ascending)
-            if area1.conceptScore != area2.conceptScore {
-                return area1.conceptScore < area2.conceptScore
-            }
-            // Then by last practice date (oldest first)
-            return area1.lastPracticed < area2.lastPracticed
+    private func generateRecommendations() -> [UUID] {
+        // Add placeholder recommended lessons (one for each subject)
+        let subjects = [
+            Lesson.Subject.logicalThinking,
+            Lesson.Subject.arithmetic,
+            Lesson.Subject.numberTheory,
+            Lesson.Subject.geometry,
+            Lesson.Subject.combinatorics
+        ]
+        
+        // Create a UUID for each subject as a placeholder recommendation
+        var newRecommendations: [UUID] = []
+        for _ in subjects {
+            newRecommendations.append(UUID())
         }
         
-        // Get top 2 subjects that need most practice
-        let weakSubjects = sortedWeakAreas.prefix(2).map { $0.subject }
+        print("Generated \(newRecommendations.count) placeholder recommendations")
         
-        // TODO: Implement actual lesson recommendation logic
-        // This would involve fetching available lessons and
-        // selecting based on weak areas and current difficulty
+        return newRecommendations
     }
     
     /// Calculates overall performance score
@@ -180,5 +270,98 @@ extension AILearningProgress {
         
         let normalizedSpeed = min(1.0, max(0.0, 1.0 - Float(lesson.responseTime / 60.0)))
         return (lesson.accuracy * accuracyWeight) + (normalizedSpeed * speedWeight)
+    }
+    
+    /// Gets the student's ability level as a descriptive string
+    public var abilityLevelDescription: String {
+        switch abilityLevel {
+        case ..<(-2.0):
+            return "Beginner"
+        case (-2.0)..<(-1.0):
+            return "Developing"
+        case (-1.0)...(1.0):
+            return "Intermediate"
+        case (1.0)...(2.0):
+            return "Advanced"
+        default:
+            return "Expert"
+        }
+    }
+    
+    /// Gets the most challenging subjects for this student
+    public var challengingSubjects: [Lesson.Subject] {
+        // Sort weak areas by concept score (ascending)
+        return weakAreas.sorted { $0.conceptScore < $1.conceptScore }.map { $0.subject }
+    }
+    
+    /// Gets the strongest subjects for this student
+    public var strongSubjects: [Lesson.Subject] {
+        // All subjects
+        let allSubjects = [
+            Lesson.Subject.logicalThinking,
+            Lesson.Subject.arithmetic,
+            Lesson.Subject.numberTheory,
+            Lesson.Subject.geometry,
+            Lesson.Subject.combinatorics
+        ]
+        
+        // Weak subjects
+        let weakSubjects = Set(weakAreas.map { $0.subject })
+        
+        // Return subjects not in weak areas
+        return allSubjects.filter { !weakSubjects.contains($0) }
+    }
+}
+
+/// Overall performance statistics for a student
+public struct PerformanceStats: Codable, Equatable {
+    /// Overall accuracy across all subjects
+    public var overallAccuracy: Float
+    
+    /// Average response time in seconds
+    public var averageResponseTime: TimeInterval
+    
+    /// Accuracy by subject
+    public var subjectAccuracy: [Lesson.Subject: Float]
+    
+    /// Improvement trend (-1.0 to 1.0, positive means improving)
+    public var improvementTrend: Float
+    
+    /// Total lessons completed
+    public var totalLessonsCompleted: Int
+    
+    /// Initialize with default values
+    public init() {
+        self.overallAccuracy = 0.0
+        self.averageResponseTime = 0.0
+        self.subjectAccuracy = [:]
+        self.improvementTrend = 0.0
+        self.totalLessonsCompleted = 0
+    }
+    
+    /// Update statistics with a completed lesson
+    mutating func updateWithLesson(_ lesson: Lesson) {
+        // Update overall accuracy
+        let oldWeight = Float(totalLessonsCompleted)
+        let newWeight = Float(totalLessonsCompleted + 1)
+        overallAccuracy = ((overallAccuracy * oldWeight) + lesson.accuracy) / newWeight
+        
+        // Update average response time
+        averageResponseTime = ((averageResponseTime * Double(oldWeight)) + lesson.responseTime) / Double(newWeight)
+        
+        // Update subject accuracy
+        let oldSubjectCount = Float(subjectAccuracy[lesson.subject] != nil ? 1 : 0)
+        let oldSubjectAccuracy = subjectAccuracy[lesson.subject] ?? 0.0
+        subjectAccuracy[lesson.subject] = ((oldSubjectAccuracy * oldSubjectCount) + lesson.accuracy) / (oldSubjectCount + 1.0)
+        
+        // Simple trend: compare with overall accuracy
+        if lesson.accuracy > overallAccuracy {
+            improvementTrend = min(1.0, improvementTrend + 0.1)
+        } else if lesson.accuracy < overallAccuracy {
+            improvementTrend = max(-1.0, improvementTrend - 0.1)
+        }
+        
+        // Increment total lessons
+        totalLessonsCompleted += 1
     }
 } 

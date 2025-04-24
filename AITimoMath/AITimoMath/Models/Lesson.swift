@@ -12,6 +12,9 @@ public struct Lesson: Identifiable, Codable, Equatable {
     /// Subject category of the lesson
     public let subject: Subject
     
+    /// Difficulty level of the lesson (1-4)
+    public var difficulty: Int
+    
     /// Array of question IDs in this lesson
     public var questions: [UUID]
     
@@ -92,6 +95,7 @@ extension Lesson {
         self.id = UUID()
         self.userId = userId
         self.subject = subject
+        self.difficulty = 1
         self.questions = []
         self.responses = []
         self.accuracy = 0.0
@@ -111,6 +115,7 @@ extension Lesson {
         record["id"] = id.uuidString
         record["userId"] = userId.uuidString
         record["subject"] = subject.rawValue
+        record["difficulty"] = difficulty
         record["questions"] = questions.map { $0.uuidString }
         record["responses"] = try? JSONEncoder().encode(responses)
         record["accuracy"] = accuracy
@@ -144,6 +149,7 @@ extension Lesson {
         self.id = id
         self.userId = userId
         self.subject = subject
+        self.difficulty = record["difficulty"] as? Int ?? 1
         self.questions = questionStrings.compactMap { UUID(uuidString: $0) }
         self.responses = responses
         self.accuracy = accuracy

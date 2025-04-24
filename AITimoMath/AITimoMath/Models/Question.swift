@@ -31,12 +31,62 @@ public struct Question: Identifiable, Codable, Equatable {
     /// Optional image data for visual questions (stored locally)
     public var imageData: Data?
     
+    /// Optional metadata dictionary for storing additional information
+    public var metadata: [String: Any]?
+    
     /// Computed property to convert imageData to UIImage
     public var image: UIImage? {
         if let data = imageData {
             return UIImage(data: data)
         }
         return nil
+    }
+    
+    // MARK: - Codable
+    
+    private enum CodingKeys: String, CodingKey {
+        case id, subject, difficulty, type, questionText, options, correctAnswer, hint, imageData, metadata
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        self.id = try container.decode(UUID.self, forKey: .id)
+        self.subject = try container.decode(Lesson.Subject.self, forKey: .subject)
+        self.difficulty = try container.decode(Int.self, forKey: .difficulty)
+        self.type = try container.decode(QuestionType.self, forKey: .type)
+        self.questionText = try container.decode(String.self, forKey: .questionText)
+        self.options = try container.decodeIfPresent([QuestionOption].self, forKey: .options)
+        self.correctAnswer = try container.decode(String.self, forKey: .correctAnswer)
+        self.hint = try container.decodeIfPresent(String.self, forKey: .hint)
+        self.imageData = try container.decodeIfPresent(Data.self, forKey: .imageData)
+        
+        // Decode metadata as Data and convert to dictionary
+        if let metadataData = try container.decodeIfPresent(Data.self, forKey: .metadata) {
+            self.metadata = try JSONSerialization.jsonObject(with: metadataData) as? [String: Any]
+        } else {
+            self.metadata = nil
+        }
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        
+        try container.encode(id, forKey: .id)
+        try container.encode(subject, forKey: .subject)
+        try container.encode(difficulty, forKey: .difficulty)
+        try container.encode(type, forKey: .type)
+        try container.encode(questionText, forKey: .questionText)
+        try container.encodeIfPresent(options, forKey: .options)
+        try container.encode(correctAnswer, forKey: .correctAnswer)
+        try container.encodeIfPresent(hint, forKey: .hint)
+        try container.encodeIfPresent(imageData, forKey: .imageData)
+        
+        // Encode metadata to Data if present
+        if let metadata = metadata {
+            let metadataData = try JSONSerialization.data(withJSONObject: metadata)
+            try container.encode(metadataData, forKey: .metadata)
+        }
     }
 }
 
@@ -195,6 +245,17 @@ extension Question {
             }
         }
         
+        // Store metadata as JSON data
+        if let metadata = metadata {
+            do {
+                // Convert metadata to JSON data
+                let jsonData = try JSONSerialization.data(withJSONObject: metadata)
+                record["metadata"] = jsonData
+            } catch {
+                print("Error encoding metadata: \(error)")
+            }
+        }
+        
         return record
     }
     
@@ -237,6 +298,20 @@ extension Question {
             self.imageData = try? Data(contentsOf: fileURL)
         } else {
             self.imageData = nil
+        }
+        
+        // Extract metadata if available
+        if let metadataData = record["metadata"] as? Data {
+            do {
+                if let jsonObject = try JSONSerialization.jsonObject(with: metadataData) as? [String: Any] {
+                    self.metadata = jsonObject
+                }
+            } catch {
+                print("Error decoding metadata: \(error)")
+                self.metadata = nil
+            }
+        } else {
+            self.metadata = nil
         }
     }
 }
@@ -394,5 +469,22 @@ extension Question {
     /// Convert legacy string options to new format
     mutating func convertLegacyOptions(_ stringOptions: [String]) {
         self.options = stringOptions.map { .text($0) }
+    }
+}
+
+// MARK: - Equatable
+extension Question {
+    public static func == (lhs: Question, rhs: Question) -> Bool {
+        // Compare all properties except metadata, which isn't Equatable
+        return lhs.id == rhs.id &&
+               lhs.subject == rhs.subject &&
+               lhs.difficulty == rhs.difficulty &&
+               lhs.type == rhs.type &&
+               lhs.questionText == rhs.questionText &&
+               lhs.options == rhs.options &&
+               lhs.correctAnswer == rhs.correctAnswer &&
+               lhs.hint == rhs.hint &&
+               lhs.imageData == rhs.imageData
+        // Note: metadata is intentionally excluded as [String: Any] doesn't conform to Equatable
     }
 } 
