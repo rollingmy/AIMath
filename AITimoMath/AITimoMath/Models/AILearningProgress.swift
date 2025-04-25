@@ -63,34 +63,6 @@ extension AILearningProgress {
         public var lastPracticed: Date
     }
     
-    /// Represents a subject and its performance score
-    public struct SubjectScore: Identifiable {
-        public var id: UUID { UUID() }
-        public let subject: Lesson.Subject
-        public let score: Float
-        
-        public init(subject: Lesson.Subject, score: Float) {
-            self.subject = subject
-            self.score = score
-        }
-    }
-    
-    /// Get subject scores from performance stats
-    public var subjectScores: [SubjectScore] {
-        let allSubjects = [
-            Lesson.Subject.logicalThinking,
-            Lesson.Subject.arithmetic,
-            Lesson.Subject.numberTheory,
-            Lesson.Subject.geometry,
-            Lesson.Subject.combinatorics
-        ]
-        
-        return allSubjects.map { subject in
-            let score = performanceStats.subjectAccuracy[subject] ?? 0.0
-            return SubjectScore(subject: subject, score: score)
-        }
-    }
-    
     /// Convenience initialization
     public init(userId: UUID) {
         self.id = UUID()

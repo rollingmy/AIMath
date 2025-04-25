@@ -8,65 +8,96 @@
 import SwiftUI
 import CloudKit
 import CoreData
+import Combine
 
 @main
 struct AITimoMathApp: App {
     /// Shared persistence controller for data management
     let persistenceController = PersistenceController.shared
     
+    // App state
+    @State private var isOnboardingComplete = false
+    @StateObject private var userViewModel: UserViewModel
+    
+    // Initialize with default user
+    init() {
+        let defaultUser = User(
+            name: "Guest",
+            avatar: "avatar-1",
+            gradeLevel: 1
+        )
+        self._userViewModel = StateObject(wrappedValue: UserViewModel(user: defaultUser))
+    }
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.viewContext)
+            if isOnboardingComplete {
+                MainContentView(userViewModel: userViewModel)
+                    .environment(\.managedObjectContext, persistenceController.viewContext)
+            } else {
+                OnboardingView(isOnboardingComplete: $isOnboardingComplete)
+                    .environment(\.managedObjectContext, persistenceController.viewContext)
+            }
         }
     }
 }
 
-struct ContentView: View {
-    // Create a view model for the user
-    @State private var userViewModel: UserViewModel
-    
-    // Initializer to create the UserViewModel
-    init() {
-        let user = User(
-            name: "Test Student",
-            avatar: "avatar-1",
-            gradeLevel: 5
-        )
-        self._userViewModel = State(initialValue: UserViewModel(user: user))
-    }
+/// Main content view that houses the app's tab navigation after onboarding
+struct MainContentView: View {
+    @ObservedObject var userViewModel: UserViewModel
+    @State private var selectedTab = 0
     
     var body: some View {
-        TabView {
-            // Main Dashboard Screen
+        TabView(selection: $selectedTab) {
+            // Home dashboard
             NavigationView {
-                DashboardView(userViewModel: userViewModel)
+                HomeView(userViewModel: userViewModel)
             }
             .tabItem {
-                Label("Dashboard", systemImage: "house")
+                Label("Home", systemImage: "house.fill")
             }
+            .tag(0)
             
-            // AIRecommendations Tab
+            // Practice/Questions tab
             NavigationView {
-                AIRecommendationView(userId: userViewModel.id)
+                QuestionExampleView(
+                    userViewModel: userViewModel,
+                    onUserUpdate: { updatedUser in
+                        // This would be replaced with proper state management in a real app
+                        self.userViewModel.user = updatedUser
+                    }
+                )
             }
             .tabItem {
-                Label("Recommendations", systemImage: "lightbulb")
+                Label("Practice", systemImage: "questionmark.circle.fill")
             }
+            .tag(1)
             
-            // Progress Tab
+            // Performance analytics
             NavigationView {
-                ProgressReportView(userViewModel: userViewModel)
+                PerformanceView(userViewModel: userViewModel)
             }
             .tabItem {
-                Label("Progress", systemImage: "chart.bar")
+                Label("Progress", systemImage: "chart.bar.fill")
             }
+            .tag(2)
+            
+            // Settings
+            NavigationView {
+                SettingsView(userViewModel: userViewModel)
+            }
+            .tabItem {
+                Label("Settings", systemImage: "gear")
+            }
+            .tag(3)
             
             #if DEBUG
+            // Debug/testing menu (only in debug builds)
             TestMenuView()
                 .tabItem {
-                    Label("Test Tools", systemImage: "hammer")
+                    Label("Test Tools", systemImage: "hammer.fill")
                 }
+                .tag(4)
             #endif
         }
     }

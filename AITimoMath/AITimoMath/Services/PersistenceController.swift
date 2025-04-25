@@ -18,11 +18,7 @@ class PersistenceController {
                 avatar: "student_avatar",
                 gradeLevel: 3
             )
-            do {
-                _ = try await controller.saveUser(sampleUser)
-            } catch {
-                print("Failed to save sample user for preview: \(error.localizedDescription)")
-            }
+            try? await controller.saveUser(sampleUser)
         }
         
         return controller

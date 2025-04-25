@@ -24,6 +24,12 @@ struct QuestionExampleView: View {
         self.onUserUpdate = onUserUpdate
     }
     
+    // Initialize with userViewModel and update callback
+    init(userViewModel: UserViewModel, onUserUpdate: @escaping (User) -> Void) {
+        self.user = userViewModel.user
+        self.onUserUpdate = onUserUpdate
+    }
+    
     var body: some View {
         NavigationView {
             ZStack {
@@ -459,8 +465,11 @@ struct QuestionExampleView: View {
 }
 
 #Preview {
-    QuestionExampleView(
-        user: User(name: "Test Student", avatar: "avatar-1", gradeLevel: 5),
+    let user = User(name: "Test Student", avatar: "avatar-1", gradeLevel: 5)
+    let userViewModel = UserViewModel(user: user)
+    
+    return QuestionExampleView(
+        userViewModel: userViewModel,
         onUserUpdate: { _ in }
     )
 } 

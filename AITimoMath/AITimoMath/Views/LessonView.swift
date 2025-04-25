@@ -1,657 +1,909 @@
 import SwiftUI
 
-/// Interactive lesson view that displays questions and handles user responses
+/// View for displaying a lesson with multiple questions
 struct LessonView: View {
-    // MARK: - Properties
-    
-    /// The lesson to display
-    @State var lesson: Lesson
-    
-    /// The current user
+    // Lesson data
+    let lesson: Lesson
     @ObservedObject var userViewModel: UserViewModel
     
-    /// Environment to dismiss view
-    @Environment(\.presentationMode) private var presentationMode
+    // Optional subject filter
+    let subjectFilter: Lesson.Subject?
     
-    /// View model for the lesson
-    private let lessonViewModel: LessonViewModel
-    
-    /// Initialize with lesson and user view model
-    init(lesson: Lesson, userViewModel: UserViewModel, lessonViewModel: LessonViewModel) {
-        self._lesson = State(initialValue: lesson)
-        self.userViewModel = userViewModel
-        self.lessonViewModel = lessonViewModel
-    }
-    
-    // MARK: - State
-    
-    /// Current question index
+    // State
     @State private var currentQuestionIndex = 0
-    
-    /// Selected answer (for multiple choice)
     @State private var selectedOptionIndex: Int?
+    @State private var userAnswers: [Int?] = []
+    @State private var startTime: Date = Date()
+    @State private var questionTimes: [TimeInterval] = []
+    @State private var isShowingAnswer = false
+    @State private var isLessonComplete = false
+    @State private var questions: [Question] = []
+    @State private var isLoading = true
+    @State private var error: Error?
     
-    /// User input answer (for open-ended questions)
-    @State private var userInputAnswer = ""
+    // Environment
+    @Environment(\.dismiss) private var dismiss
     
-    /// Whether the answer has been submitted
-    @State private var answerSubmitted = false
+    // Services
+    private let questionService = QuestionService.shared
     
-    /// Whether the answer was correct
-    @State private var isCorrect = false
-    
-    /// Whether to show hint
-    @State private var showHint = false
-    
-    /// Whether to show the lesson summary
-    @State private var showSummary = false
-    
-    /// Start time for the current question
-    @State private var questionStartTime = Date()
-    
-    /// Array of response times
-    @State private var responseTimes: [TimeInterval] = []
-    
-    /// Array of question results
-    @State private var questionResults: [Bool] = []
-    
-    /// Loading state
-    @State private var isLoading = false
-    
-    /// Error message
-    @State private var errorMessage: AlertMessage?
-    
-    /// Questions loaded for the lesson
-    @State private var loadedQuestions: [Question] = []
-    
-    /// Computed property for the current question
-    private var currentQuestion: Question? {
-        guard currentQuestionIndex < loadedQuestions.count else { return nil }
-        return loadedQuestions[currentQuestionIndex]
+    // For backward compatibility with existing code
+    init(lesson: Lesson, user: User, subjectFilter: Lesson.Subject? = nil) {
+        self.lesson = lesson
+        self.userViewModel = UserViewModel(user: user)
+        self.subjectFilter = subjectFilter
+        
+        // Initialize userAnswers array with nil values
+        self._userAnswers = State(initialValue: Array(repeating: nil, count: 10)) // Default to 10 questions
     }
     
-    /// Computed property for progress
-    private var progressValue: Float {
-        guard !loadedQuestions.isEmpty else { return 0 }
-        return Float(currentQuestionIndex) / Float(loadedQuestions.count)
+    // Primary initializer using UserViewModel
+    init(lesson: Lesson, userViewModel: UserViewModel, subjectFilter: Lesson.Subject? = nil) {
+        self.lesson = lesson
+        self.userViewModel = userViewModel
+        self.subjectFilter = subjectFilter
+        
+        // Initialize userAnswers array with nil values
+        self._userAnswers = State(initialValue: Array(repeating: nil, count: 10)) // Default to 10 questions
     }
-    
-    // MARK: - Body
     
     var body: some View {
-        ZStack {
-            // Background
-            Color("BackgroundLight")
-                .ignoresSafeArea()
-            
+        VStack {
             if isLoading {
-                // Loading view
-                ProgressView("Loading Questions...")
-            } else if showSummary {
-                // Summary view
-                LessonSummaryView(
-                    lesson: lesson,
-                    userViewModel: userViewModel,
-                    questionResults: questionResults,
-                    responseTimes: responseTimes,
-                    onDismiss: { presentationMode.wrappedValue.dismiss() }
-                )
-            } else if let question = currentQuestion {
-                // Question view
-                VStack(spacing: 0) {
-                    // Top navigation bar
-                    lessonTopBar
-                    
-                    ScrollView {
-                        VStack(spacing: 24) {
-                            // Question card
-                            questionCard(question)
-                            
-                            // Answer section
-                            answerSection(question)
-                            
-                            // Hint section (if available)
-                            if let hint = question.hint, showHint {
-                                hintView(hint)
-                            }
-                            
-                            // Feedback section (after submission)
-                            if answerSubmitted {
-                                feedbackView(isCorrect: isCorrect)
-                            }
-                            
-                            // Controls section
-                            controlsSection(question)
-                        }
-                        .padding(.horizontal, 16)
-                        .padding(.bottom, 16)
-                    }
-                }
-                .onAppear {
-                    // Reset state for new question
-                    resetForNewQuestion()
-                }
+                loadingView
+            } else if let error = error {
+                errorView(error)
+            } else if isLessonComplete {
+                lessonSummaryView
+            } else if !questions.isEmpty {
+                lessonContentView
             } else {
-                // Fallback if no questions
-                VStack {
-                    Text("No questions available")
-                        .font(.headline)
-                    
-                    Button("Return to Dashboard") {
-                        presentationMode.wrappedValue.dismiss()
+                noQuestionsView
+            }
+        }
+        .navigationTitle(getLessonTitle())
+        .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                Button("Exit") {
+                    // Show confirmation if lesson not complete
+                    if !isLessonComplete && !userAnswers.allSatisfy({ $0 != nil }) {
+                        // Would show confirmation dialog
+                        dismiss()
+                    } else {
+                        dismiss()
                     }
-                    .buttonStyle(PrimaryButtonStyle())
-                    .padding(.top, 16)
                 }
             }
         }
-        .navigationBarHidden(true)
         .onAppear {
             loadQuestions()
         }
-        .alert(item: $errorMessage) { message in
-            Alert(
-                title: Text(message.title),
-                message: Text(message.message),
-                dismissButton: .default(Text("OK"))
-            )
+    }
+    
+    // Get a formatted title for the lesson
+    private func getLessonTitle() -> String {
+        let subjectText = formatSubject(lesson.subject)
+        let difficultyText = formatDifficulty(lesson.difficulty)
+        return "\(subjectText) - \(difficultyText)"
+    }
+    
+    // MARK: - Sub Views
+    
+    // Loading indicator
+    private var loadingView: some View {
+        VStack(spacing: 20) {
+            ProgressView()
+                .scaleEffect(1.5)
+            
+            Text("Loading lesson content...")
+                .font(.headline)
         }
     }
     
-    // MARK: - Components
+    // Error view
+    private func errorView(_ error: Error) -> some View {
+        VStack(spacing: 20) {
+            Image(systemName: "exclamationmark.triangle")
+                .font(.system(size: 50))
+                .foregroundColor(.orange)
+            
+            Text("Error loading questions")
+                .font(.headline)
+            
+            Text(error.localizedDescription)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal)
+            
+            Button("Try Again") {
+                loadQuestions()
+            }
+            .buttonStyle(.borderedProminent)
+        }
+    }
     
-    /// Top navigation bar with progress
-    private var lessonTopBar: some View {
-        VStack(spacing: 4) {
-            HStack {
-                // Back button
-                Button(action: {
-                    if answerSubmitted {
-                        moveToNextQuestion()
-                    } else {
-                        presentationMode.wrappedValue.dismiss()
+    // No questions view
+    private var noQuestionsView: some View {
+        VStack(spacing: 20) {
+            Image(systemName: "questionmark.circle")
+                .font(.system(size: 50))
+                .foregroundColor(.gray)
+            
+            Text("No questions available for this lesson")
+                .font(.headline)
+            
+            Button("Return to Dashboard") {
+                dismiss()
+            }
+            .buttonStyle(.borderedProminent)
+        }
+    }
+    
+    // Main lesson content
+    private var lessonContentView: some View {
+        VStack(spacing: 0) {
+            // Progress bar and question indicator
+            progressHeader
+            
+            // Question content
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    // Question badges (subject, difficulty)
+                    HStack {
+                        // Subject badge
+                        Text(formatSubject(questions[currentQuestionIndex].subject))
+                            .font(.caption)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(subjectColor(questions[currentQuestionIndex].subject).opacity(0.2))
+                            .cornerRadius(8)
+                        
+                        // Difficulty badge
+                        Text(formatDifficulty(questions[currentQuestionIndex].difficulty))
+                            .font(.caption)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(difficultyColor(questions[currentQuestionIndex].difficulty).opacity(0.2))
+                            .cornerRadius(8)
                     }
-                }) {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundColor(.primary)
-                        .padding(8)
-                        .background(Color.white)
-                        .clipShape(Circle())
-                }
-                
-                Spacer()
-                
-                // Subject label
-                Text(lessonViewModel.subjectDisplayName)
-                    .font(.system(size: 18, weight: .semibold))
-                    .foregroundColor(.primary)
-                
-                Spacer()
-                
-                // Close button
-                Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Image(systemName: "xmark")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundColor(.primary)
-                        .padding(8)
-                        .background(Color.white)
-                        .clipShape(Circle())
-                }
-            }
-            .padding(.horizontal, 16)
-            .padding(.top, 8)
-            
-            // Progress bar
-            ProgressView(value: progressValue)
-                .progressViewStyle(LinearProgressViewStyle(tint: Color.blue))
-                .frame(height: 8)
-                .padding(.horizontal, 16)
-                .padding(.bottom, 8)
-                .background(Color.white)
-        }
-        .background(Color.white)
-        .shadow(color: Color.black.opacity(0.1), radius: 3, x: 0, y: 2)
-    }
-    
-    /// Question card view
-    private func questionCard(_ question: Question) -> some View {
-        VStack(alignment: .leading, spacing: 16) {
-            // Question text
-            Text(question.questionText)
-                .font(.system(size: 20, weight: .semibold))
-                .foregroundColor(.primary)
-                .fixedSize(horizontal: false, vertical: true)
-            
-            // Question image (if available)
-            if let image = question.image {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 200)
-                    .cornerRadius(12)
-            }
-        }
-        .padding()
-        .background(Color.white)
-        .cornerRadius(12)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-    }
-    
-    /// Answer section based on question type
-    private func answerSection(_ question: Question) -> some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Your Answer")
-                .font(.system(size: 18, weight: .semibold))
-                .foregroundColor(.primary)
-            
-            Group {
-                switch question.type {
-                case .multipleChoice:
-                    // Multiple choice options
-                    multipleChoiceSection(question)
+                    .padding(.horizontal)
                     
-                case .openEnded:
-                    // Open-ended input
-                    openEndedSection(question)
-                }
-            }
-        }
-        .padding()
-        .background(Color.white)
-        .cornerRadius(12)
-        .shadow(color: Color.black.opacity(0.1), radius: 5, x: 0, y: 2)
-    }
-    
-    /// Multiple choice answer options
-    private func multipleChoiceSection(_ question: Question) -> some View {
-        VStack(spacing: 12) {
-            // First verify options array exists
-            if let options = question.options {
-                // Then convert to indexed array and use ForEach
-                let indexedOptions = options.indices.map { (index: $0, option: options[$0]) }
-                
-                ForEach(indexedOptions, id: \.index) { pair in
-                    let index = pair.index
-                    let option = pair.option
+                    // Question text
+                    Text(questions[currentQuestionIndex].questionText)
+                        .font(.headline)
+                        .lineSpacing(5)
+                        .padding(.horizontal)
                     
-                    Button(action: {
-                        if !answerSubmitted {
-                            selectedOptionIndex = index
+                    // Question image if available
+                    if let image = questions[currentQuestionIndex].image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxHeight: 200)
+                            .cornerRadius(12)
+                            .padding(.horizontal)
+                    }
+                    
+                    // Question options
+                    if let options = questions[currentQuestionIndex].options, !options.isEmpty {
+                        VStack(spacing: 12) {
+                            ForEach(0..<options.count, id: \.self) { index in
+                                optionButton(option: options[index], index: index)
+                            }
                         }
-                    }) {
-                        HStack {
-                            if let textValue = option.textValue {
-                                Text(textValue)
-                                    .font(.system(size: 16))
-                                    .foregroundColor(.primary)
-                            } else if let image = option.image {
-                                Image(uiImage: image)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 40)
+                        .padding(.horizontal)
+                    }
+                    
+                    // Hint button (if hint available and not showing answer)
+                    if let hint = questions[currentQuestionIndex].hint, !hint.isEmpty, !isShowingAnswer {
+                        Button {
+                            // Show hint in alert or expand in UI
+                        } label: {
+                            Label("Show Hint", systemImage: "lightbulb")
+                                .font(.subheadline)
+                                .foregroundColor(.blue)
+                        }
+                        .buttonStyle(.bordered)
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        .padding(.horizontal)
+                    }
+                    
+                    // Answer explanation (if showing answer)
+                    if isShowingAnswer {
+                        VStack(alignment: .leading, spacing: 15) {
+                            // Correct answer indicator
+                            HStack {
+                                Image(systemName: "checkmark.circle.fill")
+                                    .foregroundColor(.green)
+                                
+                                Text("Correct Answer: \(questions[currentQuestionIndex].correctAnswer)")
+                                    .font(.headline)
+                                    .foregroundColor(.green)
                             }
                             
-                            Spacer()
-                            
-                            // Selection indicator
-                            if selectedOptionIndex == index {
-                                let imageName = answerSubmitted ? (isCorrect ? "checkmark.circle.fill" : "xmark.circle.fill") : "circle.fill"
-                                let imageColor = answerSubmitted ? (isCorrect ? Color.green : Color.red) : Color.blue
-                                Image(systemName: imageName)
-                                    .foregroundColor(imageColor)
-                            } else {
-                                Image(systemName: "circle")
-                                    .foregroundColor(.gray)
+                            // Explanation
+                            if let hint = questions[currentQuestionIndex].hint, !hint.isEmpty {
+                                Text("Explanation:")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                
+                                Text(hint)
+                                    .font(.body)
+                                    .foregroundColor(.secondary)
                             }
                         }
                         .padding()
-                        .background(selectedOptionIndex == index ? Color.blue.opacity(0.1) : Color.gray.opacity(0.05))
-                        .cornerRadius(8)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 8)
-                                .stroke(selectedOptionIndex == index ? Color.blue : Color.gray.opacity(0.3), lineWidth: 1)
-                        )
+                        .background(Color(.systemGray6))
+                        .cornerRadius(12)
+                        .padding(.horizontal)
                     }
-                    .buttonStyle(PlainButtonStyle())
-                    .disabled(answerSubmitted)
+                    
+                    Spacer(minLength: 80)
                 }
-            } else {
-                // Fallback for no options
-                Text("No options available")
-                    .foregroundColor(.gray)
-                    .padding()
+                .padding(.vertical)
             }
-        }
-    }
-    
-    /// Open-ended answer input
-    private func openEndedSection(_ question: Question) -> some View {
-        VStack(spacing: 12) {
-            TextField("Enter your answer", text: $userInputAnswer)
-                .font(.system(size: 16))
-                .padding()
-                .background(Color.gray.opacity(0.05))
-                .cornerRadius(8)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 8)
-                        .stroke(Color.gray.opacity(0.3), lineWidth: 1)
-                )
-                .disabled(answerSubmitted)
             
-            if answerSubmitted {
+            // Action buttons at the bottom
+            VStack(spacing: 10) {
+                if isShowingAnswer {
+                    // Next question button when answer is shown
+                    Button(action: nextQuestion) {
+                        Text(currentQuestionIndex < questions.count - 1 ? "Next Question" : "Finish Lesson")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(15)
+                    }
+                    .padding(.horizontal)
+                } else {
+                    // Submit answer button
+                    Button(action: submitAnswer) {
+                        Text("Submit Answer")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(selectedOptionIndex != nil ? Color.blue : Color.gray)
+                            .cornerRadius(15)
+                    }
+                    .disabled(selectedOptionIndex == nil)
+                    .padding(.horizontal)
+                }
+                
+                // Navigation buttons
                 HStack {
-                    Text("Correct answer: \(question.correctAnswer)")
-                        .font(.system(size: 14, weight: .medium))
-                        .foregroundColor(.primary)
+                    // Previous button
+                    Button(action: previousQuestion) {
+                        Label("Previous", systemImage: "arrow.left")
+                            .font(.subheadline)
+                    }
+                    .disabled(currentQuestionIndex == 0 || isShowingAnswer)
                     
                     Spacer()
                     
-                    Image(systemName: isCorrect ? "checkmark.circle.fill" : "xmark.circle.fill")
-                        .foregroundColor(isCorrect ? .green : .red)
+                    // Skip button (if not showing answer)
+                    if !isShowingAnswer {
+                        Button(action: {
+                            // Skip to next without answering
+                            recordAnswer(nil)
+                            nextQuestion()
+                        }) {
+                            Text("Skip")
+                                .font(.subheadline)
+                                .foregroundColor(.gray)
+                        }
+                        .disabled(currentQuestionIndex >= questions.count - 1)
+                    }
                 }
-                .padding(.vertical, 8)
+                .padding(.horizontal)
             }
+            .padding(.vertical, 15)
+            .background(Color(.systemBackground))
+            .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: -5)
         }
     }
     
-    /// Hint section
-    private func hintView(_ hint: String) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
-            Text("Hint")
-                .font(.system(size: 18, weight: .semibold))
-                .foregroundColor(.primary)
-            
-            Text(hint)
-                .font(.system(size: 16))
-                .foregroundColor(.primary)
-                .fixedSize(horizontal: false, vertical: true)
-        }
-        .padding()
-        .background(Color.yellow.opacity(0.1))
-        .cornerRadius(12)
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(Color.yellow, lineWidth: 1)
-        )
-    }
-    
-    /// Feedback after answer submission
-    private func feedbackView(isCorrect: Bool) -> some View {
-        VStack(alignment: .leading, spacing: 8) {
+    // Progress indicator at the top
+    private var progressHeader: some View {
+        VStack(spacing: 8) {
+            // Progress text
             HStack {
-                Image(systemName: isCorrect ? "checkmark.circle.fill" : "xmark.circle.fill")
-                    .font(.system(size: 24))
-                    .foregroundColor(isCorrect ? .green : .red)
+                Text("Question \(currentQuestionIndex + 1) of \(questions.count)")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
                 
-                Text(isCorrect ? "Correct!" : "Incorrect")
-                    .font(.system(size: 18, weight: .semibold))
-                    .foregroundColor(isCorrect ? .green : .red)
+                Spacer()
+                
+                // Timer would go here in a real implementation
+                // Text(formatElapsedTime())
+                //     .font(.subheadline)
+                //     .foregroundColor(.secondary)
             }
+            .padding(.horizontal)
             
-            Text(isCorrect 
-                ? "Great job! You got it right."
-                : "Don't worry, learning from mistakes is part of the process."
-            )
-            .font(.system(size: 16))
-            .foregroundColor(.primary)
-            .fixedSize(horizontal: false, vertical: true)
-            
-            if !isCorrect, let correctAnswer = currentQuestion?.correctAnswer {
-                Text("Correct answer: \(correctAnswer)")
-                    .font(.system(size: 16, weight: .medium))
-                    .foregroundColor(.primary)
-                    .padding(.top, 4)
+            // Progress bar
+            ZStack(alignment: .leading) {
+                Rectangle()
+                    .fill(Color.gray.opacity(0.2))
+                    .frame(height: 8)
+                    .cornerRadius(4)
+                
+                Rectangle()
+                    .fill(Color.blue)
+                    .frame(width: calculateProgressWidth(), height: 8)
+                    .cornerRadius(4)
             }
+            .padding(.horizontal)
+            
+            Divider()
         }
-        .padding()
-        .background(isCorrect ? Color.green.opacity(0.1) : Color.red.opacity(0.1))
-        .cornerRadius(12)
-        .overlay(
-            RoundedRectangle(cornerRadius: 12)
-                .stroke(isCorrect ? Color.green.opacity(0.3) : Color.red.opacity(0.3), lineWidth: 1)
-        )
+        .padding(.top, 10)
     }
     
-    /// Controls section with submit/next buttons and hint
-    private func controlsSection(_ question: Question) -> some View {
-        VStack(spacing: 16) {
-            if answerSubmitted {
-                // Next question button
-                Button(action: moveToNextQuestion) {
-                    Text(isLastQuestion ? "Finish Lesson" : "Next Question")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.blue)
-                        .cornerRadius(12)
-                }
-                .buttonStyle(PlainButtonStyle())
-            } else {
-                // Submit answer button
-                Button(action: submitAnswer) {
-                    Text("Submit Answer")
-                        .font(.system(size: 18, weight: .semibold))
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(isReadyToSubmit ? Color.blue : Color.gray)
-                        .cornerRadius(12)
-                }
-                .buttonStyle(PlainButtonStyle())
-                .disabled(!isReadyToSubmit)
+    // Option button for multiple choice
+    private func optionButton(option: Question.QuestionOption, index: Int) -> some View {
+        Button(action: {
+            if !isShowingAnswer {
+                selectedOptionIndex = index
+            }
+        }) {
+            HStack(alignment: .top) {
+                // Option letter (A, B, C, etc.)
+                Text("\(Character(UnicodeScalar(65 + index)!))")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .frame(width: 30, height: 30)
+                    .background(
+                        optionBackgroundColor(index: index)
+                    )
+                    .clipShape(Circle())
                 
-                // Hint button (if available)
-                if question.hint != nil && !showHint {
-                    Button(action: { showHint = true }) {
-                        Text("Show Hint")
-                            .font(.system(size: 16))
+                // Option content
+                VStack(alignment: .leading, spacing: 10) {
+                    if let text = option.textValue {
+                        Text(text)
+                            .font(.body)
+                            .foregroundColor(.primary)
+                            .multilineTextAlignment(.leading)
+                    }
+                    
+                    if let image = option.image {
+                        Image(uiImage: image)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(maxHeight: 100)
+                            .cornerRadius(8)
+                    }
+                }
+                
+                Spacer()
+                
+                // Correct/incorrect indicator when showing answer
+                if isShowingAnswer {
+                    if isCorrectOption(index) {
+                        Image(systemName: "checkmark.circle.fill")
+                            .foregroundColor(.green)
+                            .font(.title3)
+                    } else if index == selectedOptionIndex {
+                        Image(systemName: "xmark.circle.fill")
+                            .foregroundColor(.red)
+                            .font(.title3)
+                    }
+                }
+            }
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(optionContentBackgroundColor(index: index))
+                    .overlay(
+                        RoundedRectangle(cornerRadius: 12)
+                            .stroke(optionBorderColor(index: index), lineWidth: 2)
+                    )
+            )
+        }
+        .disabled(isShowingAnswer)
+    }
+    
+    // Lesson summary view
+    private var lessonSummaryView: some View {
+        ScrollView {
+            VStack(spacing: 30) {
+                // Completion header
+                VStack(spacing: 15) {
+                    Image(systemName: "checkmark.circle.fill")
+                        .font(.system(size: 70))
+                        .foregroundColor(.green)
+                    
+                    Text("Lesson Complete!")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    
+                    Text("Great job completing the lesson")
+                        .font(.headline)
+                        .foregroundColor(.secondary)
+                }
+                .padding(.top, 30)
+                
+                // Performance metrics
+                HStack(spacing: 20) {
+                    // Accuracy
+                    VStack {
+                        Text("\(calculateAccuracyPercentage())%")
+                            .font(.system(size: 36, weight: .bold))
                             .foregroundColor(.blue)
+                        
+                        Text("Accuracy")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(12)
+                    
+                    // Average time
+                    VStack {
+                        Text(formatAverageTime())
+                            .font(.system(size: 36, weight: .bold))
+                            .foregroundColor(.orange)
+                        
+                        Text("Avg. Time")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(12)
+                }
+                .padding(.horizontal)
+                
+                // Incorrect answers summary
+                if hasIncorrectAnswers() {
+                    VStack(alignment: .leading, spacing: 15) {
+                        Text("Areas to Review")
+                            .font(.headline)
+                            .padding(.horizontal)
+                        
+                        ForEach(incorrectQuestionIndices(), id: \.self) { index in
+                            VStack(alignment: .leading, spacing: 10) {
+                                Text("Question \(index + 1)")
+                                    .font(.subheadline)
+                                    .fontWeight(.semibold)
+                                
+                                Text(questions[index].questionText)
+                                    .font(.body)
+                                    .foregroundColor(.secondary)
+                                
+                                HStack {
+                                    Text("Correct Answer: ")
+                                        .font(.caption)
+                                        .foregroundColor(.green)
+                                    
+                                    Text(questions[index].correctAnswer)
+                                        .font(.caption)
+                                        .fontWeight(.semibold)
+                                }
+                            }
+                            .padding()
+                            .background(Color(.systemGray6))
+                            .cornerRadius(12)
+                            .padding(.horizontal)
+                        }
+                    }
+                }
+                
+                // Action buttons
+                VStack(spacing: 15) {
+                    Button(action: {
+                        // Return to dashboard
+                        dismiss()
+                    }) {
+                        Text("Continue to Dashboard")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(15)
+                    }
+                    
+                    if hasIncorrectAnswers() {
+                        Button(action: {
+                            // Would show incorrect questions again
+                        }) {
+                            Text("Retry Incorrect Questions")
+                                .font(.subheadline)
+                                .foregroundColor(.primary)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color(.systemGray6))
+                                .cornerRadius(15)
+                        }
+                    }
+                    
+                    Button(action: {
+                        // Would share progress report
+                    }) {
+                        Label("Share Results", systemImage: "square.and.arrow.up")
+                            .font(.subheadline)
+                            .foregroundColor(.blue)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue.opacity(0.1))
+                            .cornerRadius(15)
+                    }
+                }
+                .padding(.horizontal)
+                .padding(.top, 20)
+            }
+            .padding(.bottom, 50)
+        }
+    }
+    
+    // MARK: - Helper Methods
+    
+    // Load questions for the lesson
+    private func loadQuestions() {
+        isLoading = true
+        error = nil
+        
+        // In a real app, we would use the QuestionService to load questions
+        // For now, we'll just simulate an async operation
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            // Filter by subject if needed
+            let questionIds = self.subjectFilter != nil 
+                ? self.lesson.questions.filter { id in
+                    // Would check if question matches subject filter
+                    return true
+                } 
+                : self.lesson.questions
+            
+            // Load questions
+            self.getQuestions(ids: questionIds) { result in
+                DispatchQueue.main.async {
+                    self.isLoading = false
+                    
+                    switch result {
+                    case .success(let questions):
+                        self.questions = questions
+                        self.userAnswers = Array(repeating: nil, count: questions.count)
+                        self.startTime = Date()
+                    case .failure(let error):
+                        self.error = error
                     }
                 }
             }
         }
     }
     
-    // MARK: - Helper Properties
+    /// Get questions by IDs - wrapper around async/await API
+    private func getQuestions(ids: [UUID], completion: @escaping (Result<[Question], Error>) -> Void) {
+        Task {
+            do {
+                var loadedQuestions: [Question] = []
+                
+                // Fetch questions one by one
+                for id in ids {
+                    if let question = try await questionService.getQuestion(id: id) {
+                        loadedQuestions.append(question)
+                    }
+                }
+                
+                completion(.success(loadedQuestions))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+    }
     
-    /// Whether the answer is ready to submit
-    private var isReadyToSubmit: Bool {
-        if let question = currentQuestion {
-            switch question.type {
-            case .multipleChoice:
-                return selectedOptionIndex != nil
-            case .openEnded:
-                return !userInputAnswer.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+    // Submit the current answer
+    private func submitAnswer() {
+        if let selectedIndex = selectedOptionIndex {
+            // Record the answer
+            recordAnswer(selectedIndex)
+            
+            // Show the correct answer
+            isShowingAnswer = true
+        }
+    }
+    
+    // Navigate to next question
+    private func nextQuestion() {
+        // If at the end of questions, show summary
+        if currentQuestionIndex >= questions.count - 1 {
+            completeLesson()
+            return
+        }
+        
+        // Reset state for next question
+        isShowingAnswer = false
+        selectedOptionIndex = nil
+        currentQuestionIndex += 1
+    }
+    
+    // Navigate to previous question
+    private func previousQuestion() {
+        if currentQuestionIndex > 0 {
+            currentQuestionIndex -= 1
+            selectedOptionIndex = userAnswers[currentQuestionIndex]
+        }
+    }
+    
+    // Record user's answer and time
+    private func recordAnswer(_ answerIndex: Int?) {
+        let questionTime = Date().timeIntervalSince(startTime)
+        
+        // Add to answers and times
+        userAnswers[currentQuestionIndex] = answerIndex
+        
+        // Ensure times array is large enough
+        while questionTimes.count <= currentQuestionIndex {
+            questionTimes.append(0)
+        }
+        questionTimes[currentQuestionIndex] = questionTime
+        
+        // Reset timer for next question
+        startTime = Date()
+    }
+    
+    // Complete lesson and update user's progress
+    private func completeLesson() {
+        isLessonComplete = true
+        
+        // In a real app, we would update user's completed lessons
+        // and send analytics about performance
+    }
+    
+    // Check if option is correct
+    private func isCorrectOption(_ index: Int) -> Bool {
+        guard let options = questions[currentQuestionIndex].options else { return false }
+        let correctAnswer = questions[currentQuestionIndex].correctAnswer
+        
+        // Check if the option matches correct answer
+        if let textValue = options[index].textValue, textValue == correctAnswer {
+            return true
+        }
+        
+        // Check if the answer is a letter (A, B, C) and matches the index
+        if correctAnswer.count == 1,
+           let firstChar = correctAnswer.first,
+           firstChar.isLetter,
+           let asciiValue = firstChar.asciiValue {
+            
+            let answerIndex = Int(asciiValue) - Int(Character("A").asciiValue!)
+            return answerIndex == index
+        }
+        
+        return false
+    }
+    
+    // Get option background colors
+    private func optionBackgroundColor(index: Int) -> Color {
+        if isShowingAnswer {
+            if isCorrectOption(index) {
+                return .green
+            } else if index == selectedOptionIndex {
+                return .red
+            }
+        }
+        
+        return selectedOptionIndex == index ? .blue : .gray
+    }
+    
+    // Get option content background colors
+    private func optionContentBackgroundColor(index: Int) -> Color {
+        if isShowingAnswer {
+            if isCorrectOption(index) {
+                return Color.green.opacity(0.1)
+            } else if index == selectedOptionIndex {
+                return Color.red.opacity(0.1)
+            }
+        }
+        
+        return selectedOptionIndex == index ? Color.blue.opacity(0.1) : Color(.systemGray6)
+    }
+    
+    // Get option border colors
+    private func optionBorderColor(index: Int) -> Color {
+        if isShowingAnswer {
+            if isCorrectOption(index) {
+                return .green
+            } else if index == selectedOptionIndex {
+                return .red
+            }
+        }
+        
+        return selectedOptionIndex == index ? .blue : Color.clear
+    }
+    
+    // Calculate lesson progress width
+    private func calculateProgressWidth() -> CGFloat {
+        let total = CGFloat(questions.count)
+        let current = CGFloat(currentQuestionIndex + 1)
+        let screenWidth = UIScreen.main.bounds.width - 32  // Account for padding
+        return (current / total) * screenWidth
+    }
+    
+    // Calculate accuracy percentage
+    private func calculateAccuracyPercentage() -> Int {
+        let answeredIndices = userAnswers.indices.filter { userAnswers[$0] != nil }
+        if answeredIndices.isEmpty { return 0 }
+        
+        let correctCount = answeredIndices.filter { index in
+            guard let answerIndex = userAnswers[index] else { return false }
+            let question = questions[index]
+            
+            // Check if the option matches correct answer
+            if let options = question.options,
+               let optionText = options[answerIndex].textValue,
+               optionText == question.correctAnswer {
+                return true
+            }
+            
+            // Check if the answer is a letter (A, B, C) and matches the index
+            if question.correctAnswer.count == 1,
+               let firstChar = question.correctAnswer.first,
+               firstChar.isLetter,
+               let asciiValue = firstChar.asciiValue {
+                
+                let correctIndex = Int(asciiValue) - Int(Character("A").asciiValue!)
+                return correctIndex == answerIndex
+            }
+            
+            return false
+        }.count
+        
+        return Int(Double(correctCount) / Double(answeredIndices.count) * 100)
+    }
+    
+    // Format average time
+    private func formatAverageTime() -> String {
+        let times = questionTimes.filter { $0 > 0 }
+        if times.isEmpty { return "0s" }
+        
+        let avgTime = times.reduce(0, +) / Double(times.count)
+        return "\(Int(avgTime))s"
+    }
+    
+    // Check if there are incorrect answers
+    private func hasIncorrectAnswers() -> Bool {
+        for (index, answerIndex) in userAnswers.enumerated() {
+            if let answer = answerIndex, !isCorrectAnswer(questionIndex: index, answerIndex: answer) {
+                return true
             }
         }
         return false
     }
     
-    /// Whether this is the last question in the lesson
-    private var isLastQuestion: Bool {
-        return currentQuestionIndex >= loadedQuestions.count - 1
+    // Get indices of incorrect questions
+    private func incorrectQuestionIndices() -> [Int] {
+        var indices: [Int] = []
+        for (index, answerIndex) in userAnswers.enumerated() {
+            if let answer = answerIndex, !isCorrectAnswer(questionIndex: index, answerIndex: answer) {
+                indices.append(index)
+            }
+        }
+        return indices
     }
     
-    // MARK: - Helper Methods
+    // Check if an answer is correct
+    private func isCorrectAnswer(questionIndex: Int, answerIndex: Int) -> Bool {
+        guard questionIndex < questions.count else { return false }
+        
+        let question = questions[questionIndex]
+        
+        // Check if the option matches correct answer
+        if let options = question.options,
+           answerIndex < options.count,
+           let optionText = options[answerIndex].textValue,
+           optionText == question.correctAnswer {
+            return true
+        }
+        
+        // Check if the answer is a letter (A, B, C) and matches the index
+        if question.correctAnswer.count == 1,
+           let firstChar = question.correctAnswer.first,
+           firstChar.isLetter,
+           let asciiValue = firstChar.asciiValue {
+            
+            let correctIndex = Int(asciiValue) - Int(Character("A").asciiValue!)
+            return correctIndex == answerIndex
+        }
+        
+        return false
+    }
     
-    /// Load questions for the lesson
-    private func loadQuestions() {
-        guard loadedQuestions.isEmpty else { return }
-        
-        isLoading = true
-        
-        // In a real implementation, we would load questions from a service
-        // For now, we'll create some mock questions
-        Task {
-            // Simulate network delay
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
-            
-            // Create sample questions
-            var questions: [Question] = []
-            
-            // Sample arithmetic questions
-            if lesson.subject == .arithmetic {
-                var question1 = Question(
-                    subject: .arithmetic,
-                    difficulty: 2,
-                    type: .multipleChoice,
-                    questionText: "What is 8 + 5?",
-                    correctAnswer: "13"
-                )
-                question1.options = [
-                    .text("11"),
-                    .text("12"),
-                    .text("13"),
-                    .text("14")
-                ]
-                
-                let question2 = Question(
-                    subject: .arithmetic,
-                    difficulty: 2,
-                    type: .openEnded,
-                    questionText: "If x + 7 = 12, what is x?",
-                    correctAnswer: "5"
-                )
-                
-                questions.append(question1)
-                questions.append(question2)
-            } else {
-                // Default questions for other subjects
-                var question = Question(
-                    subject: lesson.subject,
-                    difficulty: 1,
-                    type: .multipleChoice,
-                    questionText: "Sample question for \(lessonViewModel.subjectDisplayName)",
-                    correctAnswer: "Sample answer"
-                )
-                question.options = [
-                    .text("Sample answer"),
-                    .text("Wrong answer 1"),
-                    .text("Wrong answer 2"),
-                    .text("Wrong answer 3")
-                ]
-                
-                questions.append(question)
-            }
-            
-            DispatchQueue.main.async {
-                self.loadedQuestions = questions
-                self.isLoading = false
-            }
+    // Format subject name
+    private func formatSubject(_ subject: Lesson.Subject) -> String {
+        switch subject {
+        case .logicalThinking:
+            return "Logical Thinking"
+        case .arithmetic:
+            return "Arithmetic"
+        case .numberTheory:
+            return "Number Theory"
+        case .geometry:
+            return "Geometry"
+        case .combinatorics:
+            return "Combinatorics"
         }
     }
     
-    /// Reset state for a new question
-    private func resetForNewQuestion() {
-        selectedOptionIndex = nil
-        userInputAnswer = ""
-        answerSubmitted = false
-        isCorrect = false
-        showHint = false
-        questionStartTime = Date()
-    }
-    
-    /// Submit the current answer
-    private func submitAnswer() {
-        guard let question = currentQuestion else { return }
-        
-        // Calculate response time
-        let responseTime = Date().timeIntervalSince(questionStartTime)
-        
-        // Check if the answer is correct
-        switch question.type {
-        case .multipleChoice:
-            if let selectedOptionIndex = selectedOptionIndex,
-               let options = question.options,
-               selectedOptionIndex < options.count,
-               let selectedAnswer = options[selectedOptionIndex].textValue {
-                isCorrect = selectedAnswer == question.correctAnswer
-            }
-            
-        case .openEnded:
-            // Simple exact match for open-ended questions
-            // In a production app, we would use NLP for more sophisticated matching
-            isCorrect = userInputAnswer.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() == 
-                        question.correctAnswer.lowercased()
-        }
-        
-        // Update state
-        answerSubmitted = true
-        responseTimes.append(responseTime)
-        questionResults.append(isCorrect)
-    }
-    
-    /// Move to the next question or finish the lesson
-    private func moveToNextQuestion() {
-        if isLastQuestion {
-            // Finish the lesson
-            completeLesson()
-        } else {
-            // Move to next question
-            currentQuestionIndex += 1
-            resetForNewQuestion()
+    // Format difficulty level
+    private func formatDifficulty(_ difficulty: Int) -> String {
+        switch difficulty {
+        case 1:
+            return "Easy"
+        case 2:
+            return "Medium"
+        case 3:
+            return "Hard"
+        case 4:
+            return "Olympiad"
+        default:
+            return "Unknown"
         }
     }
     
-    /// Complete the lesson and show summary
-    private func completeLesson() {
-        // Calculate lesson stats
-        let totalCorrect = questionResults.filter { $0 }.count
-        let accuracy = Float(totalCorrect) / Float(questionResults.count)
-        let averageResponseTime = responseTimes.reduce(0, +) / Double(responseTimes.count)
-        
-        // Update lesson with final stats
-        lesson.accuracy = accuracy
-        lesson.responseTime = averageResponseTime
-        
-        // Mark lesson as completed and store lesson ID
-        userViewModel.addCompletedLesson(lesson.id)
-        
-        // Show the summary view
-        showSummary = true
-        
-        // In a real implementation, we would update the learning profile in the background
-        // For now, we'll just log that we would do this
-        print("Would update learning profile for user \(userViewModel.id) with lesson \(lesson.id)")
+    // Get subject color
+    private func subjectColor(_ subject: Lesson.Subject) -> Color {
+        switch subject {
+        case .logicalThinking:
+            return .purple
+        case .arithmetic:
+            return .blue
+        case .numberTheory:
+            return .green
+        case .geometry:
+            return .orange
+        case .combinatorics:
+            return .red
+        }
+    }
+    
+    // Get difficulty color
+    private func difficultyColor(_ difficulty: Int) -> Color {
+        switch difficulty {
+        case 1:
+            return .green
+        case 2:
+            return .blue
+        case 3:
+            return .orange
+        case 4:
+            return .red
+        default:
+            return .gray
+        }
     }
 }
 
-// MARK: - Button Styles
-struct PrimaryButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .font(.system(size: 18, weight: .semibold))
-            .foregroundColor(.white)
-            .padding()
-            .frame(maxWidth: .infinity)
-            .background(configuration.isPressed ? Color.blue.opacity(0.8) : Color.blue)
-            .cornerRadius(12)
-            .scaleEffect(configuration.isPressed ? 0.98 : 1)
-            .animation(.easeInOut(duration: 0.2), value: configuration.isPressed)
-    }
-}
-
-// MARK: - Preview
-struct LessonView_Previews: PreviewProvider {
-    static var previews: some View {
-        let user = User(
-            name: "Test Student",
-            avatar: "avatar-1",
-            gradeLevel: 5
-        )
-        let userViewModel = UserViewModel(user: user)
-        
-        let lesson = Lesson(userId: userViewModel.id, subject: .arithmetic)
-        let lessonViewModel = LessonViewModel(lesson: lesson)
-        
-        return LessonView(
-            lesson: lesson, 
-            userViewModel: userViewModel, 
-            lessonViewModel: lessonViewModel
+#Preview {
+    NavigationView {
+        LessonView(
+            lesson: Lesson(
+                id: UUID(),
+                userId: UUID(),
+                subject: .arithmetic,
+                difficulty: 2,
+                questions: [],
+                responses: [],
+                accuracy: 0.0,
+                responseTime: 0.0,
+                startedAt: Date(),
+                completedAt: nil,
+                status: .notStarted
+            ),
+            user: User(
+                name: "Alex",
+                avatar: "avatar-1",
+                gradeLevel: 3
+            )
         )
     }
 } 
