@@ -104,6 +104,21 @@ extension Lesson {
         self.completedAt = nil
         self.status = .notStarted
     }
+    
+    /// Convenience initialization with just a subject (for UI preview/temporary use)
+    public init(subject: Subject) {
+        self.id = UUID()
+        self.userId = UUID() // Temporary ID
+        self.subject = subject
+        self.difficulty = 1
+        self.questions = []
+        self.responses = []
+        self.accuracy = 0.0
+        self.responseTime = 0.0
+        self.startedAt = Date()
+        self.completedAt = nil
+        self.status = .notStarted
+    }
 }
 
 // MARK: - CloudKit Integration

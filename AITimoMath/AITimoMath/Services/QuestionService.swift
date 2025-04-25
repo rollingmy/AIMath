@@ -390,6 +390,70 @@ class QuestionService {
             return "Medium"
         }
     }
+    
+    /// Get incorrect questions for a specific user
+    /// - Parameter userId: The user's ID
+    /// - Returns: Array of questions the user previously answered incorrectly
+    public func getIncorrectQuestions(for userId: UUID) async throws -> [Question] {
+        // In a production app, this would fetch from CloudKit/CoreData
+        // For now, generate some sample incorrect questions
+        
+        // We'll simulate some incorrect questions from different subjects
+        var incorrectQuestions: [Question] = []
+        
+        // Create a logical thinking question
+        var logicalQuestion = Question(
+            subject: .logicalThinking,
+            difficulty: 2,
+            type: .multipleChoice,
+            questionText: "If all Zorks are Zorbs, and some Zorbs are Zerbs, then which statement must be true?",
+            correctAnswer: "Some Zorks may be Zerbs"
+        )
+        
+        // Add options to the logical thinking question
+        logicalQuestion.options = [
+            .text("All Zorks are Zerbs"),
+            .text("No Zorks are Zerbs"),
+            .text("Some Zorks may be Zerbs"),
+            .text("All Zerbs are Zorks")
+        ]
+        
+        // Add an arithmetic question
+        let arithmeticQuestion = Question(
+            subject: .arithmetic,
+            difficulty: 3,
+            type: .openEnded,
+            questionText: "If 3x + 7 = 22, what is the value of x?",
+            correctAnswer: "5"
+        )
+        
+        // Add a geometry question
+        var geometryQuestion = Question(
+            subject: .geometry,
+            difficulty: 2,
+            type: .multipleChoice,
+            questionText: "What is the area of a rectangle with length 8 cm and width 5 cm?",
+            correctAnswer: "40 sq cm"
+        )
+        
+        // Add options to the geometry question
+        geometryQuestion.options = [
+            .text("13 sq cm"),
+            .text("26 sq cm"),
+            .text("40 sq cm"),
+            .text("80 sq cm")
+        ]
+        
+        // Add sample questions to the array
+        incorrectQuestions.append(logicalQuestion)
+        incorrectQuestions.append(arithmeticQuestion)
+        incorrectQuestions.append(geometryQuestion)
+        
+        // Simulate a small network delay
+        try await Task.sleep(nanoseconds: 1_000_000_000)
+        
+        return incorrectQuestions
+    }
 }
 
 // MARK: - JSON Models

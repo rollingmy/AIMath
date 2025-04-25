@@ -23,26 +23,44 @@ struct AITimoMathApp: App {
 }
 
 struct ContentView: View {
-    // Create a shared user for testing
-    @State private var currentUser = User(
-        name: "Test Student",
-        avatar: "avatar-1",
-        gradeLevel: 5
-    )
+    // Create a view model for the user
+    @State private var userViewModel: UserViewModel
+    
+    // Initializer to create the UserViewModel
+    init() {
+        let user = User(
+            name: "Test Student",
+            avatar: "avatar-1",
+            gradeLevel: 5
+        )
+        self._userViewModel = State(initialValue: UserViewModel(user: user))
+    }
     
     var body: some View {
         TabView {
-            QuestionExampleView(user: currentUser, onUserUpdate: { updatedUser in
-                self.currentUser = updatedUser
-            })
-                .tabItem {
-                    Label("Questions", systemImage: "questionmark.circle")
-                }
+            // Main Dashboard Screen
+            NavigationView {
+                DashboardView(userViewModel: userViewModel)
+            }
+            .tabItem {
+                Label("Dashboard", systemImage: "house")
+            }
             
-            AIRecommendationView(userId: currentUser.id)
-                .tabItem {
-                    Label("Recommendations", systemImage: "lightbulb")
-                }
+            // AIRecommendations Tab
+            NavigationView {
+                AIRecommendationView(userId: userViewModel.id)
+            }
+            .tabItem {
+                Label("Recommendations", systemImage: "lightbulb")
+            }
+            
+            // Progress Tab
+            NavigationView {
+                ProgressReportView(userViewModel: userViewModel)
+            }
+            .tabItem {
+                Label("Progress", systemImage: "chart.bar")
+            }
             
             #if DEBUG
             TestMenuView()
