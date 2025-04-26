@@ -327,74 +327,105 @@ struct HomeView: View {
                 .font(.headline)
                 .foregroundColor(.primary)
             
-            // Mock bar chart for subjects
-            HStack(alignment: .bottom, spacing: 12) {
-                // Logical Thinking bar
-                VStack {
-                    Rectangle()
-                        .fill(Color.purple)
-                        .frame(width: 30, height: 80 * 0.7)
+            if userViewModel.user.completedLessons.isEmpty {
+                // When no lessons are completed, show a placeholder message
+                VStack(spacing: 15) {
+                    Image(systemName: "chart.bar")
+                        .font(.system(size: 40))
+                        .foregroundColor(.gray.opacity(0.5))
                     
-                    Text("Logic")
-                        .font(.caption)
+                    Text("Complete lessons to see your progress")
+                        .font(.subheadline)
                         .foregroundColor(.secondary)
+                        .multilineTextAlignment(.center)
+                        .padding(.horizontal)
                 }
-                
-                // Arithmetic bar
-                VStack {
-                    Rectangle()
-                        .fill(Color.blue)
-                        .frame(width: 30, height: 80 * 0.9)
+                .frame(height: 140)
+                .frame(maxWidth: .infinity)
+            } else {
+                // When there's data, show the bar chart using completed lessons
+                HStack(alignment: .bottom, spacing: 12) {
+                    // Get data from completedLessons array
+                    let completedLessons = getCompletedLessonsBySubject()
+                    let totalLessons = Float(userViewModel.user.completedLessons.count)
                     
-                    Text("Arith")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-                
-                // Number Theory bar
-                VStack {
-                    Rectangle()
-                        .fill(Color.green)
-                        .frame(width: 30, height: 80 * 0.6)
+                    // Logical Thinking bar
+                    let logicCount = Float(completedLessons[.logicalThinking]?.count ?? 0)
+                    let logicHeight = totalLessons > 0 ? min(logicCount / totalLessons, 1.0) : 0.0
+                    VStack {
+                        Rectangle()
+                            .fill(Color.purple)
+                            .frame(width: 30, height: 80 * CGFloat(logicHeight))
+                        
+                        Text("Logic")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
                     
-                    Text("Num")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-                
-                // Geometry bar
-                VStack {
-                    Rectangle()
-                        .fill(Color.orange)
-                        .frame(width: 30, height: 80 * 0.5)
+                    // Arithmetic bar
+                    let arithmeticCount = Float(completedLessons[.arithmetic]?.count ?? 0)
+                    let arithmeticHeight = totalLessons > 0 ? min(arithmeticCount / totalLessons, 1.0) : 0.0
+                    VStack {
+                        Rectangle()
+                            .fill(Color.blue)
+                            .frame(width: 30, height: 80 * CGFloat(arithmeticHeight))
+                        
+                        Text("Arith")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
                     
-                    Text("Geo")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-                
-                // Combinatorics bar
-                VStack {
-                    Rectangle()
-                        .fill(Color.red)
-                        .frame(width: 30, height: 80 * 0.4)
+                    // Number Theory bar
+                    let numberCount = Float(completedLessons[.numberTheory]?.count ?? 0)
+                    let numberHeight = totalLessons > 0 ? min(numberCount / totalLessons, 1.0) : 0.0
+                    VStack {
+                        Rectangle()
+                            .fill(Color.green)
+                            .frame(width: 30, height: 80 * CGFloat(numberHeight))
+                        
+                        Text("Num")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
                     
-                    Text("Comb")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.vertical, 10)
-            .background(
-                VStack(spacing: 0) {
-                    ForEach(0..<5) { i in
-                        Divider()
-                            .offset(y: 16 * CGFloat(i))
+                    // Geometry bar
+                    let geoCount = Float(completedLessons[.geometry]?.count ?? 0)
+                    let geoHeight = totalLessons > 0 ? min(geoCount / totalLessons, 1.0) : 0.0
+                    VStack {
+                        Rectangle()
+                            .fill(Color.orange)
+                            .frame(width: 30, height: 80 * CGFloat(geoHeight))
+                        
+                        Text("Geo")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
+                    
+                    // Combinatorics bar
+                    let combCount = Float(completedLessons[.combinatorics]?.count ?? 0)
+                    let combHeight = totalLessons > 0 ? min(combCount / totalLessons, 1.0) : 0.0
+                    VStack {
+                        Rectangle()
+                            .fill(Color.red)
+                            .frame(width: 30, height: 80 * CGFloat(combHeight))
+                        
+                        Text("Comb")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
                     }
                 }
-                .padding(.bottom, 20)
-            )
+                .frame(maxWidth: .infinity)
+                .padding(.vertical, 10)
+                .background(
+                    VStack(spacing: 0) {
+                        ForEach(0..<5) { i in
+                            Divider()
+                                .offset(y: 16 * CGFloat(i))
+                        }
+                    }
+                    .padding(.bottom, 20)
+                )
+            }
             
             // Overall accuracy
             HStack {
@@ -404,9 +435,18 @@ struct HomeView: View {
                 
                 Spacer()
                 
-                Text("76%")
-                    .font(.headline)
-                    .foregroundColor(.green)
+                if userViewModel.user.completedLessons.isEmpty {
+                    Text("0%")
+                        .font(.headline)
+                        .foregroundColor(.gray)
+                } else {
+                    // Calculate actual accuracy from lesson data
+                    let accuracy = calculateOverallAccuracy()
+                    let percentage = Int(accuracy * 100)
+                    Text("\(percentage)%")
+                        .font(.headline)
+                        .foregroundColor(percentage > 60 ? .green : .orange)
+                }
             }
             .padding(.top, 5)
         }
@@ -424,8 +464,15 @@ struct HomeView: View {
                     Image(systemName: "chart.xyaxis.line")
                         .font(.system(size: 24))
                     
-                    Text("Performance")
-                        .font(.caption)
+                    // Show stats if available
+                    if !userViewModel.user.completedLessons.isEmpty {
+                        let accuracy = Int(calculateOverallAccuracy() * 100)
+                        Text("Performance \(accuracy)%")
+                            .font(.caption)
+                    } else {
+                        Text("Performance")
+                            .font(.caption)
+                    }
                 }
                 .foregroundColor(.primary)
                 .frame(maxWidth: .infinity)
@@ -440,8 +487,14 @@ struct HomeView: View {
                     Image(systemName: "exclamationmark.triangle")
                         .font(.system(size: 24))
                     
-                    Text("Review Mistakes")
-                        .font(.caption)
+                    // Show count of incorrect answers if any
+                    if let mistakeCount = countIncorrectAnswers(), mistakeCount > 0 {
+                        Text("Review Mistakes (\(mistakeCount))")
+                            .font(.caption)
+                    } else {
+                        Text("Review Mistakes")
+                            .font(.caption)
+                    }
                 }
                 .foregroundColor(.primary)
                 .frame(maxWidth: .infinity)
@@ -534,6 +587,149 @@ struct HomeView: View {
         }
         
         return lesson
+    }
+    
+    // Helper method to get completed lessons by subject
+    private func getCompletedLessonsBySubject() -> [Lesson.Subject: [UUID]] {
+        let subjects: [Lesson.Subject] = [.arithmetic, .geometry, .numberTheory, .logicalThinking, .combinatorics]
+        var result = [Lesson.Subject: [UUID]]()
+        
+        // Initialize with empty arrays
+        for subject in subjects {
+            result[subject] = []
+        }
+        
+        // Get mock lessons from completed lesson IDs
+        let mockLessons = getMockLessonsFromIds(userViewModel.user.completedLessons)
+        
+        // Group by subject
+        for lesson in mockLessons {
+            var subjectLessons = result[lesson.subject] ?? []
+            subjectLessons.append(lesson.id)
+            result[lesson.subject] = subjectLessons
+        }
+        
+        return result
+    }
+    
+    // Calculate overall accuracy from completed lessons
+    private func calculateOverallAccuracy() -> Float {
+        let mockLessons = getMockLessonsFromIds(userViewModel.user.completedLessons)
+        
+        if mockLessons.isEmpty {
+            return 0.0
+        }
+        
+        let totalAccuracy = mockLessons.reduce(0.0) { $0 + Float($1.accuracy) }
+        return totalAccuracy / Float(mockLessons.count)
+    }
+    
+    // Count total incorrect answers for display
+    private func countIncorrectAnswers() -> Int? {
+        let mockLessons = getMockLessonsFromIds(userViewModel.user.completedLessons)
+        
+        if mockLessons.isEmpty {
+            return nil
+        }
+        
+        var totalIncorrect = 0
+        for lesson in mockLessons {
+            for response in lesson.responses {
+                if !response.isCorrect {
+                    totalIncorrect += 1
+                }
+            }
+        }
+        
+        return totalIncorrect > 0 ? totalIncorrect : nil
+    }
+    
+    // Helper method to convert lesson IDs to mock lessons
+    private func getMockLessonsFromIds(_ lessonIds: [UUID]) -> [Lesson] {
+        // In a real app, we would fetch these from a database or service
+        // For now, we'll create mock lessons
+        var mockLessons: [Lesson] = []
+        
+        for (index, id) in lessonIds.enumerated() {
+            let subject: Lesson.Subject
+            switch index % 5 {
+            case 0: subject = .arithmetic
+            case 1: subject = .geometry
+            case 2: subject = .numberTheory
+            case 3: subject = .logicalThinking
+            default: subject = .combinatorics
+            }
+            
+            // Create random responses with some mistakes
+            var responses: [Lesson.QuestionResponse] = []
+            let questionIds = (0..<5).map { _ in UUID() }
+            
+            for qId in questionIds {
+                responses.append(Lesson.QuestionResponse(
+                    questionId: qId,
+                    isCorrect: Bool.random(),
+                    responseTime: Double.random(in: 10...60),
+                    answeredAt: Date()
+                ))
+            }
+            
+            let lesson = Lesson(
+                id: id,
+                userId: userViewModel.user.id,
+                subject: subject,
+                difficulty: Int.random(in: 1...3),
+                questions: questionIds,
+                responses: responses,
+                accuracy: Float.random(in: 0.5...1.0),
+                responseTime: Double.random(in: 100...600),
+                startedAt: Date().addingTimeInterval(-3600),
+                completedAt: Date(),
+                status: .completed
+            )
+            
+            mockLessons.append(lesson)
+        }
+        
+        return mockLessons
+    }
+    
+    // Called when a lesson is completed to update user progress
+    func lessonCompleted(_ lesson: Lesson) {
+        // Update user's completed lessons
+        userViewModel.addCompletedLesson(lesson.id)
+        
+        // Track user activity
+        userViewModel.trackActivity()
+        
+        // If adaptive difficulty is enabled, update difficulty level based on performance
+        if userViewModel.user.difficultyLevel == .adaptive {
+            // Check performance to potentially adjust difficulty
+            if lesson.accuracy >= 0.8 {
+                // User is doing well, consider increasing difficulty
+                if shouldIncreaseDifficulty() {
+                    userViewModel.updateDifficultyLevel(.advanced)
+                }
+            } else if lesson.accuracy <= 0.4 {
+                // User is struggling, consider decreasing difficulty
+                userViewModel.updateDifficultyLevel(.beginner)
+            }
+        }
+    }
+    
+    // Determine if difficulty should increase based on recent performance
+    private func shouldIncreaseDifficulty() -> Bool {
+        let recentLessons = getMockLessonsFromIds(userViewModel.user.completedLessons)
+            .sorted(by: { ($0.completedAt ?? Date()) > ($1.completedAt ?? Date()) })
+            .prefix(3)
+        
+        // Only increase difficulty if user has completed at least 3 lessons
+        guard recentLessons.count >= 3 else {
+            return false
+        }
+        
+        // Check if user has consistently high accuracy in recent lessons
+        let highAccuracyCount = recentLessons.filter { $0.accuracy >= 0.8 }.count
+        return highAccuracyCount >= 2 // At least 2 out of 3 recent lessons had high accuracy
     }
 }
 

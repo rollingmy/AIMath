@@ -59,5 +59,4 @@ extension Image {
         AvatarImageView(avatarName: "nonexistent", size: 60)
     }
     .padding()
-    .previewLayout(.sizeThatFits)
 } 

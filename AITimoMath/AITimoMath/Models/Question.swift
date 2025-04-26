@@ -204,6 +204,31 @@ extension Question {
         self.hint = nil
         self.imageData = nil
     }
+    
+    /// Full initialization with all parameters
+    public init(
+        id: UUID,
+        subject: Lesson.Subject,
+        difficulty: Int,
+        type: QuestionType,
+        questionText: String,
+        options: [QuestionOption]?,
+        correctAnswer: String,
+        hint: String? = nil,
+        imageData: Data? = nil,
+        metadata: [String: Any]? = nil
+    ) {
+        self.id = id
+        self.subject = subject
+        self.difficulty = difficulty
+        self.type = type
+        self.questionText = questionText
+        self.options = options
+        self.correctAnswer = correctAnswer
+        self.hint = hint
+        self.imageData = imageData
+        self.metadata = metadata
+    }
 }
 
 // MARK: - CloudKit Integration

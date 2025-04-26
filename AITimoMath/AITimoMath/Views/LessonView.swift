@@ -876,8 +876,76 @@ struct LessonView: View {
     private func completeLesson() {
         isLessonComplete = true
         
-        // In a real app, we would update user's completed lessons
-        // and send analytics about performance
+        // Create a copy of the lesson that we can modify
+        var updatedLesson = lesson
+        
+        // Update the lesson with results from this session
+        for (index, answerIndex) in userAnswers.enumerated() {
+            if index < questions.count, let answer = answerIndex {
+                let isCorrect = isCorrectAnswer(questionIndex: index, answerIndex: answer)
+                let responseTime = questionTimes.count > index ? questionTimes[index] : 30.0 // Default to 30 seconds if missing
+                
+                // Update lesson progress for this question
+                if index < lesson.questions.count {
+                    let questionId = lesson.questions[index]
+                    updatedLesson.updateProgress(questionId: questionId, isCorrect: isCorrect, responseTime: responseTime)
+                }
+            }
+        }
+        
+        // Set as completed
+        updatedLesson.status = .completed
+        updatedLesson.completedAt = Date()
+        
+        // Calculate final accuracy from user answers
+        let accuracy = Float(calculateAccuracyPercentage()) / 100.0
+        updatedLesson.accuracy = accuracy
+        
+        // Calculate average response time
+        let validTimes = questionTimes.filter { $0 > 0 }
+        if !validTimes.isEmpty {
+            updatedLesson.responseTime = validTimes.reduce(0, +) / Double(validTimes.count)
+        }
+        
+        // Update user model's completed lessons
+        userViewModel.addCompletedLesson(updatedLesson.id)
+        
+        // Track user activity
+        userViewModel.trackActivity()
+        
+        // Consider adaptive difficulty changes
+        if userViewModel.user.difficultyLevel == .adaptive {
+            // Check performance to potentially adjust difficulty
+            if updatedLesson.accuracy >= 0.8 {
+                // User is doing well, consider increasing difficulty
+                if shouldIncreaseDifficulty() {
+                    userViewModel.updateDifficultyLevel(.advanced)
+                }
+            } else if updatedLesson.accuracy <= 0.4 {
+                // User is struggling, consider decreasing difficulty
+                userViewModel.updateDifficultyLevel(.beginner)
+            }
+        }
+        
+        // Log completion for debugging
+        print("📱 Completed lesson \(updatedLesson.id) with accuracy \(updatedLesson.accuracy * 100)% and avg time \(updatedLesson.responseTime)s")
+    }
+    
+    // Determine if difficulty should increase based on recent performance
+    private func shouldIncreaseDifficulty() -> Bool {
+        // Get the most recent lessons (up to 3)
+        let recentLessonIds = userViewModel.user.completedLessons.suffix(3)
+        
+        // Only increase difficulty if user has completed at least 3 lessons
+        guard recentLessonIds.count >= 3 else {
+            return false
+        }
+        
+        // Count lessons with high accuracy (over 80%)
+        // In a real app, we'd query a database for these lessons
+        // For now, we'll assume if the user reached this point with the current lesson
+        // being successful, they're ready for increased difficulty
+        return true
     }
     
     // Check if option is correct

@@ -3,607 +3,436 @@ import SwiftUI
 /// View for reviewing past incorrect answers
 struct ReviewMistakesView: View {
     @ObservedObject var userViewModel: UserViewModel
-    @Environment(\.dismiss) private var dismiss
-    
-    // State
-    @State private var mistakes: [MistakeItem] = []
-    @State private var isLoading = true
-    @State private var selectedSubject: Lesson.Subject?
-    @State private var error: Error?
-    @State private var currentMistakeIndex = 0
-    @State private var selectedOptionIndex: Int?
-    @State private var isShowingAnswer = false
-    
-    // Mock data for UI development
-    struct MistakeItem: Identifiable {
-        let id = UUID()
-        let question: Question
-        let userAnswer: Int? // The user's incorrect answer index
-        let date: Date
-        let lessonId: UUID
-    }
-    
-    // For backward compatibility with simple preview methods
-    init(user: User) {
-        self.userViewModel = UserViewModel(user: user)
-    }
-    
-    // For use with the ViewModel
-    init(userViewModel: UserViewModel) {
-        self.userViewModel = userViewModel
-    }
+    @State private var selectedSubject: Lesson.Subject? = nil
+    @State private var showingQuestionDetail = false
+    @State private var selectedQuestion: Question? = nil
+    @State private var searchText = ""
+    @State private var isLoading = false
+    @State private var mistakeQuestions: [Question] = []
     
     var body: some View {
-        VStack {
-            if isLoading {
-                loadingView
-            } else if let error = error {
-                errorView(error)
-            } else if mistakes.isEmpty {
-                noMistakesView
-            } else {
-                mistakesReviewView
+        NavigationView {
+            VStack {
+                // Search bar
+                searchBar
+                
+                // Subject filter
+                subjectFilterSection
+                
+                if isLoading {
+                    loadingView
+                } else if mistakeQuestions.isEmpty {
+                    emptyStateView
+                } else {
+                    // List of mistakes
+                    mistakesList
+                }
             }
-        }
-        .navigationTitle("Review Mistakes")
-        .toolbar {
-            ToolbarItem(placement: .navigationBarTrailing) {
-                if !mistakes.isEmpty {
-                    Menu {
-                        // Filter by subject
-                        Menu("Filter by Subject") {
-                            Button("All Subjects") {
-                                selectedSubject = nil
-                            }
-                            
-                            Divider()
-                            
-                            Button("Logical Thinking") {
-                                selectedSubject = .logicalThinking
-                            }
-                            
-                            Button("Arithmetic") {
-                                selectedSubject = .arithmetic
-                            }
-                            
-                            Button("Number Theory") {
-                                selectedSubject = .numberTheory
-                            }
-                            
-                            Button("Geometry") {
-                                selectedSubject = .geometry
-                            }
-                            
-                            Button("Combinatorics") {
-                                selectedSubject = .combinatorics
-                            }
-                        }
-                        
-                        // Sort options
-                        Menu("Sort") {
-                            Button("Newest First") {
-                                sortMistakes(by: .date, ascending: false)
-                            }
-                            
-                            Button("Oldest First") {
-                                sortMistakes(by: .date, ascending: true)
-                            }
-                            
-                            Button("By Difficulty (Hardest First)") {
-                                sortMistakes(by: .difficulty, ascending: false)
-                            }
-                            
-                            Button("By Difficulty (Easiest First)") {
-                                sortMistakes(by: .difficulty, ascending: true)
-                            }
-                        }
-                    } label: {
-                        Image(systemName: "line.3.horizontal.decrease.circle")
-                    }
+            .padding(.horizontal)
+            .navigationTitle("Review Mistakes")
+            .onAppear {
+                loadMistakes()
+            }
+            .sheet(isPresented: $showingQuestionDetail) {
+                if let question = selectedQuestion {
+                    MistakeDetailView(question: question, userViewModel: userViewModel)
                 }
             }
         }
-        .onAppear {
-            loadMistakes()
-        }
     }
     
-    // MARK: - Sub Views
+    // Search bar
+    private var searchBar: some View {
+        HStack {
+            Image(systemName: "magnifyingglass")
+                .foregroundColor(.gray)
+            
+            TextField("Search mistakes", text: $searchText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .onChange(of: searchText) { oldValue, newValue in
+                    filterMistakes()
+                }
+            
+            if !searchText.isEmpty {
+                Button(action: {
+                    searchText = ""
+                    filterMistakes()
+                }) {
+                    Image(systemName: "xmark.circle.fill")
+                        .foregroundColor(.gray)
+                }
+            }
+        }
+        .padding(.vertical, 8)
+    }
+    
+    // Subject filter
+    private var subjectFilterSection: some View {
+        ScrollView(.horizontal, showsIndicators: false) {
+            HStack(spacing: 10) {
+                // All subjects button
+                Button(action: {
+                    selectedSubject = nil
+                    filterMistakes()
+                }) {
+                    Text("All")
+                        .font(.subheadline)
+                        .padding(.horizontal, 16)
+                        .padding(.vertical, 8)
+                        .background(selectedSubject == nil ? Color.blue : Color(.systemGray5))
+                        .foregroundColor(selectedSubject == nil ? .white : .primary)
+                        .cornerRadius(20)
+                }
+                
+                // Subject filter buttons
+                ForEach([Lesson.Subject.arithmetic, .geometry, .numberTheory, .logicalThinking, .combinatorics], id: \.self) { subject in
+                    Button(action: {
+                        selectedSubject = subject
+                        filterMistakes()
+                    }) {
+                        Text(formatSubject(subject))
+                            .font(.subheadline)
+                            .padding(.horizontal, 16)
+                            .padding(.vertical, 8)
+                            .background(selectedSubject == subject ? subjectColor(subject) : Color(.systemGray5))
+                            .foregroundColor(selectedSubject == subject ? .white : .primary)
+                            .cornerRadius(20)
+                    }
+                }
+            }
+            .padding(.vertical, 8)
+        }
+    }
     
     // Loading view
     private var loadingView: some View {
-        VStack(spacing: 20) {
+        VStack {
+            Spacer()
             ProgressView()
                 .scaleEffect(1.5)
-            
-            Text("Loading your review items...")
+            Text("Loading your mistakes...")
                 .font(.headline)
+                .padding()
+            Spacer()
         }
     }
     
-    // Error view
-    private func errorView(_ error: Error) -> some View {
+    // Empty state
+    private var emptyStateView: some View {
         VStack(spacing: 20) {
-            Image(systemName: "exclamationmark.triangle")
-                .font(.system(size: 50))
-                .foregroundColor(.orange)
+            Spacer()
             
-            Text("Error loading review items")
-                .font(.headline)
-            
-            Text(error.localizedDescription)
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal)
-            
-            Button("Try Again") {
-                loadMistakes()
-            }
-            .buttonStyle(.borderedProminent)
-        }
-    }
-    
-    // No mistakes view
-    private var noMistakesView: some View {
-        VStack(spacing: 20) {
-            Image(systemName: "checkmark.circle")
-                .font(.system(size: 80))
+            Image(systemName: "checkmark.circle.fill")
+                .font(.system(size: 70))
                 .foregroundColor(.green)
             
-            Text("No Mistakes to Review")
+            Text("No Mistakes Found")
                 .font(.title2)
-                .fontWeight(.bold)
+                .fontWeight(.semibold)
             
             if selectedSubject != nil {
-                Text("You don't have any mistakes in this subject. Try selecting a different subject or keep practicing!")
-                    .font(.body)
-                    .foregroundColor(.secondary)
+                Text("You haven't made any mistakes in this subject yet, or try a different filter.")
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 40)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 30)
+            } else if !searchText.isEmpty {
+                Text("No mistakes match your search. Try different keywords.")
+                    .multilineTextAlignment(.center)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 30)
             } else {
-                Text("Great job! You haven't made any mistakes that need reviewing yet. Keep practicing to improve your skills!")
-                    .font(.body)
-                    .foregroundColor(.secondary)
+                Text("Keep practicing to identify areas for improvement. Your mistakes will appear here for review.")
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 40)
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal, 30)
             }
             
-            Button("Back to Dashboard") {
-                dismiss()
-            }
-            .buttonStyle(.borderedProminent)
-            .padding(.top, 20)
+            Spacer()
         }
-        .padding()
     }
     
-    // Main review content
-    private var mistakesReviewView: some View {
-        VStack(spacing: 0) {
-            // Progress bar
-            ZStack(alignment: .leading) {
-                Rectangle()
-                    .fill(Color.gray.opacity(0.2))
-                    .frame(height: 8)
-                
-                Rectangle()
-                    .fill(Color.blue)
-                    .frame(width: CGFloat(currentMistakeIndex + 1) / CGFloat(filteredMistakes.count) * UIScreen.main.bounds.width, height: 8)
+    // List of mistakes
+    private var mistakesList: some View {
+        ScrollView {
+            LazyVStack(spacing: 15) {
+                ForEach(filteredMistakes, id: \.id) { question in
+                    Button(action: {
+                        selectedQuestion = question
+                        showingQuestionDetail = true
+                    }) {
+                        mistakeCard(question)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                }
             }
-            
-            // Main content
-            VStack(spacing: 20) {
-                // Question counter and date
-                HStack {
-                    Text("Question \(currentMistakeIndex + 1) of \(filteredMistakes.count)")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                    
-                    Spacer()
-                    
-                    Text(formatDate(filteredMistakes[currentMistakeIndex].date))
+            .padding(.vertical)
+        }
+    }
+    
+    // Mistake card view
+    private func mistakeCard(_ question: Question) -> some View {
+        VStack(alignment: .leading, spacing: 12) {
+            // Subject and difficulty
+            HStack {
+                // Subject tag
+                Text(formatSubject(question.subject))
+                    .font(.caption)
+                    .fontWeight(.medium)
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 5)
+                    .background(subjectColor(question.subject).opacity(0.2))
+                    .foregroundColor(subjectColor(question.subject))
+                    .cornerRadius(10)
+                
+                Spacer()
+                
+                // Difficulty
+                HStack(spacing: 3) {
+                    ForEach(0..<question.difficulty, id: \.self) { _ in
+                        Image(systemName: "star.fill")
+                            .font(.caption)
+                            .foregroundColor(.yellow)
+                    }
+                    ForEach(0..<(3-question.difficulty), id: \.self) { _ in
+                        Image(systemName: "star")
+                            .font(.caption)
+                            .foregroundColor(.gray)
+                    }
+                }
+                
+                // Date from metadata if available
+                if let date = getMistakeDate(for: question) {
+                    Text(formatDate(date))
                         .font(.caption)
                         .foregroundColor(.secondary)
                 }
-                .padding(.horizontal)
-                .padding(.vertical, 10)
-                
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 20) {
-                        // Subject and difficulty badges
-                        HStack {
-                            Text(formatSubject(currentMistake.question.subject))
-                                .font(.caption)
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 4)
-                                .background(subjectColor(currentMistake.question.subject).opacity(0.2))
-                                .cornerRadius(8)
-                            
-                            Text(formatDifficulty(currentMistake.question.difficulty))
-                                .font(.caption)
-                                .padding(.horizontal, 8)
-                                .padding(.vertical, 4)
-                                .background(difficultyColor(currentMistake.question.difficulty).opacity(0.2))
-                                .cornerRadius(8)
-                        }
-                        .padding(.horizontal)
-                        
-                        // Question text
-                        Text(currentMistake.question.questionText)
-                            .font(.headline)
-                            .padding(.horizontal)
-                        
-                        // Question image if any
-                        if let image = currentMistake.question.image {
-                            Image(uiImage: image)
-                                .resizable()
-                                .scaledToFit()
-                                .frame(maxHeight: 200)
-                                .cornerRadius(12)
-                                .padding(.horizontal)
-                        }
-                        
-                        // Answer options
-                        if let options = currentMistake.question.options {
-                            VStack(spacing: 12) {
-                                ForEach(0..<options.count, id: \.self) { index in
-                                    HStack(alignment: .top) {
-                                        // Option letter (A, B, C, etc.)
-                                        Text("\(Character(UnicodeScalar(65 + index)!))")
-                                            .font(.headline)
-                                            .foregroundColor(.white)
-                                            .frame(width: 30, height: 30)
-                                            .background(
-                                                Circle()
-                                                    .fill(optionColor(index))
-                                            )
-                                        
-                                        // Option content
-                                        if let text = options[index].textValue {
-                                            Text(text)
-                                                .font(.body)
-                                                .foregroundColor(.primary)
-                                                .multilineTextAlignment(.leading)
-                                        }
-                                        
-                                        Spacer()
-                                        
-                                        // Indicators for user's wrong answer and correct answer
-                                        if isShowingAnswer {
-                                            if isCorrectOption(index) {
-                                                Image(systemName: "checkmark.circle.fill")
-                                                    .foregroundColor(.green)
-                                            } else if index == currentMistake.userAnswer {
-                                                Image(systemName: "xmark.circle.fill")
-                                                    .foregroundColor(.red)
-                                            }
-                                        }
-                                    }
-                                    .padding()
-                                    .background(
-                                        RoundedRectangle(cornerRadius: 12)
-                                            .fill(optionBackground(index))
-                                    )
-                                }
-                            }
-                            .padding(.horizontal)
-                        }
-                        
-                        // Explanation (when showing answer)
-                        if isShowingAnswer, let hint = currentMistake.question.hint {
-                            VStack(alignment: .leading, spacing: 10) {
-                                Text("Explanation")
-                                    .font(.headline)
-                                
-                                Text(hint)
-                                    .font(.body)
-                                    .foregroundColor(.secondary)
-                            }
-                            .padding()
-                            .background(Color(.systemGray6))
-                            .cornerRadius(12)
-                            .padding(.horizontal)
-                        }
-                        
-                        Spacer(minLength: 80)
-                    }
-                    .padding(.vertical)
-                }
-                
-                // Action buttons
-                VStack(spacing: 15) {
-                    if isShowingAnswer {
-                        // Next question button
-                        Button(action: nextMistake) {
-                            Text(currentMistakeIndex < filteredMistakes.count - 1 ? "Next Question" : "Finish Review")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.blue)
-                                .cornerRadius(15)
-                        }
-                        .padding(.horizontal)
-                    } else {
-                        // Show answer button
-                        Button(action: {
-                            withAnimation {
-                                isShowingAnswer = true
-                            }
-                        }) {
-                            Text("Show Solution")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                                .frame(maxWidth: .infinity)
-                                .padding()
-                                .background(Color.blue)
-                                .cornerRadius(15)
-                        }
-                        .padding(.horizontal)
-                    }
+            }
+            
+            Divider()
+            
+            // Question text
+            Text(question.questionText)
+                .font(.headline)
+                .multilineTextAlignment(.leading)
+                .lineLimit(3)
+                .padding(.bottom, 5)
+            
+            // Image if available
+            if let imageData = question.imageData, let uiImage = UIImage(data: imageData) {
+                Image(uiImage: uiImage)
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 100)
+                    .cornerRadius(8)
+                    .padding(.bottom, 5)
+            }
+            
+            // Bottom section with your answer vs correct answer
+            HStack(alignment: .center) {
+                // Your incorrect answer
+                VStack(alignment: .leading, spacing: 3) {
+                    Text("Your Answer")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                     
-                    // Navigation buttons
-                    HStack {
-                        // Previous button
-                        Button(action: previousMistake) {
-                            Label("Previous", systemImage: "arrow.left")
-                                .font(.subheadline)
-                        }
-                        .disabled(currentMistakeIndex == 0)
-                        
-                        Spacer()
-                        
-                        // Navigation label
-                        Text("\(currentMistakeIndex + 1) / \(filteredMistakes.count)")
-                            .font(.subheadline)
-                            .foregroundColor(.secondary)
-                        
-                        Spacer()
-                        
-                        // Next button
-                        Button(action: {
-                            if isShowingAnswer {
-                                nextMistake()
-                            } else {
-                                // Skip directly to next without showing answer
-                                currentMistakeIndex = min(currentMistakeIndex + 1, filteredMistakes.count - 1)
-                            }
-                        }) {
-                            Label("Next", systemImage: "arrow.right")
-                                .font(.subheadline)
-                        }
-                        .disabled(currentMistakeIndex >= filteredMistakes.count - 1)
-                    }
-                    .padding(.horizontal)
+                    Text(getIncorrectAnswer(for: question) ?? "")
+                        .font(.subheadline)
+                        .foregroundColor(.red)
+                        .lineLimit(1)
                 }
-                .padding(.vertical, 15)
-                .background(Color(.systemBackground))
-                .shadow(color: Color.black.opacity(0.05), radius: 5, x: 0, y: -5)
+                
+                Spacer()
+                
+                // Divider
+                Rectangle()
+                    .fill(Color.gray.opacity(0.3))
+                    .frame(width: 1, height: 30)
+                
+                Spacer()
+                
+                // Correct answer
+                VStack(alignment: .trailing, spacing: 3) {
+                    Text("Correct Answer")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                    
+                    Text(question.correctAnswer)
+                        .font(.subheadline)
+                        .foregroundColor(.green)
+                        .lineLimit(1)
+                }
             }
         }
+        .padding()
+        .background(Color(.systemGray6))
+        .cornerRadius(12)
     }
     
-    // MARK: - Helper Methods
+    // Helper methods
     
-    // Current mistake being displayed
-    private var currentMistake: MistakeItem {
-        filteredMistakes[currentMistakeIndex]
-    }
-    
-    // Filtered mistakes based on subject selection
-    private var filteredMistakes: [MistakeItem] {
-        if let subject = selectedSubject {
-            return mistakes.filter { $0.question.subject == subject }
-        } else {
-            return mistakes
-        }
-    }
-    
-    // Load user's past mistakes
+    // Load mistakes from completed lessons
     private func loadMistakes() {
         isLoading = true
-        error = nil
+        mistakeQuestions = []
         
-        // In a real app, we would fetch from a data store
-        // For now, we'll create mock data
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-            // Create sample mistake data
-            var mockMistakes: [MistakeItem] = []
+        // Use the shared instance of QuestionService
+        let questionService = QuestionService.shared
+        var loadedQuestions: [Question] = []
+        let incorrectResponses = getAllIncorrectResponses()
+        
+        // Perform async loading with Task
+        Task {
+            // Track loading progress for user feedback
+            var loadedCount = 0
             
-            // Add some sample mistakes - in real app these would come from user's history
+            for response in incorrectResponses {
+                do {
+                    if let question = try await questionService.getQuestion(id: response.questionId) {
+                        // Add metadata to the question to identify when the mistake was made
+                        var questionWithMetadata = question
+                        if let metadata = question.metadata {
+                            var updatedMetadata = metadata
+                            updatedMetadata["mistakeDate"] = response.answeredAt.timeIntervalSince1970
+                            questionWithMetadata.metadata = updatedMetadata
+                        } else {
+                            // If no metadata exists, create new metadata
+                            var newMetadata: [String: Any] = [:]
+                            newMetadata["mistakeDate"] = response.answeredAt.timeIntervalSince1970
+                            questionWithMetadata.metadata = newMetadata
+                        }
+                        
+                        loadedQuestions.append(questionWithMetadata)
+                    }
+                } catch {
+                    print("Error loading question \(response.questionId): \(error)")
+                }
+                
+                loadedCount += 1
+                
+                // Update UI periodically for better user experience
+                if loadedCount % 5 == 0 || loadedCount == incorrectResponses.count {
+                    DispatchQueue.main.async {
+                        self.mistakeQuestions = loadedQuestions
+                        if loadedCount == incorrectResponses.count {
+                            self.isLoading = false
+                        }
+                    }
+                }
+            }
             
-            // Arithmetic mistake
-            var q1 = Question(
-                subject: .arithmetic,
-                difficulty: 2,
-                type: .multipleChoice,
-                questionText: "What is the result of 125 ÷ 5?",
-                correctAnswer: "25"
-            )
-            q1.options = [
-                .text("20"),
-                .text("25"),
-                .text("30"),
-                .text("35")
-            ]
-            q1.hint = "To divide 125 by 5, we can think of it as (100 + 25) ÷ 5 = 100 ÷ 5 + 25 ÷ 5 = 20 + 5 = 25."
-            mockMistakes.append(MistakeItem(
-                question: q1,
-                userAnswer: 0, // User selected "20" incorrectly
-                date: Date().addingTimeInterval(-86400), // Yesterday
-                lessonId: UUID()
-            ))
-            
-            // Geometry mistake
-            var q2 = Question(
-                subject: .geometry,
-                difficulty: 3,
-                type: .multipleChoice,
-                questionText: "What is the area of a square with a side length of 8 cm?",
-                correctAnswer: "64 cm²"
-            )
-            q2.options = [
-                .text("16 cm²"),
-                .text("32 cm²"),
-                .text("64 cm²"),
-                .text("128 cm²")
-            ]
-            q2.hint = "The area of a square is calculated as side length × side length. So, 8 cm × 8 cm = 64 cm²."
-            mockMistakes.append(MistakeItem(
-                question: q2,
-                userAnswer: 1, // User selected "32 cm²" incorrectly
-                date: Date().addingTimeInterval(-172800), // 2 days ago
-                lessonId: UUID()
-            ))
-            
-            // Number Theory mistake
-            var q3 = Question(
-                subject: .numberTheory,
-                difficulty: 3,
-                type: .multipleChoice,
-                questionText: "What is the greatest common divisor (GCD) of 24 and 36?",
-                correctAnswer: "12"
-            )
-            q3.options = [
-                .text("6"),
-                .text("8"),
-                .text("12"),
-                .text("18")
-            ]
-            q3.hint = "To find the GCD, list all factors of both numbers: Factors of 24: 1, 2, 3, 4, 6, 8, 12, 24. Factors of 36: 1, 2, 3, 4, 6, 9, 12, 18, 36. The largest common factor is 12."
-            mockMistakes.append(MistakeItem(
-                question: q3,
-                userAnswer: 0, // User selected "6" incorrectly
-                date: Date().addingTimeInterval(-259200), // 3 days ago
-                lessonId: UUID()
-            ))
-            
-            // Logical Thinking mistake
-            var q4 = Question(
-                subject: .logicalThinking,
-                difficulty: 2,
-                type: .multipleChoice,
-                questionText: "If all cats have tails, and Fluffy has a tail, which of the following must be true?",
-                correctAnswer: "Fluffy might be a cat"
-            )
-            q4.options = [
-                .text("Fluffy is a cat"),
-                .text("Fluffy might be a cat"),
-                .text("Fluffy is not a cat"),
-                .text("All animals with tails are cats")
-            ]
-            q4.hint = "This is a logical reasoning question. Having a tail is a necessary but not sufficient condition for being a cat. Many animals have tails, so Fluffy might be a cat, but could also be another animal with a tail."
-            mockMistakes.append(MistakeItem(
-                question: q4,
-                userAnswer: 0, // User selected "Fluffy is a cat" incorrectly
-                date: Date().addingTimeInterval(-345600), // 4 days ago
-                lessonId: UUID()
-            ))
-            
-            // Reset state and update UI
+            // Final update if there are no questions or loading finished quickly
             DispatchQueue.main.async {
-                self.mistakes = mockMistakes
-                self.currentMistakeIndex = 0
-                self.isShowingAnswer = false
+                self.mistakeQuestions = loadedQuestions
                 self.isLoading = false
             }
         }
     }
     
-    // Move to next mistake
-    private func nextMistake() {
-        if currentMistakeIndex < filteredMistakes.count - 1 {
-            currentMistakeIndex += 1
-            isShowingAnswer = false
-        } else {
-            // Completed all mistakes
-            dismiss()
+    // Filter mistakes based on search text and selected subject
+    private func filterMistakes() {
+        // No need to reload if we're just filtering
+        if !isLoading {
+            // Will use the full list from loadMistakes() and filter in filteredMistakes computed property
         }
     }
     
-    // Move to previous mistake
-    private func previousMistake() {
-        if currentMistakeIndex > 0 {
-            currentMistakeIndex -= 1
-            isShowingAnswer = false
-        }
-    }
-    
-    // Sort mistakes
-    private func sortMistakes(by criterion: SortCriterion, ascending: Bool) {
-        switch criterion {
-        case .date:
-            mistakes.sort { item1, item2 in
-                ascending ? item1.date < item2.date : item1.date > item2.date
-            }
-        case .difficulty:
-            mistakes.sort { item1, item2 in
-                ascending ? 
-                    item1.question.difficulty < item2.question.difficulty : 
-                    item1.question.difficulty > item2.question.difficulty
+    // Get all incorrect responses from completed lessons
+    private func getAllIncorrectResponses() -> [Lesson.QuestionResponse] {
+        var incorrectResponses: [Lesson.QuestionResponse] = []
+        
+        // Get mock lessons from completed lesson IDs
+        let mockLessons = getMockLessonsFromIds(userViewModel.user.completedLessons)
+        
+        // Get incorrect responses from lessons
+        for lesson in mockLessons {
+            for response in lesson.responses {
+                if !response.isCorrect {
+                    incorrectResponses.append(response)
+                }
             }
         }
         
-        // Reset to first item
-        currentMistakeIndex = 0
-        isShowingAnswer = false
+        // Sort by most recent mistakes first
+        return incorrectResponses.sorted(by: { $0.answeredAt > $1.answeredAt })
     }
     
-    // Sort criteria
-    private enum SortCriterion {
-        case date
-        case difficulty
-    }
-    
-    // Format a date for display
-    private func formatDate(_ date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .none
-        return formatter.string(from: date)
-    }
-    
-    // Check if an option is the correct one
-    private func isCorrectOption(_ index: Int) -> Bool {
-        guard let options = currentMistake.question.options,
-              index < options.count else { return false }
+    // Get incorrect answer for a question
+    private func getIncorrectAnswer(for question: Question) -> String? {
+        // Since QuestionResponse doesn't have a userAnswer property,
+        // we'll return a placeholder message
+        let mockLessons = getMockLessonsFromIds(userViewModel.user.completedLessons)
         
-        if let optionText = options[index].textValue,
-           optionText == currentMistake.question.correctAnswer {
-            return true
-        }
-        
-        return false
-    }
-    
-    // Get option circle color
-    private func optionColor(_ index: Int) -> Color {
-        if isShowingAnswer {
-            if isCorrectOption(index) {
-                return .green
-            } else if index == currentMistake.userAnswer {
-                return .red
+        for lesson in mockLessons {
+            for response in lesson.responses {
+                if response.questionId == question.id && !response.isCorrect {
+                    return "Unknown (response tracking only stores correctness)"
+                }
             }
         }
-        
-        return .gray
+        return nil
     }
     
-    // Get option background color
-    private func optionBackground(_ index: Int) -> Color {
-        if isShowingAnswer {
-            if isCorrectOption(index) {
-                return Color.green.opacity(0.1)
-            } else if index == currentMistake.userAnswer {
-                return Color.red.opacity(0.1)
-            }
+    // Get mistake date from question metadata
+    private func getMistakeDate(for question: Question) -> Date? {
+        if let metadata = question.metadata,
+           let mistakeDateInterval = metadata["mistakeDate"] as? TimeInterval {
+            return Date(timeIntervalSince1970: mistakeDateInterval)
         }
         
-        return Color(.systemGray6)
+        // If no metadata, default to a recent date
+        return Date().addingTimeInterval(-Double.random(in: 0...86400)) // Random time within last 24 hours
     }
     
-    // Format subject for display
+    // Helper method to convert lesson IDs to mock lessons
+    private func getMockLessonsFromIds(_ lessonIds: [UUID]) -> [Lesson] {
+        // In a real app, we would fetch these from a database or service
+        // For now, we'll create mock lessons
+        var mockLessons: [Lesson] = []
+        
+        for (index, id) in lessonIds.enumerated() {
+            let subject: Lesson.Subject
+            switch index % 5 {
+            case 0: subject = .arithmetic
+            case 1: subject = .geometry
+            case 2: subject = .numberTheory
+            case 3: subject = .logicalThinking
+            default: subject = .combinatorics
+            }
+            
+            // Create random responses with some mistakes
+            var responses: [Lesson.QuestionResponse] = []
+            let questionIds = (0..<5).map { _ in UUID() }
+            
+            for qId in questionIds {
+                responses.append(Lesson.QuestionResponse(
+                    questionId: qId,
+                    isCorrect: Bool.random(),
+                    responseTime: Double.random(in: 10...60),
+                    answeredAt: Date()
+                ))
+            }
+            
+            let lesson = Lesson(
+                id: id,
+                userId: userViewModel.user.id,
+                subject: subject,
+                difficulty: Int.random(in: 1...3),
+                questions: questionIds,
+                responses: responses,
+                accuracy: Float.random(in: 0.5...1.0),
+                responseTime: Double.random(in: 100...600),
+                startedAt: Date().addingTimeInterval(-3600),
+                completedAt: Date(),
+                status: .completed
+            )
+            
+            mockLessons.append(lesson)
+        }
+        
+        return mockLessons
+    }
+    
+    // Format subject name
     private func formatSubject(_ subject: Lesson.Subject) -> String {
         switch subject {
         case .logicalThinking:
@@ -619,23 +448,7 @@ struct ReviewMistakesView: View {
         }
     }
     
-    // Format difficulty for display
-    private func formatDifficulty(_ difficulty: Int) -> String {
-        switch difficulty {
-        case 1:
-            return "Easy"
-        case 2:
-            return "Medium"
-        case 3:
-            return "Hard"
-        case 4:
-            return "Olympiad"
-        default:
-            return "Unknown"
-        }
-    }
-    
-    // Get subject color
+    // Get color for a subject
     private func subjectColor(_ subject: Lesson.Subject) -> Color {
         switch subject {
         case .logicalThinking:
@@ -651,28 +464,277 @@ struct ReviewMistakesView: View {
         }
     }
     
-    // Get difficulty color
-    private func difficultyColor(_ difficulty: Int) -> Color {
-        switch difficulty {
-        case 1:
-            return .green
-        case 2:
-            return .blue
-        case 3:
-            return .orange
-        case 4:
-            return .red
-        default:
-            return .gray
+    // Format date
+    private func formatDate(_ date: Date) -> String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter.string(from: date)
+    }
+    
+    // Computed property for filtered mistakes
+    private var filteredMistakes: [Question] {
+        mistakeQuestions.filter { question in
+            // Apply subject filter if selected
+            let subjectMatch = selectedSubject == nil || question.subject == selectedSubject
+            
+            // Apply search filter if text entered
+            let searchMatch = searchText.isEmpty || 
+                question.questionText.localizedCaseInsensitiveContains(searchText) ||
+                question.correctAnswer.localizedCaseInsensitiveContains(searchText)
+            
+            return subjectMatch && searchMatch
         }
     }
 }
 
-#Preview {
-    let user = User(
-        name: "Alex",
-        avatar: "avatar-1",
-        gradeLevel: 3
-    )
-    ReviewMistakesView(user: user)
+// Detail view for a mistake
+struct MistakeDetailView: View {
+    let question: Question
+    let userViewModel: UserViewModel
+    @Environment(\.presentationMode) var presentationMode
+    
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    // Subject and difficulty
+                    HStack {
+                        Text(formatSubject(question.subject))
+                            .font(.subheadline)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 6)
+                            .background(subjectColor(question.subject).opacity(0.2))
+                            .foregroundColor(subjectColor(question.subject))
+                            .cornerRadius(12)
+                        
+                        Spacer()
+                        
+                        // Difficulty stars
+                        HStack(spacing: 4) {
+                            ForEach(0..<question.difficulty, id: \.self) { _ in
+                                Image(systemName: "star.fill")
+                                    .foregroundColor(.yellow)
+                            }
+                            ForEach(0..<(3-question.difficulty), id: \.self) { _ in
+                                Image(systemName: "star")
+                                    .foregroundColor(.gray)
+                            }
+                        }
+                    }
+                    
+                    // Question text
+                    Text(question.questionText)
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.leading)
+                        .padding(.vertical, 8)
+                    
+                    // Question image if available
+                    if let imageData = question.imageData, let uiImage = UIImage(data: imageData) {
+                        Image(uiImage: uiImage)
+                            .resizable()
+                            .scaledToFit()
+                            .cornerRadius(10)
+                            .padding(.bottom, 10)
+                    }
+                    
+                    Divider()
+                    
+                    // Incorrect answer
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Your Answer")
+                            .font(.headline)
+                            .foregroundColor(.red)
+                        
+                        Text(getIncorrectAnswer(for: question) ?? "")
+                            .font(.body)
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(Color.red.opacity(0.1))
+                            .cornerRadius(10)
+                    }
+                    
+                    // Correct answer
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Correct Answer")
+                            .font(.headline)
+                            .foregroundColor(.green)
+                        
+                        Text(question.correctAnswer)
+                            .font(.body)
+                            .padding()
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(Color.green.opacity(0.1))
+                            .cornerRadius(10)
+                    }
+                    
+                    // Hint if available
+                    if let hint = question.hint, !hint.isEmpty {
+                        VStack(alignment: .leading, spacing: 8) {
+                            Text("Hint")
+                                .font(.headline)
+                                .foregroundColor(.blue)
+                            
+                            Text(hint)
+                                .font(.body)
+                                .padding()
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .background(Color.blue.opacity(0.1))
+                                .cornerRadius(10)
+                        }
+                    }
+                    
+                    // Related questions or concepts would go here
+                    
+                    // Practice button
+                    Button(action: {
+                        presentationMode.wrappedValue.dismiss()
+                        // Here you would navigate to practice similar questions
+                    }) {
+                        HStack {
+                            Image(systemName: "dumbbell.fill")
+                            Text("Practice Similar Questions")
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .foregroundColor(.white)
+                        .cornerRadius(10)
+                        .padding(.top, 10)
+                    }
+                }
+                .padding()
+            }
+            .navigationTitle("Mistake Details")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            }
+        }
+    }
+    
+    // Get incorrect answer from user history
+    private func getIncorrectAnswer(for question: Question) -> String? {
+        // Since QuestionResponse doesn't have a userAnswer property,
+        // we'll return a placeholder message
+        let mockLessons = getMockLessonsFromIds(userViewModel.user.completedLessons)
+        
+        for lesson in mockLessons {
+            for response in lesson.responses {
+                if response.questionId == question.id && !response.isCorrect {
+                    return "Unknown (response tracking only stores correctness)"
+                }
+            }
+        }
+        return nil
+    }
+    
+    // Helper method to convert lesson IDs to mock lessons
+    private func getMockLessonsFromIds(_ lessonIds: [UUID]) -> [Lesson] {
+        // In a real app, we would fetch these from a database or service
+        // For now, we'll create mock lessons
+        var mockLessons: [Lesson] = []
+        
+        for (index, id) in lessonIds.enumerated() {
+            let subject: Lesson.Subject
+            switch index % 5 {
+            case 0: subject = .arithmetic
+            case 1: subject = .geometry
+            case 2: subject = .numberTheory
+            case 3: subject = .logicalThinking
+            default: subject = .combinatorics
+            }
+            
+            // Create random responses with some mistakes
+            var responses: [Lesson.QuestionResponse] = []
+            let questionIds = (0..<5).map { _ in UUID() }
+            
+            for qId in questionIds {
+                responses.append(Lesson.QuestionResponse(
+                    questionId: qId,
+                    isCorrect: Bool.random(),
+                    responseTime: Double.random(in: 10...60),
+                    answeredAt: Date()
+                ))
+            }
+            
+            let lesson = Lesson(
+                id: id,
+                userId: userViewModel.user.id,
+                subject: subject,
+                difficulty: Int.random(in: 1...3),
+                questions: questionIds,
+                responses: responses,
+                accuracy: Float.random(in: 0.5...1.0),
+                responseTime: Double.random(in: 100...600),
+                startedAt: Date().addingTimeInterval(-3600),
+                completedAt: Date(),
+                status: .completed
+            )
+            
+            mockLessons.append(lesson)
+        }
+        
+        return mockLessons
+    }
+    
+    // Format subject name
+    private func formatSubject(_ subject: Lesson.Subject) -> String {
+        switch subject {
+        case .logicalThinking:
+            return "Logical Thinking"
+        case .arithmetic:
+            return "Arithmetic"
+        case .numberTheory:
+            return "Number Theory"
+        case .geometry:
+            return "Geometry"
+        case .combinatorics:
+            return "Combinatorics"
+        }
+    }
+    
+    // Get color for a subject
+    private func subjectColor(_ subject: Lesson.Subject) -> Color {
+        switch subject {
+        case .logicalThinking:
+            return .purple
+        case .arithmetic:
+            return .blue
+        case .numberTheory:
+            return .green
+        case .geometry:
+            return .orange
+        case .combinatorics:
+            return .red
+        }
+    }
+}
+
+struct ReviewMistakesView_Previews: PreviewProvider {
+    static var previews: some View {
+        let user = createSampleUser()
+        ReviewMistakesView(userViewModel: UserViewModel(user: user))
+    }
+    
+    static func createSampleUser() -> User {
+        // Create a User with proper initialization parameters
+        var user = User(
+            name: "Test User",
+            avatar: "avatar1",
+            gradeLevel: 3
+        )
+        
+        // Add sample completed lessons IDs
+        for _ in 0..<5 {
+            user.completedLessons.append(UUID())
+        }
+        
+        return user
+    }
 } 
