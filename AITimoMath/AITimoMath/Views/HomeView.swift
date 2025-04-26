@@ -9,29 +9,73 @@ struct HomeView: View {
     @State private var showingSettingsView = false
     @State private var showingReviewMistakes = false
     
-    // Mock recommended lesson for UI development using a simplified initialization
-    @State private var recommendedLesson = Lesson(
-        id: UUID(),
-        userId: UUID(),
-        subject: .arithmetic,
-        difficulty: 2,
-        questions: [],
-        responses: [],
-        accuracy: 0.0,
-        responseTime: 0.0,
-        startedAt: Date(),
-        completedAt: nil,
-        status: .notStarted
-    )
+    // Mock recommended lesson for UI development 
+    @State private var recommendedLesson: Lesson
     
     // For backward compatibility with simple preview methods
     init(user: User) {
         self.userViewModel = UserViewModel(user: user)
+        
+        // Initialize a recommended lesson with questions
+        var lesson = Lesson(
+            id: UUID(),
+            userId: user.id,
+            subject: .arithmetic,
+            difficulty: 2,
+            questions: [],
+            responses: [],
+            accuracy: 0.0,
+            responseTime: 0.0,
+            startedAt: Date(),
+            completedAt: nil,
+            status: .notStarted
+        )
+        
+        // Use string IDs that match the format in timo_questions.json
+        let timoQuestionIDs = [
+            "arithmetic-1", "arithmetic-2", "arithmetic-3", "arithmetic-4", "arithmetic-5",
+            "logical-1", "logical-2", "logical-3", "logical-4", "logical-5"
+        ]
+        
+        // Convert string IDs to UUIDs and add to lesson
+        for id in timoQuestionIDs {
+            lesson.questions.append(UUID(uuidString: id) ?? UUID())
+        }
+        
+        self._recommendedLesson = State(initialValue: lesson)
     }
     
     // For use with the ViewModel
     init(userViewModel: UserViewModel) {
         self.userViewModel = userViewModel
+        
+        // Initialize a recommended lesson with questions
+        var lesson = Lesson(
+            id: UUID(),
+            userId: userViewModel.user.id,
+            subject: .arithmetic,
+            difficulty: 2,
+            questions: [],
+            responses: [],
+            accuracy: 0.0,
+            responseTime: 0.0,
+            startedAt: Date(),
+            completedAt: nil,
+            status: .notStarted
+        )
+        
+        // Use string IDs that match the format in timo_questions.json
+        let timoQuestionIDs = [
+            "arithmetic-1", "arithmetic-2", "arithmetic-3", "arithmetic-4", "arithmetic-5",
+            "logical-1", "logical-2", "logical-3", "logical-4", "logical-5"
+        ]
+        
+        // Convert string IDs to UUIDs and add to lesson
+        for id in timoQuestionIDs {
+            lesson.questions.append(UUID(uuidString: id) ?? UUID())
+        }
+        
+        self._recommendedLesson = State(initialValue: lesson)
     }
     
     var body: some View {
@@ -64,8 +108,16 @@ struct HomeView: View {
                 }
             }
             .sheet(isPresented: $showingLessonView) {
-                // Lesson detail view would be shown here
-                Text("Lesson View")
+                NavigationView {
+                    if let subject = selectedSubject {
+                        // Create a lesson for the specific subject
+                        let lesson = createLessonForSubject(subject)
+                        LessonView(lesson: lesson, userViewModel: userViewModel, subjectFilter: subject)
+                    } else {
+                        // Use the recommended lesson if no subject is selected
+                        LessonView(lesson: recommendedLesson, userViewModel: userViewModel)
+                    }
+                }
             }
             .sheet(isPresented: $showingPerformanceView) {
                 PerformanceView(userViewModel: userViewModel)
@@ -170,7 +222,10 @@ struct HomeView: View {
             }
             
             // Start today's practice button
-            Button(action: { showingLessonView = true }) {
+            Button(action: { 
+                selectedSubject = nil  // Ensure we use the recommended lesson
+                showingLessonView = true 
+            }) {
                 Text("Start Today's Practice")
                     .font(.headline)
                     .foregroundColor(.white)
@@ -442,6 +497,43 @@ struct HomeView: View {
         default:
             return .gray
         }
+    }
+    
+    /// Creates a lesson for the selected subject with predefined questions
+    private func createLessonForSubject(_ subject: Lesson.Subject) -> Lesson {
+        // Create a new lesson with the given subject
+        var lesson = Lesson(
+            userId: userViewModel.user.id,
+            subject: subject
+        )
+        
+        // Set appropriate difficulty level
+        lesson.difficulty = 2 // Medium difficulty
+        
+        // Use string IDs that match the format in timo_questions.json
+        var timoQuestionIDs: [String] = []
+        
+        // Select appropriate question IDs based on the subject
+        switch subject {
+        case .arithmetic:
+            timoQuestionIDs = ["arithmetic-1", "arithmetic-2", "arithmetic-3", "arithmetic-4", "arithmetic-5"]
+        case .logicalThinking:
+            timoQuestionIDs = ["logical-1", "logical-2", "logical-3", "logical-4", "logical-5"]
+        case .geometry:
+            // For subjects without specific questions, we'll use a mix
+            timoQuestionIDs = ["geometry-1", "geometry-2", "arithmetic-3", "logical-3", "arithmetic-5"]
+        case .numberTheory:
+            timoQuestionIDs = ["number-theory-1", "number-theory-2", "arithmetic-4", "logical-4", "arithmetic-2"]
+        case .combinatorics:
+            timoQuestionIDs = ["combinatorics-1", "combinatorics-2", "arithmetic-1", "logical-5", "arithmetic-3"]
+        }
+        
+        // Convert string IDs to UUIDs and add to lesson
+        for id in timoQuestionIDs {
+            lesson.questions.append(UUID(uuidString: id) ?? UUID())
+        }
+        
+        return lesson
     }
 }
 

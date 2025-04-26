@@ -4894,7 +4894,7 @@
           }
         ],
         "correctAnswer": "B",
-        "explanation": "The pattern shows a sequence of farm animals: pig, cow, dog, pig, cow, dog, pig, dog, pig. Looking carefully at this sequence, we can observe that it follows a repeating pattern of pig, cow, dog, pig, cow, dog, etc. The next animal in this sequence should be a cow, which corresponds to option B.\nQuy luật cho thấy một dãy động vật nông trại: trâu, bò, chó, trâu, bò, chó, trâu, chó, trâu. Nhìn kỹ vào dãy này, chúng ta có thể quan sát thấy nó tuân theo một quy luật lặp lại của trâu, bò, chó, trâu, bò, chó, v.v. Vật nuôi tiếp theo trong dãy này phải là trâu, tương ứng với tùy chọn B.",
+        "explanation": "The pattern shows a sequence of farm animals: pig, cow, dog, pig, cow, dog, pig, dog, pig. Looking carefully at this sequence, we can observe that it follows a repeating pattern of pig, cow, dog, pig, cow, dog, etc. The next animal in this sequence should be a cow, which corresponds to option B.\nQuy luật cho thấy một dãy động vật nông trại: lợn, bò, chó, trâu, bò, chó, trâu, chó, trâu. Nhìn kỹ vào dãy này, chúng ta có thể quan sát thấy nó tuân theo một quy luật lặp lại của lợn, bò, chó, lợn, bò, chó, v.v. Vật nuôi tiếp theo trong dãy này phải là bò, tương ứng với tùy chọn B.",
         "imageData": "logical-27"
       },
       "metadata": {
