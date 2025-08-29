@@ -7,31 +7,27 @@ struct MistakesReviewView: View {
     @State private var selectedQuestion: Question?
     @State private var showingExplanation = false
     
-    // Function to load incorrect questions from the user's history
+    // Function to load incorrect questions from the user's actual history
     private func loadIncorrectQuestions() {
         isLoading = true
         
-        // In a real app, this would come from the user's history
-        // For now, we'll create some sample incorrect questions
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            // Create a sample of incorrect questions
-            let questionLoader = QuestionLoaderService()
-            let allSubjects = ["logical_thinking", "arithmetic", "number_theory", "geometry", "combinatorics"]
-            
-            var questions: [Question] = []
-            
-            // Get a few questions from each subject
-            for subject in allSubjects {
-                let subjectQuestions = questionLoader.getQuestions(
-                    subject: subject,
-                    difficulty: "2", // Medium difficulty
-                    count: 2
-                )
-                questions.append(contentsOf: subjectQuestions)
+        Task {
+            do {
+                // Load actual incorrect questions from user's lesson history
+                let performanceService = PerformanceService.shared
+                let questions = try await performanceService.loadIncorrectQuestions(userId: user.id)
+                
+                await MainActor.run {
+                    self.incorrectQuestions = questions
+                    self.isLoading = false
+                }
+            } catch {
+                print("Error loading incorrect questions: \(error)")
+                await MainActor.run {
+                    self.incorrectQuestions = []
+                    self.isLoading = false
+                }
             }
-            
-            self.incorrectQuestions = questions
-            self.isLoading = false
         }
     }
     

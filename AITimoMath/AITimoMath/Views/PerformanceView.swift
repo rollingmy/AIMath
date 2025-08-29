@@ -29,65 +29,62 @@ struct PerformanceView: View {
         }
     }
     
-    // Load performance data
+    // Load actual performance data
     private func loadPerformanceData() {
         isLoading = true
         
-        // This would normally load real performance data from a database
-        // For this implementation, we'll create some mock data
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            var performance: [SubjectPerformance] = []
-            
-            // Generate random performance data for each subject
-            for subject in subjects {
-                let accuracy = Double.random(in: 60.0...95.0)
-                let trend: SubjectPerformance.Trend
+        Task {
+            do {
+                // Load actual performance data from user's lesson history
+                let performanceService = PerformanceService.shared
+                let subjectData = try await performanceService.calculateSubjectPerformance(userId: user.id)
+                let weakAreas = try await performanceService.identifyWeakAreas(userId: user.id)
                 
-                // Randomly assign trend direction
-                let trendValue = Int.random(in: 0...2)
-                if trendValue == 0 {
-                    trend = .up
-                } else if trendValue == 1 {
-                    trend = .down
-                } else {
-                    trend = .stable
+                await MainActor.run {
+                    // Convert to SubjectPerformance format
+                    var performance: [SubjectPerformance] = []
+                    
+                    for subject in subjects {
+                        if let data = subjectData[subject] {
+                            // Determine trend based on recent performance vs overall
+                            let trend: SubjectPerformance.Trend
+                            if data.accuracy > 0.8 {
+                                trend = .up
+                            } else if data.accuracy < 0.6 {
+                                trend = .down
+                            } else {
+                                trend = .stable
+                            }
+                            
+                            performance.append(SubjectPerformance(
+                                subject: subject,
+                                accuracy: data.accuracy * 100, // Convert to percentage
+                                trend: trend
+                            ))
+                        } else {
+                            // No data for this subject, show 0% accuracy
+                            performance.append(SubjectPerformance(
+                                subject: subject,
+                                accuracy: 0.0,
+                                trend: .stable
+                            ))
+                        }
+                    }
+                    
+                    // Sort by accuracy (lowest first for improvement focus)
+                    self.subjectPerformance = performance.sorted(by: { $0.accuracy < $1.accuracy })
+                    self.weaknesses = weakAreas
+                    self.isLoading = false
                 }
-                
-                performance.append(SubjectPerformance(
-                    subject: subject,
-                    accuracy: accuracy,
-                    trend: trend
-                ))
-            }
-            
-            // Sort by accuracy (lowest first for improvement focus)
-            self.subjectPerformance = performance.sorted(by: { $0.accuracy < $1.accuracy })
-            
-            // Generate weaknesses based on lowest accuracy subjects
-            let lowestPerforming = subjectPerformance.prefix(2)
-            
-            var aiWeaknesses: [String] = []
-            
-            for subject in lowestPerforming {
-                if subject.subject == "Logical Thinking" {
-                    aiWeaknesses.append("Pattern Recognition and Logical Inference")
-                } else if subject.subject == "Arithmetic" {
-                    aiWeaknesses.append("Fractions and Division")
-                } else if subject.subject == "Number Theory" {
-                    aiWeaknesses.append("Prime Factorization and LCM/GCD")
-                } else if subject.subject == "Geometry" {
-                    aiWeaknesses.append("Area Calculation and Spatial Reasoning")
-                } else if subject.subject == "Combinatorics" {
-                    aiWeaknesses.append("Probability and Counting Principles")
+            } catch {
+                print("Error loading performance data: \(error)")
+                await MainActor.run {
+                    // Fallback to empty data if loading fails
+                    self.subjectPerformance = []
+                    self.weaknesses = []
+                    self.isLoading = false
                 }
             }
-            
-            // Add a few more general weaknesses
-            aiWeaknesses.append("Word Problem Comprehension")
-            aiWeaknesses.append("Multi-Step Problems")
-            
-            self.weaknesses = aiWeaknesses
-            self.isLoading = false
         }
     }
     
@@ -125,189 +122,134 @@ struct PerformanceView: View {
                         Text("Accuracy Trends")
                             .font(.headline)
                         
-                        // Mock progress chart
-                        ZStack(alignment: .leading) {
-                            // Create a grid background
-                            VStack(spacing: 0) {
-                                ForEach(0..<4) { _ in
-                                    Divider()
-                                    Spacer()
-                                }
-                            }
-                            
-                            // Create line chart with random data points
-                            GeometryReader { geometry in
-                                Path { path in
-                                    // Starting point
-                                    let startX = 0
-                                    let startY = Int.random(in: 100...Int(geometry.size.height - 50))
-                                    path.move(to: CGPoint(x: startX, y: startY))
+                        // Actual performance chart
+                        VStack(alignment: .leading, spacing: 8) {
+                            ForEach(subjectPerformance) { subject in
+                                HStack {
+                                    Text(subject.subject)
+                                        .font(.caption)
+                                        .frame(width: 120, alignment: .leading)
                                     
-                                    // Generate random points
-                                    let numberOfPoints = 8
-                                    let pointWidth = Int(geometry.size.width) / numberOfPoints
-                                    
-                                    for i in 1...numberOfPoints {
-                                        let nextX = i * pointWidth
-                                        let nextY = Int.random(in: 20...Int(geometry.size.height - 20))
-                                        path.addLine(to: CGPoint(x: nextX, y: nextY))
+                                    ZStack(alignment: .leading) {
+                                        Rectangle()
+                                            .frame(height: 8)
+                                            .foregroundColor(Color(.systemGray5))
+                                            .cornerRadius(4)
+                                        
+                                        Rectangle()
+                                            .frame(width: CGFloat(subject.accuracy / 100.0) * 200, height: 8)
+                                            .foregroundColor(getAccuracyColor(subject.accuracy))
+                                            .cornerRadius(4)
                                     }
-                                }
-                                .stroke(Color.blue, lineWidth: 2)
-                                
-                                // Add data points as circles
-                                ForEach(0..<8, id: \.self) { i in
-                                    let pointX = i * (Int(geometry.size.width) / 8)
-                                    let pointY = Int.random(in: 20...Int(geometry.size.height - 20))
                                     
-                                    Circle()
-                                        .fill(Color.blue)
-                                        .frame(width: 6, height: 6)
-                                        .position(x: CGFloat(pointX), y: CGFloat(pointY))
+                                    Text("\(Int(subject.accuracy))%")
+                                        .font(.caption)
+                                        .frame(width: 40)
+                                    
+                                    // Trend indicator
+                                    Image(systemName: getTrendIcon(subject.trend))
+                                        .font(.caption)
+                                        .foregroundColor(getTrendColor(subject.trend))
                                 }
                             }
                         }
-                        .frame(height: 200)
-                        .padding(.vertical)
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(12)
+                    }
+                    
+                    // MARK: - Weak Areas Section
+                    if !weaknesses.isEmpty {
+                        VStack(alignment: .leading, spacing: 10) {
+                            Text("Areas for Improvement")
+                                .font(.headline)
+                            
+                            VStack(alignment: .leading, spacing: 8) {
+                                ForEach(weaknesses, id: \.self) { weakness in
+                                    HStack {
+                                        Image(systemName: "exclamationmark.triangle")
+                                            .foregroundColor(.orange)
+                                            .font(.caption)
+                                        
+                                        Text(weakness)
+                                            .font(.subheadline)
+                                        
+                                        Spacer()
+                                    }
+                                    .padding(.vertical, 4)
+                                }
+                            }
+                            .padding()
+                            .background(Color(.systemGray6))
+                            .cornerRadius(12)
+                        }
+                    }
+                    
+                    // MARK: - Summary Statistics
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Summary")
+                            .font(.headline)
                         
-                        // X-axis labels
                         HStack {
-                            Text(getStartDateLabel())
-                                .font(.caption)
-                                .foregroundColor(.secondary)
+                            VStack(alignment: .leading) {
+                                Text("Total Questions")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                                Text("\(user.dailyCompletedQuestions)")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
+                            }
                             
                             Spacer()
                             
-                            Text(getEndDateLabel())
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(12)
-                    
-                    // MARK: - Subject Performance
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("Subject Performance")
-                            .font(.headline)
-                        
-                        ForEach(subjectPerformance) { subject in
-                            HStack {
-                                // Subject name
-                                Text(subject.subject)
-                                    .font(.subheadline)
-                                    .frame(width: 120, alignment: .leading)
-                                
-                                // Progress bar
-                                ZStack(alignment: .leading) {
-                                    Rectangle()
-                                        .frame(height: 10)
-                                        .foregroundColor(Color(.systemGray5))
-                                        .cornerRadius(5)
-                                    
-                                    Rectangle()
-                                        .frame(width: CGFloat(subject.accuracy / 100.0) * 180, height: 10)
-                                        .foregroundColor(getAccuracyColor(subject.accuracy))
-                                        .cornerRadius(5)
-                                }
-                                
-                                // Accuracy percentage
-                                Text("\(Int(subject.accuracy))%")
+                            VStack(alignment: .trailing) {
+                                Text("Daily Goal")
                                     .font(.caption)
-                                    .frame(width: 40)
-                                
-                                // Trend indicator
-                                Image(systemName: getTrendIcon(subject.trend))
-                                    .foregroundColor(getTrendColor(subject.trend))
+                                    .foregroundColor(.secondary)
+                                Text("\(user.dailyGoal)")
+                                    .font(.title2)
+                                    .fontWeight(.bold)
                             }
-                            .padding(.vertical, 5)
                         }
+                        .padding()
+                        .background(Color(.systemGray6))
+                        .cornerRadius(12)
                     }
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(12)
-                    
-                    // MARK: - AI-Detected Weaknesses
-                    VStack(alignment: .leading, spacing: 10) {
-                        Text("AI-Detected Improvement Areas")
-                            .font(.headline)
-                        
-                        ForEach(weaknesses, id: \.self) { weakness in
-                            HStack(alignment: .top) {
-                                Image(systemName: "exclamationmark.triangle.fill")
-                                    .foregroundColor(.orange)
-                                    .font(.caption)
-                                    .frame(width: 20)
-                                
-                                Text(weakness)
-                                    .font(.subheadline)
-                                
-                                Spacer()
-                            }
-                            .padding(.vertical, 5)
-                            
-                            if weakness != weaknesses.last {
-                                Divider()
-                            }
-                        }
-                        
-                        // Improvement session button
-                        Button(action: {
-                            // Action to start improvement session
-                        }) {
-                            HStack {
-                                Image(systemName: "arrow.up.circle.fill")
-                                Text("Start Improvement Session")
-                                    .fontWeight(.semibold)
-                            }
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .foregroundColor(.white)
-                            .cornerRadius(10)
-                            .padding(.top, 10)
-                        }
-                    }
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(12)
                 }
             }
             .padding()
         }
-        .navigationTitle("Performance Analytics")
+        .navigationTitle("Performance")
         .onAppear {
             loadPerformanceData()
         }
     }
     
-    // MARK: - Helper Functions
-    
-    // Get color based on accuracy
+    // Helper functions for UI
     private func getAccuracyColor(_ accuracy: Double) -> Color {
-        if accuracy >= 80 {
-            return .green
-        } else if accuracy >= 60 {
-            return .orange
-        } else {
+        switch accuracy {
+        case 0..<60:
             return .red
+        case 60..<80:
+            return .orange
+        case 80..<90:
+            return .yellow
+        default:
+            return .green
         }
     }
     
-    // Get icon for trend direction
     private func getTrendIcon(_ trend: SubjectPerformance.Trend) -> String {
         switch trend {
         case .up:
-            return "arrow.up"
+            return "arrow.up.circle.fill"
         case .down:
-            return "arrow.down"
+            return "arrow.down.circle.fill"
         case .stable:
-            return "arrow.forward"
+            return "minus.circle.fill"
         }
     }
     
-    // Get color for trend
     private func getTrendColor(_ trend: SubjectPerformance.Trend) -> Color {
         switch trend {
         case .up:
@@ -317,32 +259,6 @@ struct PerformanceView: View {
         case .stable:
             return .gray
         }
-    }
-    
-    // Get formatted date for x-axis start label
-    private func getStartDateLabel() -> String {
-        let calendar = Calendar.current
-        var date = Date()
-        
-        switch selectedTimeRange {
-        case .week:
-            date = calendar.date(byAdding: .day, value: -7, to: Date()) ?? Date()
-        case .month:
-            date = calendar.date(byAdding: .month, value: -1, to: Date()) ?? Date()
-        case .all:
-            date = calendar.date(byAdding: .month, value: -3, to: Date()) ?? Date()
-        }
-        
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        return formatter.string(from: date)
-    }
-    
-    // Get formatted date for x-axis end label
-    private func getEndDateLabel() -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "MMM d"
-        return formatter.string(from: Date())
     }
 }
 

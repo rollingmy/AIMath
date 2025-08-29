@@ -1,117 +1,145 @@
-# **AI Engine Documentation for Adaptive Learning Engine (TIMO Math Lessons)**
+# AI Engine Documentation
 
-## **1️⃣ Overview**
-📌 **Purpose:** This document defines the AI-driven components responsible for **adaptive learning, difficulty adjustments, and personalized question selection** in the **Adaptive Learning Engine for TIMO Math Lessons**.
+## Overview
+The AI Engine for TIMO Math Lessons provides intelligent learning experiences through adaptive difficulty, personalized recommendations, and performance analytics.
 
-✅ **Key AI Capabilities:**
-- **AI-driven lesson selection** based on student progress and performance history.
-- **Adaptive difficulty adjustments** using Elo Rating, Bayesian Knowledge Tracing (BKT), and Item Response Theory (IRT).
-- **Mistake analysis and reinforcement learning** to improve student performance over time.
+## Core Components
 
----
+### 1. PerformanceService
+**Location**: `AITimoMath/Services/PerformanceService.swift`
 
-## **2️⃣ AI Components & Architecture**
-📌 **Core AI Modules & Functions.**
+**Purpose**: Loads and analyzes actual user performance data from lesson history.
 
-### **2.1 AI Engine Architecture**
+**Key Features**:
+- Loads user's completed lesson history from CloudKit
+- Calculates subject-specific performance metrics
+- Identifies incorrect questions for review
+- Analyzes weak areas based on performance patterns
+
+**Main Methods**:
+- `loadUserLessonHistory(userId:)` - Retrieves completed lessons
+- `loadIncorrectQuestions(userId:)` - Gets questions user answered incorrectly
+- `calculateSubjectPerformance(userId:)` - Computes accuracy and response times per subject
+- `identifyWeakAreas(userId:)` - Determines areas needing improvement
+
+### 2. AdaptiveDifficultyEngine
+**Location**: `AITimoMath/Models/AIModels/AdaptiveDifficultyEngine.swift`
+
+**Purpose**: Dynamically adjusts question difficulty based on user performance.
+
+**Features**:
+- Real-time difficulty adjustment
+- Performance-based learning paths
+- Multi-algorithm approach (BKT, IRT, Elo)
+
+### 3. AILessonSelector
+**Location**: `AITimoMath/Models/AIModels/AILessonSelector.swift`
+
+**Purpose**: Recommends optimal lessons based on user progress and performance.
+
+**Features**:
+- Personalized lesson recommendations
+- Progress-based selection
+- Subject balance optimization
+
+### 4. StudentPerformanceTracker
+**Location**: `AITimoMath/Models/AIModels/StudentPerformanceTracker.swift`
+
+**Purpose**: Tracks and analyzes student performance over time.
+
+**Features**:
+- Performance trend analysis
+- Learning pattern recognition
+- Progress monitoring
+
+## Data Models
+
+### SubjectPerformanceData
+```swift
+public struct SubjectPerformanceData {
+    public let subject: String
+    public var totalQuestions: Int
+    public var correctAnswers: Int
+    public var accuracy: Double
+    public var averageResponseTime: TimeInterval
+    public var lessonsCompleted: Int
+}
 ```
-+--------------------+
-| Student Progress  |
-+--------------------+
-         |
-         v
-+--------------------+
-| AI Lesson Selector|
-+--------------------+
-         |
-         v
-+--------------------+
-| Adaptive Algorithm|
-+--------------------+
-         |
-         v
-+--------------------+
-| Question Bank     |
-+--------------------+
+
+### Lesson Model
+```swift
+public struct Lesson: Identifiable, Codable, Equatable {
+    public let id: UUID
+    public let userId: UUID
+    public let subject: Subject
+    public var difficulty: Int
+    public var questions: [UUID]
+    public var responses: [QuestionResponse]
+    public var accuracy: Float
+    public var responseTime: TimeInterval
+    public let startedAt: Date
+    public var completedAt: Date?
+    public var status: LessonStatus
+}
 ```
 
-### **2.2 Core AI Components**
-| **Module**              | **Functionality** |
-|------------------------|----------------|
-| **AI Lesson Selector** | Recommends next questions based on past performance. |
-| **Adaptive Algorithm** | Adjusts difficulty for future lessons based on user performance. |
-| **Error Analysis**     | Identifies mistakes and suggests reinforcement questions. |
-| **Data Processing**    | Stores and analyzes student learning patterns. |
+## Recent Improvements
 
----
+### 1. Real Data Integration
+- **Before**: Views showed mock/random data
+- **After**: All views now display actual user performance data
+- **Impact**: Users see their real progress and performance metrics
 
-## **3️⃣ AI Model Selection & Training**
-📌 **How the AI models are trained and optimized.**
+### 2. Performance Analytics
+- **DashboardView**: Shows actual daily progress based on `user.dailyCompletedQuestions` vs `user.dailyGoal`
+- **MistakesReviewView**: Displays questions the user actually answered incorrectly
+- **PerformanceView**: Shows real accuracy trends and weak areas
 
-### **3.1 AI Models Used**
-| **Algorithm** | **Purpose** |
-|-------------|------------|
-| **Elo Rating System** | Adjusts question difficulty in the next lesson based on correctness and response time. |
-| **Bayesian Knowledge Tracing (BKT)** | Predicts student proficiency and knowledge retention. |
-| **Item Response Theory (IRT)** | Assigns difficulty values to questions based on past student responses. |
+### 3. Data Persistence
+- All performance data is stored in CloudKit
+- Lesson history is maintained for analysis
+- User progress is tracked across sessions
 
-### **3.2 Model Training Process**
-1️⃣ **Data Collection** → TIMO exam datasets, real student interactions.  
-2️⃣ **Feature Engineering** → Extract performance metrics (accuracy, response time, weak areas).  
-3️⃣ **Model Training** → Train AI on historical student data for personalized recommendations.  
-4️⃣ **Evaluation & Optimization** → Fine-tune model weights for better prediction accuracy.  
+## Usage Examples
 
----
+### Loading User Performance
+```swift
+let performanceService = PerformanceService.shared
+let subjectData = try await performanceService.calculateSubjectPerformance(userId: user.id)
+let weakAreas = try await performanceService.identifyWeakAreas(userId: user.id)
+```
 
-## **4️⃣ Adaptive Learning Algorithm**
-📌 **How difficulty levels are adjusted dynamically.**
+### Getting Incorrect Questions
+```swift
+let incorrectQuestions = try await performanceService.loadIncorrectQuestions(userId: user.id)
+```
 
-### **4.1 Difficulty Adjustment Logic**
-✅ **Student performs well** → AI increases difficulty in the next session.  
-✅ **Student struggles** → AI suggests easier but related questions.  
-✅ **Consistently incorrect answers** → AI introduces reinforcement learning with hints.  
+## Integration Points
 
-### **4.2 Adaptive Learning Flow**
-1️⃣ **Lesson Completed** → AI records performance.  
-2️⃣ **AI Evaluates Trends** → Analyzes accuracy, speed, and weak areas.  
-3️⃣ **Difficulty Recalibration** → Updates question selection for the next session.  
-4️⃣ **New Lesson Generated** → AI selects a tailored question set.  
+### Views Using PerformanceService
+1. **DashboardView** - Shows daily progress and recommendations
+2. **MistakesReviewView** - Displays questions to review
+3. **PerformanceView** - Shows analytics and weak areas
 
----
+### Services Integration
+- **UserService** - Manages user data
+- **QuestionService** - Provides question data
+- **PersistenceController** - Handles CloudKit operations
 
-## **5️⃣ Data Flow & Integration**
-📌 **How AI interacts with the system.**
+## Future Enhancements
 
-### **5.1 Data Input Sources**
-| **Data Type** | **Source** |
-|-------------|------------|
-| Student Answers | Lesson Sessions |
-| Response Time | Recorded per question |
-| Accuracy Trends | Performance Tracking |
-| AI Adjustments | Difficulty Recalibration |
+1. **Advanced Analytics**
+   - Learning curve analysis
+   - Time-based performance patterns
+   - Subject correlation analysis
 
-### **5.2 AI Processing Steps**
-1️⃣ **Fetch Student Performance Data** → Retrieves accuracy, speed, mistakes.  
-2️⃣ **Run AI Model Predictions** → Determines next lesson difficulty.  
-3️⃣ **Generate Personalized Lesson Plan** → Selects appropriate questions.  
-4️⃣ **Store Adjustments in Database** → Updates student profile and lesson history.  
+2. **Predictive Modeling**
+   - Performance prediction
+   - Optimal study time recommendations
+   - Difficulty forecasting
 
----
-
-## **6️⃣ Security & Model Optimization**
-📌 **Ensuring fairness, accuracy, and student data privacy.**
-
-✅ **Bias Reduction:** AI is trained on diverse datasets to avoid question selection bias.  
-✅ **Data Encryption:** Student progress data is securely stored and anonymized.  
-✅ **Offline AI Processing:** CoreML enables on-device learning for privacy-friendly personalization.  
-✅ **Continuous Learning:** AI refines difficulty levels as more student data is collected.  
-
----
-
-## **7️⃣ Next Steps & Future Improvements**
-✅ **Refine AI recommendations based on real-world student performance.**  
-✅ **Improve response time tracking for enhanced difficulty adjustments.**  
-✅ **Expand reinforcement learning to enhance weak area improvement.**  
-
-📌 **Next Steps:** Implement AI model testing, optimize difficulty scaling, and fine-tune reinforcement learning.  
+3. **Personalization**
+   - Learning style adaptation
+   - Content recommendation engine
+   - Adaptive feedback systems
 
