@@ -126,7 +126,7 @@ extension Lesson {
         return record
     }
     
-    init?(from record: CKRecord) {
+    public init?(from record: CKRecord) {
         guard
             let idString = record["id"] as? String,
             let id = UUID(uuidString: idString),

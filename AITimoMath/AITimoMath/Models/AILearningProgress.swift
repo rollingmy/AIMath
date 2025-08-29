@@ -99,40 +99,32 @@ extension AILearningProgress {
     static let recordType = "AILearningProgress"
     
     func toRecord() -> CKRecord {
-        let record = CKRecord(recordType: AILearningProgress.recordType)
+        let record = CKRecord(recordType: Self.recordType)
         record["id"] = id.uuidString
         record["userId"] = userId.uuidString
-        
-        // Convert lesson history to dictionary for storage
-        let historyData = try? JSONEncoder().encode(lessonHistory)
-        record["lessonHistory"] = historyData
-        
-        // Convert weak areas to dictionary for storage
-        let weakAreasData = try? JSONEncoder().encode(weakAreas)
-        record["weakAreas"] = weakAreasData
-        
-        // Convert performance stats to dictionary for storage
-        let statsData = try? JSONEncoder().encode(performanceStats)
-        record["performanceStats"] = statsData
-        
+        record["lessonHistory"] = try? JSONEncoder().encode(lessonHistory)
+        record["weakAreas"] = try? JSONEncoder().encode(weakAreas)
         record["recommendedLessons"] = recommendedLessons.map { $0.uuidString }
         record["abilityLevel"] = abilityLevel
+        record["performanceStats"] = try? JSONEncoder().encode(performanceStats)
         record["lastUpdated"] = lastUpdated
         return record
     }
     
-    init?(from record: CKRecord) {
+    public init?(from record: CKRecord) {
         guard
             let idString = record["id"] as? String,
             let id = UUID(uuidString: idString),
             let userIdString = record["userId"] as? String,
             let userId = UUID(uuidString: userIdString),
-            let historyData = record["lessonHistory"] as? Data,
+            let lessonHistoryData = record["lessonHistory"] as? Data,
+            let lessonHistory = try? JSONDecoder().decode([LessonProgress].self, from: lessonHistoryData),
             let weakAreasData = record["weakAreas"] as? Data,
-            let recommendedStrings = record["recommendedLessons"] as? [String],
-            let lastUpdated = record["lastUpdated"] as? Date,
-            let lessonHistory = try? JSONDecoder().decode([LessonProgress].self, from: historyData),
-            let weakAreas = try? JSONDecoder().decode([WeakArea].self, from: weakAreasData)
+            let weakAreas = try? JSONDecoder().decode([WeakArea].self, from: weakAreasData),
+            let recommendedLessonStrings = record["recommendedLessons"] as? [String],
+            let statsData = record["performanceStats"] as? Data,
+            let performanceStats = try? JSONDecoder().decode(PerformanceStats.self, from: statsData),
+            let lastUpdated = record["lastUpdated"] as? Date
         else {
             return nil
         }
@@ -141,17 +133,9 @@ extension AILearningProgress {
         self.userId = userId
         self.lessonHistory = lessonHistory
         self.weakAreas = weakAreas
-        self.recommendedLessons = recommendedStrings.compactMap { UUID(uuidString: $0) }
+        self.recommendedLessons = recommendedLessonStrings.compactMap { UUID(uuidString: $0) }
         self.abilityLevel = record["abilityLevel"] as? Float ?? 0.0
-        
-        // Load performance stats if available, otherwise create new
-        if let statsData = record["performanceStats"] as? Data,
-           let stats = try? JSONDecoder().decode(PerformanceStats.self, from: statsData) {
-            self.performanceStats = stats
-        } else {
-            self.performanceStats = PerformanceStats()
-        }
-        
+        self.performanceStats = performanceStats
         self.lastUpdated = lastUpdated
     }
 }

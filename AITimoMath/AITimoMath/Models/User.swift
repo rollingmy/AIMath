@@ -1,35 +1,119 @@
 import Foundation
 import CloudKit
+import Combine
 
 /// User model representing a student in the TIMO Math Lessons app
 /// Conforms to necessary protocols for CloudKit sync and secure data handling
-public struct User: Identifiable, Codable, Equatable {
+public class User: Identifiable, Codable, Equatable, ObservableObject {
     /// Unique identifier for the user
     public let id: UUID
     
     /// Student's display name (encrypted when stored)
-    public var name: String
+    @Published public var name: String
     
     /// Avatar image identifier
-    public var avatar: String
+    @Published public var avatar: String
     
     /// Student's grade level (1-6 for primary school)
-    public var gradeLevel: Int
+    @Published public var gradeLevel: Int
     
     /// Daily learning goal (number of questions per session)
-    public var learningGoal: Int
+    @Published public var learningGoal: Int
     
     /// Current difficulty level setting
-    public var difficultyLevel: DifficultyLevel
+    @Published public var difficultyLevel: DifficultyLevel
     
     /// Array of completed lesson IDs
-    public var completedLessons: [UUID]
+    @Published public var completedLessons: [UUID]
     
     /// Timestamp of last activity
-    public var lastActiveAt: Date
+    @Published public var lastActiveAt: Date
     
     /// Creation timestamp
     public let createdAt: Date
+    
+    // Additional properties referenced in the code
+    @Published public var dailyGoal: Int
+    @Published public var dailyCompletedQuestions: Int
+    
+    // Define CodingKeys to handle @Published properties
+    private enum CodingKeys: String, CodingKey {
+        case id, name, avatar, gradeLevel, learningGoal, difficultyLevel, completedLessons, lastActiveAt, createdAt, dailyGoal, dailyCompletedQuestions
+    }
+    
+    // Required for Equatable
+    public static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.id == rhs.id &&
+               lhs.name == rhs.name &&
+               lhs.avatar == rhs.avatar &&
+               lhs.gradeLevel == rhs.gradeLevel &&
+               lhs.learningGoal == rhs.learningGoal &&
+               lhs.difficultyLevel == rhs.difficultyLevel &&
+               lhs.completedLessons == rhs.completedLessons &&
+               lhs.lastActiveAt == rhs.lastActiveAt &&
+               lhs.createdAt == rhs.createdAt &&
+               lhs.dailyGoal == rhs.dailyGoal &&
+               lhs.dailyCompletedQuestions == rhs.dailyCompletedQuestions
+    }
+    
+    // Custom encoder to handle @Published properties
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(name, forKey: .name)
+        try container.encode(avatar, forKey: .avatar)
+        try container.encode(gradeLevel, forKey: .gradeLevel)
+        try container.encode(learningGoal, forKey: .learningGoal)
+        try container.encode(difficultyLevel, forKey: .difficultyLevel)
+        try container.encode(completedLessons, forKey: .completedLessons)
+        try container.encode(lastActiveAt, forKey: .lastActiveAt)
+        try container.encode(createdAt, forKey: .createdAt)
+        try container.encode(dailyGoal, forKey: .dailyGoal)
+        try container.encode(dailyCompletedQuestions, forKey: .dailyCompletedQuestions)
+    }
+    
+    // Custom initializer for Codable
+    public required init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        avatar = try container.decode(String.self, forKey: .avatar)
+        gradeLevel = try container.decode(Int.self, forKey: .gradeLevel)
+        learningGoal = try container.decode(Int.self, forKey: .learningGoal)
+        difficultyLevel = try container.decode(DifficultyLevel.self, forKey: .difficultyLevel)
+        completedLessons = try container.decode([UUID].self, forKey: .completedLessons)
+        lastActiveAt = try container.decode(Date.self, forKey: .lastActiveAt)
+        createdAt = try container.decode(Date.self, forKey: .createdAt)
+        dailyGoal = try container.decodeIfPresent(Int.self, forKey: .dailyGoal) ?? 10
+        dailyCompletedQuestions = try container.decodeIfPresent(Int.self, forKey: .dailyCompletedQuestions) ?? 0
+    }
+    
+    /// Designated initializer with all properties
+    public init(
+        id: UUID,
+        name: String,
+        avatar: String,
+        gradeLevel: Int,
+        learningGoal: Int,
+        difficultyLevel: DifficultyLevel,
+        completedLessons: [UUID],
+        lastActiveAt: Date,
+        createdAt: Date,
+        dailyGoal: Int,
+        dailyCompletedQuestions: Int
+    ) {
+        self.id = id
+        self.name = name
+        self.avatar = avatar
+        self.gradeLevel = gradeLevel
+        self.learningGoal = learningGoal
+        self.difficultyLevel = difficultyLevel
+        self.completedLessons = completedLessons
+        self.lastActiveAt = lastActiveAt
+        self.createdAt = createdAt
+        self.dailyGoal = dailyGoal
+        self.dailyCompletedQuestions = dailyCompletedQuestions
+    }
 }
 
 // MARK: - Supporting Types
@@ -42,20 +126,26 @@ extension User {
     }
     
     /// Convenience initialization with default values
-    public init(
+    public convenience init(
         name: String,
         avatar: String,
-        gradeLevel: Int
+        gradeLevel: Int,
+        dailyGoal: Int = 10,
+        dailyCompletedQuestions: Int = 0
     ) {
-        self.id = UUID()
-        self.name = name
-        self.avatar = avatar
-        self.gradeLevel = gradeLevel
-        self.learningGoal = 10 // Default 10 questions per session
-        self.difficultyLevel = .adaptive
-        self.completedLessons = []
-        self.lastActiveAt = Date()
-        self.createdAt = Date()
+        self.init(
+            id: UUID(),
+            name: name,
+            avatar: avatar,
+            gradeLevel: gradeLevel,
+            learningGoal: 10,
+            difficultyLevel: .adaptive,
+            completedLessons: [],
+            lastActiveAt: Date(),
+            createdAt: Date(),
+            dailyGoal: dailyGoal,
+            dailyCompletedQuestions: dailyCompletedQuestions
+        )
     }
 }
 
@@ -76,11 +166,13 @@ extension User {
         record["completedLessons"] = completedLessons.map { $0.uuidString }
         record["lastActiveAt"] = lastActiveAt
         record["createdAt"] = createdAt
+        record["dailyGoal"] = dailyGoal
+        record["dailyCompletedQuestions"] = dailyCompletedQuestions
         return record
     }
     
     /// Creates User model from CloudKit record
-    init?(from record: CKRecord) {
+    public convenience init?(from record: CKRecord) {
         guard
             let idString = record["id"] as? String,
             let id = UUID(uuidString: idString),
@@ -97,15 +189,23 @@ extension User {
             return nil
         }
         
-        self.id = id
-        self.name = name
-        self.avatar = avatar
-        self.gradeLevel = gradeLevel
-        self.learningGoal = learningGoal
-        self.difficultyLevel = difficultyLevel
-        self.completedLessons = completedLessonStrings.compactMap { UUID(uuidString: $0) }
-        self.lastActiveAt = lastActiveAt
-        self.createdAt = createdAt
+        let completedLessons = completedLessonStrings.compactMap { UUID(uuidString: $0) }
+        let dailyGoal = record["dailyGoal"] as? Int ?? 10
+        let dailyCompletedQuestions = record["dailyCompletedQuestions"] as? Int ?? 0
+        
+        self.init(
+            id: id,
+            name: name,
+            avatar: avatar,
+            gradeLevel: gradeLevel,
+            learningGoal: learningGoal,
+            difficultyLevel: difficultyLevel,
+            completedLessons: completedLessons,
+            lastActiveAt: lastActiveAt,
+            createdAt: createdAt,
+            dailyGoal: dailyGoal,
+            dailyCompletedQuestions: dailyCompletedQuestions
+        )
     }
 }
 
@@ -157,12 +257,12 @@ extension User {
 // MARK: - Analytics
 extension User {
     /// Track user activity for analytics
-    mutating func trackActivity() {
+    func trackActivity() {
         self.lastActiveAt = Date()
     }
     
     /// Add completed lesson
-    mutating func addCompletedLesson(_ lessonId: UUID) {
+    func addCompletedLesson(_ lessonId: UUID) {
         if !completedLessons.contains(lessonId) {
             completedLessons.append(lessonId)
             trackActivity()
@@ -176,13 +276,13 @@ extension User {
     }
     
     /// Update user's difficulty level based on performance
-    mutating func updateDifficultyLevel(_ newLevel: DifficultyLevel) {
+    func updateDifficultyLevel(_ newLevel: DifficultyLevel) {
         self.difficultyLevel = newLevel
         trackActivity()
     }
     
     /// Update learning goal
-    mutating func updateLearningGoal(_ newGoal: Int) throws {
+    func updateLearningGoal(_ newGoal: Int) throws {
         guard (5...50).contains(newGoal) else {
             throw ValidationError.invalidLearningGoal
         }

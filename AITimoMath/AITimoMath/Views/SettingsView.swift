@@ -1,243 +1,370 @@
 import SwiftUI
 
-/// Settings and customization view
 struct SettingsView: View {
-    @ObservedObject var userViewModel: UserViewModel
-    @Environment(\.dismiss) private var dismiss
+    @ObservedObject var user: User
+    @AppStorage("enableAIHints") private var enableAIHints = true
+    @AppStorage("difficultyMode") private var difficultyMode = "Adaptive"
+    @AppStorage("enableNotifications") private var enableNotifications = true
+    @AppStorage("darkMode") private var darkMode = false
+    @AppStorage("isOnboarded") private var isOnboarded = true
     
-    // UI state
-    @State private var enableAIHints = true
-    @State private var difficultyLevel = "adaptive"
-    @State private var enableNotifications = true
-    @State private var studyReminders = true
-    @State private var studyReminderTime = Date()
-    @State private var enableDarkMode = false
-    @State private var showLogoutConfirmation = false
-    @State private var showResetConfirmation = false
-    
-    // Difficulty options
-    private let difficultyOptions = ["beginner", "adaptive", "advanced"]
-    
-    // For backward compatibility with simple preview methods
-    init(user: User) {
-        self.userViewModel = UserViewModel(user: user)
-        self._difficultyLevel = State(initialValue: user.difficultyLevel.rawValue)
-    }
-    
-    // For use with the ViewModel
-    init(userViewModel: UserViewModel) {
-        self.userViewModel = userViewModel
-        self._difficultyLevel = State(initialValue: userViewModel.user.difficultyLevel.rawValue)
-    }
+    // Sample difficulty options
+    private let difficultyOptions = ["Beginner", "Adaptive", "Advanced"]
     
     var body: some View {
-        NavigationView {
-            Form {
-                // Learning preferences section
-                Section(header: Text("Learning Preferences")) {
-                    // AI hints toggle
-                    Toggle("Enable AI Hints", isOn: $enableAIHints)
-                        .tint(.blue)
+        Form {
+            // User Profile Section
+            Section(header: Text("Profile")) {
+                HStack {
+                    Image(user.avatar)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 60, height: 60)
+                        .clipShape(Circle())
                     
-                    // Difficulty level picker
-                    Picker("Difficulty Level", selection: $difficultyLevel) {
-                        Text("Beginner").tag("beginner")
-                        Text("Adaptive (AI)").tag("adaptive")
-                        Text("Advanced").tag("advanced")
-                    }
-                    .pickerStyle(.menu)
-                }
-                
-                // Notifications section
-                Section(header: Text("Notifications")) {
-                    Toggle("Enable Notifications", isOn: $enableNotifications)
-                        .tint(.blue)
-                    
-                    if enableNotifications {
-                        Toggle("Daily Study Reminders", isOn: $studyReminders)
-                            .tint(.blue)
+                    VStack(alignment: .leading, spacing: 5) {
+                        Text(user.name)
+                            .font(.headline)
                         
-                        if studyReminders {
-                            DatePicker("Reminder Time", selection: $studyReminderTime, displayedComponents: .hourAndMinute)
-                        }
-                    }
-                }
-                
-                // Appearance section
-                Section(header: Text("Appearance")) {
-                    Toggle("Dark Mode", isOn: $enableDarkMode)
-                        .tint(.blue)
-                    
-                    // Font size slider would go here
-                    VStack(alignment: .leading) {
-                        Text("Text Size")
-                        
-                        HStack {
-                            Text("A")
-                                .font(.caption)
-                            
-                            Slider(value: .constant(0.5), in: 0...1)
-                                .tint(.blue)
-                            
-                            Text("A")
-                                .font(.title)
-                        }
-                    }
-                }
-                
-                // Account section
-                Section(header: Text("Account")) {
-                    // Profile info display
-                    HStack {
-                        Image(userViewModel.user.avatar)
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 50, height: 50)
-                            .clipShape(Circle())
-                        
-                        VStack(alignment: .leading) {
-                            Text(userViewModel.user.name)
-                                .font(.headline)
-                            Text("Grade \(userViewModel.user.gradeLevel)")
-                                .font(.subheadline)
-                                .foregroundColor(.secondary)
-                        }
-                        
-                        Spacer()
-                        
-                        Button("Edit") {
-                            // Would show profile edit view
-                        }
-                        .foregroundColor(.blue)
-                    }
-                    
-                    // Parent controls (would be password protected in a real app)
-                    NavigationLink(destination: Text("Parent Controls")) {
-                        Label("Parent Controls", systemImage: "lock.fill")
-                    }
-                    
-                    // Logout button
-                    Button(action: {
-                        showLogoutConfirmation = true
-                    }) {
-                        HStack {
-                            Spacer()
-                            Text("Log Out")
-                                .foregroundColor(.red)
-                            Spacer()
-                        }
-                    }
-                    
-                    // Reset data button
-                    Button(action: {
-                        showResetConfirmation = true
-                    }) {
-                        HStack {
-                            Spacer()
-                            Text("Reset Learning Data")
-                                .foregroundColor(.red)
-                            Spacer()
-                        }
-                    }
-                }
-                
-                // About section
-                Section(header: Text("About")) {
-                    HStack {
-                        Text("Version")
-                        Spacer()
-                        Text("1.0.0")
+                        Text("Grade \(user.gradeLevel)")
+                            .font(.subheadline)
                             .foregroundColor(.secondary)
                     }
                     
-                    NavigationLink(destination: Text("Privacy Policy")) {
-                        Text("Privacy Policy")
-                    }
+                    Spacer()
                     
-                    NavigationLink(destination: Text("Terms of Use")) {
-                        Text("Terms of Use")
-                    }
-                    
-                    NavigationLink(destination: Text("Help & Support")) {
-                        Text("Help & Support")
+                    NavigationLink(destination: EditProfileView(user: user)) {
+                        Text("Edit")
+                            .font(.subheadline)
+                            .foregroundColor(.blue)
                     }
                 }
+                .padding(.vertical, 8)
             }
-            .navigationTitle("Settings")
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Save") {
-                        saveSettings()
-                        dismiss()
+            
+            // Learning Preferences
+            Section(header: Text("Learning Preferences")) {
+                // AI Hints Toggle
+                Toggle(isOn: $enableAIHints) {
+                    Label {
+                        Text("Enable AI Hints")
+                    } icon: {
+                        Image(systemName: "lightbulb.fill")
+                            .foregroundColor(.yellow)
                     }
                 }
                 
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Cancel") {
-                        dismiss()
+                // Difficulty Mode
+                HStack {
+                    Label {
+                        Text("Difficulty Level")
+                    } icon: {
+                        Image(systemName: "chart.bar.fill")
+                            .foregroundColor(.orange)
+                    }
+                    
+                    Spacer()
+                    
+                    Picker("", selection: $difficultyMode) {
+                        ForEach(difficultyOptions, id: \.self) { option in
+                            Text(option).tag(option)
+                        }
+                    }
+                    .pickerStyle(MenuPickerStyle())
+                }
+                
+                // Daily Goal
+                HStack {
+                    Label {
+                        Text("Daily Goal")
+                    } icon: {
+                        Image(systemName: "target")
+                            .foregroundColor(.red)
+                    }
+                    
+                    Spacer()
+                    
+                    Stepper("\(user.dailyGoal) questions", value: Binding(
+                        get: { user.dailyGoal },
+                        set: { user.dailyGoal = $0 }
+                    ), in: 3...20)
+                }
+            }
+            
+            // App Settings
+            Section(header: Text("App Settings")) {
+                // Notifications
+                Toggle(isOn: $enableNotifications) {
+                    Label {
+                        Text("Notifications")
+                    } icon: {
+                        Image(systemName: "bell.fill")
+                            .foregroundColor(.blue)
+                    }
+                }
+                
+                // Dark Mode
+                Toggle(isOn: $darkMode) {
+                    Label {
+                        Text("Dark Mode")
+                    } icon: {
+                        Image(systemName: "moon.fill")
+                            .foregroundColor(.purple)
+                    }
+                }
+                
+                // Notification settings (only if notifications are enabled)
+                if enableNotifications {
+                    NavigationLink(destination: NotificationSettingsView()) {
+                        Label {
+                            Text("Manage Notifications")
+                        } icon: {
+                            Image(systemName: "bell.badge.fill")
+                                .foregroundColor(.blue)
+                        }
                     }
                 }
             }
-            .alert("Log Out", isPresented: $showLogoutConfirmation) {
-                Button("Cancel", role: .cancel) { }
-                Button("Log Out", role: .destructive) {
-                    // Perform logout
+            
+            // Support & Info
+            Section(header: Text("Support & Info")) {
+                NavigationLink(destination: PrivacyPolicyView()) {
+                    Label {
+                        Text("Privacy Policy")
+                    } icon: {
+                        Image(systemName: "lock.fill")
+                            .foregroundColor(.gray)
+                    }
                 }
-            } message: {
-                Text("Are you sure you want to log out?")
-            }
-            .alert("Reset Learning Data", isPresented: $showResetConfirmation) {
-                Button("Cancel", role: .cancel) { }
-                Button("Reset", role: .destructive) {
-                    // Reset all learning data
+                
+                NavigationLink(destination: TermsOfServiceView()) {
+                    Label {
+                        Text("Terms of Service")
+                    } icon: {
+                        Image(systemName: "doc.text.fill")
+                            .foregroundColor(.gray)
+                    }
                 }
-            } message: {
-                Text("This will reset all your learning progress and cannot be undone. Are you sure?")
+                
+                NavigationLink(destination: AboutView()) {
+                    Label {
+                        Text("About App")
+                    } icon: {
+                        Image(systemName: "info.circle.fill")
+                            .foregroundColor(.gray)
+                    }
+                }
+            }
+            
+            // Account Actions
+            Section {
+                Button(action: {
+                    // Reset onboarding flag to show onboarding again
+                    isOnboarded = false
+                }) {
+                    HStack {
+                        Spacer()
+                        
+                        Text("Restart Onboarding")
+                            .foregroundColor(.orange)
+                        
+                        Spacer()
+                    }
+                }
+                
+                Button(action: {
+                    // In a real app, this would log out the user
+                }) {
+                    HStack {
+                        Spacer()
+                        
+                        Text("Log Out")
+                            .foregroundColor(.red)
+                        
+                        Spacer()
+                    }
+                }
             }
         }
-    }
-    
-    private func saveSettings() {
-        // Convert difficultyLevel string to enum
-        if let difficultyEnum = User.DifficultyLevel(rawValue: difficultyLevel) {
-            // In a real app, we would update the user and save changes
-            // This is a placeholder for demo purposes
-        }
-        
-        // Save notification preferences
-        if enableNotifications && studyReminders {
-            // Schedule notifications
-            scheduleStudyReminder()
-        } else {
-            // Cancel existing notifications
-            cancelStudyReminders()
-        }
-        
-        // Apply dark mode if needed
-        applyAppearanceSettings()
-    }
-    
-    private func scheduleStudyReminder() {
-        // This would use UNUserNotificationCenter to schedule notifications
-        // For demo purposes, this is a placeholder
-    }
-    
-    private func cancelStudyReminders() {
-        // This would use UNUserNotificationCenter to cancel notifications
-        // For demo purposes, this is a placeholder
-    }
-    
-    private func applyAppearanceSettings() {
-        // This would apply app-wide appearance settings
-        // For demo purposes, this is a placeholder
+        .navigationTitle("Settings")
     }
 }
 
-#Preview {
-    let user = User(
-        name: "Alex",
-        avatar: "avatar-1",
-        gradeLevel: 3
-    )
-    SettingsView(user: user)
+// MARK: - EditProfileView
+struct EditProfileView: View {
+    @ObservedObject var user: User
+    @State private var name: String
+    @State private var selectedGrade: Int
+    @State private var selectedAvatar: String
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    // Initialize with user's current values
+    init(user: User) {
+        self.user = user
+        _name = State(initialValue: user.name)
+        _selectedGrade = State(initialValue: user.gradeLevel)
+        _selectedAvatar = State(initialValue: user.avatar)
+    }
+    
+    // List of available avatars
+    private let avatars = ["avatar-1", "avatar-2", "avatar-3", "avatar-4", "avatar-5", "avatar-6"]
+    
+    var body: some View {
+        Form {
+            Section(header: Text("Profile Information")) {
+                TextField("Name", text: $name)
+                
+                Picker("Grade Level", selection: $selectedGrade) {
+                    ForEach(1...6, id: \.self) { grade in
+                        Text("Grade \(grade)").tag(grade)
+                    }
+                }
+            }
+            
+            Section(header: Text("Avatar")) {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: 80))], spacing: 15) {
+                    ForEach(avatars, id: \.self) { avatar in
+                        Image(avatar)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 70, height: 70)
+                            .background(selectedAvatar == avatar ? Color.blue.opacity(0.3) : Color.clear)
+                            .clipShape(Circle())
+                            .overlay(
+                                Circle()
+                                    .stroke(selectedAvatar == avatar ? Color.blue : Color.clear, lineWidth: 3)
+                            )
+                            .onTapGesture {
+                                selectedAvatar = avatar
+                            }
+                    }
+                }
+                .padding(.vertical)
+            }
+            
+            Section {
+                Button(action: saveChanges) {
+                    HStack {
+                        Spacer()
+                        Text("Save Changes")
+                            .foregroundColor(.white)
+                        Spacer()
+                    }
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(10)
+                }
+                .buttonStyle(PlainButtonStyle())
+                .listRowInsets(EdgeInsets())
+            }
+        }
+        .navigationTitle("Edit Profile")
+    }
+    
+    private func saveChanges() {
+        // Update user properties
+        user.name = name
+        user.gradeLevel = selectedGrade
+        user.avatar = selectedAvatar
+        
+        // Dismiss view
+        presentationMode.wrappedValue.dismiss()
+    }
+}
+
+// MARK: - Placeholder Views
+struct NotificationSettingsView: View {
+    var body: some View {
+        Form {
+            Toggle("Daily Reminders", isOn: .constant(true))
+            Toggle("Weekly Summary", isOn: .constant(true))
+            Toggle("Achievement Alerts", isOn: .constant(true))
+        }
+        .navigationTitle("Notification Settings")
+    }
+}
+
+struct PrivacyPolicyView: View {
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 15) {
+                Text("Privacy Policy")
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                Text("This is a placeholder for the privacy policy content.")
+                    .font(.body)
+                
+                Text("In a real app, this would contain detailed information about how user data is collected, stored, and used, in compliance with GDPR, CCPA, and COPPA regulations.")
+                    .font(.body)
+            }
+            .padding()
+        }
+        .navigationTitle("Privacy Policy")
+    }
+}
+
+struct TermsOfServiceView: View {
+    var body: some View {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 15) {
+                Text("Terms of Service")
+                    .font(.title)
+                    .fontWeight(.bold)
+                
+                Text("This is a placeholder for the terms of service content.")
+                    .font(.body)
+                
+                Text("In a real app, this would contain detailed information about the terms of using the app, user responsibilities, and other legal information.")
+                    .font(.body)
+            }
+            .padding()
+        }
+        .navigationTitle("Terms of Service")
+    }
+}
+
+struct AboutView: View {
+    var body: some View {
+        VStack(spacing: 20) {
+            Image("app-logo") // Placeholder for app logo
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 100, height: 100)
+            
+            Text("TIMO Math")
+                .font(.title)
+                .fontWeight(.bold)
+            
+            Text("Version 1.0.0")
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            
+            Text("TIMO Math is an AI-powered adaptive learning platform designed to help elementary school students improve their math skills through personalized lessons.")
+                .font(.body)
+                .multilineTextAlignment(.center)
+                .padding()
+            
+            Spacer()
+        }
+        .padding()
+        .navigationTitle("About")
+    }
+}
+
+// MARK: - Preview
+struct SettingsView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
+            SettingsView(
+                user: User(
+                    name: "Alex",
+                    avatar: "avatar-1",
+                    gradeLevel: 5,
+                    dailyGoal: 10
+                )
+            )
+        }
+    }
 } 

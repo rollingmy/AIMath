@@ -204,31 +204,6 @@ extension Question {
         self.hint = nil
         self.imageData = nil
     }
-    
-    /// Full initialization with all parameters
-    public init(
-        id: UUID,
-        subject: Lesson.Subject,
-        difficulty: Int,
-        type: QuestionType,
-        questionText: String,
-        options: [QuestionOption]?,
-        correctAnswer: String,
-        hint: String? = nil,
-        imageData: Data? = nil,
-        metadata: [String: Any]? = nil
-    ) {
-        self.id = id
-        self.subject = subject
-        self.difficulty = difficulty
-        self.type = type
-        self.questionText = questionText
-        self.options = options
-        self.correctAnswer = correctAnswer
-        self.hint = hint
-        self.imageData = imageData
-        self.metadata = metadata
-    }
 }
 
 // MARK: - CloudKit Integration
@@ -285,7 +260,7 @@ extension Question {
     }
     
     /// Creates Question model from CloudKit record
-    init?(from record: CKRecord) {
+    public init?(from record: CKRecord) {
         guard
             let idString = record["id"] as? String,
             let id = UUID(uuidString: idString),
