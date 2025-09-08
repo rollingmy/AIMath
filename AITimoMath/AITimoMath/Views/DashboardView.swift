@@ -53,25 +53,23 @@ struct DashboardView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 20) {
-                    // MARK: - Top Section
-                    topSection
-                    
-                    // MARK: - Middle Section (Subject Categories)
-                    middleSection
-                    
-                    // MARK: - Bottom Section (Progress & Achievements)
-                    bottomSection
-                }
-                .padding()
+        ScrollView {
+            VStack(spacing: 20) {
+                // MARK: - Top Section
+                topSection
+                
+                // MARK: - Middle Section (Subject Categories)
+                middleSection
+                
+                // MARK: - Bottom Section (Progress & Achievements)
+                bottomSection
             }
-            .navigationTitle("Dashboard")
-            .navigationBarItems(trailing: profileButton)
-            .onAppear {
-                loadRecommendedLessons()
-            }
+            .padding()
+        }
+        .navigationTitle("Dashboard")
+        .navigationBarItems(trailing: profileButton)
+        .onAppear {
+            loadRecommendedLessons()
         }
     }
     
