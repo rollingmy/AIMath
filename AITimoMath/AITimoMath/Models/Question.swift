@@ -1,5 +1,4 @@
 import Foundation
-import CloudKit
 import SwiftUI
 
 /// Represents a math question in the TIMO curriculum
@@ -206,113 +205,20 @@ extension Question {
     }
 }
 
-// MARK: - CloudKit Integration
+// MARK: - Core Data Integration
 extension Question {
-    static let recordType = "Question"
-    
-    /// Converts Question model to CloudKit record
-    func toRecord() -> CKRecord {
-        let record = CKRecord(recordType: Question.recordType)
-        record["id"] = id.uuidString
-        record["subject"] = subject.rawValue
-        record["difficulty"] = difficulty
-        record["type"] = type.rawValue
-        record["questionText"] = questionText
-        record["correctAnswer"] = correctAnswer
-        record["hint"] = hint
-        
-        // Store options as encoded data
-        if let options = options {
-            do {
-                let optionsData = try JSONEncoder().encode(options)
-                record["optionsData"] = optionsData
-            } catch {
-                print("Error encoding options: \(error)")
-            }
-        }
-        
-        // Store image data as CKAsset if available
-        if let imageData = imageData {
-            let tempDirectory = FileManager.default.temporaryDirectory
-            let tempFileURL = tempDirectory.appendingPathComponent(UUID().uuidString)
-            
-            do {
-                try imageData.write(to: tempFileURL)
-                let asset = CKAsset(fileURL: tempFileURL)
-                record["imageData"] = asset
-            } catch {
-                print("Error creating CKAsset: \(error)")
-            }
-        }
-        
-        // Store metadata as JSON data
-        if let metadata = metadata {
-            do {
-                // Convert metadata to JSON data
-                let jsonData = try JSONSerialization.data(withJSONObject: metadata)
-                record["metadata"] = jsonData
-            } catch {
-                print("Error encoding metadata: \(error)")
-            }
-        }
-        
-        return record
-    }
-    
-    /// Creates Question model from CloudKit record
-    public init?(from record: CKRecord) {
-        guard
-            let idString = record["id"] as? String,
-            let id = UUID(uuidString: idString),
-            let subjectString = record["subject"] as? String,
-            let subject = Lesson.Subject(rawValue: subjectString),
-            let difficulty = record["difficulty"] as? Int,
-            let typeString = record["type"] as? String,
-            let type = QuestionType(rawValue: typeString),
-            let questionText = record["questionText"] as? String,
-            let correctAnswer = record["correctAnswer"] as? String
-        else {
-            return nil
-        }
-        
-        self.id = id
-        self.subject = subject
-        self.difficulty = difficulty
-        self.type = type
-        self.questionText = questionText
-        self.correctAnswer = correctAnswer
-        self.hint = record["hint"] as? String
-        
-        // Extract options data
-        if let optionsData = record["optionsData"] as? Data {
-            self.options = try? JSONDecoder().decode([QuestionOption].self, from: optionsData)
-        } else if let legacyOptions = record["options"] as? [String] {
-            // Handle legacy string options
-            self.options = legacyOptions.map { .text($0) }
-        } else {
-            self.options = nil
-        }
-        
-        // Extract image data from CKAsset
-        if let asset = record["imageData"] as? CKAsset, let fileURL = asset.fileURL {
-            self.imageData = try? Data(contentsOf: fileURL)
-        } else {
-            self.imageData = nil
-        }
-        
-        // Extract metadata if available
-        if let metadataData = record["metadata"] as? Data {
-            do {
-                if let jsonObject = try JSONSerialization.jsonObject(with: metadataData) as? [String: Any] {
-                    self.metadata = jsonObject
-                }
-            } catch {
-                print("Error decoding metadata: \(error)")
-                self.metadata = nil
-            }
-        } else {
-            self.metadata = nil
-        }
+    /// Creates Question model from Core Data entity
+    public init(from entity: QuestionEntity) {
+        self.id = entity.id ?? UUID()
+        self.subject = Lesson.Subject(rawValue: entity.subject ?? "arithmetic") ?? .arithmetic
+        self.difficulty = Int(entity.difficulty)
+        self.type = Question.QuestionType(rawValue: entity.type ?? "mcq") ?? .multipleChoice
+        self.questionText = entity.questionText ?? ""
+        self.options = entity.options as? [Question.QuestionOption] ?? []
+        self.correctAnswer = entity.correctAnswer ?? ""
+        self.hint = entity.hint
+        self.imageData = entity.imageData
+        self.metadata = entity.metadata as? [String: Any] ?? [:]
     }
 }
 

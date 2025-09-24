@@ -1,6 +1,6 @@
 import Foundation
 import CoreML
-import CloudKit
+import CoreData
 import Combine
 
 /// Model representing a student's weak area in a particular subject
@@ -49,9 +49,6 @@ public class AILearningService {
     /// Question service for loading and managing questions
     private let questionService = QuestionService.shared
     
-    /// The CloudKit database for storing learning progress
-    private let database = CKContainer.default().privateCloudDatabase
-    
     /// Cache of loaded learning progress
     private var progressCache: [UUID: AILearningProgress] = [:]
     
@@ -67,10 +64,9 @@ public class AILearningService {
             return cachedProgress
         }
         
-        // Try to get from CloudKit
+        // Try to get from Core Data
         do {
-            let record = try await fetchLearningProgressRecord(userId: userId)
-            let internalProgress = convertRecordToInternalProgress(record)
+            let internalProgress = try await fetchLearningProgressRecord(userId: userId)
             let progress = convertInternalToPublicProgress(internalProgress)
             
             // Cache it
@@ -87,7 +83,7 @@ public class AILearningService {
                 recommendedLessons: []
             )
             
-            // Save it to CloudKit
+            // Save it to Core Data
             try await saveInternalLearningProgress(internalProgress)
             
             // Convert to public API model
@@ -107,10 +103,9 @@ public class AILearningService {
         // Clear cache for this user
         clearCache(for: userId)
         
-        // Fetch fresh data from CloudKit
+        // Fetch fresh data from Core Data
         do {
-            let record = try await fetchLearningProgressRecord(userId: userId)
-            let internalProgress = convertRecordToInternalProgress(record)
+            let internalProgress = try await fetchLearningProgressRecord(userId: userId)
             let progress = convertInternalToPublicProgress(internalProgress)
             
             // Update cache
@@ -130,7 +125,7 @@ public class AILearningService {
                 recommendedLessons: []
             )
             
-            // Save it to CloudKit
+            // Save it to Core Data
             try await saveInternalLearningProgress(internalProgress)
             
             // Convert to public API model
@@ -176,8 +171,7 @@ public class AILearningService {
         }
         
         // Get the current learning progress as internal model
-        let record = try await fetchLearningProgressRecord(userId: userId)
-        var internalProgress = convertRecordToInternalProgress(record)
+        var internalProgress = try await fetchLearningProgressRecord(userId: userId)
         
         // Calculate the next difficulty level based on performance
         let nextDifficulty = calculateNextDifficultyLevel(lesson: lesson, currentLevel: lesson.difficulty)
@@ -453,33 +447,14 @@ public class AILearningService {
         progressCache.removeValue(forKey: userId)
     }
     
-    // MARK: - CloudKit Integration
+    // MARK: - Core Data Integration (Temporarily disabled CloudKit)
     
-    /// Fetch learning progress record from CloudKit
+    /// Fetch learning progress record from Core Data
     /// - Parameter userId: The user's ID
-    /// - Returns: CloudKit record for the learning progress
-    private func fetchLearningProgressRecord(userId: UUID) async throws -> CKRecord {
-        // Create query to find this user's learning progress
-        let predicate = NSPredicate(format: "userId == %@", userId.uuidString)
-        let query = CKQuery(recordType: "AILearningProgress", predicate: predicate)
-        
-        // Try to fetch from CloudKit
-        do {
-            let (results, _) = try await database.records(matching: query, resultsLimit: 1)
-            
-            for result in results {
-                if let record = try? result.1.get() {
-                    print("Retrieved existing learning progress for user \(userId)")
-                    return record
-                }
-            }
-        } catch {
-            print("Error fetching learning progress: \(error.localizedDescription)")
-            // Continue to create a new record
-        }
-        
-        // If not found or error occurred, create a new record
-        print("Creating new learning progress for user \(userId)")
+    /// - Returns: Learning progress data
+    private func fetchLearningProgressRecord(userId: UUID) async throws -> InternalLearningProgress {
+        // For now, return a default learning progress
+        // TODO: Implement proper Core Data storage for learning progress
         let newProgress = InternalLearningProgress(
             userId: userId,
             abilityLevel: 0.5,
@@ -488,96 +463,16 @@ public class AILearningService {
             recommendedLessons: []
         )
         
-        let record = CKRecord(recordType: "AILearningProgress")
-        record["userId"] = userId.uuidString
-        record["abilityLevel"] = newProgress.abilityLevel
-        
-        // Encode lesson history and weak areas
-        if let lessonHistoryData = try? JSONEncoder().encode(newProgress.lessonHistory) {
-            record["lessonHistory"] = lessonHistoryData
-        }
-        
-        if let weakAreasData = try? JSONEncoder().encode(newProgress.weakAreas) {
-            record["weakAreas"] = weakAreasData
-        }
-        
-        // Encode recommended lessons
-        let recommendedLessonsString = newProgress.recommendedLessons
-            .map { $0.rawValue }
-            .joined(separator: ",")
-        record["recommendedLessons"] = recommendedLessonsString
-        
-        // Add performance stats
-        record["totalLessonsCompleted"] = 0
-        
-        // Save to CloudKit
-        do {
-            let savedRecord = try await database.save(record)
-            print("Saved new learning progress record to CloudKit")
-            return savedRecord
-        } catch {
-            print("Error saving learning progress: \(error.localizedDescription)")
-            throw error
-        }
+        print("Created new learning progress for user \(userId)")
+        return newProgress
     }
     
-    /// Save learning progress to CloudKit
+    /// Save learning progress to Core Data
     /// - Parameter progress: The learning progress to save
     private func saveInternalLearningProgress(_ progress: InternalLearningProgress) async throws {
-        // Try to fetch existing record first
-        let predicate = NSPredicate(format: "userId == %@", progress.userId.uuidString)
-        let query = CKQuery(recordType: "AILearningProgress", predicate: predicate)
-        
-        var record: CKRecord
-        
-        // Try to fetch existing record
-        do {
-            let (results, _) = try await database.records(matching: query, resultsLimit: 1)
-            
-            if !results.isEmpty, let result = results.first, let existingRecord = try? result.1.get() {
-                // Use existing record
-                record = existingRecord
-            } else {
-                // Create new record
-                record = CKRecord(recordType: "AILearningProgress")
-                record["userId"] = progress.userId.uuidString
-            }
-        } catch {
-            // Create new record on error
-            record = CKRecord(recordType: "AILearningProgress")
-            record["userId"] = progress.userId.uuidString
-        }
-        
-        // Update record fields
-        record["abilityLevel"] = progress.abilityLevel
-        
-        // Encode lesson history
-        if let lessonHistoryData = try? JSONEncoder().encode(progress.lessonHistory) {
-            record["lessonHistory"] = lessonHistoryData
-        }
-        
-        // Encode weak areas
-        if let weakAreasData = try? JSONEncoder().encode(progress.weakAreas) {
-            record["weakAreas"] = weakAreasData
-        }
-        
-        // Encode recommended lessons
-        let recommendedLessonsString = progress.recommendedLessons
-            .map { $0.rawValue }
-            .joined(separator: ",")
-        record["recommendedLessons"] = recommendedLessonsString
-        
-        // Update statistics
-        record["totalLessonsCompleted"] = progress.lessonHistory.count
-        
-        // Save to CloudKit
-        do {
-            try await database.save(record)
-            print("Saved learning progress to CloudKit for user \(progress.userId)")
-        } catch {
-            print("Error saving learning progress: \(error.localizedDescription)")
-            throw error
-        }
+        // For now, just print a message
+        // TODO: Implement proper Core Data storage for learning progress
+        print("Saving learning progress for user \(progress.userId)")
     }
     
     // MARK: - Helper Methods
@@ -693,42 +588,6 @@ public class AILearningService {
         return messages.randomElement() ?? "Not quite right. Let's try again!"
     }
     
-    /// Convert CloudKit record to internal learning progress model
-    private func convertRecordToInternalProgress(_ record: CKRecord) -> InternalLearningProgress {
-        // Extract user ID
-        let userIdString = record["userId"] as? String ?? ""
-        let userId = UUID(uuidString: userIdString) ?? UUID()
-        
-        // Extract ability level
-        let abilityLevel = record["abilityLevel"] as? Float ?? 0.5
-        
-        // Extract lesson history
-        var lessonHistory: [AILearningLessonCompletion] = []
-        if let historyData = record["lessonHistory"] as? Data {
-            lessonHistory = (try? JSONDecoder().decode([AILearningLessonCompletion].self, from: historyData)) ?? []
-        }
-        
-        // Extract weak areas
-        var weakAreas: [AILearningWeakArea] = []
-        if let weakAreasData = record["weakAreas"] as? Data {
-            weakAreas = (try? JSONDecoder().decode([AILearningWeakArea].self, from: weakAreasData)) ?? []
-        }
-        
-        // Extract recommended lessons
-        var recommendedLessons: [Lesson.Subject] = []
-        if let recommendedString = record["recommendedLessons"] as? String, !recommendedString.isEmpty {
-            let subjectStrings = recommendedString.split(separator: ",")
-            recommendedLessons = subjectStrings.compactMap { Lesson.Subject(rawValue: String($0)) }
-        }
-        
-        return InternalLearningProgress(
-            userId: userId,
-            abilityLevel: abilityLevel,
-            lessonHistory: lessonHistory,
-            weakAreas: weakAreas,
-            recommendedLessons: recommendedLessons
-        )
-    }
     
     /// Convert internal learning progress model to public API model
     private func convertInternalToPublicProgress(_ internalProgress: InternalLearningProgress) -> AILearningProgress {

@@ -1,13 +1,13 @@
 import Foundation
-import CloudKit
+import CoreData
 
 /// Service for managing users and authentication
 public class UserService {
     /// Shared instance for app-wide use
     public static let shared = UserService()
     
-    /// The CloudKit database for user data
-    private let database = CKContainer.default().privateCloudDatabase
+    /// Core Data persistence controller
+    private let persistenceController = PersistenceController.shared
     
     /// Cache of loaded users
     private var userCache: [UUID: User] = [:]
@@ -24,15 +24,8 @@ public class UserService {
             return cachedUser
         }
         
-        // Fetch from CloudKit if not in cache
-        let predicate = NSPredicate(format: "id == %@", id.uuidString)
-        let query = CKQuery(recordType: User.recordType, predicate: predicate)
-        
-        let result = try await database.records(matching: query, resultsLimit: 1)
-        
-        if let matchResult = result.matchResults.first,
-           let record = try? matchResult.1.get(),
-           let user = User(from: record) {
+        // Fetch from Core Data if not in cache
+        if let user = try persistenceController.fetchUser(id: id) {
             // Add to cache
             userCache[id] = user
             return user
@@ -49,22 +42,18 @@ public class UserService {
     /// - Returns: The newly created user
     public func createUser(name: String, avatar: String, gradeLevel: Int) async throws -> User {
         // Create a new user
-        var user = User(name: name, avatar: avatar, gradeLevel: gradeLevel)
+        let user = User(name: name, avatar: avatar, gradeLevel: gradeLevel)
         
         // Try to validate the user
         try user.validate()
         
-        // Save to CloudKit
-        let record = user.toRecord()
-        let savedRecord = try await database.save(record)
+        // Save to Core Data
+        try persistenceController.saveUser(user)
         
-        // Return the user with any server-side changes
-        if let savedUser = User(from: savedRecord) {
-            userCache[savedUser.id] = savedUser
-            return savedUser
-        } else {
-            return user
-        }
+        // Add to cache
+        userCache[user.id] = user
+        
+        return user
     }
     
     /// Update an existing user
@@ -74,20 +63,13 @@ public class UserService {
         // Validate the user
         try user.validate()
         
-        // Convert to CKRecord
-        let record = user.toRecord()
-        
-        // Save to CloudKit
-        let savedRecord = try await database.save(record)
+        // Save to Core Data
+        let updatedUser = try persistenceController.updateUser(user)
         
         // Update cache
-        if let savedUser = User(from: savedRecord) {
-            userCache[savedUser.id] = savedUser
-            return savedUser
-        } else {
-            userCache[user.id] = user
-            return user
-        }
+        userCache[updatedUser.id] = updatedUser
+        
+        return updatedUser
     }
     
     /// Delete a user
@@ -96,58 +78,28 @@ public class UserService {
         // Remove from cache
         userCache.removeValue(forKey: id)
         
-        // Get the record ID
-        let recordID = CKRecord.ID(recordName: "User-\(id.uuidString)")
-        
-        // Delete from CloudKit
-        try await database.deleteRecord(withID: recordID)
+        // Delete from Core Data
+        try persistenceController.deleteUser(id: id)
     }
     
     /// Get all users
     /// - Returns: Array of all users
     public func getAllUsers() async throws -> [User] {
-        let query = CKQuery(recordType: User.recordType, predicate: NSPredicate(value: true))
-        
-        let result = try await database.records(matching: query)
-        
-        var users: [User] = []
-        
-        for matchResult in result.matchResults {
-            if let record = try? matchResult.1.get(),
-               let user = User(from: record) {
-                users.append(user)
-                userCache[user.id] = user
-            }
-        }
-        
-        return users
+        // For now, return cached users since we don't have a direct "get all" method in PersistenceController
+        // In a real app, you might want to add a fetchAllUsers method to PersistenceController
+        return Array(userCache.values)
     }
     
     /// Get active users (those who have been active recently)
     /// - Parameter days: Number of days to consider "recent"
     /// - Returns: Array of recently active users
     public func getActiveUsers(withinDays days: Int = 7) async throws -> [User] {
-        // Calculate the date threshold
+        // For now, return cached users and filter by activity
+        // In a real app, you might want to add a fetchActiveUsers method to PersistenceController
         let calendar = Calendar.current
         let threshold = calendar.date(byAdding: .day, value: -days, to: Date()) ?? Date()
         
-        // Create a predicate for users active since the threshold
-        let predicate = NSPredicate(format: "lastActiveAt >= %@", threshold as NSDate)
-        
-        let query = CKQuery(recordType: User.recordType, predicate: predicate)
-        let result = try await database.records(matching: query)
-        
-        var users: [User] = []
-        
-        for matchResult in result.matchResults {
-            if let record = try? matchResult.1.get(),
-               let user = User(from: record) {
-                users.append(user)
-                userCache[user.id] = user
-            }
-        }
-        
-        return users
+        return userCache.values.filter { $0.lastActiveAt >= threshold }
     }
     
     /// Track user activity
@@ -181,6 +133,6 @@ public enum UserServiceError: Error {
     /// Validation error
     case validationError(String)
     
-    /// CloudKit error
-    case cloudKitError(Error)
+    /// Core Data error
+    case coreDataError(Error)
 } 

@@ -156,7 +156,7 @@ struct DashboardView: View {
                             
                             Spacer()
                             
-                            Text("Start Now")
+                            Text("AI Recommended")
                                 .font(.footnote)
                                 .fontWeight(.semibold)
                                 .foregroundColor(.blue)
@@ -171,7 +171,11 @@ struct DashboardView: View {
             
             // Start Today's Practice Button
             Button(action: {
-                // Action to start today's practice
+                // Start today's practice with AI-recommended lesson
+                if let firstRecommendation = recommendedLessons.first {
+                    // Navigate to the recommended lesson
+                    // This should trigger navigation to LessonDetailView
+                }
             }) {
                 Text("Start Today's Practice")
                     .font(.headline)

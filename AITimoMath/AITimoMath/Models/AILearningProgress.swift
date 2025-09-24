@@ -211,7 +211,8 @@ extension AILearningProgress {
                 questionId: response.questionId,
                 isCorrect: response.isCorrect,
                 responseTime: response.responseTime,
-                answeredAt: response.answeredAt
+                answeredAt: response.answeredAt,
+                selectedAnswer: response.selectedAnswer
             )
         }
         

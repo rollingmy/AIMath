@@ -3,6 +3,8 @@ import SwiftUI
 struct MistakesReviewView: View {
     @ObservedObject var user: User
     @State private var incorrectQuestions: [Question] = []
+    // Map questionId -> selected answer label recorded in responses
+    @State private var userAnswers: [UUID: String] = [:]
     @State private var isLoading = true
     @State private var selectedQuestion: Question?
     @State private var showingExplanation = false
@@ -16,6 +18,18 @@ struct MistakesReviewView: View {
                 // Load actual incorrect questions from user's lesson history
                 let performanceService = PerformanceService.shared
                 let questions = try await performanceService.loadIncorrectQuestions(userId: user.id)
+                // Build user answer map from latest completed lessons
+                if let lessons = try? await performanceService.loadUserLessonHistory(userId: user.id) {
+                    var answers: [UUID: String] = [:]
+                    for lesson in lessons {
+                        for resp in lesson.responses where !resp.isCorrect {
+                            if let sel = resp.selectedAnswer {
+                                answers[resp.questionId] = sel
+                            }
+                        }
+                    }
+                    self.userAnswers = answers
+                }
                 
                 await MainActor.run {
                     self.incorrectQuestions = questions
@@ -72,8 +86,10 @@ struct MistakesReviewView: View {
                 ScrollView {
                     LazyVStack(spacing: 15) {
                         ForEach(incorrectQuestions) { question in
+                            let userAnswer = userAnswers[question.id]
                             QuestionReviewCard(
                                 question: question,
+                                userAnswerLabel: userAnswer,
                                 onTap: {
                                     self.selectedQuestion = question
                                     self.showingExplanation = true
@@ -100,6 +116,7 @@ struct MistakesReviewView: View {
 // MARK: - QuestionReviewCard
 struct QuestionReviewCard: View {
     let question: Question
+    let userAnswerLabel: String?
     let onTap: () -> Void
     
     var body: some View {
@@ -142,8 +159,7 @@ struct QuestionReviewCard: View {
                     HStack {
                         Image(systemName: "xmark.circle.fill")
                             .foregroundColor(.red)
-                        
-                        Text("Your answer: \(getWrongAnswer(for: question))")
+                        Text("Your answer: \(userAnswerLabel ?? "—")")
                             .font(.caption)
                     }
                     
@@ -161,17 +177,11 @@ struct QuestionReviewCard: View {
         .buttonStyle(PlainButtonStyle())
     }
     
-    // Generate a wrong answer for demonstration
+    // Show recorded wrong answer label if available
     private func getWrongAnswer(for question: Question) -> String {
-        let correctAnswer = question.correctAnswer
-        let options = ["A", "B", "C", "D"]
-        
-        if let correctIndex = options.firstIndex(of: correctAnswer) {
-            let wrongOptions = options.filter { $0 != correctAnswer }
-            return wrongOptions.randomElement() ?? "B"
-        }
-        
-        return "B"
+        // Attempt to access parent state's userAnswers via environment is not possible here.
+        // Instead, display placeholder and let parent inject via label below (kept compat).
+        return ""
     }
     
     // Convert difficulty integer to text

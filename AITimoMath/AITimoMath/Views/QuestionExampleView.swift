@@ -6,6 +6,9 @@ struct QuestionExampleView: View {
     var user: User
     var onUserUpdate: (User) -> Void
     
+    // Navigation
+    @Environment(\.presentationMode) var presentationMode
+    
     // State for question navigation and display
     @State private var questions: [Question] = []
     @State private var currentQuestionIndex: Int = 0
@@ -17,6 +20,10 @@ struct QuestionExampleView: View {
     @State private var questionNumberInput: String = ""
     @State private var showQuestionNumberInput: Bool = false
     @FocusState private var isQuestionNumberInputFocused: Bool
+    
+    // Session analytics
+    @State private var sessionResponses: [Lesson.QuestionResponse] = []
+    @State private var questionStartTime: Date = Date()
     
     // Initialize with user and update callback
     init(user: User, onUserUpdate: @escaping (User) -> Void) {
@@ -210,9 +217,34 @@ struct QuestionExampleView: View {
                                 selectedOptionIndex: $selectedOptionIndex,
                                 showCorrectAnswer: showingAnswer,
                                 onSubmit: {
-                                    withAnimation {
-                                        showingAnswer = true
+                                    // Record response
+                                    let question = questions[currentQuestionIndex]
+                                    var isCorrect = false
+                                    var selectedLabel: String? = nil
+                                    if let options = question.options,
+                                       let selected = selectedOptionIndex,
+                                       selected >= 0,
+                                       selected < options.count {
+                                        // Map selected index to letter label A/B/C/D
+                                        let labels = ["A", "B", "C", "D"]
+                                        let label = selected < labels.count ? labels[selected] : nil
+                                        selectedLabel = label
+                                        // Compare label to correct answer key (e.g., "A")
+                                        if let label = label {
+                                            isCorrect = (label == question.correctAnswer)
+                                        }
                                     }
+                                    let responseTime = Date().timeIntervalSince(questionStartTime)
+                                    let response = Lesson.QuestionResponse(
+                                        questionId: question.id,
+                                        isCorrect: isCorrect,
+                                        responseTime: responseTime,
+                                        answeredAt: Date(),
+                                        selectedAnswer: selectedLabel
+                                    )
+                                    sessionResponses.append(response)
+                                    
+                                    withAnimation { showingAnswer = true }
                                 }
                             )
                             
@@ -227,25 +259,67 @@ struct QuestionExampleView: View {
                                 Spacer()
                                 
                                 if showingAnswer {
-                                    Button("Next Question") {
-                                        nextQuestion()
+                                    // Check if this is the last question
+                                    if currentQuestionIndex == questions.count - 1 {
+                                        Button("Complete Session") {
+                                            print("Complete Session button tapped")
+                                            completeSession()
+                                        }
+                                        .buttonStyle(.borderedProminent)
+                                        .foregroundColor(.white)
+                                        .background(Color.green)
+                                    } else {
+                                        Button("Next Question") {
+                                            nextQuestion()
+                                        }
+                                        .buttonStyle(.borderedProminent)
                                     }
-                                    .buttonStyle(.borderedProminent)
                                 } else {
                                     Button("Show Answer") {
-                                        withAnimation {
-                                            showingAnswer = true
+                                        // If no response recorded yet for this question, record it now
+                                        if !hasRecordedResponse(for: questions[currentQuestionIndex].id) {
+                                            let question = questions[currentQuestionIndex]
+                                            var isCorrect = false
+                                            var selectedLabel: String? = nil
+                                            if let options = question.options,
+                                               let selected = selectedOptionIndex,
+                                               selected >= 0,
+                                               selected < options.count {
+                                                let labels = ["A", "B", "C", "D"]
+                                                let label = selected < labels.count ? labels[selected] : nil
+                                                selectedLabel = label
+                                                if let label = label {
+                                                    isCorrect = (label == question.correctAnswer)
+                                                }
+                                            }
+                                            let responseTime = Date().timeIntervalSince(questionStartTime)
+                                            let response = Lesson.QuestionResponse(
+                                                questionId: question.id,
+                                                isCorrect: isCorrect,
+                                                responseTime: responseTime,
+                                                answeredAt: Date(),
+                                                selectedAnswer: selectedLabel
+                                            )
+                                            sessionResponses.append(response)
                                         }
+                                        withAnimation { showingAnswer = true }
                                     }
                                     .buttonStyle(.borderedProminent)
                                 }
                                 
                                 Spacer()
                                 
-                                Button(action: nextQuestion) {
-                                    Label("Next", systemImage: "arrow.right")
+                                Button(action: {
+                                    if currentQuestionIndex == questions.count - 1 {
+                                        print("Complete Session button (right arrow) tapped")
+                                        completeSession()
+                                    } else {
+                                        nextQuestion()
+                                    }
+                                }) {
+                                    Label(currentQuestionIndex == questions.count - 1 ? "Complete" : "Next", 
+                                          systemImage: currentQuestionIndex == questions.count - 1 ? "checkmark.circle" : "arrow.right")
                                 }
-                                .disabled(currentQuestionIndex == questions.count - 1)
                                 .buttonStyle(.bordered)
                             }
                             .padding()
@@ -340,10 +414,15 @@ struct QuestionExampleView: View {
         
         Task {
             do {
-                let loadedQuestions = try await QuestionService.shared.loadQuestions()
+                let allQuestions = try await QuestionService.shared.loadQuestions()
+                
+                // Limit questions to user's daily goal instead of loading all
+                let questionCount = min(user.dailyGoal, allQuestions.count)
+                let loadedQuestions = Array(allQuestions.prefix(questionCount))
                 DispatchQueue.main.async {
                     self.questions = loadedQuestions
                     self.isLoading = false
+                    self.questionStartTime = Date()
                 }
             } catch {
                 DispatchQueue.main.async {
@@ -356,8 +435,42 @@ struct QuestionExampleView: View {
     
     /// Navigate to the next question
     private func nextQuestion() {
+        // If no response recorded yet for current question, record now
+        if currentQuestionIndex < questions.count && !hasRecordedResponse(for: questions[currentQuestionIndex].id) {
+            let question = questions[currentQuestionIndex]
+            var isCorrect = false
+            var selectedLabel: String? = nil
+            if let options = question.options,
+               let selected = selectedOptionIndex,
+               selected >= 0,
+               selected < options.count {
+                let labels = ["A", "B", "C", "D"]
+                let label = selected < labels.count ? labels[selected] : nil
+                selectedLabel = label
+                if let label = label {
+                    isCorrect = (label == question.correctAnswer)
+                }
+            }
+            let responseTime = Date().timeIntervalSince(questionStartTime)
+            let response = Lesson.QuestionResponse(
+                questionId: question.id,
+                isCorrect: isCorrect,
+                responseTime: responseTime,
+                answeredAt: Date(),
+                selectedAnswer: selectedLabel
+            )
+            sessionResponses.append(response)
+        }
+        // Check if this is the last question in the session
+        if currentQuestionIndex == questions.count - 1 {
+            // Complete the session
+            completeSession()
+            return
+        }
         if currentQuestionIndex < questions.count - 1 {
             currentQuestionIndex += 1
+            // Start timing for the next question
+            questionStartTime = Date()
             resetQuestionState()
         }
     }
@@ -365,7 +478,35 @@ struct QuestionExampleView: View {
     /// Navigate to the previous question
     private func previousQuestion() {
         if currentQuestionIndex > 0 {
+            // Ensure we record response for current before moving back
+            if !hasRecordedResponse(for: questions[currentQuestionIndex].id) {
+                let question = questions[currentQuestionIndex]
+                var isCorrect = false
+                var selectedLabel: String? = nil
+                if let options = question.options,
+                   let selected = selectedOptionIndex,
+                   selected >= 0,
+                   selected < options.count {
+                    let labels = ["A", "B", "C", "D"]
+                    let label = selected < labels.count ? labels[selected] : nil
+                    selectedLabel = label
+                    if let label = label {
+                        isCorrect = (label == question.correctAnswer)
+                    }
+                }
+                let responseTime = Date().timeIntervalSince(questionStartTime)
+                let response = Lesson.QuestionResponse(
+                    questionId: question.id,
+                    isCorrect: isCorrect,
+                    responseTime: responseTime,
+                    answeredAt: Date(),
+                    selectedAnswer: selectedLabel
+                )
+                sessionResponses.append(response)
+            }
             currentQuestionIndex -= 1
+            // Restart timing for previous question
+            questionStartTime = Date()
             resetQuestionState()
         }
     }
@@ -391,6 +532,51 @@ struct QuestionExampleView: View {
     private func resetQuestionState() {
         selectedOptionIndex = nil
         showingAnswer = false
+    }
+
+    /// Check if we already recorded a response for a given question id
+    private func hasRecordedResponse(for questionId: UUID) -> Bool {
+        return sessionResponses.contains(where: { $0.questionId == questionId })
+    }
+    
+    /// Complete the current session and update user progress
+    private func completeSession() {
+        // Compute number of questions answered in this session
+        let answeredCount = questions.count
+        
+        // Update user's daily completed questions by answeredCount (matches dailyGoal session)
+        var updatedUser = user
+        updatedUser.dailyCompletedQuestions += answeredCount
+        updatedUser.lastActiveAt = Date()
+        
+        // Persist lesson summary for analytics (subject, responses)
+        Task {
+            // Build a minimal lesson snapshot
+            var lesson = Lesson(userId: updatedUser.id, subject: questions.first?.subject ?? .arithmetic)
+            lesson.questions = questions.map { $0.id }
+            lesson.difficulty = questions.first?.difficulty ?? 1
+            lesson.status = .completed
+            lesson.completedAt = Date()
+            // Attach recorded responses with correctness and timing
+            lesson.responses = sessionResponses
+            // Derive accuracy and avg response time
+            let correctCount = sessionResponses.filter { $0.isCorrect }.count
+            if !sessionResponses.isEmpty {
+                lesson.accuracy = Float(correctCount) / Float(sessionResponses.count)
+                lesson.responseTime = sessionResponses.map { $0.responseTime }.reduce(0, +) / Double(sessionResponses.count)
+            }
+            // Save to Core Data
+            try? await PerformanceService.shared.saveLesson(lesson)
+        }
+        
+        // Update the user through the callback
+        onUserUpdate(updatedUser)
+        
+        // Add debug logging to help troubleshoot
+        print("Session completed! +\(answeredCount) → Daily progress: \(updatedUser.dailyCompletedQuestions)/\(updatedUser.dailyGoal)")
+        
+        // Navigate back to the previous view
+        presentationMode.wrappedValue.dismiss()
     }
     
     /// Convert subject enum to display string

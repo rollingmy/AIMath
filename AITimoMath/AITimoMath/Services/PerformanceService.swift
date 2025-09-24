@@ -1,38 +1,29 @@
 import Foundation
-import CloudKit
+import CoreData
 
 /// Service for managing user performance data and lesson history
 public class PerformanceService {
     /// Shared instance for app-wide use
     public static let shared = PerformanceService()
     
-    /// The CloudKit database for performance data
-    private let database = CKContainer.default().privateCloudDatabase
+    /// Core Data persistence controller
+    private let persistenceController = PersistenceController.shared
     
     /// Private initializer for singleton
     private init() {}
+    
+    // MARK: - Save
+    /// Save a lesson record to Core Data
+    /// - Parameter lesson: The completed or in-progress lesson to save
+    public func saveLesson(_ lesson: Lesson) async throws {
+        try persistenceController.saveLesson(lesson)
+    }
     
     /// Load user's lesson history
     /// - Parameter userId: The user's ID
     /// - Returns: Array of completed lessons
     public func loadUserLessonHistory(userId: UUID) async throws -> [Lesson] {
-        let predicate = NSPredicate(format: "userId == %@ AND status == %@", 
-                                   userId.uuidString, 
-                                   Lesson.LessonStatus.completed.rawValue)
-        let query = CKQuery(recordType: Lesson.recordType, predicate: predicate)
-        query.sortDescriptors = [NSSortDescriptor(key: "completedAt", ascending: false)]
-        
-        let result = try await database.records(matching: query)
-        
-        var lessons: [Lesson] = []
-        for matchResult in result.matchResults {
-            if let record = try? matchResult.1.get(),
-               let lesson = Lesson(from: record) {
-                lessons.append(lesson)
-            }
-        }
-        
-        return lessons
+        return try persistenceController.fetchCompletedLessons(userId: userId)
     }
     
     /// Load incorrect questions from user's lesson history
@@ -54,11 +45,10 @@ public class PerformanceService {
         }
         
         // Load the actual question data for incorrect questions
-        let questionService = QuestionService.shared
         var incorrectQuestions: [Question] = []
         
         for questionId in incorrectQuestionIds {
-            if let question = try? await questionService.getQuestion(id: questionId) {
+            if let question = try? persistenceController.fetchQuestion(id: questionId) {
                 incorrectQuestions.append(question)
             }
         }

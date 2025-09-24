@@ -1,9 +1,8 @@
 import Foundation
-import CloudKit
 import Combine
 
 /// User model representing a student in the TIMO Math Lessons app
-/// Conforms to necessary protocols for CloudKit sync and secure data handling
+/// Conforms to necessary protocols for Core Data persistence and secure data handling
 public class User: Identifiable, Codable, Equatable, ObservableObject {
     /// Unique identifier for the user
     public let id: UUID
@@ -149,62 +148,22 @@ extension User {
     }
 }
 
-// MARK: - CloudKit Integration
+// MARK: - Core Data Integration
 extension User {
-    /// CloudKit record type for User
-    static let recordType = "User"
-    
-    /// Converts User model to CloudKit record
-    func toRecord() -> CKRecord {
-        let record = CKRecord(recordType: User.recordType)
-        record["id"] = id.uuidString
-        record["name"] = name
-        record["avatar"] = avatar
-        record["gradeLevel"] = gradeLevel
-        record["learningGoal"] = learningGoal
-        record["difficultyLevel"] = difficultyLevel.rawValue
-        record["completedLessons"] = completedLessons.map { $0.uuidString }
-        record["lastActiveAt"] = lastActiveAt
-        record["createdAt"] = createdAt
-        record["dailyGoal"] = dailyGoal
-        record["dailyCompletedQuestions"] = dailyCompletedQuestions
-        return record
-    }
-    
-    /// Creates User model from CloudKit record
-    public convenience init?(from record: CKRecord) {
-        guard
-            let idString = record["id"] as? String,
-            let id = UUID(uuidString: idString),
-            let name = record["name"] as? String,
-            let avatar = record["avatar"] as? String,
-            let gradeLevel = record["gradeLevel"] as? Int,
-            let learningGoal = record["learningGoal"] as? Int,
-            let difficultyString = record["difficultyLevel"] as? String,
-            let difficultyLevel = DifficultyLevel(rawValue: difficultyString),
-            let completedLessonStrings = record["completedLessons"] as? [String],
-            let lastActiveAt = record["lastActiveAt"] as? Date,
-            let createdAt = record["createdAt"] as? Date
-        else {
-            return nil
-        }
-        
-        let completedLessons = completedLessonStrings.compactMap { UUID(uuidString: $0) }
-        let dailyGoal = record["dailyGoal"] as? Int ?? 10
-        let dailyCompletedQuestions = record["dailyCompletedQuestions"] as? Int ?? 0
-        
+    /// Creates User model from Core Data entity
+    public convenience init(from entity: UserEntity) {
         self.init(
-            id: id,
-            name: name,
-            avatar: avatar,
-            gradeLevel: gradeLevel,
-            learningGoal: learningGoal,
-            difficultyLevel: difficultyLevel,
-            completedLessons: completedLessons,
-            lastActiveAt: lastActiveAt,
-            createdAt: createdAt,
-            dailyGoal: dailyGoal,
-            dailyCompletedQuestions: dailyCompletedQuestions
+            id: entity.id ?? UUID(),
+            name: entity.name ?? "",
+            avatar: entity.avatar ?? "",
+            gradeLevel: Int(entity.gradeLevel),
+            learningGoal: Int(entity.learningGoal),
+            difficultyLevel: User.DifficultyLevel(rawValue: entity.difficultyLevel ?? "adaptive") ?? .adaptive,
+            completedLessons: entity.completedLessons as? [UUID] ?? [],
+            lastActiveAt: entity.lastActiveAt ?? Date(),
+            createdAt: entity.createdAt ?? Date(),
+            dailyGoal: Int(entity.dailyGoal),
+            dailyCompletedQuestions: Int(entity.dailyCompletedQuestions)
         )
     }
 }

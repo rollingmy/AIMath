@@ -1,5 +1,6 @@
 import Foundation
 import SwiftUI
+import CoreData
 
 /// Service for loading and managing questions
 class QuestionService {
@@ -12,6 +13,9 @@ class QuestionService {
     /// Private initializer for singleton
     private init() {}
     
+    /// Persistence controller for saving questions so other services can fetch by ID
+    private let persistenceController = PersistenceController.shared
+    
     /// Load questions from the bundled JSON file
     /// - Returns: Array of questions
     func loadQuestions() async throws -> [Question] {
@@ -20,13 +24,23 @@ class QuestionService {
             return Array(questionCache.values)
         }
         
-        // Otherwise, load from JSON
-        guard let url = Bundle.main.url(forResource: "timo_questions", withExtension: "json") else {
+        // Otherwise, load from JSON - try root first, then Data/ subdirectory
+        var url: URL?
+        
+        // Try root directory first
+        if let rootUrl = Bundle.main.url(forResource: "timo_questions", withExtension: "json") {
+            url = rootUrl
+        } else if let dataUrl = Bundle.main.url(forResource: "timo_questions", withExtension: "json", subdirectory: "Data") {
+            // Try Data/ subdirectory
+            url = dataUrl
+        }
+        
+        guard let fileUrl = url else {
             throw QuestionError.fileNotFound
         }
         
         do {
-            let data = try Data(contentsOf: url)
+            let data = try Data(contentsOf: fileUrl)
             let decoder = JSONDecoder()
             let jsonQuestions = try decoder.decode(QuestionJSON.self, from: data)
             
@@ -36,6 +50,8 @@ class QuestionService {
                 if let question = try? convertJSONToQuestion(jsonQuestion) {
                     questions.append(question)
                     questionCache[question.id.uuidString] = question
+                    // Persist question to Core Data so Performance/Mistakes views can fetch by ID later
+                    try? persistenceController.saveQuestion(question)
                 }
             }
             

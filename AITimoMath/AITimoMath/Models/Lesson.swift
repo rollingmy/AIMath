@@ -1,5 +1,4 @@
 import Foundation
-import CloudKit
 
 /// Represents a learning session with questions and performance metrics
 public struct Lesson: Identifiable, Codable, Equatable {
@@ -45,6 +44,8 @@ extension Lesson {
         public let isCorrect: Bool
         public let responseTime: TimeInterval
         public let answeredAt: Date
+        /// The user's selected answer label (e.g., "A", "B", "C", "D") if applicable
+        public let selectedAnswer: String?
     }
     
     /// Available subject categories
@@ -70,7 +71,8 @@ extension Lesson {
             questionId: questionId,
             isCorrect: isCorrect,
             responseTime: responseTime,
-            answeredAt: Date()
+            answeredAt: Date(),
+            selectedAnswer: nil
         )
         responses.append(response)
         
@@ -106,57 +108,21 @@ extension Lesson {
     }
 }
 
-// MARK: - CloudKit Integration
+// MARK: - Core Data Integration
 extension Lesson {
-    static let recordType = "Lesson"
-    
-    func toRecord() -> CKRecord {
-        let record = CKRecord(recordType: Lesson.recordType)
-        record["id"] = id.uuidString
-        record["userId"] = userId.uuidString
-        record["subject"] = subject.rawValue
-        record["difficulty"] = difficulty
-        record["questions"] = questions.map { $0.uuidString }
-        record["responses"] = try? JSONEncoder().encode(responses)
-        record["accuracy"] = accuracy
-        record["responseTime"] = responseTime
-        record["startedAt"] = startedAt
-        record["completedAt"] = completedAt
-        record["status"] = status.rawValue
-        return record
-    }
-    
-    public init?(from record: CKRecord) {
-        guard
-            let idString = record["id"] as? String,
-            let id = UUID(uuidString: idString),
-            let userIdString = record["userId"] as? String,
-            let userId = UUID(uuidString: userIdString),
-            let subjectString = record["subject"] as? String,
-            let subject = Subject(rawValue: subjectString),
-            let questionStrings = record["questions"] as? [String],
-            let responsesData = record["responses"] as? Data,
-            let responses = try? JSONDecoder().decode([QuestionResponse].self, from: responsesData),
-            let accuracy = record["accuracy"] as? Float,
-            let responseTime = record["responseTime"] as? TimeInterval,
-            let startedAt = record["startedAt"] as? Date,
-            let statusString = record["status"] as? String,
-            let status = LessonStatus(rawValue: statusString)
-        else {
-            return nil
-        }
-        
-        self.id = id
-        self.userId = userId
-        self.subject = subject
-        self.difficulty = record["difficulty"] as? Int ?? 1
-        self.questions = questionStrings.compactMap { UUID(uuidString: $0) }
-        self.responses = responses
-        self.accuracy = accuracy
-        self.responseTime = responseTime
-        self.startedAt = startedAt
-        self.completedAt = record["completedAt"] as? Date
-        self.status = status
+    /// Creates Lesson model from Core Data entity
+    public init(from entity: LessonEntity) {
+        self.id = entity.id ?? UUID()
+        self.userId = entity.userId ?? UUID()
+        self.subject = Lesson.Subject(rawValue: entity.subject ?? "arithmetic") ?? .arithmetic
+        self.difficulty = Int(entity.difficulty)
+        self.questions = entity.questions as? [UUID] ?? []
+        self.responses = entity.responses as? [Lesson.QuestionResponse] ?? []
+        self.accuracy = entity.accuracy
+        self.responseTime = entity.responseTime
+        self.startedAt = entity.startedAt ?? Date()
+        self.completedAt = entity.completedAt
+        self.status = Lesson.LessonStatus(rawValue: entity.status ?? "not_started") ?? .notStarted
     }
 }
 

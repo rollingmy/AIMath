@@ -195,7 +195,8 @@ struct AIModelTester {
                 questionId: UUID(),
                 isCorrect: isCorrect,
                 responseTime: Double.random(in: 15...45),
-                answeredAt: Date()
+                answeredAt: Date(),
+                selectedAnswer: isCorrect ? "A" : "B"
             )
             responses.append(response)
         }

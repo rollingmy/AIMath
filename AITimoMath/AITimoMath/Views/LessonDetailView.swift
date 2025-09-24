@@ -19,7 +19,7 @@ struct LessonDetailView: View {
             self.questions = questionLoader.getQuestions(
                 subject: getSubjectString(from: lesson.subject),
                 difficulty: "Medium",
-                count: 5 // Load 5 questions for this lesson
+                count: min(user.dailyGoal, 10) // Use user's daily goal, cap at 10 for lesson preview
             )
             
             self.isLoading = false

@@ -1,8 +1,7 @@
 import Foundation
-import CloudKit
 import CoreData
 
-/// Handles data persistence and CloudKit synchronization for the app
+/// Handles data persistence using Core Data for the app
 class PersistenceController {
     /// Shared instance for app-wide use
     static let shared = PersistenceController()
@@ -12,34 +11,23 @@ class PersistenceController {
         let controller = PersistenceController(inMemory: true)
         
         // Add sample data for previews
-        Task {
-            let sampleUser = User(
-                name: "Sample Student",
-                avatar: "student_avatar",
-                gradeLevel: 3
-            )
-            try? await controller.saveUser(sampleUser)
-        }
+        let sampleUser = User(
+            name: "Sample Student",
+            avatar: "student_avatar",
+            gradeLevel: 3
+        )
+        try? controller.saveUser(sampleUser)
         
         return controller
     }()
     
-    /// CloudKit container for data storage
-    private let container: CKContainer
-    
-    /// Private database for user data
-    private let privateDatabase: CKDatabase
-    
     /// Core Data container
-    let persistentContainer: NSPersistentCloudKitContainer
+    let persistentContainer: NSPersistentContainer
     
-    /// Initialize with default CloudKit container and Core Data setup
+    /// Initialize with Core Data setup
     private init(inMemory: Bool = false) {
-        self.container = CKContainer.default()
-        self.privateDatabase = container.privateCloudDatabase
-        
         // Initialize Core Data container
-        persistentContainer = NSPersistentCloudKitContainer(name: "AITimoMath")
+        persistentContainer = NSPersistentContainer(name: "AITimoMath")
         
         if inMemory {
             // Use in-memory store for previews
@@ -53,7 +41,7 @@ class PersistenceController {
             }
         }
         
-        // Enable CloudKit sync
+        // Configure view context
         persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
         
         // Configure view context for better preview performance
@@ -69,78 +57,184 @@ class PersistenceController {
         persistentContainer.viewContext
     }
     
-    /// Save user data to CloudKit
+    /// Save user data to Core Data
     /// - Parameter user: The user to save
-    /// - Returns: A boolean indicating success
-    func saveUser(_ user: User) async throws -> Bool {
-        do {
-            try user.validate()
-            let record = user.toRecord()
-            _ = try await privateDatabase.save(record)
-            return true
-        } catch {
-            print("Error saving user: \(error.localizedDescription)")
-            throw error
+    func saveUser(_ user: User) throws {
+        try user.validate()
+        
+        let context = persistentContainer.viewContext
+        
+        // Check if user already exists
+        let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", user.id as CVarArg)
+        
+        let existingUsers = try context.fetch(fetchRequest)
+        let userEntity: UserEntity
+        
+        if let existingUser = existingUsers.first {
+            userEntity = existingUser
+        } else {
+            userEntity = UserEntity(context: context)
         }
+        
+        userEntity.updateFromUser(user)
+        
+        try context.save()
     }
     
     /// Fetch user by ID
     /// - Parameter id: The UUID of the user to fetch
     /// - Returns: Optional User if found
-    func fetchUser(id: UUID) async throws -> User? {
-        let predicate = NSPredicate(format: "id == %@", id.uuidString)
-        let query = CKQuery(recordType: User.recordType, predicate: predicate)
+    func fetchUser(id: UUID) throws -> User? {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
         
-        do {
-            let (results, _) = try await privateDatabase.records(matching: query)
-            for result in results {
-                if let record = try? result.1.get() {
-                    return User(from: record)
-                }
-            }
-            return nil
-        } catch {
-            print("Error fetching user: \(error.localizedDescription)")
-            throw error
-        }
+        let users = try context.fetch(fetchRequest)
+        return users.first?.toUser()
     }
     
     /// Update existing user
     /// - Parameter user: The user to update
     /// - Returns: Updated user if successful
-    func updateUser(_ user: User) async throws -> User {
-        do {
-            try user.validate()
-            let record = user.toRecord()
-            let updatedRecord = try await privateDatabase.save(record)
-            guard let updatedUser = User(from: updatedRecord) else {
-                throw PersistenceError.updateFailed
-            }
-            return updatedUser
-        } catch {
-            print("Error updating user: \(error.localizedDescription)")
-            throw error
+    func updateUser(_ user: User) throws -> User {
+        try user.validate()
+        
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", user.id as CVarArg)
+        
+        let users = try context.fetch(fetchRequest)
+        guard let userEntity = users.first else {
+            throw PersistenceError.updateFailed
         }
+        
+        userEntity.updateFromUser(user)
+        try context.save()
+        
+        return user
     }
     
     /// Delete user by ID
     /// - Parameter id: The UUID of the user to delete
-    func deleteUser(id: UUID) async throws {
-        let predicate = NSPredicate(format: "id == %@", id.uuidString)
-        let query = CKQuery(recordType: User.recordType, predicate: predicate)
+    func deleteUser(id: UUID) throws {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
         
-        do {
-            let (results, _) = try await privateDatabase.records(matching: query)
-            for result in results {
-                if let record = try? result.1.get() {
-                    try await privateDatabase.deleteRecord(withID: record.recordID)
-                    return
-                }
-            }
-        } catch {
-            print("Error deleting user: \(error.localizedDescription)")
-            throw error
+        let users = try context.fetch(fetchRequest)
+        for user in users {
+            context.delete(user)
         }
+        
+        try context.save()
+    }
+    
+    // MARK: - Lesson Management
+    
+    /// Save lesson data to Core Data
+    /// - Parameter lesson: The lesson to save
+    func saveLesson(_ lesson: Lesson) throws {
+        let context = persistentContainer.viewContext
+        
+        // Check if lesson already exists
+        let fetchRequest: NSFetchRequest<LessonEntity> = LessonEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", lesson.id as CVarArg)
+        
+        let existingLessons = try context.fetch(fetchRequest)
+        let lessonEntity: LessonEntity
+        
+        if let existingLesson = existingLessons.first {
+            lessonEntity = existingLesson
+        } else {
+            lessonEntity = LessonEntity(context: context)
+        }
+        
+        lessonEntity.updateFromLesson(lesson)
+        
+        // Link to user if exists
+        let userFetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+        userFetchRequest.predicate = NSPredicate(format: "id == %@", lesson.userId as CVarArg)
+        if let userEntity = try context.fetch(userFetchRequest).first {
+            lessonEntity.user = userEntity
+        }
+        
+        try context.save()
+    }
+    
+    /// Fetch lessons by user ID
+    /// - Parameter userId: The UUID of the user
+    /// - Returns: Array of lessons for the user
+    func fetchLessons(userId: UUID) throws -> [Lesson] {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<LessonEntity> = LessonEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "userId == %@", userId as CVarArg)
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "startedAt", ascending: false)]
+        
+        let lessons = try context.fetch(fetchRequest)
+        return lessons.map { $0.toLesson() }
+    }
+    
+    /// Fetch completed lessons by user ID
+    /// - Parameter userId: The UUID of the user
+    /// - Returns: Array of completed lessons for the user
+    func fetchCompletedLessons(userId: UUID) throws -> [Lesson] {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<LessonEntity> = LessonEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "userId == %@ AND status == %@", userId as CVarArg, "completed")
+        fetchRequest.sortDescriptors = [NSSortDescriptor(key: "completedAt", ascending: false)]
+        
+        let lessons = try context.fetch(fetchRequest)
+        return lessons.map { $0.toLesson() }
+    }
+    
+    // MARK: - Question Management
+    
+    /// Save question data to Core Data
+    /// - Parameter question: The question to save
+    func saveQuestion(_ question: Question) throws {
+        let context = persistentContainer.viewContext
+        
+        // Check if question already exists
+        let fetchRequest: NSFetchRequest<QuestionEntity> = QuestionEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", question.id as CVarArg)
+        
+        let existingQuestions = try context.fetch(fetchRequest)
+        let questionEntity: QuestionEntity
+        
+        if let existingQuestion = existingQuestions.first {
+            questionEntity = existingQuestion
+        } else {
+            questionEntity = QuestionEntity(context: context)
+        }
+        
+        questionEntity.updateFromQuestion(question)
+        
+        try context.save()
+    }
+    
+    /// Fetch question by ID
+    /// - Parameter id: The UUID of the question
+    /// - Returns: Optional Question if found
+    func fetchQuestion(id: UUID) throws -> Question? {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<QuestionEntity> = QuestionEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        
+        let questions = try context.fetch(fetchRequest)
+        return questions.first?.toQuestion()
+    }
+    
+    /// Fetch questions by subject
+    /// - Parameter subject: The subject to filter by
+    /// - Returns: Array of questions for the subject
+    func fetchQuestions(subject: Lesson.Subject) throws -> [Question] {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<QuestionEntity> = QuestionEntity.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "subject == %@", subject.rawValue)
+        
+        let questions = try context.fetch(fetchRequest)
+        return questions.map { $0.toQuestion() }
     }
 }
 
