@@ -24,18 +24,43 @@ class QuestionService {
             return Array(questionCache.values)
         }
         
-        // Otherwise, load from JSON - try root first, then Data/ subdirectory
+        // Enhanced bundle file lookup with debugging
         var url: URL?
+        
+        // Debug: List all bundle resources to see what's actually included
+        if let bundlePath = Bundle.main.resourcePath {
+            print("Bundle path: \(bundlePath)")
+            if let resources = try? FileManager.default.contentsOfDirectory(atPath: bundlePath) {
+                let timoFiles = resources.filter { $0.contains("timo") }
+                print("Bundle contents (timo files): \(timoFiles)")
+            }
+            
+            // Check Data subdirectory specifically
+            let dataPath = bundlePath + "/Data"
+            if FileManager.default.fileExists(atPath: dataPath) {
+                print("Data directory exists in bundle")
+                if let dataContents = try? FileManager.default.contentsOfDirectory(atPath: dataPath) {
+                    print("Data directory contents: \(dataContents)")
+                }
+            } else {
+                print("Data directory does not exist in bundle")
+            }
+        }
         
         // Try root directory first
         if let rootUrl = Bundle.main.url(forResource: "timo_questions", withExtension: "json") {
+            print("Found timo_questions.json in root: \(rootUrl)")
             url = rootUrl
         } else if let dataUrl = Bundle.main.url(forResource: "timo_questions", withExtension: "json", subdirectory: "Data") {
-            // Try Data/ subdirectory
+            print("Found timo_questions.json in Data/: \(dataUrl)")
             url = dataUrl
+        } else {
+            print("Error: Could not find timo_questions.json in bundle")
+            throw QuestionError.fileNotFound
         }
         
         guard let fileUrl = url else {
+            print("Error: Could not find timo_questions.json in bundle")
             throw QuestionError.fileNotFound
         }
         
@@ -55,8 +80,10 @@ class QuestionService {
                 }
             }
             
+            print("Successfully loaded \(questions.count) questions from JSON")
             return questions
         } catch {
+            print("Error loading questions from JSON: \(error)")
             throw QuestionError.decodingFailed(error)
         }
     }
@@ -501,6 +528,7 @@ extension QuestionService {
             }
         }
     }
+    
 }
 
 // MARK: - Error Handling

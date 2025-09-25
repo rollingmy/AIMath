@@ -34,6 +34,7 @@ struct MistakesReviewView: View {
                 await MainActor.run {
                     self.incorrectQuestions = questions
                     self.isLoading = false
+                    print("Loaded \(questions.count) incorrect questions for review")
                 }
             } catch {
                 print("Error loading incorrect questions: \(error)")
@@ -108,6 +109,9 @@ struct MistakesReviewView: View {
             }
         }
         .onAppear {
+            loadIncorrectQuestions()
+        }
+        .refreshable {
             loadIncorrectQuestions()
         }
     }

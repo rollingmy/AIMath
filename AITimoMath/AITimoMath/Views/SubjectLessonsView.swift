@@ -15,24 +15,62 @@ struct SubjectLessonsView: View {
     private func loadLessons() {
         isLoading = true
         
-        // In a real app, this would fetch lessons from a service or database
-        // Here we'll create sample lessons based on the subject
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            var newLessons: [Lesson] = []
-            
-            // Generate 5 sample lessons for this subject
-            for i in 1...5 {
-                let difficulty = difficulties[i % difficulties.count]
-                let isCompleted = Bool.random()
+        Task {
+            do {
+                // Load real questions from QuestionService
+                let questionService = QuestionService.shared
+                let allQuestions = try await questionService.loadQuestions()
                 
-                newLessons.append(Lesson(
-                    userId: user.id,
-                    subject: getSubjectEnum(from: subject)
-                ))
+                // Filter questions by subject
+                let subjectEnum = getSubjectEnum(from: subject)
+                let subjectQuestions = allQuestions.filter { $0.subject == subjectEnum }
+                
+                // Group questions by difficulty to create lessons
+                let questionsByDifficulty = Dictionary(grouping: subjectQuestions) { $0.difficulty }
+                
+                var newLessons: [Lesson] = []
+                
+                // Create lessons for each difficulty level
+                for difficulty in difficulties.sorted() {
+                    if let questions = questionsByDifficulty[difficulty], !questions.isEmpty {
+                        // Create a lesson for this difficulty level
+                        var lesson = Lesson(
+                            userId: user.id,
+                            subject: subjectEnum
+                        )
+                        lesson.difficulty = difficulty
+                        lesson.questions = questions.prefix(5).map { $0.id } // Limit to 5 questions per lesson
+                        newLessons.append(lesson)
+                    }
+                }
+                
+                // If no questions found, create a default lesson
+                if newLessons.isEmpty {
+                    var defaultLesson = Lesson(
+                        userId: user.id,
+                        subject: subjectEnum
+                    )
+                    defaultLesson.difficulty = 1
+                    newLessons.append(defaultLesson)
+                }
+                
+                await MainActor.run {
+                    self.lessons = newLessons
+                    self.isLoading = false
+                }
+            } catch {
+                print("Error loading lessons for \(subject): \(error)")
+                await MainActor.run {
+                    // Fallback to a single default lesson
+                    var defaultLesson = Lesson(
+                        userId: user.id,
+                        subject: getSubjectEnum(from: subject)
+                    )
+                    defaultLesson.difficulty = 1
+                    self.lessons = [defaultLesson]
+                    self.isLoading = false
+                }
             }
-            
-            self.lessons = newLessons
-            self.isLoading = false
         }
     }
     
@@ -115,18 +153,28 @@ struct SubjectLessonsView: View {
                 Text(getSubjectString(from: lesson.subject))
                     .font(.headline)
                 
-                Text("Master key concepts in \(getSubjectString(from: lesson.subject).lowercased())")
+                Text(getLessonDescription(for: lesson))
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 
                 HStack {
-                    Text("Difficulty \(lesson.difficulty)")
+                    Text(getDifficultyText(lesson.difficulty))
                         .font(.caption)
                         .padding(.horizontal, 8)
                         .padding(.vertical, 4)
                         .background(getDifficultyColor(lesson.difficulty).opacity(0.1))
                         .foregroundColor(getDifficultyColor(lesson.difficulty))
                         .cornerRadius(4)
+                    
+                    if !lesson.questions.isEmpty {
+                        Text("\(lesson.questions.count) questions")
+                            .font(.caption)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(Color.blue.opacity(0.1))
+                            .foregroundColor(.blue)
+                            .cornerRadius(4)
+                    }
                     
                     Spacer()
                     
@@ -183,6 +231,24 @@ struct SubjectLessonsView: View {
         default:
             return .blue
         }
+    }
+    
+    // Helper to get difficulty text
+    private func getDifficultyText(_ difficulty: Int) -> String {
+        switch difficulty {
+        case 1: return "Easy"
+        case 2: return "Medium"
+        case 3: return "Hard"
+        case 4: return "Olympiad"
+        default: return "Medium"
+        }
+    }
+    
+    // Helper to get lesson description
+    private func getLessonDescription(for lesson: Lesson) -> String {
+        let subjectName = getSubjectString(from: lesson.subject).lowercased()
+        let difficultyText = getDifficultyText(lesson.difficulty).lowercased()
+        return "Practice \(difficultyText) level \(subjectName) problems"
     }
 }
 

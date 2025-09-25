@@ -89,25 +89,37 @@ struct PerformanceView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 20) {
-                // Header with time range selector
-                HStack {
-                    Text("Performance Overview")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                    
-                    Spacer()
-                    
-                    Picker("Time Range", selection: $selectedTimeRange) {
-                        ForEach(TimeRange.allCases) { range in
-                            Text(range.rawValue).tag(range)
+        VStack(spacing: 0) {
+            // MARK: - Header
+            HStack {
+                Text("Performance")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                
+                Spacer()
+            }
+            .padding(.horizontal, 20)
+            .padding(.top, 10)
+            
+            ScrollView {
+                VStack(alignment: .leading, spacing: 20) {
+                    // Header with time range selector
+                    HStack {
+                        Text("Performance Overview")
+                            .font(.title2)
+                            .fontWeight(.bold)
+                        
+                        Spacer()
+                        
+                        Picker("Time Range", selection: $selectedTimeRange) {
+                            ForEach(TimeRange.allCases) { range in
+                                Text(range.rawValue).tag(range)
+                            }
                         }
+                        .pickerStyle(SegmentedPickerStyle())
+                        .frame(width: 200)
                     }
-                    .pickerStyle(SegmentedPickerStyle())
-                    .frame(width: 200)
-                }
-                .padding(.bottom, 10)
+                    .padding(.bottom, 10)
                 
                 if isLoading {
                     HStack {
@@ -216,10 +228,12 @@ struct PerformanceView: View {
                         .cornerRadius(12)
                     }
                 }
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 100) // Space for bottom navigation
             }
-            .padding()
         }
-        .navigationTitle("Performance")
+        .navigationBarHidden(true)
         .onAppear {
             loadPerformanceData()
         }

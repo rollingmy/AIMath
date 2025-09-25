@@ -53,76 +53,96 @@ struct DashboardView: View {
     }
     
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                // MARK: - Top Section
-                topSection
-                
-                // MARK: - Middle Section (Subject Categories)
-                middleSection
-                
-                // MARK: - Bottom Section (Progress & Achievements)
-                bottomSection
+        VStack(spacing: 0) {
+            // MARK: - Header
+            headerSection
+            
+            ScrollView {
+                VStack(spacing: 20) {
+                    // MARK: - User Info and Daily Goal
+                    userInfoSection
+                    
+                    // MARK: - AI Recommended Section
+                    aiRecommendedSection
+                    
+                    // MARK: - Start Today's Practice Button
+                    startPracticeButton
+                    
+                    // MARK: - Subjects Section
+                    subjectsSection
+                }
+                .padding(.horizontal, 20)
+                .padding(.bottom, 100) // Space for bottom navigation
             }
-            .padding()
         }
-        .navigationTitle("Dashboard")
-        .navigationBarItems(trailing: profileButton)
+        .navigationBarHidden(true)
         .onAppear {
             loadRecommendedLessons()
         }
     }
     
-    // MARK: - Top Section
-    private var topSection: some View {
-        VStack(spacing: 15) {
-            // User avatar and greeting
-            HStack {
-                Image(user.avatar)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 60, height: 60)
-                    .clipShape(Circle())
+    // MARK: - Header Section
+    private var headerSection: some View {
+        HStack {
+            Text("Dashboard")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+            
+            Spacer()
+            
+            NavigationLink(destination: SettingsView(user: user)) {
+                Image(systemName: "gear")
+                    .font(.system(size: 22))
+                    .foregroundColor(.blue)
+            }
+        }
+        .padding(.horizontal, 20)
+        .padding(.top, 10)
+    }
+    
+    // MARK: - User Info Section
+    private var userInfoSection: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 4) {
+                Text("Hello, \(user.name)!")
+                    .font(.title2)
+                    .fontWeight(.bold)
                 
-                VStack(alignment: .leading) {
-                    Text("Hello, \(user.name)!")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                    
-                    Text("Grade \(user.gradeLevel)")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                
-                Spacer()
-                
-                // Daily goal progress
-                ZStack {
-                    Circle()
-                        .stroke(Color.gray.opacity(0.2), lineWidth: 8)
-                        .frame(width: 60, height: 60)
-                    
-                    Circle()
-                        .trim(from: 0, to: min(CGFloat(user.dailyCompletedQuestions) / CGFloat(user.dailyGoal), 1.0))
-                        .stroke(Color.blue, style: StrokeStyle(lineWidth: 8, lineCap: .round))
-                        .frame(width: 60, height: 60)
-                        .rotationEffect(.degrees(-90))
-                    
-                    VStack {
-                        Text("\(user.dailyCompletedQuestions)/\(user.dailyGoal)")
-                            .font(.caption)
-                            .fontWeight(.bold)
-                    }
-                }
+                Text("Grade \(user.gradeLevel)")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
             }
             
-            // AI recommended lesson
+            Spacer()
+            
+            // Daily goal progress
+            ZStack {
+                Circle()
+                    .stroke(Color.gray.opacity(0.2), lineWidth: 8)
+                    .frame(width: 60, height: 60)
+                
+                Circle()
+                    .trim(from: 0, to: min(CGFloat(user.dailyCompletedQuestions) / CGFloat(user.dailyGoal), 1.0))
+                    .stroke(Color.blue, style: StrokeStyle(lineWidth: 8, lineCap: .round))
+                    .frame(width: 60, height: 60)
+                    .rotationEffect(.degrees(-90))
+                
+                Text("\(user.dailyCompletedQuestions)/\(user.dailyGoal)")
+                    .font(.caption)
+                    .fontWeight(.bold)
+            }
+        }
+    }
+    
+    // MARK: - AI Recommended Section
+    private var aiRecommendedSection: some View {
+        Group {
             if isLoading {
                 ProgressView()
                     .frame(height: 100)
             } else if let firstRecommendation = recommendedLessons.first {
                 NavigationLink(destination: LessonDetailView(lesson: firstRecommendation, user: user)) {
-                    VStack(alignment: .leading, spacing: 10) {
+                    VStack(alignment: .leading, spacing: 12) {
                         HStack {
                             Image(systemName: "lightbulb.fill")
                                 .foregroundColor(.yellow)
@@ -134,6 +154,7 @@ struct DashboardView: View {
                         
                         Text(getSubjectDisplayName(firstRecommendation.subject))
                             .font(.headline)
+                            .fontWeight(.bold)
                         
                         Text("AI recommended based on your progress")
                             .font(.subheadline)
@@ -168,25 +189,36 @@ struct DashboardView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
             }
-            
-            // Start Today's Practice Button
-            Button(action: {
-                // Start today's practice with AI-recommended lesson
-                if let firstRecommendation = recommendedLessons.first {
-                    // Navigate to the recommended lesson
-                    // This should trigger navigation to LessonDetailView
+        }
+    }
+    
+    // MARK: - Start Today's Practice Button
+    private var startPracticeButton: some View {
+        Group {
+            if let firstRecommendation = recommendedLessons.first {
+                NavigationLink(destination: LessonDetailView(lesson: firstRecommendation, user: user)) {
+                    Text("Start Today's Practice")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.blue)
+                        .cornerRadius(10)
                 }
-            }) {
-                Text("Start Today's Practice")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
+                .buttonStyle(PlainButtonStyle())
+            } else {
+                Button(action: {}) {
+                    Text("Start Today's Practice")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(Color.gray)
+                        .cornerRadius(10)
+                }
+                .disabled(true)
             }
         }
-        .padding(.bottom, 10)
     }
     
     // Helper function to get display name for subject
@@ -205,14 +237,16 @@ struct DashboardView: View {
         }
     }
     
-    // MARK: - Middle Section (Subject Categories)
-    private var middleSection: some View {
+    // MARK: - Subjects Section
+    private var subjectsSection: some View {
         VStack(alignment: .leading, spacing: 15) {
             Text("Subjects")
                 .font(.headline)
+                .fontWeight(.bold)
             
             LazyVGrid(columns: [
-                GridItem(.adaptive(minimum: 150), spacing: 15)
+                GridItem(.flexible(), spacing: 15),
+                GridItem(.flexible(), spacing: 15)
             ], spacing: 15) {
                 ForEach(subjects.indices, id: \.self) { index in
                     NavigationLink(destination: SubjectLessonsView(
@@ -242,123 +276,8 @@ struct DashboardView: View {
                 }
             }
         }
-        .padding(.bottom, 10)
     }
     
-    // MARK: - Bottom Section (Progress & Achievements)
-    private var bottomSection: some View {
-        VStack(alignment: .leading, spacing: 15) {
-            Text("Your Progress")
-                .font(.headline)
-            
-            // Progress chart (simplified for example)
-            VStack(alignment: .leading, spacing: 10) {
-                ForEach(subjects, id: \.0) { subject, _ in
-                    HStack {
-                        Text(subject)
-                            .font(.caption)
-                            .frame(width: 120, alignment: .leading)
-                        
-                        // Calculate actual progress based on user data
-                        let progress = getProgressForSubject(subject)
-                        
-                        ZStack(alignment: .leading) {
-                            Rectangle()
-                                .frame(height: 10)
-                                .foregroundColor(Color(.systemGray5))
-                                .cornerRadius(5)
-                            
-                            Rectangle()
-                                .frame(width: CGFloat(progress) * 200, height: 10)
-                                .foregroundColor(.blue)
-                                .cornerRadius(5)
-                        }
-                        
-                        Text("\(Int(progress * 100))%")
-                            .font(.caption)
-                            .frame(width: 40)
-                    }
-                }
-            }
-            .padding()
-            .background(Color(.systemGray6))
-            .cornerRadius(12)
-            
-            // Review Mistakes Button
-            NavigationLink(destination: MistakesReviewView(user: user)) {
-                HStack {
-                    Image(systemName: "exclamationmark.circle")
-                        .foregroundColor(.red)
-                    
-                    Text("Review Mistakes")
-                        .font(.subheadline)
-                        .fontWeight(.medium)
-                    
-                    Spacer()
-                    
-                    Image(systemName: "chevron.right")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                }
-                .padding()
-                .background(Color(.systemGray6))
-                .cornerRadius(12)
-            }
-            .buttonStyle(PlainButtonStyle())
-            
-            // Achievements Section
-            Text("Achievements")
-                .font(.headline)
-                .padding(.top, 5)
-            
-            ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 15) {
-                    ForEach(1...5, id: \.self) { i in
-                        VStack {
-                            Image(systemName: "medal.fill")
-                                .font(.system(size: 30))
-                                .foregroundColor(.yellow)
-                            
-                            Text("Achievement \(i)")
-                                .font(.caption)
-                                .multilineTextAlignment(.center)
-                        }
-                        .frame(width: 100, height: 100)
-                        .background(Color(.systemGray6))
-                        .cornerRadius(12)
-                    }
-                }
-            }
-        }
-    }
-    
-
-    // Helper function to calculate actual progress for a subject
-    private func getProgressForSubject(_ subject: String) -> Double {
-        // For now, we'll calculate based on daily completed questions vs goal
-        // In a real app, this would come from the user's lesson history and performance data
-        
-        let totalGoal = user.dailyGoal
-        let completed = user.dailyCompletedQuestions
-        
-        if totalGoal == 0 {
-            return 0.0
-        }
-        
-        // Calculate progress as a percentage of daily goal completion
-        let progress = Double(completed) / Double(totalGoal)
-        
-        // Cap progress at 100% and ensure it's not negative
-        return max(0.0, min(1.0, progress))
-    }
-    // MARK: - Profile Button
-    private var profileButton: some View {
-        NavigationLink(destination: SettingsView(user: user)) {
-            Image(systemName: "gear")
-                .font(.system(size: 22))
-                .foregroundColor(.blue)
-        }
-    }
 }
 
 // MARK: - Preview

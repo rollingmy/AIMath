@@ -7,7 +7,7 @@
         <attribute name="gradeLevel" optional="NO" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="learningGoal" optional="NO" attributeType="Integer 16" defaultValueString="10" usesScalarValueType="YES"/>
         <attribute name="difficultyLevel" optional="NO" attributeType="String" defaultValueString="adaptive"/>
-        <attribute name="completedLessons" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="completedLessons" optional="YES" attributeType="Transformable"/>
         <attribute name="lastActiveAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="createdAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dailyGoal" optional="NO" attributeType="Integer 16" defaultValueString="10" usesScalarValueType="YES"/>
@@ -19,8 +19,8 @@
         <attribute name="userId" optional="NO" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="subject" optional="NO" attributeType="String"/>
         <attribute name="difficulty" optional="NO" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
-        <attribute name="questions" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
-        <attribute name="responses" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="questions" optional="YES" attributeType="Transformable"/>
+        <attribute name="responses" optional="YES" attributeType="Transformable"/>
         <attribute name="accuracy" optional="NO" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="responseTime" optional="NO" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="startedAt" optional="NO" attributeType="Date" usesScalarValueType="NO"/>
@@ -34,11 +34,11 @@
         <attribute name="difficulty" optional="NO" attributeType="Integer 16" defaultValueString="1" usesScalarValueType="YES"/>
         <attribute name="type" optional="NO" attributeType="String"/>
         <attribute name="questionText" optional="NO" attributeType="String"/>
-        <attribute name="options" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="options" optional="YES" attributeType="Transformable"/>
         <attribute name="correctAnswer" optional="NO" attributeType="String"/>
         <attribute name="hint" optional="YES" attributeType="String"/>
         <attribute name="imageData" optional="YES" attributeType="Binary"/>
-        <attribute name="metadata" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformer"/>
+        <attribute name="metadata" optional="YES" attributeType="Transformable"/>
     </entity>
     <elements>
         <element name="UserEntity" positionX="-63" positionY="-18" width="128" height="194"/>
