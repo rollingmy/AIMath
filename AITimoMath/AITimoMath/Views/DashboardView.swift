@@ -83,26 +83,29 @@ struct DashboardView: View {
     
     // MARK: - Header Section
     private var headerSection: some View {
-        HStack {
-            Text("Dashboard")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-            
-            Spacer()
-            
-            NavigationLink(destination: SettingsView(user: user)) {
-                Image(systemName: "gear")
-                    .font(.system(size: 22))
-                    .foregroundColor(.blue)
+        VStack(spacing: 8) {
+            HStack(alignment: .center) {
+                Text("Dashboard")
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                Spacer()
+                NavigationLink(destination: SettingsView(user: user)) {
+                    Image(systemName: "gear")
+                        .font(.system(size: 22))
+                        .foregroundColor(.blue)
+                        .padding(8)
+                }
+                .background(Color(.systemGray6))
+                .clipShape(Circle())
             }
+            .padding(.horizontal, 20)
+            .padding(.top, 10)
         }
-        .padding(.horizontal, 20)
-        .padding(.top, 10)
     }
     
     // MARK: - User Info Section
     private var userInfoSection: some View {
-        HStack {
+        HStack(alignment: .center) {
             VStack(alignment: .leading, spacing: 4) {
                 Text("Hello, \(user.name)!")
                     .font(.title2)
@@ -132,6 +135,7 @@ struct DashboardView: View {
                     .fontWeight(.bold)
             }
         }
+        .padding(.top, 4)
     }
     
     // MARK: - AI Recommended Section

@@ -7,6 +7,7 @@ struct ContentView: View {
         avatar: "avatar-1",
         gradeLevel: 5
     )
+    private let persistence = PersistenceController.shared
     
     var body: some View {
         if !isOnboarded {
@@ -51,6 +52,14 @@ struct ContentView: View {
                 #endif
             }
             .accentColor(.blue)
+            .onAppear {
+                // Attempt to restore persisted user state
+                if let stored = try? persistence.fetchUser(id: user.id) {
+                    self.user = stored
+                } else {
+                    try? persistence.saveUser(user)
+                }
+            }
         }
     }
 }

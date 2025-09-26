@@ -5,6 +5,9 @@ struct QuestionExampleView: View {
     // User state
     var user: User
     var onUserUpdate: (User) -> Void
+    // Optional filters to constrain the session questions
+    var subjectFilter: Lesson.Subject? = nil
+    var difficultyFilter: Int? = nil
     
     // Navigation
     @Environment(\.presentationMode) var presentationMode
@@ -25,9 +28,11 @@ struct QuestionExampleView: View {
     @State private var sessionResponses: [Lesson.QuestionResponse] = []
     @State private var questionStartTime: Date = Date()
     
-    // Initialize with user and update callback
-    init(user: User, onUserUpdate: @escaping (User) -> Void) {
+    // Initialize with user and update callback (and optional filters)
+    init(user: User, subject: Lesson.Subject? = nil, difficulty: Int? = nil, onUserUpdate: @escaping (User) -> Void) {
         self.user = user
+        self.subjectFilter = subject
+        self.difficultyFilter = difficulty
         self.onUserUpdate = onUserUpdate
     }
     
@@ -415,10 +420,37 @@ struct QuestionExampleView: View {
         Task {
             do {
                 let allQuestions = try await QuestionService.shared.loadQuestions()
-                
-                // Limit questions to user's daily goal instead of loading all
-                let questionCount = min(user.dailyGoal, allQuestions.count)
-                let loadedQuestions = Array(allQuestions.prefix(questionCount))
+                // Apply subject and difficulty filters if provided
+                var filtered = allQuestions
+                if let sf = subjectFilter {
+                    filtered = filtered.filter { $0.subject == sf }
+                }
+                if let df = difficultyFilter {
+                    filtered = filtered.filter { $0.difficulty == df }
+                }
+                // Ensure we fill up to the daily goal by topping up from same subject (nearest difficulties)
+                let target = user.dailyGoal
+                var pool = filtered
+                if pool.count < target, let sf = subjectFilter {
+                    let sameSubject = allQuestions.filter { $0.subject == sf }
+                    let base = difficultyFilter ?? 0
+                    // nearest difficulty order
+                    let order: [Int]
+                    if base == 0 {
+                        order = [1,2,3,4]
+                    } else {
+                        order = [base, max(1, base-1), min(4, base+1), max(1, base-2), min(4, base+2)]
+                    }
+                    for d in order {
+                        guard pool.count < target else { break }
+                        let extras = sameSubject.filter { $0.difficulty == d && !pool.contains($0) }
+                        for q in extras {
+                            guard pool.count < target else { break }
+                            pool.append(q)
+                        }
+                    }
+                }
+                let loadedQuestions = Array(pool.prefix(target))
                 DispatchQueue.main.async {
                     self.questions = loadedQuestions
                     self.isLoading = false

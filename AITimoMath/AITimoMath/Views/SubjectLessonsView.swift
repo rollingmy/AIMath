@@ -32,14 +32,27 @@ struct SubjectLessonsView: View {
                 
                 // Create lessons for each difficulty level
                 for difficulty in difficulties.sorted() {
-                    if let questions = questionsByDifficulty[difficulty], !questions.isEmpty {
-                        // Create a lesson for this difficulty level
+                    if var qs = questionsByDifficulty[difficulty], !qs.isEmpty {
+                        // Top up to daily goal using same-subject nearest difficulties
+                        let target = user.dailyGoal
+                        if qs.count < target {
+                            let order = [difficulty, max(1, difficulty-1), min(4, difficulty+1), max(1, difficulty-2), min(4, difficulty+2)]
+                            for d in order where d != difficulty {
+                                guard qs.count < target else { break }
+                                if let extra = questionsByDifficulty[d] {
+                                    for q in extra where !qs.contains(q) {
+                                        guard qs.count < target else { break }
+                                        qs.append(q)
+                                    }
+                                }
+                            }
+                        }
                         var lesson = Lesson(
                             userId: user.id,
                             subject: subjectEnum
                         )
                         lesson.difficulty = difficulty
-                        lesson.questions = questions.prefix(5).map { $0.id } // Limit to 5 questions per lesson
+                        lesson.questions = Array(qs.prefix(target)).map { $0.id }
                         newLessons.append(lesson)
                     }
                 }

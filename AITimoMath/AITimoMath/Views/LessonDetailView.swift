@@ -16,12 +16,13 @@ struct LessonDetailView: View {
         let questionLoader = QuestionLoaderService()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            // Use selected lesson subject; show lesson.difficulty badge but preview can pull nearest difficulties
+            // Keep preview aligned to subject only
             self.questions = questionLoader.getQuestions(
                 subject: getSubjectString(from: lesson.subject),
-                difficulty: "Medium",
-                count: min(user.dailyGoal, 10) // Use user's daily goal, cap at 10 for lesson preview
+                difficulty: nil,
+                count: min(user.dailyGoal, 10)
             )
-            
             self.isLoading = false
         }
     }
@@ -191,6 +192,8 @@ struct LessonDetailView: View {
             if !questions.isEmpty {
                 QuestionExampleView(
                     user: user,
+                    subject: lesson.subject,
+                    difficulty: lesson.difficulty,
                     onUserUpdate: { updatedUser in
                         // Handle user update if needed
                     }

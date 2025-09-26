@@ -132,8 +132,10 @@ class QuestionLoaderService {
             if let subjectEnum = Lesson.Subject(rawValue: subjectString) {
                 filteredQuestions = filteredQuestions.filter { $0.subject == subjectEnum }
             } else {
-                // Try to match by display name
-                let displayName = subjectString.replacingOccurrences(of: " ", with: "_")
+                // Try to match by display name (normalize to lowercase with underscores)
+                let displayName = subjectString
+                    .replacingOccurrences(of: " ", with: "_")
+                    .lowercased()
                 if let subjectEnum = Lesson.Subject(rawValue: displayName) {
                     filteredQuestions = filteredQuestions.filter { $0.subject == subjectEnum }
                 }
