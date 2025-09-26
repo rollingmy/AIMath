@@ -206,21 +206,7 @@ extension Question {
 }
 
 // MARK: - Core Data Integration
-extension Question {
-    /// Creates Question model from Core Data entity
-    public init(from entity: QuestionEntity) {
-        self.id = entity.id ?? UUID()
-        self.subject = Lesson.Subject(rawValue: entity.subject ?? "arithmetic") ?? .arithmetic
-        self.difficulty = Int(entity.difficulty)
-        self.type = Question.QuestionType(rawValue: entity.type ?? "mcq") ?? .multipleChoice
-        self.questionText = entity.questionText ?? ""
-        self.options = entity.options as? [Question.QuestionOption] ?? []
-        self.correctAnswer = entity.correctAnswer ?? ""
-        self.hint = entity.hint
-        self.imageData = entity.imageData
-        self.metadata = entity.metadata as? [String: Any] ?? [:]
-    }
-}
+// Note: Core Data integration is handled in CoreDataExtensions.swift
 
 // MARK: - Validation
 extension Question {

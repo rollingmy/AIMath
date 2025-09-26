@@ -34,10 +34,30 @@ class PersistenceController {
             persistentContainer.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
         
-        // Configure Core Data stack
+        // Configure Core Data stack with migration handling
         persistentContainer.loadPersistentStores { description, error in
             if let error = error {
-                fatalError("Core Data store failed to load: \(error.localizedDescription)")
+                print("Core Data store failed to load: \(error.localizedDescription)")
+                
+                // Check if this is a migration error (NSCocoaErrorDomain 134140)
+                if let nsError = error as NSError?,
+                   nsError.domain == "NSCocoaErrorDomain" && nsError.code == 134140 {
+                    print("Migration error detected. Attempting to delete and recreate store...")
+                    
+                    // Delete the existing store and recreate
+                    self.deleteExistingStore()
+                    
+                    // Try to load again
+                    self.persistentContainer.loadPersistentStores { description, error in
+                        if let error = error {
+                            fatalError("Core Data store failed to load after migration: \(error.localizedDescription)")
+                        } else {
+                            print("Core Data store successfully recreated after migration")
+                        }
+                    }
+                } else {
+                    fatalError("Core Data store failed to load: \(error.localizedDescription)")
+                }
             }
         }
         
@@ -55,6 +75,47 @@ class PersistenceController {
     /// Returns the managed object context for the main thread
     var viewContext: NSManagedObjectContext {
         persistentContainer.viewContext
+    }
+    
+    /// Delete existing Core Data store files to handle migration issues
+    private func deleteExistingStore() {
+        guard let storeURL = persistentContainer.persistentStoreDescriptions.first?.url else {
+            print("No store URL found")
+            return
+        }
+        
+        let storeDirectory = storeURL.deletingLastPathComponent()
+        let storeName = storeURL.lastPathComponent
+        
+        // Delete all related files
+        let fileManager = FileManager.default
+        do {
+            // Delete the main store file
+            if fileManager.fileExists(atPath: storeURL.path) {
+                try fileManager.removeItem(at: storeURL)
+                print("Deleted main store file: \(storeURL.path)")
+            }
+            
+            // Delete related files (wal, shm, etc.)
+            let relatedFiles = [
+                "\(storeName)-wal",
+                "\(storeName)-shm",
+                "\(storeName).sqlite-wal",
+                "\(storeName).sqlite-shm"
+            ]
+            
+            for fileName in relatedFiles {
+                let fileURL = storeDirectory.appendingPathComponent(fileName)
+                if fileManager.fileExists(atPath: fileURL.path) {
+                    try fileManager.removeItem(at: fileURL)
+                    print("Deleted related file: \(fileURL.path)")
+                }
+            }
+            
+            print("Successfully deleted existing Core Data store")
+        } catch {
+            print("Error deleting Core Data store: \(error.localizedDescription)")
+        }
     }
     
     /// Save user data to Core Data

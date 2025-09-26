@@ -149,24 +149,7 @@ extension User {
 }
 
 // MARK: - Core Data Integration
-extension User {
-    /// Creates User model from Core Data entity
-    public convenience init(from entity: UserEntity) {
-        self.init(
-            id: entity.id ?? UUID(),
-            name: entity.name ?? "",
-            avatar: entity.avatar ?? "",
-            gradeLevel: Int(entity.gradeLevel),
-            learningGoal: Int(entity.learningGoal),
-            difficultyLevel: User.DifficultyLevel(rawValue: entity.difficultyLevel ?? "adaptive") ?? .adaptive,
-            completedLessons: entity.completedLessons as? [UUID] ?? [],
-            lastActiveAt: entity.lastActiveAt ?? Date(),
-            createdAt: entity.createdAt ?? Date(),
-            dailyGoal: Int(entity.dailyGoal),
-            dailyCompletedQuestions: Int(entity.dailyCompletedQuestions)
-        )
-    }
-}
+// Note: Core Data integration is handled in CoreDataExtensions.swift
 
 // MARK: - Validation
 extension User {

@@ -109,22 +109,7 @@ extension Lesson {
 }
 
 // MARK: - Core Data Integration
-extension Lesson {
-    /// Creates Lesson model from Core Data entity
-    public init(from entity: LessonEntity) {
-        self.id = entity.id ?? UUID()
-        self.userId = entity.userId ?? UUID()
-        self.subject = Lesson.Subject(rawValue: entity.subject ?? "arithmetic") ?? .arithmetic
-        self.difficulty = Int(entity.difficulty)
-        self.questions = entity.questions as? [UUID] ?? []
-        self.responses = entity.responses as? [Lesson.QuestionResponse] ?? []
-        self.accuracy = entity.accuracy
-        self.responseTime = entity.responseTime
-        self.startedAt = entity.startedAt ?? Date()
-        self.completedAt = entity.completedAt
-        self.status = Lesson.LessonStatus(rawValue: entity.status ?? "not_started") ?? .notStarted
-    }
-}
+// Note: Core Data integration is handled in CoreDataExtensions.swift
 
 // MARK: - Analytics & Progress Tracking
 extension Lesson {

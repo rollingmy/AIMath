@@ -1,10 +1,43 @@
 import Foundation
 import CoreData
 
+// MARK: - JSON Encoding/Decoding Helpers
+extension Data {
+    /// Decode JSON data to a Codable type
+    func decodeJSON<T: Codable>(_ type: T.Type) -> T? {
+        do {
+            return try JSONDecoder().decode(type, from: self)
+        } catch {
+            print("Error decoding JSON: \(error)")
+            return nil
+        }
+    }
+}
+
+extension Encodable {
+    /// Encode to JSON data
+    func encodeJSON() -> Data? {
+        do {
+            return try JSONEncoder().encode(self)
+        } catch {
+            print("Error encoding JSON: \(error)")
+            return nil
+        }
+    }
+}
+
 // MARK: - UserEntity Extensions
 extension UserEntity {
     /// Convert Core Data entity to User model
     func toUser() -> User {
+        // Decode completedLessons from JSON
+        let completedLessons: [UUID]
+        if let data = self.completedLessons {
+            completedLessons = data.decodeJSON([UUID].self) ?? []
+        } else {
+            completedLessons = []
+        }
+        
         return User(
             id: self.id ?? UUID(),
             name: self.name ?? "",
@@ -12,7 +45,7 @@ extension UserEntity {
             gradeLevel: Int(self.gradeLevel),
             learningGoal: Int(self.learningGoal),
             difficultyLevel: User.DifficultyLevel(rawValue: self.difficultyLevel ?? "adaptive") ?? .adaptive,
-            completedLessons: self.completedLessons as? [UUID] ?? [],
+            completedLessons: completedLessons,
             lastActiveAt: self.lastActiveAt ?? Date(),
             createdAt: self.createdAt ?? Date(),
             dailyGoal: Int(self.dailyGoal),
@@ -28,7 +61,7 @@ extension UserEntity {
         self.gradeLevel = Int16(user.gradeLevel)
         self.learningGoal = Int16(user.learningGoal)
         self.difficultyLevel = user.difficultyLevel.rawValue
-        self.completedLessons = user.completedLessons as NSObject
+        self.completedLessons = user.completedLessons.encodeJSON()
         self.lastActiveAt = user.lastActiveAt
         self.createdAt = user.createdAt
         self.dailyGoal = Int16(user.dailyGoal)
@@ -40,13 +73,28 @@ extension UserEntity {
 extension LessonEntity {
     /// Convert Core Data entity to Lesson model
     func toLesson() -> Lesson {
+        // Decode questions and responses from JSON
+        let questions: [UUID]
+        if let data = self.questions {
+            questions = data.decodeJSON([UUID].self) ?? []
+        } else {
+            questions = []
+        }
+        
+        let responses: [Lesson.QuestionResponse]
+        if let data = self.responses {
+            responses = data.decodeJSON([Lesson.QuestionResponse].self) ?? []
+        } else {
+            responses = []
+        }
+        
         return Lesson(
             id: self.id ?? UUID(),
             userId: self.userId ?? UUID(),
             subject: Lesson.Subject(rawValue: self.subject ?? "arithmetic") ?? .arithmetic,
             difficulty: Int(self.difficulty),
-            questions: self.questions as? [UUID] ?? [],
-            responses: self.responses as? [Lesson.QuestionResponse] ?? [],
+            questions: questions,
+            responses: responses,
             accuracy: self.accuracy,
             responseTime: self.responseTime,
             startedAt: self.startedAt ?? Date(),
@@ -61,8 +109,8 @@ extension LessonEntity {
         self.userId = lesson.userId
         self.subject = lesson.subject.rawValue
         self.difficulty = Int16(lesson.difficulty)
-        self.questions = lesson.questions as NSObject
-        self.responses = lesson.responses as NSObject
+        self.questions = lesson.questions.encodeJSON()
+        self.responses = lesson.responses.encodeJSON()
         self.accuracy = lesson.accuracy
         self.responseTime = lesson.responseTime
         self.startedAt = lesson.startedAt
@@ -92,11 +140,31 @@ extension QuestionEntity {
             correctAnswer: questionCorrectAnswer
         )
         
-        // Set additional properties
-        question.options = self.options as? [Question.QuestionOption] ?? []
+        // Decode options and metadata from JSON
+        if let data = self.options {
+            question.options = data.decodeJSON([Question.QuestionOption].self) ?? []
+        } else {
+            question.options = []
+        }
+        
         question.hint = self.hint
         question.imageData = self.imageData
-        question.metadata = self.metadata as? [String: Any] ?? [:]
+        
+        // Handle metadata - convert from Data to [String: Any] using NSKeyedUnarchiver
+        if let data = self.metadata {
+            do {
+                if let metadata = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [String: Any] {
+                    question.metadata = metadata
+                } else {
+                    question.metadata = [:]
+                }
+            } catch {
+                print("Error decoding metadata: \(error)")
+                question.metadata = [:]
+            }
+        } else {
+            question.metadata = [:]
+        }
         
         return question
     }
@@ -108,10 +176,20 @@ extension QuestionEntity {
         self.difficulty = Int16(question.difficulty)
         self.type = question.type.rawValue
         self.questionText = question.questionText
-        self.options = question.options as NSObject?
+        self.options = question.options?.encodeJSON()
         self.correctAnswer = question.correctAnswer
         self.hint = question.hint
         self.imageData = question.imageData
-        self.metadata = question.metadata as NSObject?
+        // Handle metadata - convert from [String: Any] to Data using NSKeyedArchiver
+        if let metadata = question.metadata {
+            do {
+                self.metadata = try NSKeyedArchiver.archivedData(withRootObject: metadata, requiringSecureCoding: false)
+            } catch {
+                print("Error encoding metadata: \(error)")
+                self.metadata = nil
+            }
+        } else {
+            self.metadata = nil
+        }
     }
 }
