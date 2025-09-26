@@ -101,7 +101,7 @@ def preprocess_question_data(questions):
     
     return pd.DataFrame(question_features)
 
-def generate_synthetic_student_data(question_df, n_students=100):
+def generate_synthetic_student_data(question_df, n_students=50):
     """Generate synthetic student response data for model training"""
     np.random.seed(RANDOM_SEED)
     
