@@ -101,9 +101,28 @@ struct LessonDetailView: View {
     }
     
     private var lessonDescription: some View {
-        Text("Practice questions in \(getSubjectString(from: lesson.subject)) to improve your skills.")
-            .font(.body)
-            .padding(.top, 5)
+        VStack(alignment: .leading, spacing: 8) {
+            Text(getEngagingDescription(for: lesson.subject))
+                .font(.body)
+                .foregroundColor(.primary)
+            
+            HStack {
+                Image(systemName: "clock")
+                    .foregroundColor(.blue)
+                Text("Estimated time: \(getEstimatedTime()) minutes")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                
+                Spacer()
+                
+                Image(systemName: "questionmark.circle")
+                    .foregroundColor(.blue)
+                Text("\(questions.count) questions")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
+        }
+        .padding(.top, 5)
     }
     
     private var questionPreviewSection: some View {
@@ -136,18 +155,49 @@ struct LessonDetailView: View {
     
     private var questionPreviews: some View {
         ForEach(questions.prefix(3).indices, id: \.self) { index in
-            HStack(alignment: .top) {
-                Text("\(index + 1).")
-                    .font(.subheadline)
-                    .fontWeight(.bold)
-                    .frame(width: 25, alignment: .leading)
-                
-                // Display a preview of the question text
-                Text(questions[index].questionText.split(separator: "\n").first?.description ?? "")
-                    .font(.subheadline)
-                    .lineLimit(2)
+            VStack(alignment: .leading, spacing: 8) {
+                HStack(alignment: .top) {
+                    Text("\(index + 1).")
+                        .font(.subheadline)
+                        .fontWeight(.bold)
+                        .frame(width: 25, alignment: .leading)
+                    
+                    VStack(alignment: .leading, spacing: 4) {
+                        // Display a preview of the question text (first line only)
+                        Text(getQuestionPreview(questions[index].questionText))
+                            .font(.subheadline)
+                            .lineLimit(2)
+                            .foregroundColor(.primary)
+                        
+                        // Show question type and difficulty
+                        HStack {
+                            Text(questions[index].type == .multipleChoice ? "Multiple Choice" : "Open Ended")
+                                .font(.caption)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(Color.blue.opacity(0.1))
+                                .foregroundColor(.blue)
+                                .cornerRadius(4)
+                            
+                            Text("Level \(questions[index].difficulty)")
+                                .font(.caption)
+                                .padding(.horizontal, 6)
+                                .padding(.vertical, 2)
+                                .background(Color.orange.opacity(0.1))
+                                .foregroundColor(.orange)
+                                .cornerRadius(4)
+                        }
+                    }
+                }
             }
-            .padding(.vertical, 5)
+            .padding(.vertical, 8)
+            .padding(.horizontal, 12)
+            .background(Color(.systemBackground))
+            .cornerRadius(8)
+            .overlay(
+                RoundedRectangle(cornerRadius: 8)
+                    .stroke(Color(.systemGray5), lineWidth: 1)
+            )
         }
     }
     
@@ -156,17 +206,27 @@ struct LessonDetailView: View {
             Text("Skills You'll Practice")
                 .font(.headline)
             
-            // Random skills based on the subject
-            let skills = getSkillsForSubject(lesson.subject)
+            // Get detailed skills based on the subject
+            let skills = getDetailedSkillsForSubject(lesson.subject)
             
-            ForEach(skills, id: \.self) { skill in
-                HStack {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.green)
+            ForEach(skills, id: \.name) { skill in
+                VStack(alignment: .leading, spacing: 4) {
+                    HStack {
+                        Image(systemName: skill.icon)
+                            .foregroundColor(.blue)
+                            .frame(width: 20)
+                        
+                        Text(skill.name)
+                            .font(.subheadline)
+                            .fontWeight(.medium)
+                    }
                     
-                    Text(skill)
-                        .font(.subheadline)
+                    Text(skill.description)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.leading, 24)
                 }
+                .padding(.vertical, 4)
             }
         }
         .padding()
@@ -218,7 +278,85 @@ struct LessonDetailView: View {
         }
     }
     
-    // Helper to generate skills based on subject
+    // Helper to generate engaging descriptions based on subject
+    private func getEngagingDescription(for subject: Lesson.Subject) -> String {
+        switch subject {
+        case .logicalThinking:
+            return "Develop your critical thinking skills with engaging logic puzzles and pattern recognition challenges. Perfect for building problem-solving abilities!"
+        case .arithmetic:
+            return "Master fundamental math operations with interactive exercises. Build confidence in addition, subtraction, multiplication, and division."
+        case .numberTheory:
+            return "Explore the fascinating world of numbers! Learn about prime numbers, factors, sequences, and discover the hidden patterns in mathematics."
+        case .geometry:
+            return "Discover shapes, angles, and spatial relationships through visual learning. Develop your geometric intuition and problem-solving skills."
+        case .combinatorics:
+            return "Learn counting principles and probability through fun, real-world scenarios. Perfect for developing analytical thinking!"
+        }
+    }
+    
+    // Helper to get estimated time based on question count and difficulty
+    private func getEstimatedTime() -> Int {
+        let baseTime = questions.count * 2 // 2 minutes per question
+        let difficultyMultiplier = Double(lesson.difficulty) * 0.5 // Add 0.5 minutes per difficulty level
+        return Int(Double(baseTime) + difficultyMultiplier)
+    }
+    
+    // Helper to get question preview (first line only)
+    private func getQuestionPreview(_ questionText: String) -> String {
+        let lines = questionText.components(separatedBy: "\n")
+        let firstLine = lines.first ?? questionText
+        
+        // Remove Vietnamese text if present (text after \n)
+        if firstLine.contains("\n") {
+            let parts = firstLine.components(separatedBy: "\n")
+            return parts.first ?? firstLine
+        }
+        
+        return firstLine
+    }
+    
+    // Helper to generate detailed skills based on subject
+    private func getDetailedSkillsForSubject(_ subject: Lesson.Subject) -> [SkillInfo] {
+        switch subject {
+        case .logicalThinking:
+            return [
+                SkillInfo(name: "Pattern Recognition", description: "Identify and extend number and shape patterns", icon: "waveform.path.ecg"),
+                SkillInfo(name: "Deductive Reasoning", description: "Draw logical conclusions from given information", icon: "brain.head.profile"),
+                SkillInfo(name: "Critical Thinking", description: "Analyze problems and find creative solutions", icon: "lightbulb.fill"),
+                SkillInfo(name: "Logical Inference", description: "Make educated guesses based on evidence", icon: "arrow.triangle.branch")
+            ]
+        case .arithmetic:
+            return [
+                SkillInfo(name: "Basic Operations", description: "Master addition, subtraction, multiplication, and division", icon: "plus.slash.minus"),
+                SkillInfo(name: "Number Sense", description: "Understand number relationships and properties", icon: "number.circle"),
+                SkillInfo(name: "Mental Math", description: "Perform calculations quickly and accurately", icon: "brain"),
+                SkillInfo(name: "Problem Solving", description: "Apply arithmetic to real-world situations", icon: "puzzlepiece.fill")
+            ]
+        case .numberTheory:
+            return [
+                SkillInfo(name: "Prime Numbers", description: "Identify and work with prime and composite numbers", icon: "star.fill"),
+                SkillInfo(name: "Factors & Multiples", description: "Find factors, multiples, and common divisors", icon: "divide.circle"),
+                SkillInfo(name: "Number Sequences", description: "Recognize and continue number patterns", icon: "arrow.right.circle"),
+                SkillInfo(name: "Number Properties", description: "Understand odd, even, and special number properties", icon: "number.square")
+            ]
+        case .geometry:
+            return [
+                SkillInfo(name: "Shape Recognition", description: "Identify and classify 2D and 3D shapes", icon: "triangle.fill"),
+                SkillInfo(name: "Area & Perimeter", description: "Calculate measurements of shapes and spaces", icon: "ruler"),
+                SkillInfo(name: "Spatial Reasoning", description: "Visualize and manipulate objects in space", icon: "cube.fill"),
+                SkillInfo(name: "Symmetry", description: "Recognize and create symmetrical patterns", icon: "mirror")
+            ]
+        case .combinatorics:
+            return [
+                SkillInfo(name: "Counting Principles", description: "Use systematic methods to count possibilities", icon: "list.number"),
+                SkillInfo(name: "Permutations", description: "Arrange objects in different orders", icon: "arrow.2.squarepath"),
+                SkillInfo(name: "Combinations", description: "Select groups without considering order", icon: "person.3.fill"),
+                SkillInfo(name: "Probability", description: "Calculate chances and likelihood of events", icon: "percent")
+            ]
+        }
+    }
+    
+    // Helper to generate skills based on subject (legacy)
     private func getSkillsForSubject(_ subject: Lesson.Subject) -> [String] {
         switch subject {
         case .logicalThinking:
@@ -233,6 +371,13 @@ struct LessonDetailView: View {
             return ["Counting Principles", "Permutations", "Combinations", "Probability"]
         }
     }
+}
+
+// MARK: - Supporting Structures
+struct SkillInfo {
+    let name: String
+    let description: String
+    let icon: String
 }
 
 // MARK: - Preview
