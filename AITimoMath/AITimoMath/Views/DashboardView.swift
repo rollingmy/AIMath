@@ -14,23 +14,63 @@ struct DashboardView: View {
         ("Combinatorics", "die.face.5")
     ]
     
-    // Function to load recommended lessons
+    // Function to load recommended lessons based on performance data
     private func loadRecommendedLessons() {
-        // This would normally call an API or load from database
-        // For this implementation, we'll create some sample data based on the timo_questions.json
         isLoading = true
         
-        // Simulating network delay
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            // Create sample lessons based on question categories from the json file
-            self.recommendedLessons = subjects.map { subject, icon in
-                return Lesson(
-                    userId: user.id,
-                    subject: getSubjectEnum(from: subject)
-                )
+        Task {
+            do {
+                // Get user's performance data to identify weak areas
+                let subjectPerformance = try await PerformanceService.shared.calculateSubjectPerformance(userId: user.id)
+                let weakAreas = try await PerformanceService.shared.identifyWeakAreas(userId: user.id)
+                
+                await MainActor.run {
+                    var recommendations: [Lesson] = []
+                    
+                    // If user has completed lessons, recommend based on weak areas
+                    if !subjectPerformance.isEmpty {
+                        // Sort subjects by accuracy (lowest first) to prioritize weak areas
+                        let sortedSubjects = subjectPerformance.values.sorted { $0.accuracy < $1.accuracy }
+                        
+                        // Recommend the weakest performing subjects first
+                        for subjectData in sortedSubjects.prefix(3) {
+                            let subject = getSubjectEnum(from: subjectData.subject)
+                            recommendations.append(Lesson(
+                                userId: user.id,
+                                subject: subject
+                            ))
+                        }
+                    }
+                    
+                    // If no performance data yet, or less than 3 recommendations, fill with default order
+                    if recommendations.count < 3 {
+                        let remainingSubjects = subjects.compactMap { subjectName, _ in
+                            let subject = getSubjectEnum(from: subjectName)
+                            // Only add if not already in recommendations
+                            if !recommendations.contains(where: { $0.subject == subject }) {
+                                return Lesson(userId: user.id, subject: subject)
+                            }
+                            return nil
+                        }
+                        
+                        recommendations.append(contentsOf: remainingSubjects.prefix(3 - recommendations.count))
+                    }
+                    
+                    self.recommendedLessons = recommendations
+                    self.isLoading = false
+                }
+            } catch {
+                // Fallback to default behavior if performance data loading fails
+                await MainActor.run {
+                    self.recommendedLessons = subjects.map { subject, icon in
+                        return Lesson(
+                            userId: user.id,
+                            subject: getSubjectEnum(from: subject)
+                        )
+                    }
+                    self.isLoading = false
+                }
             }
-            
-            self.isLoading = false
         }
     }
     
