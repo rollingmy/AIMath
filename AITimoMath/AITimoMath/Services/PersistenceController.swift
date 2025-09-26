@@ -134,13 +134,16 @@ class PersistenceController {
         
         if let existingUser = existingUsers.first {
             userEntity = existingUser
+            print("Updating existing user: \(user.name) (ID: \(user.id))")
         } else {
             userEntity = UserEntity(context: context)
+            print("Creating new user: \(user.name) (ID: \(user.id))")
         }
         
         userEntity.updateFromUser(user)
         
         try context.save()
+        print("User saved successfully: \(user.name) (ID: \(user.id))")
     }
     
     /// Fetch user by ID
@@ -153,6 +156,21 @@ class PersistenceController {
         
         let users = try context.fetch(fetchRequest)
         return users.first?.toUser()
+    }
+    
+    /// Fetch all users from Core Data
+    /// - Returns: Array of all users
+    func fetchAllUsers() throws -> [User] {
+        let context = persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<UserEntity> = UserEntity.fetchRequest()
+        
+        let userEntities = try context.fetch(fetchRequest)
+        let users = userEntities.compactMap { $0.toUser() }
+        print("Fetched \(users.count) users from Core Data")
+        for user in users {
+            print("  - User: \(user.name) (ID: \(user.id))")
+        }
+        return users
     }
     
     /// Update existing user

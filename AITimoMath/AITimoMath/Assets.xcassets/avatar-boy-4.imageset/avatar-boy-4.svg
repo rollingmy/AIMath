@@ -1,0 +1,31 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="60" fill="#FFFDE7"/>
+  
+  <!-- Head -->
+  <circle cx="60" cy="45" r="25" fill="#FFE0B2"/>
+  
+  <!-- Hair -->
+  <path d="M35 35 Q60 20 85 35 Q85 45 80 50 Q60 40 40 50 Q35 45 35 35" fill="#3E2723"/>
+  
+  <!-- Eyes -->
+  <circle cx="50" cy="45" r="3" fill="#424242"/>
+  <circle cx="70" cy="45" r="3" fill="#424242"/>
+  
+  <!-- Nose -->
+  <ellipse cx="60" cy="52" rx="2" ry="3" fill="#FFCCBC"/>
+  
+  <!-- Mouth -->
+  <path d="M55 58 Q60 62 65 58" fill="none" stroke="#424242" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Shirt -->
+  <path d="M45 70 L75 70 L80 85 L40 85 Z" fill="#FFC107"/>
+  
+  <!-- Collar -->
+  <path d="M50 70 L60 75 L70 70" fill="#F57F17"/>
+  
+  <!-- Backpack -->
+  <rect x="75" y="70" width="12" height="15" rx="2" fill="#795548"/>
+  <rect x="77" y="72" width="8" height="11" rx="1" fill="#5D4037"/>
+  <line x1="81" y1="70" x2="81" y2="68" stroke="#795548" stroke-width="2"/>
+</svg>

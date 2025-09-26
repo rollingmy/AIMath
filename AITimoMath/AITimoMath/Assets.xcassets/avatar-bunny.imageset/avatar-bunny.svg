@@ -1,0 +1,35 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="60" fill="#E8F5E8"/>
+  
+  <!-- Bunny head -->
+  <ellipse cx="60" cy="50" rx="25" ry="22" fill="#FFFFFF"/>
+  
+  <!-- Bunny ears -->
+  <ellipse cx="45" cy="30" rx="6" ry="18" fill="#FFFFFF"/>
+  <ellipse cx="75" cy="30" rx="6" ry="18" fill="#FFFFFF"/>
+  <ellipse cx="45" cy="32" rx="4" ry="12" fill="#FFB3E6"/>
+  <ellipse cx="75" cy="32" rx="4" ry="12" fill="#FFB3E6"/>
+  
+  <!-- Bunny eyes -->
+  <circle cx="50" cy="45" r="4" fill="#424242"/>
+  <circle cx="70" cy="45" r="4" fill="#424242"/>
+  <circle cx="50" cy="43" r="2" fill="#FFFFFF"/>
+  <circle cx="70" cy="43" r="2" fill="#FFFFFF"/>
+  
+  <!-- Bunny nose -->
+  <ellipse cx="60" cy="55" rx="2" ry="1.5" fill="#FF69B4"/>
+  
+  <!-- Bunny mouth -->
+  <path d="M60 56 Q55 59 50 57" fill="none" stroke="#424242" stroke-width="2" stroke-linecap="round"/>
+  <path d="M60 56 Q65 59 70 57" fill="none" stroke="#424242" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Bunny whiskers -->
+  <line x1="35" y1="50" x2="45" y2="52" stroke="#424242" stroke-width="1.5"/>
+  <line x1="35" y1="55" x2="45" y2="55" stroke="#424242" stroke-width="1.5"/>
+  <line x1="75" y1="52" x2="85" y2="50" stroke="#424242" stroke-width="1.5"/>
+  <line x1="75" y1="55" x2="85" y2="55" stroke="#424242" stroke-width="1.5"/>
+  
+  <!-- Bunny body -->
+  <ellipse cx="60" cy="85" rx="20" ry="15" fill="#FFFFFF"/>
+</svg>

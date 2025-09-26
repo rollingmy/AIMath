@@ -86,7 +86,11 @@ struct SettingsView: View {
                     
                     Stepper("\(user.dailyGoal) questions", value: Binding(
                         get: { user.dailyGoal },
-                        set: { user.dailyGoal = $0 }
+                        set: { newValue in
+                            user.dailyGoal = newValue
+                            // Trigger immediate save for important settings
+                            user.saveNow()
+                        }
                     ), in: 3...20)
                 }
             }
@@ -208,7 +212,11 @@ struct EditProfileView: View {
     }
     
     // List of available avatars
-    private let avatars = ["avatar-1", "avatar-2", "avatar-3", "avatar-4", "avatar-5", "avatar-6"]
+    private let avatars = [
+        "avatar-boy-1", "avatar-boy-2", "avatar-boy-3", "avatar-boy-4",
+        "avatar-girl-1", "avatar-girl-2", "avatar-girl-3", "avatar-girl-4",
+        "avatar-cat", "avatar-bear", "avatar-owl", "avatar-bunny"
+    ]
     
     var body: some View {
         Form {
@@ -268,6 +276,14 @@ struct EditProfileView: View {
         user.gradeLevel = selectedGrade
         user.avatar = selectedAvatar
         
+        // Save to Core Data
+        do {
+            try PersistenceController.shared.saveUser(user)
+            print("User profile saved successfully")
+        } catch {
+            print("Error saving user profile: \(error)")
+        }
+        
         // Dismiss view
         presentationMode.wrappedValue.dismiss()
     }
@@ -275,11 +291,37 @@ struct EditProfileView: View {
 
 // MARK: - Placeholder Views
 struct NotificationSettingsView: View {
+    @AppStorage("dailyReminders") private var dailyReminders = true
+    @AppStorage("weeklySummary") private var weeklySummary = true
+    @AppStorage("achievementAlerts") private var achievementAlerts = true
+    
     var body: some View {
         Form {
-            Toggle("Daily Reminders", isOn: .constant(true))
-            Toggle("Weekly Summary", isOn: .constant(true))
-            Toggle("Achievement Alerts", isOn: .constant(true))
+            Section(header: Text("Notification Types")) {
+                Toggle("Daily Reminders", isOn: $dailyReminders)
+                Toggle("Weekly Summary", isOn: $weeklySummary)
+                Toggle("Achievement Alerts", isOn: $achievementAlerts)
+            }
+            
+            Section(header: Text("About Notifications")) {
+                Text("Daily Reminders")
+                    .font(.headline)
+                Text("Get reminded to practice math every day at your preferred time.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                
+                Text("Weekly Summary")
+                    .font(.headline)
+                Text("Receive a summary of your progress and achievements each week.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                
+                Text("Achievement Alerts")
+                    .font(.headline)
+                Text("Get notified when you unlock new achievements or reach milestones.")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+            }
         }
         .navigationTitle("Notification Settings")
     }
@@ -360,7 +402,7 @@ struct SettingsView_Previews: PreviewProvider {
             SettingsView(
                 user: User(
                     name: "Alex",
-                    avatar: "avatar-1",
+                    avatar: "avatar-boy-1",
                     gradeLevel: 5,
                     dailyGoal: 10
                 )

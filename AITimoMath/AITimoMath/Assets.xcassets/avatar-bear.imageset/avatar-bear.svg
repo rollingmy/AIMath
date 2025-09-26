@@ -1,0 +1,32 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="60" fill="#E8F5E8"/>
+  
+  <!-- Bear head -->
+  <circle cx="60" cy="50" r="25" fill="#8D6E63"/>
+  
+  <!-- Bear ears -->
+  <circle cx="45" cy="35" r="12" fill="#8D6E63"/>
+  <circle cx="75" cy="35" r="12" fill="#8D6E63"/>
+  <circle cx="45" cy="35" r="8" fill="#A1887F"/>
+  <circle cx="75" cy="35" r="8" fill="#A1887F"/>
+  
+  <!-- Bear eyes -->
+  <circle cx="50" cy="45" r="4" fill="#424242"/>
+  <circle cx="70" cy="45" r="4" fill="#424242"/>
+  <circle cx="50" cy="43" r="2" fill="#FFFFFF"/>
+  <circle cx="70" cy="43" r="2" fill="#FFFFFF"/>
+  
+  <!-- Bear nose -->
+  <ellipse cx="60" cy="55" rx="3" ry="2" fill="#424242"/>
+  
+  <!-- Bear mouth -->
+  <path d="M60 57 Q55 60 50 58" fill="none" stroke="#424242" stroke-width="2" stroke-linecap="round"/>
+  <path d="M60 57 Q65 60 70 58" fill="none" stroke="#424242" stroke-width="2" stroke-linecap="round"/>
+  
+  <!-- Bear body -->
+  <ellipse cx="60" cy="85" rx="22" ry="18" fill="#8D6E63"/>
+  
+  <!-- Bear belly -->
+  <ellipse cx="60" cy="85" rx="15" ry="12" fill="#A1887F"/>
+</svg>

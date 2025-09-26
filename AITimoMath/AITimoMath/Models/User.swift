@@ -35,6 +35,10 @@ public class User: Identifiable, Codable, Equatable, ObservableObject {
     @Published public var dailyGoal: Int
     @Published public var dailyCompletedQuestions: Int
     
+    // Auto-save mechanism
+    private var saveCancellable: AnyCancellable?
+    private let saveQueue = DispatchQueue(label: "user.save", qos: .utility)
+    
     // Define CodingKeys to handle @Published properties
     private enum CodingKeys: String, CodingKey {
         case id, name, avatar, gradeLevel, learningGoal, difficultyLevel, completedLessons, lastActiveAt, createdAt, dailyGoal, dailyCompletedQuestions
@@ -112,6 +116,9 @@ public class User: Identifiable, Codable, Equatable, ObservableObject {
         self.createdAt = createdAt
         self.dailyGoal = dailyGoal
         self.dailyCompletedQuestions = dailyCompletedQuestions
+        
+        // Setup auto-save mechanism
+        setupAutoSave()
     }
 }
 
@@ -145,6 +152,43 @@ extension User {
             dailyGoal: dailyGoal,
             dailyCompletedQuestions: dailyCompletedQuestions
         )
+    }
+}
+
+// MARK: - Auto-Save Functionality
+extension User {
+    /// Setup automatic saving to Core Data when user properties change
+    private func setupAutoSave() {
+        // Listen to changes in key properties and auto-save
+        saveCancellable = Publishers.Merge4(
+            $name.map { _ in () },
+            $avatar.map { _ in () },
+            $gradeLevel.map { _ in () },
+            $dailyGoal.map { _ in () }
+        )
+        .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+        .sink { [weak self] _ in
+            self?.saveToCoreData()
+        }
+    }
+    
+    /// Save user data to Core Data
+    private func saveToCoreData() {
+        saveQueue.async { [weak self] in
+            guard let self = self else { return }
+            
+            do {
+                try PersistenceController.shared.saveUser(self)
+                print("User auto-saved successfully: \(self.name) (ID: \(self.id))")
+            } catch {
+                print("Error auto-saving user: \(error)")
+            }
+        }
+    }
+    
+    /// Manually trigger a save (useful for immediate persistence)
+    public func saveNow() {
+        saveToCoreData()
     }
 }
 
