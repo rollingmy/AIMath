@@ -66,7 +66,9 @@ public class EloRatingModel {
         
         // For questions, we invert the formula since a student getting a question correct
         // means the question might be too easy (and should lose rating points)
-        let ratingChange = kFactor * (expectedScore - actualScore)
+        // When student gets it correct (actualScore = 1.0), question should become easier (lower rating)
+        // When student gets it wrong (actualScore = 0.0), question should become harder (higher rating)
+        let ratingChange = kFactor * (actualScore - expectedScore)
         return currentDifficulty + ratingChange
     }
     

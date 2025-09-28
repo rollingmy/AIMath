@@ -150,10 +150,10 @@ extension QuestionEntity {
         question.hint = self.hint
         question.imageData = self.imageData
         
-        // Handle metadata - convert from Data to [String: Any] using NSKeyedUnarchiver
+        // Handle metadata - convert from Data to [String: Any] using JSON decoding
         if let data = self.metadata {
             do {
-                if let metadata = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? [String: Any] {
+                if let metadata = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
                     question.metadata = metadata
                 } else {
                     question.metadata = [:]
@@ -180,10 +180,10 @@ extension QuestionEntity {
         self.correctAnswer = question.correctAnswer
         self.hint = question.hint
         self.imageData = question.imageData
-        // Handle metadata - convert from [String: Any] to Data using NSKeyedArchiver
+        // Handle metadata - convert from [String: Any] to Data using JSON encoding
         if let metadata = question.metadata {
             do {
-                self.metadata = try NSKeyedArchiver.archivedData(withRootObject: metadata, requiringSecureCoding: false)
+                self.metadata = try JSONSerialization.data(withJSONObject: metadata, options: [])
             } catch {
                 print("Error encoding metadata: \(error)")
                 self.metadata = nil

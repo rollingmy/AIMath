@@ -8,8 +8,10 @@ struct SubjectLessonsView: View {
     @State private var lessons: [Lesson] = []
     @State private var isLoading = true
     
-    // Sample difficulty levels for generation
-    private let difficulties = [1, 2, 3, 4] // Using integers for difficulty levels
+    // Get difficulty levels based on user's difficulty preference
+    private var difficulties: [Int] {
+        return user.difficultyLevel.difficultyRange
+    }
     
     // Function to load lessons for the selected subject
     private func loadLessons() {
@@ -31,8 +33,13 @@ struct SubjectLessonsView: View {
                 var newLessons: [Lesson] = []
                 
                 // Create lessons for each difficulty level
+                print("🔍 User difficulty level: \(user.difficultyLevel.displayName)")
+                print("🔍 Requested difficulties: \(difficulties)")
+                print("🔍 Available difficulties for \(subject): \(Set(subjectQuestions.map { $0.difficulty }).sorted())")
+                
                 for difficulty in difficulties.sorted() {
                     if var qs = questionsByDifficulty[difficulty], !qs.isEmpty {
+                        print("✅ Found \(qs.count) questions for difficulty \(difficulty)")
                         // Top up to daily goal using same-subject nearest difficulties
                         let target = user.dailyGoal
                         if qs.count < target {
@@ -57,19 +64,59 @@ struct SubjectLessonsView: View {
                     }
                 }
                 
-                // If no questions found, create a default lesson
+                // If no questions found for the selected difficulty range, 
+                // try to find questions in the fallback difficulty range
                 if newLessons.isEmpty {
-                    var defaultLesson = Lesson(
-                        userId: user.id,
-                        subject: subjectEnum
-                    )
-                    defaultLesson.difficulty = 1
-                    newLessons.append(defaultLesson)
+                    print("⚠️ No lessons created for preferred difficulties, using fallback")
+                    // Use fallback difficulty range (all difficulties)
+                    let fallbackDifficulties = [1, 2, 3, 4]
+                    print("🔍 Fallback difficulties: \(fallbackDifficulties)")
+                    
+                    for difficulty in fallbackDifficulties.sorted() {
+                        if var qs = questionsByDifficulty[difficulty], !qs.isEmpty {
+                            print("✅ Fallback: Found \(qs.count) questions for difficulty \(difficulty)")
+                            // Top up to daily goal using same-subject nearest difficulties
+                            let target = user.dailyGoal
+                            if qs.count < target {
+                                let order = [difficulty, max(1, difficulty-1), min(4, difficulty+1), max(1, difficulty-2), min(4, difficulty+2)]
+                                for d in order where d != difficulty {
+                                    guard qs.count < target else { break }
+                                    if let extra = questionsByDifficulty[d] {
+                                        for q in extra where !qs.contains(q) {
+                                            guard qs.count < target else { break }
+                                            qs.append(q)
+                                        }
+                                    }
+                                }
+                            }
+                            var lesson = Lesson(
+                                userId: user.id,
+                                subject: subjectEnum
+                            )
+                            lesson.difficulty = difficulty
+                            lesson.questions = Array(qs.prefix(target)).map { $0.id }
+                            newLessons.append(lesson)
+                        }
+                    }
+                    
+                    // If still no questions found, create a default lesson
+                    if newLessons.isEmpty {
+                        var defaultLesson = Lesson(
+                            userId: user.id,
+                            subject: subjectEnum
+                        )
+                        defaultLesson.difficulty = 1
+                        newLessons.append(defaultLesson)
+                    }
                 }
                 
                 await MainActor.run {
                     self.lessons = newLessons
                     self.isLoading = false
+                    print("🎯 Final result: Created \(newLessons.count) lessons for \(subject)")
+                    for lesson in newLessons {
+                        print("   - Difficulty \(lesson.difficulty): \(lesson.questions.count) questions")
+                    }
                 }
             } catch {
                 print("Error loading lessons for \(subject): \(error)")

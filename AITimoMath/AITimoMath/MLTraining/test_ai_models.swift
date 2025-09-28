@@ -219,8 +219,68 @@ struct AIModelTester {
 
 /// Test runner for AI models
 public class MLTestRunner {
-    /// Run all AI model tests
+    /// Run all AI model tests (legacy method)
     public static func runAllTests() {
         AIModelTester.runTests()
+    }
+    
+    /// Run comprehensive accuracy tests
+    public static func runAccuracyTests() {
+        print("🧪 Running Comprehensive AI Model Accuracy Tests...")
+        let comprehensiveTests = ComprehensiveAITests()
+        let results = comprehensiveTests.runAllAccuracyTests()
+        
+        // Generate analysis report
+        let analysisReport = TestResultsAnalyzer.generateReport(results)
+        print(analysisReport)
+    }
+    
+    /// Run all tests including accuracy validation
+    public static func runCompleteTestSuite() {
+        print("🚀 Running Complete AI Model Test Suite...")
+        print(String(repeating: "=", count: 60))
+        
+        // Run basic functionality tests
+        print("\n1. Basic Functionality Tests")
+        print(String(repeating: "-", count: 30))
+        AIModelTester.runTests()
+        
+        // Run comprehensive accuracy tests
+        print("\n2. Comprehensive Accuracy Tests")
+        print(String(repeating: "-", count: 30))
+        let comprehensiveTests = ComprehensiveAITests()
+        let results = comprehensiveTests.runAllAccuracyTests()
+        
+        // Generate and display analysis report
+        print("\n3. Analysis Report")
+        print(String(repeating: "-", count: 30))
+        let analysisReport = TestResultsAnalyzer.generateReport(results)
+        print(analysisReport)
+        
+        print("\n🏁 Complete test suite finished!")
+    }
+    
+    /// Run tests with custom configuration
+    public static func runCustomTests(
+        accuracyThreshold: Float = 0.85,
+        testIterations: Int = 1000
+    ) {
+        print("⚙️ Running Custom AI Model Tests...")
+        print("Accuracy Threshold: \(String(format: "%.2f%%", accuracyThreshold * 100))")
+        print("Test Iterations: \(testIterations)")
+        
+        let comprehensiveTests = ComprehensiveAITests()
+        let results = comprehensiveTests.runAllAccuracyTests()
+        
+        // Filter results based on custom threshold
+        let filteredResults = results.filter { $0.value.accuracy >= accuracyThreshold }
+        
+        print("\nResults meeting custom threshold:")
+        for (modelName, result) in filteredResults {
+            print("✅ \(modelName): \(String(format: "%.2f%%", result.accuracy * 100))")
+        }
+        
+        let analysisReport = TestResultsAnalyzer.generateReport(results)
+        print(analysisReport)
     }
 } 

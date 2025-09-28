@@ -129,6 +129,30 @@ extension User {
         case beginner
         case adaptive
         case advanced
+        
+        /// Get the appropriate difficulty range for this level
+        public var difficultyRange: [Int] {
+            switch self {
+            case .beginner:
+                return [1, 2] // Easy and Medium
+            case .adaptive:
+                return [1, 2, 3, 4] // All difficulties
+            case .advanced:
+                return [3, 4] // Hard and Olympiad
+            }
+        }
+        
+        /// Get display name for the difficulty level
+        public var displayName: String {
+            switch self {
+            case .beginner:
+                return "Beginner"
+            case .adaptive:
+                return "Adaptive"
+            case .advanced:
+                return "Advanced"
+            }
+        }
     }
     
     /// Convenience initialization with default values

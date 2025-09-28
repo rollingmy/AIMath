@@ -3,13 +3,16 @@ import SwiftUI
 struct SettingsView: View {
     @ObservedObject var user: User
     @AppStorage("enableAIHints") private var enableAIHints = true
-    @AppStorage("difficultyMode") private var difficultyMode = "Adaptive"
     @AppStorage("enableNotifications") private var enableNotifications = true
     @AppStorage("darkMode") private var darkMode = false
     @AppStorage("isOnboarded") private var isOnboarded = true
     
-    // Sample difficulty options
-    private let difficultyOptions = ["Beginner", "Adaptive", "Advanced"]
+    // Difficulty options mapped to User.DifficultyLevel enum
+    private let difficultyOptions = [
+        User.DifficultyLevel.beginner,
+        User.DifficultyLevel.adaptive,
+        User.DifficultyLevel.advanced
+    ]
     
     var body: some View {
         Form {
@@ -65,9 +68,16 @@ struct SettingsView: View {
                     
                     Spacer()
                     
-                    Picker("", selection: $difficultyMode) {
+                    Picker("", selection: Binding(
+                        get: { user.difficultyLevel },
+                        set: { newValue in
+                            user.difficultyLevel = newValue
+                            // Trigger immediate save for important settings
+                            user.saveNow()
+                        }
+                    )) {
                         ForEach(difficultyOptions, id: \.self) { option in
-                            Text(option).tag(option)
+                            Text(option.displayName).tag(option)
                         }
                     }
                     .pickerStyle(MenuPickerStyle())

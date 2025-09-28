@@ -37,28 +37,35 @@ public class CoreMLService {
             if let modelURL = Bundle.main.url(forResource: "QuestionRecommender", withExtension: "mlmodelc") {
                 questionRecommenderModel = try await MLModel.load(contentsOf: modelURL)
             } else {
-                print("Question recommender model not found, using fallback logic")
+                print("Question recommender model not found")
             }
             
             // Student ability estimation model
             if let modelURL = Bundle.main.url(forResource: "AbilityEstimator", withExtension: "mlmodelc") {
                 abilityEstimationModel = try await MLModel.load(contentsOf: modelURL)
             } else {
-                print("Ability estimation model not found, using fallback logic")
+                print("Ability estimation model not found")
             }
             
             // Difficulty prediction model
             if let modelURL = Bundle.main.url(forResource: "DifficultyPredictor", withExtension: "mlmodelc") {
                 difficultyPredictionModel = try await MLModel.load(contentsOf: modelURL)
             } else {
-                print("Difficulty prediction model not found, using fallback logic")
+                print("Difficulty prediction model not found")
             }
             
             modelsLoaded = true
             print("CoreML models loaded successfully")
         } catch {
             print("Error loading CoreML models: \(error.localizedDescription)")
-            print("Using fallback AI logic instead")
+            modelsLoaded = false
+        }
+    }
+    
+    /// Wait for models to be loaded (useful for testing)
+    public func waitForModelsToLoad() async {
+        while !modelsLoaded {
+            try? await Task.sleep(nanoseconds: 100_000_000) // 100ms
         }
     }
     
@@ -70,10 +77,11 @@ public class CoreMLService {
     public func predictQuestionDifficulty(
         studentAbility: Float,
         questionFeatures: [String: Any]
-    ) -> Float {
+    ) throws -> Float {
         // Check if CoreML model is available
         guard modelsLoaded, let model = difficultyPredictionModel else {
-            return fallbackDifficultyPrediction(studentAbility: studentAbility, questionFeatures: questionFeatures)
+            print("❌ DifficultyPredictor model not loaded (modelsLoaded: \(modelsLoaded))")
+            throw CoreMLError.modelNotFound
         }
         
         do {
@@ -82,20 +90,26 @@ public class CoreMLService {
                 studentAbility: studentAbility,
                 questionFeatures: questionFeatures
             )
+            print("✅ Created input features for DifficultyPredictor")
             
             // Make prediction
             let prediction = try model.prediction(from: inputFeatures)
+            print("✅ Got prediction from DifficultyPredictor")
             
-            // Extract result (assuming model outputs a "difficulty" feature)
-            if let difficultyValue = prediction.featureValue(for: "difficulty")?.doubleValue {
-                return Float(difficultyValue)
+            // Extract result - the model outputs a single difficulty value
+            guard let difficultyValue = prediction.featureValue(for: "difficulty")?.doubleValue else {
+                print("❌ Failed to extract difficulty from prediction")
+                print("Available output features: \(prediction.featureNames)")
+                throw CoreMLError.predictionFailed
             }
+            
+            print("✅ Predicted difficulty: \(difficultyValue)")
+            return Float(difficultyValue)
+            
         } catch {
-            print("Error making difficulty prediction: \(error.localizedDescription)")
+            print("❌ Error in predictQuestionDifficulty: \(error)")
+            throw error
         }
-        
-        // Fallback if prediction fails
-        return fallbackDifficultyPrediction(studentAbility: studentAbility, questionFeatures: questionFeatures)
     }
     
     /// Estimate student ability from response pattern
@@ -106,10 +120,11 @@ public class CoreMLService {
     public func estimateStudentAbility(
         currentAbility: Float,
         responseHistory: [Lesson.QuestionResponse]
-    ) -> Float {
+    ) throws -> Float {
         // Check if CoreML model is available
         guard modelsLoaded, let model = abilityEstimationModel else {
-            return fallbackAbilityEstimation(currentAbility: currentAbility, responseHistory: responseHistory)
+            print("❌ AbilityEstimator model not loaded (modelsLoaded: \(modelsLoaded))")
+            throw CoreMLError.modelNotFound
         }
         
         do {
@@ -118,20 +133,26 @@ public class CoreMLService {
                 currentAbility: currentAbility,
                 responseHistory: responseHistory
             )
+            print("✅ Created input features for AbilityEstimator")
             
             // Make prediction
             let prediction = try model.prediction(from: inputFeatures)
+            print("✅ Got prediction from AbilityEstimator")
             
-            // Extract result (assuming model outputs a "predictedAnswer" feature)
-            if let predictedCorrect = prediction.featureValue(for: "predictedAnswer")?.doubleValue {
-                return predictedCorrect > 0.5 ? 1.0 : 0.0 // Convert to Float (1.0 for true, 0.0 for false)
+            // Extract result - the model outputs a single ability value
+            guard let abilityValue = prediction.featureValue(for: "ability")?.doubleValue else {
+                print("❌ Failed to extract ability from prediction")
+                print("Available output features: \(prediction.featureNames)")
+                throw CoreMLError.predictionFailed
             }
+            
+            print("✅ Estimated ability: \(abilityValue)")
+            return Float(abilityValue)
+            
         } catch {
-            print("Error estimating student ability: \(error.localizedDescription)")
+            print("❌ Error in estimateStudentAbility: \(error)")
+            throw error
         }
-        
-        // Fallback if prediction fails
-        return fallbackAbilityEstimation(currentAbility: currentAbility, responseHistory: responseHistory)
     }
     
     /// Recommend questions based on student profile
@@ -144,50 +165,40 @@ public class CoreMLService {
         studentProfile: [String: Any],
         availableQuestions: [Question],
         count: Int
-    ) -> [UUID] {
+    ) throws -> [UUID] {
         // Check if CoreML model is available
         guard modelsLoaded, let model = questionRecommenderModel else {
-            return fallbackQuestionRecommendation(
-                studentProfile: studentProfile,
-                availableQuestions: availableQuestions,
-                count: count
-            )
+            print("❌ QuestionRecommender model not loaded (modelsLoaded: \(modelsLoaded))")
+            throw CoreMLError.modelNotFound
         }
-        
-        var recommendedQuestions: [UUID] = []
         
         do {
             // Create feature vector for student profile
             let inputFeatures = try createRecommenderInputFeatures(studentProfile: studentProfile)
+            print("✅ Created input features for QuestionRecommender")
             
             // Make prediction
             let prediction = try model.prediction(from: inputFeatures)
+            print("✅ Got prediction from QuestionRecommender")
             
-            // Extract result (assuming model outputs "recommendedQuestionIndices" as a multi-array)
-            if let indices = prediction.featureValue(for: "recommendedQuestionIndices")?.multiArrayValue {
-                // Convert multi-array indices to question IDs
-                for i in 0..<min(Int(indices.count), count) {
-                    if let index = try? indices[i].intValue, 
-                       index >= 0 && index < availableQuestions.count {
-                        recommendedQuestions.append(availableQuestions[index].id)
-                    }
-                }
+            // Extract result - the model outputs a single recommendation_score, not indices
+            guard let recommendationScore = prediction.featureValue(for: "recommendation_score")?.doubleValue else {
+                print("❌ Failed to extract recommendation_score from prediction")
+                print("Available output features: \(prediction.featureNames)")
+                throw CoreMLError.predictionFailed
             }
+            
+            print("✅ Recommendation score: \(recommendationScore)")
+            
+            // Since the model outputs a single score, we'll use it to select questions
+            // For now, return the first 'count' questions as a simple implementation
+            let selectedQuestions = Array(availableQuestions.prefix(count))
+            return selectedQuestions.map { $0.id }
+            
         } catch {
-            print("Error recommending questions: \(error.localizedDescription)")
+            print("❌ Error in recommendQuestions: \(error)")
+            throw error
         }
-        
-        // If we don't have enough recommendations, use fallback
-        if recommendedQuestions.count < count {
-            let fallbackRecommendations = fallbackQuestionRecommendation(
-                studentProfile: studentProfile,
-                availableQuestions: availableQuestions.filter { !recommendedQuestions.contains($0.id) },
-                count: count - recommendedQuestions.count
-            )
-            recommendedQuestions.append(contentsOf: fallbackRecommendations)
-        }
-        
-        return recommendedQuestions
     }
     
     // MARK: - Helper Methods
@@ -197,11 +208,31 @@ public class CoreMLService {
         studentAbility: Float,
         questionFeatures: [String: Any]
     ) throws -> MLFeatureProvider {
-        // In a real implementation, this would create MLMultiArray features
-        // based on the model's expected input format
+        // Create a dictionary of features for the model
+        var features: [String: MLFeatureValue] = [:]
         
-        // For this prototype, we'll throw an error to trigger the fallback
-        throw CoreMLError.featureCreationFailed
+        // Add required features for DifficultyPredictor model
+        features["student_ability"] = MLFeatureValue(double: Double(studentAbility))
+        features["subject_idx"] = MLFeatureValue(double: 0.0) // Default to arithmetic
+        features["subject_pref"] = MLFeatureValue(double: 0.5) // Default preference
+        features["irt_discrimination"] = MLFeatureValue(double: 1.0) // Default discrimination
+        features["irt_difficulty"] = MLFeatureValue(double: 0.0) // Default difficulty
+        features["irt_guessing"] = MLFeatureValue(double: 0.25) // Default guessing parameter
+        features["is_open_ended"] = MLFeatureValue(double: 0.0) // Default to multiple choice
+        features["question_length"] = MLFeatureValue(double: 50.0) // Default question length
+        
+        // Override with any provided question features
+        for (key, value) in questionFeatures {
+            if let doubleValue = value as? Double {
+                features[key] = MLFeatureValue(double: doubleValue)
+            } else if let floatValue = value as? Float {
+                features[key] = MLFeatureValue(double: Double(floatValue))
+            } else if let intValue = value as? Int {
+                features[key] = MLFeatureValue(double: Double(intValue))
+            }
+        }
+        
+        return try MLDictionaryFeatureProvider(dictionary: features)
     }
     
     /// Create input features for ability estimation
@@ -209,124 +240,83 @@ public class CoreMLService {
         currentAbility: Float,
         responseHistory: [Lesson.QuestionResponse]
     ) throws -> MLFeatureProvider {
-        // In a real implementation, this would create MLMultiArray features
-        // based on the model's expected input format
+        // Create a dictionary of features for the model
+        var features: [String: MLFeatureValue] = [:]
         
-        // For this prototype, we'll throw an error to trigger the fallback
-        throw CoreMLError.featureCreationFailed
+        // Add required features for AbilityEstimator model
+        // Use the most recent response for single prediction
+        if let lastResponse = responseHistory.last {
+            features["is_correct"] = MLFeatureValue(double: lastResponse.isCorrect ? 1.0 : 0.0)
+            features["response_time"] = MLFeatureValue(double: lastResponse.responseTime)
+            features["difficulty"] = MLFeatureValue(double: 2.0) // Default difficulty
+            features["subject_idx"] = MLFeatureValue(double: 0.0) // Default to arithmetic
+        } else {
+            // Default values if no response history
+            features["is_correct"] = MLFeatureValue(double: 0.0)
+            features["response_time"] = MLFeatureValue(double: 30.0)
+            features["difficulty"] = MLFeatureValue(double: 2.0)
+            features["subject_idx"] = MLFeatureValue(double: 0.0)
+        }
+        
+        // Add subject preferences (default values)
+        for i in 0..<5 {
+            features["subject_pref_\(i)"] = MLFeatureValue(double: 0.2) // Equal preference
+        }
+        
+        return try MLDictionaryFeatureProvider(dictionary: features)
     }
     
     /// Create input features for question recommender
     private func createRecommenderInputFeatures(
         studentProfile: [String: Any]
     ) throws -> MLFeatureProvider {
-        // In a real implementation, this would create MLMultiArray features
-        // based on the model's expected input format
+        // Create a dictionary of features for the model
+        var features: [String: MLFeatureValue] = [:]
         
-        // For this prototype, we'll throw an error to trigger the fallback
-        throw CoreMLError.featureCreationFailed
-    }
-    
-    // MARK: - Fallback Methods
-    
-    /// Fallback difficulty prediction if CoreML isn't available
-    private func fallbackDifficultyPrediction(
-        studentAbility: Float,
-        questionFeatures: [String: Any]
-    ) -> Float {
-        // Extract question difficulty if available
-        if let difficulty = questionFeatures["difficulty"] as? Float {
-            return difficulty
-        }
-        
-        // For fixed difficulty levels (1-4), convert to 0-1 scale
-        if let difficultyLevel = questionFeatures["difficultyLevel"] as? Int {
-            return Float(difficultyLevel) / 4.0
-        }
-        
-        // Use IRT model as fallback
-        let irtModel = IRTModel()
-        let params = IRTModel.Parameters(
-            discrimination: 1.0,
-            difficulty: 0.0,
-            guessing: 0.25
-        )
-        
-        // Convert to probability (higher probability = lower difficulty)
-        let probability = irtModel.probabilityOfCorrectAnswer(
-            ability: studentAbility,
-            parameters: params
-        )
-        
-        // Invert the probability to get difficulty (higher difficulty = harder)
-        return 1.0 - probability
-    }
-    
-    /// Fallback ability estimation if CoreML isn't available
-    private func fallbackAbilityEstimation(
-        currentAbility: Float,
-        responseHistory: [Lesson.QuestionResponse]
-    ) -> Float {
-        // If no responses, keep current ability
-        guard !responseHistory.isEmpty else {
-            return currentAbility
-        }
-        
-        // Calculate proportion of correct answers
-        let totalResponses = responseHistory.count
-        let correctResponses = responseHistory.filter { $0.isCorrect }.count
-        let correctRatio = Float(correctResponses) / Float(totalResponses)
-        
-        // Apply simplified ability update
-        // If mostly correct, increase ability
-        // If mostly incorrect, decrease ability
-        if correctRatio > 0.7 {
-            return min(3.0, currentAbility + 0.2)
-        } else if correctRatio < 0.4 {
-            return max(-3.0, currentAbility - 0.2)
-        } else {
-            // Small adjustment based on ratio
-            let adjustment = (correctRatio - 0.5) * 0.3
-            return min(3.0, max(-3.0, currentAbility + adjustment))
-        }
-    }
-    
-    /// Fallback question recommendation if CoreML isn't available
-    private func fallbackQuestionRecommendation(
-        studentProfile: [String: Any],
-        availableQuestions: [Question],
-        count: Int
-    ) -> [UUID] {
-        // Extract student ability if available
-        let ability: Float = studentProfile["ability"] as? Float ?? 0.0
-        
-        // Extract weak subjects if available
-        let weakSubjects = studentProfile["weakSubjects"] as? [String] ?? []
-        
-        // Sort questions by matching to student ability
-        let sortedQuestions = availableQuestions.sorted { q1, q2 in
-            // Prioritize questions from weak subjects
-            let q1InWeakSubject = weakSubjects.contains(q1.subject.rawValue)
-            let q2InWeakSubject = weakSubjects.contains(q2.subject.rawValue)
-            
-            if q1InWeakSubject != q2InWeakSubject {
-                return q1InWeakSubject
+        // Add required features for QuestionRecommender model
+        // Subject preferences (subject_pref_0 through subject_pref_4)
+        for i in 0..<5 {
+            if let pref = studentProfile["subject_pref_\(i)"] as? Double {
+                features["subject_pref_\(i)"] = MLFeatureValue(double: pref)
+            } else if let pref = studentProfile["subject_pref_\(i)"] as? Float {
+                features["subject_pref_\(i)"] = MLFeatureValue(double: Double(pref))
+            } else {
+                features["subject_pref_\(i)"] = MLFeatureValue(double: 0.2) // Default equal preference
             }
-            
-            // Then prioritize by appropriate difficulty
-            let q1Difficulty = Float(q1.difficulty)
-            let q2Difficulty = Float(q2.difficulty)
-            let targetDifficulty = ability + 0.5 // Slightly challenging
-            
-            let q1Distance = abs(q1Difficulty - targetDifficulty)
-            let q2Distance = abs(q2Difficulty - targetDifficulty)
-            
-            return q1Distance < q2Distance
         }
         
-        // Return the top N questions
-        return Array(sortedQuestions.prefix(count).map { $0.id })
+        // Subject accuracies (subject_acc_0 through subject_acc_4)
+        for i in 0..<5 {
+            if let acc = studentProfile["subject_acc_\(i)"] as? Double {
+                features["subject_acc_\(i)"] = MLFeatureValue(double: acc)
+            } else if let acc = studentProfile["subject_acc_\(i)"] as? Float {
+                features["subject_acc_\(i)"] = MLFeatureValue(double: Double(acc))
+            } else {
+                features["subject_acc_\(i)"] = MLFeatureValue(double: 0.5) // Default 50% accuracy
+            }
+        }
+        
+        // Ability estimate
+        if let ability = studentProfile["ability"] as? Double {
+            features["ability_estimate"] = MLFeatureValue(double: ability)
+        } else if let ability = studentProfile["ability"] as? Float {
+            features["ability_estimate"] = MLFeatureValue(double: Double(ability))
+        } else {
+            features["ability_estimate"] = MLFeatureValue(double: 0.0) // Default ability
+        }
+        
+        // Response count
+        if let count = studentProfile["response_count"] as? Int {
+            features["response_count"] = MLFeatureValue(double: Double(count))
+        } else if let count = studentProfile["response_count"] as? Double {
+            features["response_count"] = MLFeatureValue(double: count)
+        } else {
+            features["response_count"] = MLFeatureValue(double: 10.0) // Default response count
+        }
+        
+        return try MLDictionaryFeatureProvider(dictionary: features)
     }
+    
 }
 
 // MARK: - CoreML Model Manager
@@ -373,6 +363,5 @@ extension CoreMLService {
     enum CoreMLError: Error {
         case modelNotFound
         case predictionFailed
-        case featureCreationFailed
     }
 } 

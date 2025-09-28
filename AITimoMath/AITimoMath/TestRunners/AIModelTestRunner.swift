@@ -29,8 +29,88 @@ class AIModelTestRunner {
         return testResults
     }
     
+    /// Run comprehensive accuracy tests for all AI models
+    func runAccuracyTests() -> [String] {
+        testResults.append("🧪 Running Comprehensive AI Model Accuracy Tests...")
+        testResults.append(String(repeating: "=", count: 60))
+        
+        let comprehensiveTests = ComprehensiveAITests()
+        let accuracyResults = comprehensiveTests.runAllAccuracyTests()
+        
+        for (modelName, result) in accuracyResults {
+            let status = result.passed ? "✅ PASSED" : "❌ FAILED"
+            testResults.append("\(modelName): \(status)")
+            testResults.append("  Accuracy: \(String(format: "%.2f%%", result.accuracy * 100))")
+            testResults.append("  Test Cases: \(result.testCases)")
+            testResults.append("  Details: \(result.details)")
+            testResults.append("")
+        }
+        
+        // Calculate overall results
+        let passedModels = accuracyResults.values.filter { $0.passed }.count
+        let totalModels = accuracyResults.count
+        let overallSuccessRate = Float(passedModels) / Float(totalModels)
+        
+        testResults.append("📊 Overall Accuracy Test Results:")
+        testResults.append("  Models Passed: \(passedModels)/\(totalModels)")
+        testResults.append("  Success Rate: \(String(format: "%.2f%%", overallSuccessRate * 100))")
+        
+        if overallSuccessRate >= 0.8 {
+            testResults.append("🎉 AI Models meet accuracy requirements!")
+        } else {
+            testResults.append("⚠️ Some AI models need improvement before deployment.")
+        }
+        
+        testResults.append("")
+        testResults.append("✅ Comprehensive accuracy testing completed!")
+        
+        return testResults
+    }
+    
+    /// Run both basic and accuracy tests
+    func runAllTests() -> [String] {
+        testResults.append("🚀 Starting Complete AI Model Testing Suite...")
+        testResults.append("")
+        
+        // Run basic functionality tests
+        _ = runTests()
+        
+        testResults.append("")
+        testResults.append("")
+        
+        // Run comprehensive accuracy tests
+        _ = runAccuracyTests()
+        
+        testResults.append("")
+        testResults.append("🏁 Complete AI Model Testing Suite finished!")
+        
+        return testResults
+    }
+    
     /// Static method to run all tests
     static func runAllTests() {
+        let testRunner = AIModelTestRunner()
+        let results = testRunner.runAllTests()
+        
+        // Print results to console
+        for result in results {
+            print(result)
+        }
+    }
+    
+    /// Static method to run only accuracy tests
+    static func runAccuracyTests() {
+        let testRunner = AIModelTestRunner()
+        let results = testRunner.runAccuracyTests()
+        
+        // Print results to console
+        for result in results {
+            print(result)
+        }
+    }
+    
+    /// Static method to run only basic functionality tests
+    static func runBasicTests() {
         let testRunner = AIModelTestRunner()
         let results = testRunner.runTests()
         
@@ -203,13 +283,16 @@ class AIModelTestRunner {
         let availableQuestions = [question1, question2, question3]
         
         // Test question recommendation
-        let recommendedQuestions = coreMLService.recommendQuestions(
-            studentProfile: studentProfile,
-            availableQuestions: availableQuestions,
-            count: 2
-        )
-        
-        testResults.append("Recommended \(recommendedQuestions.count) questions")
+        do {
+            let recommendedQuestions = try coreMLService.recommendQuestions(
+                studentProfile: studentProfile,
+                availableQuestions: availableQuestions,
+                count: 2
+            )
+            testResults.append("Recommended \(recommendedQuestions.count) questions")
+        } catch {
+            testResults.append("Error recommending questions: \(error.localizedDescription)")
+        }
         
         // Test question difficulty prediction
         testResults.append("Testing difficulty prediction...")
@@ -221,12 +304,15 @@ class AIModelTestRunner {
             "irt_guessing": 0.25
         ]
         
-        let difficulty = coreMLService.predictQuestionDifficulty(
-            studentAbility: 0.0,
-            questionFeatures: questionFeatures
-        )
-        
-        testResults.append("Predicted difficulty: \(difficulty)")
+        do {
+            let difficulty = try coreMLService.predictQuestionDifficulty(
+                studentAbility: 0.0,
+                questionFeatures: questionFeatures
+            )
+            testResults.append("Predicted difficulty: \(difficulty)")
+        } catch {
+            testResults.append("Error predicting difficulty: \(error.localizedDescription)")
+        }
     }
     
     /// Test the Adaptive Difficulty Engine
@@ -300,6 +386,13 @@ class AIModelTestRunner {
 struct AIModelTestView: View {
     @State private var testResults: [String] = []
     @State private var isRunningTests = false
+    @State private var selectedTestType: TestType = .all
+    
+    enum TestType: String, CaseIterable {
+        case basic = "Basic Tests"
+        case accuracy = "Accuracy Tests"
+        case all = "All Tests"
+    }
     
     var body: some View {
         VStack {
@@ -307,24 +400,42 @@ struct AIModelTestView: View {
                 .font(.title)
                 .padding()
             
+            // Test type selector
+            Picker("Test Type", selection: $selectedTestType) {
+                ForEach(TestType.allCases, id: \.self) { testType in
+                    Text(testType.rawValue).tag(testType)
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            .padding(.horizontal)
+            
+            // Run tests button
             Button(action: {
                 self.runTests()
             }) {
-                Text(isRunningTests ? "Running Tests..." : "Run AI Model Tests")
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+                HStack {
+                    if isRunningTests {
+                        ProgressView()
+                            .scaleEffect(0.8)
+                    }
+                    Text(isRunningTests ? "Running Tests..." : "Run \(selectedTestType.rawValue)")
+                }
+                .padding()
+                .background(isRunningTests ? Color.gray : Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
             }
             .disabled(isRunningTests)
             .padding()
             
+            // Test results
             ScrollView {
                 VStack(alignment: .leading) {
                     ForEach(testResults, id: \.self) { result in
                         Text(result)
+                            .font(.system(.body, design: .monospaced))
                             .padding(.horizontal)
-                            .padding(.vertical, 2)
+                            .padding(.vertical, 1)
                     }
                 }
             }
@@ -341,7 +452,16 @@ struct AIModelTestView: View {
         
         DispatchQueue.global(qos: .userInitiated).async {
             let testRunner = AIModelTestRunner()
-            let results = testRunner.runTests()
+            let results: [String]
+            
+            switch selectedTestType {
+            case .basic:
+                results = testRunner.runTests()
+            case .accuracy:
+                results = testRunner.runAccuracyTests()
+            case .all:
+                results = testRunner.runAllTests()
+            }
             
             DispatchQueue.main.async {
                 self.testResults = results

@@ -172,7 +172,7 @@ extension AILearningProgress {
     
     /// Calculates next lesson difficulty using Adaptive Difficulty Engine
     private func calculateNextDifficulty(_ lesson: Lesson) -> Int {
-        let currentDifficulty = lessonHistory.last?.nextDifficulty ?? 1
+        _ = lessonHistory.last?.nextDifficulty ?? 1
         
         // Delegate to AdaptiveDifficultyEngine for advanced calculation
         return AdaptiveDifficultyEngine.shared.calculateDifficultyAfterLesson(
@@ -185,7 +185,7 @@ extension AILearningProgress {
     private mutating func updateWeakAreas(with lesson: Lesson) {
         // Only update weak areas for completed lessons
         guard lesson.status == .completed,
-              let completedAt = lesson.completedAt else {
+              let _ = lesson.completedAt else {
             return
         }
         
@@ -217,10 +217,16 @@ extension AILearningProgress {
         }
         
         // Update ability level using CoreML if available
-        let updatedAbility = CoreMLService.shared.estimateStudentAbility(
-            currentAbility: abilityLevel,
-            responseHistory: responses
-        )
+        let updatedAbility: Float
+        do {
+            updatedAbility = try CoreMLService.shared.estimateStudentAbility(
+                currentAbility: abilityLevel,
+                responseHistory: responses
+            )
+        } catch {
+            // If CoreML fails, keep current ability level
+            updatedAbility = abilityLevel
+        }
         
         // Limit ability level to valid range
         abilityLevel = max(-3.0, min(3.0, updatedAbility))

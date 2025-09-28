@@ -22,7 +22,7 @@ struct DashboardView: View {
             do {
                 // Get user's performance data to identify weak areas
                 let subjectPerformance = try await PerformanceService.shared.calculateSubjectPerformance(userId: user.id)
-                let weakAreas = try await PerformanceService.shared.identifyWeakAreas(userId: user.id)
+                _ = try await PerformanceService.shared.identifyWeakAreas(userId: user.id)
                 
                 await MainActor.run {
                     var recommendations: [Lesson] = []
