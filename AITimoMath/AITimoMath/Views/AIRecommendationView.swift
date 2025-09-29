@@ -2,8 +2,8 @@ import SwiftUI
 
 /// A view that displays AI-powered learning recommendations
 struct AIRecommendationView: View {
-    // User ID for which to show recommendations
-    var userId: UUID
+    // Current user for which to show recommendations
+    var user: User
     
     // Service instance
     private let aiLearningService = AILearningService.shared
@@ -12,6 +12,8 @@ struct AIRecommendationView: View {
     @State private var learningProgress: AILearningProgress?
     @State private var isLoading = true
     @State private var errorMessage: String?
+    @State private var showAlternatives = false
+    @State private var selectedSubjectForAlternatives: Lesson.Subject = .arithmetic
     
     var body: some View {
         VStack {
@@ -136,26 +138,52 @@ struct AIRecommendationView: View {
                 // Use a default subject for now since we only have UUID
                 let defaultSubject = Lesson.Subject.arithmetic
                 
-                HStack {
-                    Image(systemName: iconForSubject(defaultSubject))
-                        .foregroundColor(.blue)
+                VStack(alignment: .leading, spacing: 8) {
+                    HStack {
+                        Image(systemName: iconForSubject(defaultSubject))
+                            .foregroundColor(.blue)
+                        Text(subjectTitle(defaultSubject))
+                            .foregroundColor(.primary)
+                        Spacer()
+                        Text("Level \(difficultyLevel(for: defaultSubject, progress: progress)) • 5 questions")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                            .padding(.horizontal, 8)
+                            .padding(.vertical, 4)
+                            .background(Color.blue.opacity(0.1))
+                            .cornerRadius(4)
+                    }
                     
-                    Text(subjectTitle(defaultSubject))
-                        .foregroundColor(.primary)
+                    // Why recommended
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Why recommended")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                        Text(whyRecommendedText(for: defaultSubject, progress: progress))
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
                     
-                    Spacer()
-                    
-                    Text("Lvl \(difficultyLevel(for: defaultSubject, progress: progress))")
-                        .font(.caption)
-                        .foregroundColor(.secondary)
-                        .padding(.horizontal, 8)
-                        .padding(.vertical, 4)
-                        .background(Color.blue.opacity(0.1))
-                        .cornerRadius(4)
-                    
-                    Image(systemName: "chevron.right")
-                        .foregroundColor(.blue.opacity(0.7))
-                        .font(.caption)
+                    HStack {
+                        NavigationLink(destination: LessonDetailView(lesson: Lesson(userId: user.id, subject: defaultSubject), user: user)) {
+                            Text("Start this")
+                                .font(.subheadline)
+                                .foregroundColor(.white)
+                                .padding(.horizontal, 14)
+                                .padding(.vertical, 8)
+                                .background(Color.blue)
+                                .cornerRadius(8)
+                        }
+                        
+                        Spacer()
+                        Button(action: {
+                            selectedSubjectForAlternatives = defaultSubject
+                            showAlternatives = true
+                        }) {
+                            Text("See alternatives")
+                                .font(.subheadline)
+                        }
+                    }
                 }
                 .padding(12)
                 .background(Color.secondary.opacity(0.05))
@@ -163,6 +191,36 @@ struct AIRecommendationView: View {
             }
         }
         .padding(.vertical, 8)
+        .sheet(isPresented: $showAlternatives) {
+            AlternativesSheet(subject: selectedSubjectForAlternatives)
+        }
+    }
+
+    /// Alternatives sheet for a subject
+    @ViewBuilder
+    private func AlternativesSheet(subject: Lesson.Subject) -> some View {
+        NavigationView {
+            SubjectLessonsView(
+                subject: subjectTitle(subject),
+                iconName: iconForSubject(subject),
+                user: user
+            )
+            .navigationBarItems(trailing: Button("Close") { showAlternatives = false })
+        }
+    }
+    /// Build reasons from progress signals
+    private func whyRecommendedText(for subject: Lesson.Subject, progress: AILearningProgress) -> String {
+        var reasons: [String] = []
+        if let weak = progress.weakAreas.first(where: { $0.subject == subject }) {
+            reasons.append("• Low concept score: \(Int(weak.conceptScore * 100))%")
+        }
+        if let last = progress.lessonHistory.filter({ $0.subject == subject }).max(by: { $0.completedAt < $1.completedAt }) {
+            reasons.append("• Last session accuracy: \(Int(last.accuracy * 100))%")
+        }
+        if reasons.isEmpty {
+            reasons = ["• Builds on your recent progress", "• Right level challenge"]
+        }
+        return reasons.joined(separator: "\n")
     }
     
     /// Weak areas section
@@ -321,8 +379,7 @@ struct AIRecommendationView: View {
         // Using a placeholder learningProgress to fix the async issue
         // In a real app, you would use Task and proper async/await
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            // Create a mock learning progress for now
-            self.learningProgress = AILearningProgress(userId: self.userId)
+            self.learningProgress = AILearningProgress(userId: self.user.id)
             self.isLoading = false
         }
     }
@@ -396,5 +453,5 @@ struct AIRecommendationView: View {
 }
 
 #Preview {
-    AIRecommendationView(userId: UUID())
-} 
+    AIRecommendationView(user: User(name: "Alex", avatar: "avatar-1", gradeLevel: 5))
+}

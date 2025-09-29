@@ -102,6 +102,9 @@ struct DashboardView: View {
                     // MARK: - User Info and Daily Goal
                     userInfoSection
                     
+                    // MARK: - Review Mistakes Card
+                    reviewMistakesCard
+                    
                     // MARK: - AI Recommended Section
                     aiRecommendedSection
                     
@@ -320,6 +323,31 @@ struct DashboardView: View {
                 }
             }
         }
+    }
+    
+    // MARK: - Review Mistakes Card
+    private var reviewMistakesCard: some View {
+        NavigationLink(destination: MistakesReviewView(user: user)) {
+            HStack(alignment: .center, spacing: 12) {
+                Image(systemName: "arrow.uturn.backward.circle.fill")
+                    .foregroundColor(.red)
+                    .font(.system(size: 24))
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("Review Mistakes")
+                        .font(.headline)
+                    Text("Boost your learning by reviewing incorrect answers")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .foregroundColor(.secondary)
+            }
+            .padding()
+            .background(Color(.systemGray6))
+            .cornerRadius(12)
+        }
+        .buttonStyle(PlainButtonStyle())
     }
     
 }

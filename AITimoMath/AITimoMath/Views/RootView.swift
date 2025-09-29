@@ -39,7 +39,7 @@ struct LegacyContentView: View {
                     Label("Questions", systemImage: "questionmark.circle")
                 }
             
-            AIRecommendationView(userId: currentUser.id)
+            AIRecommendationView(user: currentUser)
                 .tabItem {
                     Label("Recommendations", systemImage: "lightbulb")
                 }

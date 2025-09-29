@@ -8,6 +8,14 @@ struct MistakesReviewView: View {
     @State private var isLoading = true
     @State private var selectedQuestion: Question?
     @State private var showingExplanation = false
+    @State private var reviewedQuestionIds: Set<UUID> = []
+    @Environment(\.presentationMode) private var presentationMode
+    
+    private enum Scope: String, CaseIterable { case lastSession = "Last session", allTime = "All time" }
+    @State private var selectedScope: Scope = .lastSession
+    
+    // Display chunk size to keep review short and focused
+    private let chunkSize = 3
     
     // Function to load incorrect questions from the user's actual history
     private func loadIncorrectQuestions() {
@@ -57,6 +65,14 @@ struct MistakesReviewView: View {
                 Text("Practice these questions to improve your understanding")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
+                
+                // Scope selector
+                Picker("Scope", selection: $selectedScope) {
+                    ForEach(Scope.allCases, id: \.self) { scope in
+                        Text(scope.rawValue).tag(scope)
+                    }
+                }
+                .pickerStyle(SegmentedPickerStyle())
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding()
@@ -83,10 +99,30 @@ struct MistakesReviewView: View {
                 }
                 Spacer()
             } else {
+                // Determine questions to show based on scope and chunk size (stable ordering)
+                let scopedQuestions: [Question] = {
+                    if selectedScope == .allTime { return incorrectQuestions }
+                    // Fallback heuristic for "Last session": show a recent subset
+                    // Keep the same subset while the source list is unchanged to avoid progress reset.
+                    return Array(incorrectQuestions.sorted { $0.id.uuidString < $1.id.uuidString }
+                        .prefix(max(chunkSize * 2, chunkSize)))
+                }()
+                let displayQuestions = Array(scopedQuestions.prefix(chunkSize))
+                let progressValue = displayQuestions.isEmpty ? 0 : Double(reviewedQuestionIds.intersection(displayQuestions.map { $0.id }).count) / Double(displayQuestions.count)
+                
+                // Progress
+                VStack(alignment: .leading, spacing: 8) {
+                    ProgressView(value: progressValue)
+                    Text("Reviewed \(reviewedQuestionIds.intersection(displayQuestions.map { $0.id }).count)/\(displayQuestions.count)")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                }
+                .padding(.horizontal)
+                
                 // List of incorrect questions
                 ScrollView {
                     LazyVStack(spacing: 15) {
-                        ForEach(incorrectQuestions) { question in
+                        ForEach(displayQuestions) { question in
                             let userAnswer = userAnswers[question.id]
                             QuestionReviewCard(
                                 question: question,
@@ -100,12 +136,31 @@ struct MistakesReviewView: View {
                     }
                     .padding([.horizontal, .bottom])
                 }
+                
+                // Mark complete button
+                Button(action: {
+                    presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text(reviewedQuestionIds.intersection(displayQuestions.map { $0.id }).count >= displayQuestions.count ? "Mark complete" : "Keep reviewing"
+                        )
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity)
+                        .padding()
+                        .background(reviewedQuestionIds.intersection(displayQuestions.map { $0.id }).count >= displayQuestions.count ? Color.blue : Color.gray)
+                        .cornerRadius(10)
+                }
+                .disabled(reviewedQuestionIds.intersection(displayQuestions.map { $0.id }).count < displayQuestions.count)
+                .padding()
             }
         }
         .navigationTitle("Review Mistakes")
         .sheet(isPresented: $showingExplanation) {
             if let question = selectedQuestion {
-                ExplanationView(question: question)
+                ExplanationView(question: question) {
+                    // Mark this question as reviewed when user taps Got it / Try again
+                    reviewedQuestionIds.insert(question.id)
+                }
             }
         }
         .onAppear {
@@ -203,6 +258,7 @@ struct QuestionReviewCard: View {
 // MARK: - ExplanationView
 struct ExplanationView: View {
     let question: Question
+    var onReviewed: (() -> Void)? = nil
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
@@ -253,20 +309,35 @@ struct ExplanationView: View {
                     .background(Color(.systemGray6))
                     .cornerRadius(12)
                     
-                    // Try again button
-                    Button(action: {
-                        // In a full implementation, this would navigate to the question view
-                        presentationMode.wrappedValue.dismiss()
-                    }) {
-                        Text("Try This Question Again")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.blue)
-                            .cornerRadius(10)
+                    HStack(spacing: 12) {
+                        Button(action: {
+                            onReviewed?()
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("Got it")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color.blue)
+                                .cornerRadius(10)
+                        }
+                        
+                        Button(action: {
+                            // Allow skipping but still count towards completion to reduce friction
+                            onReviewed?()
+                            presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Text("Skip")
+                                .font(.headline)
+                                .foregroundColor(.blue)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background(Color(.systemGray6))
+                                .cornerRadius(10)
+                        }
                     }
-                    .padding(.top, 20)
+                    .padding(.top, 16)
                 }
                 .padding()
             }
