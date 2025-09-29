@@ -13,6 +13,7 @@ struct AITestingView: View {
     enum TestType: String, CaseIterable {
         case basic = "Basic Tests"
         case accuracy = "Accuracy Tests"
+        case usability = "Usability Tests"
         case all = "All Tests"
         case custom = "Custom Configuration"
     }
@@ -157,42 +158,98 @@ struct AITestingView: View {
         testProgress = 0.0
         currentTestStep = "Initializing tests..."
         
-        DispatchQueue.global(qos: .userInitiated).async {
+        Task {
             let testRunner = AIModelTestRunner()
             let results: [String]
             
             switch selectedTestType {
             case .basic:
-                currentTestStep = "Running basic functionality tests..."
-                testProgress = 0.3
+                await MainActor.run {
+                    currentTestStep = "Running basic functionality tests..."
+                    testProgress = 0.3
+                }
                 results = testRunner.runTests()
                 
             case .accuracy:
-                currentTestStep = "Running accuracy validation tests..."
-                testProgress = 0.5
+                await MainActor.run {
+                    currentTestStep = "Running accuracy validation tests..."
+                    testProgress = 0.5
+                }
                 results = testRunner.runAccuracyTests()
                 
+            case .usability:
+                await MainActor.run {
+                    currentTestStep = "Running automated usability tests..."
+                    testProgress = 0.3
+                }
+                results = await runUsabilityTests()
+                
             case .all:
-                currentTestStep = "Running complete test suite..."
-                testProgress = 0.2
+                await MainActor.run {
+                    currentTestStep = "Running complete test suite..."
+                    testProgress = 0.2
+                }
                 results = testRunner.runAllTests()
                 
             case .custom:
-                currentTestStep = "Running custom configuration tests..."
-                testProgress = 0.4
+                await MainActor.run {
+                    currentTestStep = "Running custom configuration tests..."
+                    testProgress = 0.4
+                }
                 results = testRunner.runAccuracyTests() // For now, same as accuracy
             }
             
-            testProgress = 1.0
-            currentTestStep = "Tests completed!"
-            
-            DispatchQueue.main.async {
+            await MainActor.run {
+                testProgress = 1.0
+                currentTestStep = "Tests completed!"
                 self.testResults = results
                 self.isRunningTests = false
                 self.testProgress = 0.0
                 self.currentTestStep = ""
             }
         }
+    }
+    
+    /// Run automated usability tests
+    private func runUsabilityTests() async -> [String] {
+        let usabilityTester = AutomatedUsabilityTesting()
+        let report = await usabilityTester.runAutomatedUsabilityTests()
+        
+        var results: [String] = []
+        
+        // Add summary results
+        results.append("🧪 Automated Usability Testing Results")
+        results.append("📊 Simulated \(report.totalStudents) students aged 7-8")
+        results.append("⏱️ Test Duration: \(String(format: "%.2f", report.testDuration))s")
+        results.append("⭐ Average Satisfaction: \(String(format: "%.1f", report.averageSatisfaction))/5.0")
+        results.append("👍 Would Use Again: \(String(format: "%.1f", report.wouldUseAgainPercentage))%")
+        
+        // Add task completion rates
+        results.append("\n📈 Task Completion Rates:")
+        for (scenario, rate) in report.overallCompletionRates.sorted(by: { $0.value < $1.value }) {
+            let status = rate >= 0.85 ? "✅" : (rate >= 0.7 ? "🟡" : "🔴")
+            results.append("\(status) \(scenario): \(String(format: "%.1f%%", rate * 100))")
+        }
+        
+        // Add top issues
+        results.append("\n🚨 Top Issues Found:")
+        let topIssues = report.commonNavigationIssues.sorted { $0.value > $1.value }.prefix(3)
+        for (issue, count) in topIssues {
+            results.append("🔴 \(issue) (affects \(count) students)")
+        }
+        
+        // Add recommendations
+        results.append("\n💡 Key Recommendations:")
+        for recommendation in report.recommendations.prefix(5) {
+            results.append(recommendation)
+        }
+        
+        // Add detailed metrics
+        results.append("\n📊 Detailed Metrics:")
+        results.append("Total Errors: \(report.totalErrors)")
+        results.append("Total Help Requests: \(report.totalHelpRequests)")
+        
+        return results
     }
     
     /// Determine color for test result line

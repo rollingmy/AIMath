@@ -67,6 +67,21 @@ class AIModelTestRunner {
         return testResults
     }
     
+    /// Run usability tests
+    func runUsabilityTests() async -> [String] {
+        testResults.append("🧪 Running Automated Usability Tests...")
+        testResults.append("")
+        
+        let runner = UsabilityTestRunner()
+        let usabilityResults = await runner.runUsabilityTests()
+        
+        testResults.append(contentsOf: usabilityResults)
+        testResults.append("")
+        testResults.append("✅ Automated Usability Tests completed!")
+        
+        return testResults
+    }
+    
     /// Run both basic and accuracy tests
     func runAllTests() -> [String] {
         testResults.append("🚀 Starting Complete AI Model Testing Suite...")

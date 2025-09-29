@@ -6,7 +6,7 @@ struct TestMenuView: View {
         NavigationView {
             List {
                 Section(header: Text("AI Model Tests")) {
-                    NavigationLink(destination: AIModelTestView()) {
+                    NavigationLink(destination: AITestingView()) {
                         HStack {
                             Image(systemName: "brain")
                                 .foregroundColor(.blue)
